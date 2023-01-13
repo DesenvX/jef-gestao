@@ -47,6 +47,9 @@
                                         <a href="#" class="btn btn-primary btn-user btn-block">
                                             Registrar Trator
                                         </a>
+                                        <a href="dashboard.php" class="btn btn-danger btn-user btn-block">
+                                            Cancelar
+                                        </a>
                                     </form>
                                 </div>
                             </div>
