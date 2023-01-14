@@ -17,7 +17,6 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
         <?php
         include('../../html/sidebar.html');
         ?>
@@ -26,9 +25,8 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
+            <div id="content" style="background-image: url('../../img/logo_fundo.png');">
 
-                <!-- Topbar -->
                 <?php
                 include('../../html/topbar.html');
                 ?>
@@ -245,9 +243,8 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-</body>
+    <?php include('../../html/scripts.html'); ?>
 
-<!-- Scripts -->
-<?php include('../../html/scripts.html'); ?>
+</body>
 
 </html>
