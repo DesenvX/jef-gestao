@@ -25,7 +25,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content" style="background-image: url('../../img/logo_fundo.png');">
+            <div id="content">
 
                 <?php
                 include('../../html/topbar.html');
