@@ -36,12 +36,12 @@
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Áreas </span>
-                    <h1 class="h3 mb-2 text-gray-800"> Fornecedores </h1>
+                    <h1 class="h3 mb-2 text-gray-800"> Funções </h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterSuppliers">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterFunctions">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
@@ -74,29 +74,26 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Empresa</th>
-                                            <th>CNPJ</th>
-                                            <th>Contato</th>
+                                            <th>Função</th>
+                                            <th>Descrição</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Empresa</th>
-                                            <th>CNPJ</th>
-                                            <th>Contato</th>
+                                            <th>Função</th>
+                                            <th>Descrição</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
                                             <th>1</th>
-                                            <td>Condimentos</td>
-                                            <td>00.000.000/0000-00</td>
-                                            <td>(99) 99999-9999</td>
+                                            <td>Operador</td>
+                                            <td>Operador de maquinas pesada</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditSuppliers" data-company="Condimentos" data-cnpj="00.000.000/0000-00" data-phone="(99) 99999-9999">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFunctions" data-functions="Operador" data-description="Operador de maquinas pesada">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDeleteCategories()">
@@ -128,30 +125,25 @@
                     </div>
                 </div>
 
-                <div name="RegisterSuppliers" class="modal fade" id="modalRegisterSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="RegisterFunctions" class="modal fade" id="modalRegisterFunctions" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/funcao.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Fornecedores</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Função</b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="company" placeholder="Empresa">
+                                            <input type="text" class="form-control form-control-user" id="functions" placeholder="Função">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="cnpj" placeholder="CNPJ">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="phone" placeholder="Contato">
+                                            <input type="text" class="form-control form-control-user" id="description" placeholder="Descrição">
                                         </div>
                                     </div>
                                     <hr>
@@ -164,30 +156,25 @@
                     </div>
                 </div>
 
-                <div name="EditSuppliers" class="modal fade" id="modalEditSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="EditFunctions" class="modal fade" id="modalEditFunctions" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/funcao.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Fornecedores</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Função</b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="company" placeholder="Empresa">
+                                            <input type="text" class="form-control form-control-user" id="functions" placeholder="Função">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="cnpj" placeholder="CNPJ">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="phone" placeholder="Contato">
+                                            <input type="text" class="form-control form-control-user" id="description" placeholder="Descrição">
                                         </div>
                                     </div>
                                     <hr>
@@ -223,15 +210,13 @@
     <?php include('../../html/scripts.html'); ?>
 
     <script>
-        $('#modalEditSuppliers').on('show.bs.modal', function(event) {
+        $('#modalEditFunctions').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipientcompany = button.data('company')
-            var recipientcnpj = button.data('cnpj')
-            var recipientphone = button.data('phone')
+            var recipientfunctions = button.data('functions')
+            var recipientdescription = button.data('description')
             var modal = $(this)
-            modal.find('.modal-body #company').val(recipientcompany)
-            modal.find('.modal-body #cnpj').val(recipientcnpj)
-            modal.find('.modal-body #phone').val(recipientphone)
+            modal.find('.modal-body #functions').val(recipientfunctions)
+            modal.find('.modal-bady #description').val(recipientdescription)
         })
     </script>
 

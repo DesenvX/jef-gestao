@@ -91,9 +91,9 @@
                                         <tr>
                                             <th>1</th>
                                             <td>10</td>
-                                            <td>Fazenda 02</td>
+                                            <td>Santa Tereza</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditServices" data-name="Condimentos" data-description="Condimentos destinados especificamento aos operadores">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditPastures" data-retreat="10" data-farm="Santa Tereza">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDeleteCategories()">
@@ -141,8 +141,10 @@
                                             <input type="text" class="form-control form-control-user" id="retreat" placeholder="Retiro">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="farm" placeholder="Fazenda">
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="farm" placeholder="Fazenda">
+                                        </div>
                                     </div>
                                     <hr>
                                     <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
@@ -154,7 +156,7 @@
                     </div>
                 </div>
 
-                <div name="EditServices" class="modal fade" id="modalEditServices" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="EditServices" class="modal fade" id="modalEditPastures" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -170,9 +172,11 @@
                                             <input type="text" class="form-control form-control-user" id="retreat" placeholder="Retiro">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="farm" placeholder="Fazenda">
-                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="farm" placeholder="Fazenda">
+                                        </div>
+                                    </div>                                    
                                     <hr>
                                     <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
                                     <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
@@ -208,11 +212,11 @@
     <script>
         $('#modalEditPastures').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipientName = button.data('name')
-            var recipientDescription = button.data('description')
+            var recipientRetreat = button.data('retreat')
+            var recipientfarm = button.data('farm')
             var modal = $(this)
-            modal.find('.modal-body #name').val(recipientName)
-            modal.find('.modal-body #description').val(recipientDescription)
+            modal.find('.modal-body #retreat').val(recipientRetreat)
+            modal.find('.modal-body #farm').val(recipientfarm)
         })
     </script>
 
