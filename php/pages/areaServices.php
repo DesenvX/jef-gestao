@@ -75,7 +75,6 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Nome</th>
-                                            <th>Descrição</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
@@ -83,7 +82,6 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Nome</th>
-                                            <th>Descrição</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
@@ -91,9 +89,8 @@
                                         <tr>
                                             <th>1</th>
                                             <td>Condimentos</td>
-                                            <td>Condimentos destinados especificamento aos operadores</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditServices" data-name="Condimentos" data-description="Condimentos destinados especificamento aos operadores">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditServices" data-name="Condimentos">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDeleteCategories()">
@@ -141,9 +138,6 @@
                                             <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <textarea rows="2" class="form-control form-control-user" id="description" placeholder="Descrição"></textarea>
-                                    </div>
                                     <hr>
                                     <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
                                     <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
@@ -169,9 +163,6 @@
                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                             <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea rows="2" class="form-control form-control-user" id="description" placeholder="Descrição"></textarea>
                                     </div>
                                     <hr>
                                     <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
@@ -209,10 +200,8 @@
         $('#modalEditServices').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var recipientName = button.data('name')
-            var recipientDescription = button.data('description')
             var modal = $(this)
             modal.find('.modal-body #name').val(recipientName)
-            modal.find('.modal-body #description').val(recipientDescription)
         })
     </script>
 

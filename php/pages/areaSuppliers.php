@@ -74,16 +74,18 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Nome</th>
-                                            <th>Descrição</th>
+                                            <th>Empresa</th>
+                                            <th>CNPJ</th>
+                                            <th>Contato</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Nome</th>
-                                            <th>Descrição</th>
+                                            <th>Empresa</th>
+                                            <th>CNPJ</th>
+                                            <th>Contato</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
@@ -91,9 +93,10 @@
                                         <tr>
                                             <th>1</th>
                                             <td>Condimentos</td>
-                                            <td>Condimentos destinados especificamento aos operadores</td>
+                                            <td>00.000.000/0000-00</td>
+                                            <td>(99) 99999-9999</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditSuppliers" data-name="Condimentos" data-description="Condimentos destinados especificamento aos operadores">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditSuppliers" data-company="Condimentos" data-cnpj="00.000.000/0000-00" data-phone="(99) 99999-9999">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDeleteCategories()">
@@ -138,11 +141,18 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
+                                            <input type="text" class="form-control form-control-user" id="company" placeholder="Empresa">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <textarea rows="2" class="form-control form-control-user" id="description" placeholder="Descrição"></textarea>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="cnpj" placeholder="CNPJ">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="phone" placeholder="Contato">
+                                        </div>
                                     </div>
                                     <hr>
                                     <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
@@ -167,11 +177,18 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
+                                            <input type="text" class="form-control form-control-user" id="company" placeholder="Empresa">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <textarea rows="2" class="form-control form-control-user" id="description" placeholder="Descrição"></textarea>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="cnpj" placeholder="CNPJ">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="phone" placeholder="Contato">
+                                        </div>
                                     </div>
                                     <hr>
                                     <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
@@ -208,11 +225,13 @@
     <script>
         $('#modalEditSuppliers').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipientName = button.data('name')
-            var recipientDescription = button.data('description')
+            var recipientcompany = button.data('company')
+            var recipientcnpj = button.data('cnpj')
+            var recipientphone = button.data('phone')
             var modal = $(this)
-            modal.find('.modal-body #name').val(recipientName)
-            modal.find('.modal-body #description').val(recipientDescription)
+            modal.find('.modal-body #company').val(recipientcompany)
+            modal.find('.modal-body #cnpj').val(recipientcnpj)
+            modal.find('.modal-body #phone').val(recipientphone)
         })
     </script>
 
