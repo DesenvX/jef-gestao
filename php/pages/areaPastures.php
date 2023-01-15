@@ -36,12 +36,12 @@
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Áreas </span>
-                    <h1 class="h3 mb-2 text-gray-800"> Categorias </h1>
+                    <h1 class="h3 mb-2 text-gray-800"> Pasto </h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterCategories">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterMeasurements">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="card-body">
 
-                            <div name="SearchAndFilter" class="row" style="justify-content: end; margin-bottom:20px;">
+                            <Retreat="SearchAndFilter" class="row" style="justify-content: end; margin-bottom:20px;">
                                 <div class="col-md-5">
                                     <div id="dataTable_filter" class="dataTables_filter">
                                         <input type="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
@@ -70,11 +70,14 @@
                             </div>
 
                             <div class="table-responsive">
+
+                                <!-- Start Table -->
+
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Nome</th>
+                                            <th>Retiro</th>
                                             <th>Descrição</th>
                                             <th>Opções</th>
                                         </tr>
@@ -82,7 +85,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Nome</th>
+                                            <th>Reiro</th>
                                             <th>Descrição</th>
                                             <th>Opções</th>
                                         </tr>
@@ -93,7 +96,7 @@
                                             <td>Condimentos</td>
                                             <td>Condimentos destinados especificamento aos operadores</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCategories" data-name="Condimentos" data-description="Condimentos destinados especificamento aos operadores">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditPastures" data-retreat="Condimentos" data-description="Condimentos destinados especificamento aos operadores">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDeleteCategories()">
@@ -103,6 +106,9 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
+                                <!-- End Table -->
+
                             </div>
 
                             <div name="pagination" class="row">
@@ -125,20 +131,22 @@
                     </div>
                 </div>
 
-                <div name="RegisterCategories" class="modal fade" id="modalRegisterCategories" tabindex="-1" role="dialog" aria-hidden="true">
+                <!-- Stat Form Register Collaborators -->
+
+                <div name="RegisterMeasurements" class="modal fade" id="modalRegisterMeasurements" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/categoria.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/pasto.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Categoria</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Pasto</b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
+                                            <input type="text" class="form-control form-control-user" id="retreat" placeholder="Retiro">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -154,20 +162,24 @@
                     </div>
                 </div>
 
-                <div name="EditCategories" class="modal fade" id="modalEditCategories" tabindex="-1" role="dialog" aria-hidden="true">
+                <!-- End Table Register Collaborators -->
+
+                <!-- Start modal -->
+
+                <div name="EditPastures" class="modal fade" id="modalEditPastures" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/categoria.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/pasto.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Categoria</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Pasto</b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
+                                            <input type="text" class="form-control form-control-user" id="retreat" placeholder="Re">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -182,8 +194,7 @@
                     </div>
                 </div>
 
-
-
+                <!-- End modal -->
 
             </div>
             <!-- End of Main Content -->
@@ -206,12 +217,12 @@
     <?php include('../../html/scripts.html'); ?>
 
     <script>
-        $('#modalEditCategories').on('show.bs.modal', function(event) {
+        $('#modalEditPastures').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipientName = button.data('name')
+            var recipientRetreat = button.data('retreat')
             var recipientDescription = button.data('description')
             var modal = $(this)
-            modal.find('.modal-body #name').val(recipientName)
+            modal.find('.modal-body #retreat').val(recipientRetreat)
             modal.find('.modal-body #description').val(recipientDescription)
         })
     </script>

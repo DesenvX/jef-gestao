@@ -36,12 +36,12 @@
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Áreas </span>
-                    <h1 class="h3 mb-2 text-gray-800"> Categorias </h1>
+                    <h1 class="h3 mb-2 text-gray-800"> Tratores </h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterCategories">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterTractor">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
@@ -70,12 +70,16 @@
                             </div>
 
                             <div class="table-responsive">
+
+                                <!-- Start table -->
+
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
                                             <th>Nome</th>
-                                            <th>Descrição</th>
+                                            <th>Modelo</th>
+                                            <th>Ano</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
@@ -83,17 +87,19 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Nome</th>
-                                            <th>Descrição</th>
+                                            <th>Modelo</th>
+                                            <th>Ano</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
                                             <th>1</th>
-                                            <td>Condimentos</td>
-                                            <td>Condimentos destinados especificamento aos operadores</td>
+                                            <td>Valtra</td>
+                                            <td>BM 135</td>
+                                            <td>2022</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCategories" data-name="Condimentos" data-description="Condimentos destinados especificamento aos operadores">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditTractor" data-name="Valtra" data-model="BM 135" data-year="2022">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDeleteCategories()">
@@ -103,6 +109,9 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
+                                <!-- End table -->
+
                             </div>
 
                             <div name="pagination" class="row">
@@ -125,15 +134,17 @@
                     </div>
                 </div>
 
-                <div name="RegisterCategories" class="modal fade" id="modalRegisterCategories" tabindex="-1" role="dialog" aria-hidden="true">
+                <!-- Stat Form Register Collaborators -->
+
+                <div name="RegisterTractor" class="modal fade" id="modalRegisterTractor" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/categoria.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/trator.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Categoria</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Trator</b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
@@ -141,8 +152,15 @@
                                             <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <textarea rows="2" class="form-control form-control-user" id="description" placeholder="Descrição"></textarea>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="model" placeholder="Modelo">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="year" placeholder="Ano">
+                                        </div>
                                     </div>
                                     <hr>
                                     <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
@@ -154,15 +172,19 @@
                     </div>
                 </div>
 
-                <div name="EditCategories" class="modal fade" id="modalEditCategories" tabindex="-1" role="dialog" aria-hidden="true">
+                <!-- End Table Register Collaborators -->
+
+                <!-- Start modal -->
+
+                <div name="EditTractor" class="modal fade" id="modalEditTractor" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/categoria.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/trator.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Categoria</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Trator</b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
@@ -170,8 +192,15 @@
                                             <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <textarea rows="2" class="form-control form-control-user" id="description" placeholder="Descrição"></textarea>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="model" placeholder="Modelo">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="year" placeholder="Ano">
+                                        </div>
                                     </div>
                                     <hr>
                                     <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
@@ -182,6 +211,7 @@
                     </div>
                 </div>
 
+                <!-- End modal -->
 
 
 
@@ -206,13 +236,15 @@
     <?php include('../../html/scripts.html'); ?>
 
     <script>
-        $('#modalEditCategories').on('show.bs.modal', function(event) {
+        $('#modalEditTractor').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var recipientName = button.data('name')
-            var recipientDescription = button.data('description')
+            var recipientmodel = button.data('model')
+            var recipientyear = button.data('year')
             var modal = $(this)
             modal.find('.modal-body #name').val(recipientName)
-            modal.find('.modal-body #description').val(recipientDescription)
+            modal.find('.modal-body #model').val(recipientmodel)
+            modal.find('.modal-body #year').val(recipientyear)
         })
     </script>
 

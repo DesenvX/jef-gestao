@@ -36,12 +36,12 @@
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Áreas </span>
-                    <h1 class="h3 mb-2 text-gray-800"> Categorias </h1>
+                    <h1 class="h3 mb-2 text-gray-800"> Medidas </h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterCategories">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterMeasurements">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
@@ -70,6 +70,9 @@
                             </div>
 
                             <div class="table-responsive">
+
+                                <!-- Start Table -->
+
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -93,7 +96,7 @@
                                             <td>Condimentos</td>
                                             <td>Condimentos destinados especificamento aos operadores</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCategories" data-name="Condimentos" data-description="Condimentos destinados especificamento aos operadores">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditMeasurements" data-name="Condimentos" data-description="Condimentos destinados especificamento aos operadores">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDeleteCategories()">
@@ -103,6 +106,9 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
+                                <!-- End Table -->
+
                             </div>
 
                             <div name="pagination" class="row">
@@ -125,15 +131,17 @@
                     </div>
                 </div>
 
-                <div name="RegisterCategories" class="modal fade" id="modalRegisterCategories" tabindex="-1" role="dialog" aria-hidden="true">
+                <!-- Stat Form Register Collaborators -->
+
+                <div name="RegisterMeasurements" class="modal fade" id="modalRegisterMeasurements" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/categoria.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/medidas.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Categoria</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Medidas</b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
@@ -154,15 +162,19 @@
                     </div>
                 </div>
 
-                <div name="EditCategories" class="modal fade" id="modalEditCategories" tabindex="-1" role="dialog" aria-hidden="true">
+                <!-- End Table Register Collaborators -->
+
+                <!-- Start modal -->
+
+                <div name="EditMeasurements" class="modal fade" id="modalEditMeasurements" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/categoria.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/medidas.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Categoria</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Medidas</b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
@@ -182,8 +194,7 @@
                     </div>
                 </div>
 
-
-
+                <!-- End modal -->
 
             </div>
             <!-- End of Main Content -->
@@ -206,7 +217,7 @@
     <?php include('../../html/scripts.html'); ?>
 
     <script>
-        $('#modalEditCategories').on('show.bs.modal', function(event) {
+        $('#modalEditMeasurements').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var recipientName = button.data('name')
             var recipientDescription = button.data('description')
