@@ -36,12 +36,12 @@
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Áreas </span>
-                    <h1 class="h3 mb-2 text-gray-800"> Pasto </h1>
+                    <h1 class="h3 mb-2 text-gray-800"> Pastos </h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterMeasurements">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterServices">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="card-body">
 
-                            <Retreat="SearchAndFilter" class="row" style="justify-content: end; margin-bottom:20px;">
+                            <div name="SearchAndFilter" class="row" style="justify-content: end; margin-bottom:20px;">
                                 <div class="col-md-5">
                                     <div id="dataTable_filter" class="dataTables_filter">
                                         <input type="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
@@ -70,9 +70,6 @@
                             </div>
 
                             <div class="table-responsive">
-
-                                <!-- Start Table -->
-
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -106,9 +103,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-
-                                <!-- End Table -->
-
                             </div>
 
                             <div name="pagination" class="row">
@@ -131,9 +125,7 @@
                     </div>
                 </div>
 
-                <!-- Stat Form Register Collaborators -->
-
-                <div name="RegisterMeasurements" class="modal fade" id="modalRegisterMeasurements" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="RegisterServices" class="modal fade" id="modalRegisterServices" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -164,11 +156,7 @@
                     </div>
                 </div>
 
-                <!-- End Table Register Collaborators -->
-
-                <!-- Start modal -->
-
-                <div name="EditPastures" class="modal fade" id="modalEditPastures" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="EditServices" class="modal fade" id="modalEditServices" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -198,18 +186,19 @@
                     </div>
                 </div>
 
-                <!-- End modal -->
+
+
 
             </div>
             <!-- End of Main Content -->
+
             <?php
             include('../../html/footer.html');
             ?>
-            
 
         </div>
         <!-- End of Content Wrapper -->
-        
+
     </div>
     <!-- End of Page Wrapper -->
 
@@ -221,7 +210,7 @@
     <?php include('../../html/scripts.html'); ?>
 
     <script>
-        $('#modalEditPastures').on('show.bs.modal', function(event) {
+        $('#modalEditServices').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var recipientRetreat = button.data('retreat')
             var recipientfarm = button.data('farm')
