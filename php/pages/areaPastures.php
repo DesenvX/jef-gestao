@@ -206,7 +206,7 @@
     <?php include('../../html/scripts.html'); ?>
 
     <script>
-        $('#modalEditServices').on('show.bs.modal', function(event) {
+        $('#modalEditPastures').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var recipientName = button.data('name')
             var recipientDescription = button.data('description')
