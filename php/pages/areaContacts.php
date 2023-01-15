@@ -144,7 +144,7 @@
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/colaboradores.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/contato.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Cadastrar Contato </b></h1>
@@ -189,7 +189,7 @@
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/colaboradores.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/contato.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Contato </b></h1>
