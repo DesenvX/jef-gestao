@@ -90,10 +90,10 @@
                                     <tbody>
                                         <tr>
                                             <th>1</th>
-                                            <td>Condimentos</td>
+                                            <td>10</td>
                                             <td>Santa Tereza</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditPastures" data-retreat="Condimentos" data-farm="Santa Tereza">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditPastures" data-retreat="10" data-farm="Santa Tereza">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDeleteCategories()">
@@ -156,7 +156,7 @@
                     </div>
                 </div>
 
-                <div name="EditServices" class="modal fade" id="modalEditServices" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="EditServices" class="modal fade" id="modalEditPastures" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
