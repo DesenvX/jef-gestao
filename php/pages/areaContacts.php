@@ -36,12 +36,12 @@
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Áreas </span>
-                    <h1 class="h3 mb-2 text-gray-800"> Funções </h1>
+                    <h1 class="h3 mb-2 text-gray-800"> Contatos </h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterFunctions">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterContacts">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
@@ -70,30 +70,39 @@
                             </div>
 
                             <div class="table-responsive">
+
+                                <!-- Start table -->
+
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Função</th>
-                                            <th>Descrição</th>
+                                            <th>Razão Social</th>
+                                            <th>Nome Fantasia</th>
+                                            <th>Tipo de Pessoa</th>
+                                            <th>Telefone</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Função</th>
-                                            <th>Descrição</th>
+                                            <th>Razão Social</th>
+                                            <th>Nome Fantasia</th>
+                                            <th>Tipo de Pessoa</th>
+                                            <th>Telefone</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
                                             <th>1</th>
-                                            <td>Operador</td>
-                                            <td>Operador de maquinas pesada</td>
+                                            <td>JOAO PEDRO LIMA LTDA</td>
+                                            <td>João Pedro Dev</td>
+                                            <td>Pessoa Jurídica</td>
+                                            <td>(94) 992927891</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFunctions" data-functions="Operador" data-description="Operador de maquinas pesada">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditContacts" data-corporate-name="JOAO PEDRO LIMA LTDA" data-fantasy-name="João Pedro Dev" data-kind-of-person="Pessoa Jurídica" data-telephone="(94) 992927891">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
@@ -103,6 +112,9 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
+                                <!-- End table -->
+
                             </div>
 
                             <div name="pagination" class="row">
@@ -125,25 +137,37 @@
                     </div>
                 </div>
 
-                <div name="RegisterFunctions" class="modal fade" id="modalRegisterFunctions" tabindex="-1" role="dialog" aria-hidden="true">
+                <!-- Stat Form Register Contacts -->
+
+                <div name="RegisterContacts" class="modal fade" id="modalRegisterContacts" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/funcao.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/colaboradores.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Função</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Cadastrar Contato </b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="functions" placeholder="Função">
+                                            <input type="text" class="form-control form-control-user" id="corporate-name" placeholder="Razão Social">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="description" placeholder="Descrição">
+                                            <input type="text" class="form-control form-control-user" id="fantasy-name" placeholder="Nome Fantasia">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="kind-of-person" placeholder="Tipo de Pessoa">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="tel" class="form-control form-control-user" id="telephone" placeholder="Telefone">
                                         </div>
                                     </div>
                                     <hr>
@@ -156,25 +180,39 @@
                     </div>
                 </div>
 
-                <div name="EditFunctions" class="modal fade" id="modalEditFunctions" tabindex="-1" role="dialog" aria-hidden="true">
+                <!-- End Table Register Contacts -->
+
+                <!-- Start modal -->
+
+                <div name="EditContacts" class="modal fade" id="modalEditContacts" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/funcao.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/colaboradores.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Função</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Contato </b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="functions" placeholder="Função">
+                                            <input type="text" class="form-control form-control-user" id="corporate-name" placeholder="Razão Social">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="description" placeholder="Descrição">
+                                            <input type="text" class="form-control form-control-user" id="fantasy-name" placeholder="Nome Fantasia">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="kind-of-person" placeholder="Tipo de Pessoa">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="tel" class="form-control form-control-user" id="telephone" placeholder="Telefone">
                                         </div>
                                     </div>
                                     <hr>
@@ -186,6 +224,7 @@
                     </div>
                 </div>
 
+                <!-- End modal -->
 
 
 
@@ -210,13 +249,17 @@
     <?php include('../../html/scripts.html'); ?>
 
     <script>
-        $('#modalEditFunctions').on('show.bs.modal', function(event) {
+        $('#modalEditContacts').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipientfunctions = button.data('functions')
-            var recipientdescription = button.data('description')
+            var recipientCorporateName = button.data('corporate-name')
+            var recipientFantasyName = button.data('fantasy-name')
+            var recipientKindOfPerson = button.data('kind-of-person')
+            var recipientTelephone = button.data('telephone')
             var modal = $(this)
-            modal.find('.modal-body #functions').val(recipientfunctions)
-            modal.find('.modal-bady #description').val(recipientdescription)
+            modal.find('.modal-body #corporate-name').val(recipientCorporateName)
+            modal.find('.modal-body #fantasy-name').val(recipientFantasyName)
+            modal.find('.modal-body #kind-of-person').val(recipientKindOfPerson)
+            modal.find('.modal-body #telephone').val(recipientTelephone)
         })
     </script>
 

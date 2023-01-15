@@ -96,7 +96,7 @@
                                                 <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditMeasurements" data-name="Condimentos">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
-                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDeleteCategories()">
+                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
@@ -128,7 +128,7 @@
                     </div>
                 </div>
 
-                <!-- Stat Form Register Collaborators -->
+                <!-- Stat Form Register -->
 
                 <div name="RegisterMeasurements" class="modal fade" id="modalRegisterMeasurements" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
@@ -156,7 +156,7 @@
                     </div>
                 </div>
 
-                <!-- End Table Register Collaborators -->
+                <!-- End Table Register -->
 
                 <!-- Start modal -->
 

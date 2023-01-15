@@ -96,7 +96,7 @@
                                                 <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditPastures" data-retreat="10" data-farm="Santa Tereza">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
-                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDeleteCategories()">
+                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>

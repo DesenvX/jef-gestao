@@ -102,7 +102,7 @@
                                                 <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCollaborators" data-name="Condimentos" data-phone="(99) 9 9999-9999" data-cpf="000.000.000-00">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
-                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDeleteCategories()">
+                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>

@@ -102,7 +102,7 @@
                                                 <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditTractor" data-name="Valtra" data-model="BM 135" data-year="2022">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
-                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDeleteCategories()">
+                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
@@ -134,7 +134,7 @@
                     </div>
                 </div>
 
-                <!-- Stat Form Register Collaborators -->
+                <!-- Stat Form Register -->
 
                 <div name="RegisterTractor" class="modal fade" id="modalRegisterTractor" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
@@ -172,7 +172,7 @@
                     </div>
                 </div>
 
-                <!-- End Table Register Collaborators -->
+                <!-- End Table Register -->
 
                 <!-- Start modal -->
 
