@@ -210,7 +210,7 @@
     <?php include('../../html/scripts.html'); ?>
 
     <script>
-        $('#modalEditServices').on('show.bs.modal', function(event) {
+        $('#modalEditPastures').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var recipientRetreat = button.data('retreat')
             var recipientfarm = button.data('farm')

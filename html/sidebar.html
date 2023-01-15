@@ -12,114 +12,51 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="dashboard.php">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDashboards"
+            aria-expanded="true" aria-controls="collapseDashboards">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span> Dashboard </span> </a>
+            <span> Paineis </span>
+        </a>
+        <div id="collapseDashboards" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <!-- <a class="collapse-item" href="dashboard.php"> Estoque </a> -->
+                <a class="collapse-item" href="dashboardMovements.php"> Movimentos </a>
+            </div>
+        </div>
     </li>
+
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Controle
+    </div>
+
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-            aria-controls="collapseOne">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAreas" aria-expanded="true"
+            aria-controls="collapseAreas">
             <i class="fas fa-fw fa-building"></i>
             <span> Áreas </span>
         </a>
-        <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseAreas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header"> Humana </h6>
-                <a class="collapse-item" href="areaCollaborators.php"> Colaboradores</a>
+                <a class="collapse-item" href="areaCollaborators.php"> Colaboradores </a>
                 <a class="collapse-item" href="#"> Funções</a>
+                <a class="collapse-item" href="#"> Contatos </a>
                 <!-- <a class="collapse-item" href="areaSuppliers.php"> Fornecedores</a> -->
                 <h6 class="collapse-header"> Produtiva </h6>
                 <a class="collapse-item" href="#"> Produtos </a>
                 <a class="collapse-item" href="areaCategories.php"> Categorias </a>
-                <a class="collapse-item" href="#"> Equipamentos </a> 
+                <a class="collapse-item" href="#"> Equipamentos </a>
+                <a class="collapse-item" href="areaTractor.php"> Tratores </a>
                 <a class="collapse-item" href="areaServices.php"> Serviços </a>
                 <a class="collapse-item" href="areaPastures.php"> Pastos </a>
                 <!-- <a class="collapse-item" href="areaMeasurements.php"> Medidas </a> -->
-                <!-- <a class="collapse-item" href="areaTractor.php"> Tratores </a> -->
+                
             </div>
         </div>
-    </li>
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Interface
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-            aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="../../html/example_components/buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
-            </div>
-        </div>
-    </li>
-
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="../../html/example_components/utilities-color.html">Colors</a>
-                <a class="collapse-item" href="../../html/example_components/utilities-border.html">Borders</a>
-                <a class="collapse-item" href="../../html/example_components/utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="../../html/example_components/utilities-other.html">Other</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Addons
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-            aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="../../html/example_components/404.html">404 Page</a>
-                <a class="collapse-item" href="../../html/example_components/blank.html">Blank Page</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="../../html/example_components/charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-    </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="../../html/example_components/tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
     </li>
 
     <!-- Divider -->
