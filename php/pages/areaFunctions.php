@@ -75,7 +75,6 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Função</th>
-                                            <th>Descrição</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
@@ -83,7 +82,6 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Função</th>
-                                            <th>Descrição</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
@@ -91,9 +89,8 @@
                                         <tr>
                                             <th>1</th>
                                             <td>Operador</td>
-                                            <td>Operador de maquinas pesada</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFunctions" data-functions="Operador" data-description="Operador de maquinas pesada">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFunctions" data-name="Operador">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
@@ -138,12 +135,7 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="functions" placeholder="Função">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="description" placeholder="Descrição">
+                                            <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
                                         </div>
                                     </div>
                                     <hr>
@@ -169,12 +161,7 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="functions" placeholder="Função">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="description" placeholder="Descrição">
+                                            <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
                                         </div>
                                     </div>
                                     <hr>
@@ -212,11 +199,9 @@
     <script>
         $('#modalEditFunctions').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipientfunctions = button.data('functions')
-            var recipientdescription = button.data('description')
+            var recipientName = button.data('name')
             var modal = $(this)
-            modal.find('.modal-body #functions').val(recipientfunctions)
-            modal.find('.modal-bady #description').val(recipientdescription)
+            modal.find('.modal-body #name').val(recipientName)
         })
     </script>
 

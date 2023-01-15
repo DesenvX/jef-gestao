@@ -36,12 +36,12 @@
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Áreas </span>
-                    <h1 class="h3 mb-2 text-gray-800"> Contatos </h1>
+                    <h1 class="h3 mb-2 text-gray-800"> Produtos </h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterContacts">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterProduct">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
@@ -77,32 +77,35 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Razão Social</th>
-                                            <th>Nome Fantasia</th>
-                                            <th>Tipo de Pessoa</th>
-                                            <th>Telefone</th>
+                                            <th>Descrição</th>
+                                            <th>Unidade do Produto</th>
+                                            <th>Categoria</th>
+                                            <th>Capacidade Total</th>
+                                            <th>Capacidade Minima</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Razão Social</th>
-                                            <th>Nome Fantasia</th>
-                                            <th>Tipo de Pessoa</th>
-                                            <th>Telefone</th>
+                                            <th>Descrição</th>
+                                            <th>Unidade do Produto</th>
+                                            <th>Categoria</th>
+                                            <th>Capacidade Total</th>
+                                            <th>Capacidade Minima</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
                                             <th>1</th>
-                                            <td>JOAO PEDRO LIMA LTDA</td>
-                                            <td>João Pedro Dev</td>
-                                            <td>Pessoa Jurídica</td>
-                                            <td>(94) 992927891</td>
+                                            <td>Descrição do Produto</td>
+                                            <td>10</td>
+                                            <td>Combustivel</td>
+                                            <th>1000</th>
+                                            <td>250</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditContacts" data-corporate-name="JOAO PEDRO LIMA LTDA" data-fantasy-name="João Pedro Dev" data-kind-of-person="Pessoa Jurídica" data-telephone="(94) 992927891">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditProduct" data-description-product="Descrição do Produto" data-unit-product="10" data-maximum="1000" data-minimum="250">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
@@ -139,7 +142,7 @@
 
                 <!-- Stat Form Register Contacts -->
 
-                <div name="RegisterContacts" class="modal fade" id="modalRegisterContacts" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="RegisterProduct" class="modal fade" id="modalRegisterProduct" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -152,22 +155,22 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="corporate-name" placeholder="Razão Social">
+                                            <input type="text" class="form-control form-control-user" id="description-product" placeholder="Descrição do Produto">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="fantasy-name" placeholder="Nome Fantasia">
+                                            <input type="text" class="form-control form-control-user" id="unit-product" placeholder="Unidade">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="kind-of-person" placeholder="Tipo de Pessoa">
+                                            <input type="text" class="form-control form-control-user" id="maximum" placeholder="Capacidade máxima">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control form-control-user" id="telephone" placeholder="Telefone">
+                                            <input type="tel" class="form-control form-control-user" id="minimum" placeholder="Capacidade mínimo">
                                         </div>
                                     </div>
                                     <hr>
@@ -184,7 +187,7 @@
 
                 <!-- Start modal -->
 
-                <div name="EditContacts" class="modal fade" id="modalEditContacts" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="EditProduct" class="modal fade" id="modalEditProduct" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -197,22 +200,22 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="corporate-name" placeholder="Razão Social">
+                                            <input type="text" class="form-control form-control-user"  id="description-product" placeholder="Descrição do Produto">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="fantasy-name" placeholder="Nome Fantasia">
+                                            <input type="text" class="form-control form-control-user" id="unit-product" placeholder="Unidade">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="kind-of-person" placeholder="Tipo de Pessoa">
+                                            <input type="text" class="form-control form-control-user" id="maximum" placeholder="Capacidade máxima">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control form-control-user" id="telephone" placeholder="Telefone">
+                                            <input type="tel" class="form-control form-control-user" id="minimum" placeholder="Capacidade mínimo">
                                         </div>
                                     </div>
                                     <hr>
@@ -249,17 +252,17 @@
     <?php include('../../html/scripts.html'); ?>
 
     <script>
-        $('#modalEditContacts').on('show.bs.modal', function(event) {
+        $('#modalEditProduct').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipientCorporateName = button.data('corporate-name')
-            var recipientFantasyName = button.data('fantasy-name')
-            var recipientKindOfPerson = button.data('kind-of-person')
-            var recipientTelephone = button.data('telephone')
+            var recipientDescriptionProduct = button.data('description-product')
+            var recipientUnitProduct = button.data('unit-product')
+            var recipientMaximum = button.data('maximum')
+            var recipientMinimum = button.data('minimum')
             var modal = $(this)
-            modal.find('.modal-body #corporate-name').val(recipientCorporateName)
-            modal.find('.modal-body #fantasy-name').val(recipientFantasyName)
-            modal.find('.modal-body #kind-of-person').val(recipientKindOfPerson)
-            modal.find('.modal-body #telephone').val(recipientTelephone)
+            modal.find('.modal-body #description-product').val(recipientDescriptionProduct)
+            modal.find('.modal-body #unit-product').val(recipientUnitProduct)
+            modal.find('.modal-body #maximum').val(recipientMaximum)
+            modal.find('.modal-body #minimum').val(recipientMinimum)
         })
     </script>
 
