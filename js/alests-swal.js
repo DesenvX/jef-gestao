@@ -1,4 +1,4 @@
-function swalRegisterCategoriesSuccess() {
+function swalRegisterSuccess() {
     Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -7,7 +7,7 @@ function swalRegisterCategoriesSuccess() {
         timer: 3000
     })
 }
-function swalRegisterEditCategoriesError() {
+function swalRegisterEditError() {
     Swal.fire({
         position: 'top-end',
         icon: 'error',
@@ -16,7 +16,7 @@ function swalRegisterEditCategoriesError() {
         timer: 3000
     })
 }
-function swalEditCategoriesSuccess() {
+function swalEditSuccess() {
     Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -25,7 +25,7 @@ function swalEditCategoriesSuccess() {
         timer: 3000
     })
 }
-function swalEditCategoriesError() {
+function swalEditError() {
     Swal.fire({
         position: 'top-end',
         icon: 'error',
@@ -34,9 +34,9 @@ function swalEditCategoriesError() {
         timer: 3000
     })
 }
-function swalDeleteCategories() {
+function swalDelete() {
     Swal.fire({
-        title: 'Deseja excluir esta Categoria?',
+        title: 'Deseja excluir?',
         icon: 'question',
         showCancelButton: true,
         confirmButtonText: 'Sim, excluir.',

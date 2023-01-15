@@ -36,12 +36,12 @@
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Áreas </span>
-                    <h1 class="h3 mb-2 text-gray-800"> Colaboradores </h1>
+                    <h1 class="h3 mb-2 text-gray-800"> Contatos </h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterCollaborators">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterContacts">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
@@ -77,32 +77,35 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Nome</th>
-                                            <th>Celular</th>
-                                            <th>CPF</th>
+                                            <th>Razão Social</th>
+                                            <th>Nome Fantasia</th>
+                                            <th>Tipo de Pessoa</th>
+                                            <th>Telefone</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Nome</th>
-                                            <th>Celular</th>
-                                            <th>CPF</th>
+                                            <th>Razão Social</th>
+                                            <th>Nome Fantasia</th>
+                                            <th>Tipo de Pessoa</th>
+                                            <th>Telefone</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
                                             <th>1</th>
-                                            <td>Condimentos</td>
-                                            <td>(99) 9 9999-9999</td>
-                                            <td>000.000.000-00</td>
+                                            <td>JOAO PEDRO LIMA LTDA</td>
+                                            <td>João Pedro Dev</td>
+                                            <td>Pessoa Jurídica</td>
+                                            <td>(94) 992927891</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCollaborators" data-name="Condimentos" data-phone="(99) 9 9999-9999" data-cpf="000.000.000-00">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditContacts" data-corporate-name="JOAO PEDRO LIMA LTDA" data-fantasy-name="João Pedro Dev" data-kind-of-person="Pessoa Jurídica" data-telephone="(94) 992927891">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
-                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDeleteCategories()">
+                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
@@ -134,9 +137,9 @@
                     </div>
                 </div>
 
-                <!-- Stat Form Register Collaborators -->
+                <!-- Stat Form Register Contacts -->
 
-                <div name="RegisterCollaborators" class="modal fade" id="modalRegisterCollaborators" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="RegisterContacts" class="modal fade" id="modalRegisterContacts" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -144,22 +147,27 @@
                                     <img src="../../img/colaboradores.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Colaboradores</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Cadastrar Contato </b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
+                                            <input type="text" class="form-control form-control-user" id="corporate-name" placeholder="Razão Social">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="phone" placeholder="Celular">
+                                            <input type="text" class="form-control form-control-user" id="fantasy-name" placeholder="Nome Fantasia">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="cpf" placeholder="CPF">
+                                            <input type="text" class="form-control form-control-user" id="kind-of-person" placeholder="Tipo de Pessoa">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="tel" class="form-control form-control-user" id="telephone" placeholder="Telefone">
                                         </div>
                                     </div>
                                     <hr>
@@ -172,11 +180,11 @@
                     </div>
                 </div>
 
-                <!-- End Table Register Collaborators -->
+                <!-- End Table Register Contacts -->
 
                 <!-- Start modal -->
 
-                <div name="EditCollaborators" class="modal fade" id="modalEditCollaborators" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="EditContacts" class="modal fade" id="modalEditContacts" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -184,22 +192,27 @@
                                     <img src="../../img/colaboradores.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Categoria</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Contato </b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
+                                            <input type="text" class="form-control form-control-user" id="corporate-name" placeholder="Razão Social">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="phone" placeholder="Celular">
+                                            <input type="text" class="form-control form-control-user" id="fantasy-name" placeholder="Nome Fantasia">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="cpf" placeholder="CPF">
+                                            <input type="text" class="form-control form-control-user" id="kind-of-person" placeholder="Tipo de Pessoa">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="tel" class="form-control form-control-user" id="telephone" placeholder="Telefone">
                                         </div>
                                     </div>
                                     <hr>
@@ -236,15 +249,17 @@
     <?php include('../../html/scripts.html'); ?>
 
     <script>
-        $('#modalEditCollaborators').on('show.bs.modal', function(event) {
+        $('#modalEditContacts').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipientName = button.data('name')
-            var recipientphone = button.data('phone')
-            var recipientcpf = button.data('cpf')
+            var recipientCorporateName = button.data('corporate-name')
+            var recipientFantasyName = button.data('fantasy-name')
+            var recipientKindOfPerson = button.data('kind-of-person')
+            var recipientTelephone = button.data('telephone')
             var modal = $(this)
-            modal.find('.modal-body #name').val(recipientName)
-            modal.find('.modal-body #phone').val(recipientphone)
-            modal.find('.modal-body #cpf').val(recipientcpf)
+            modal.find('.modal-body #corporate-name').val(recipientCorporateName)
+            modal.find('.modal-body #fantasy-name').val(recipientFantasyName)
+            modal.find('.modal-body #kind-of-person').val(recipientKindOfPerson)
+            modal.find('.modal-body #telephone').val(recipientTelephone)
         })
     </script>
 
