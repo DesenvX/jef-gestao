@@ -198,14 +198,14 @@
 
             </div>
             <!-- End of Main Content -->
-
             <?php
             include('../../html/footer.html');
             ?>
+            
 
         </div>
         <!-- End of Content Wrapper -->
-
+        
     </div>
     <!-- End of Page Wrapper -->
 
