@@ -80,8 +80,8 @@
                                             <th>Descrição</th>
                                             <th>Quantidade</th>
                                             <th>Categoria</th>
-                                            <th>Capacidade Total</th>
-                                            <th>Capacidade Minima</th>
+                                            <th>Capacidade Máxima</th>
+                                            <th>Capacidade Mínima</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
@@ -91,8 +91,8 @@
                                             <th>Descrição</th>
                                             <th>Quantidade</th>
                                             <th>Categoria</th>
-                                            <th>Capacidade Total</th>
-                                            <th>Capacidade Minima</th>
+                                            <th>Capacidade Máxima</th>
+                                            <th>Capacidade Mínima</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
