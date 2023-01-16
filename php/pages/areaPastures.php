@@ -138,12 +138,12 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="retreat" placeholder="Retiro">
+                                            <input type="text" class="form-control  " id="retreat" placeholder="Retiro">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="farm" placeholder="Fazenda">
+                                            <input type="text" class="form-control  " id="farm" placeholder="Fazenda">
                                         </div>
                                     </div>
                                     <hr>
@@ -169,12 +169,12 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="retreat" placeholder="Retiro">
+                                            <input type="text" class="form-control  " id="retreat" placeholder="Retiro">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="farm" placeholder="Fazenda">
+                                            <input type="text" class="form-control  " id="farm" placeholder="Fazenda">
                                         </div>
                                     </div>                                    
                                     <hr>

@@ -141,17 +141,17 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="company" placeholder="Empresa">
+                                            <input type="text" class="form-control  " id="company" placeholder="Empresa">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="cnpj" placeholder="CNPJ">
+                                            <input type="text" class="form-control  " id="cnpj" placeholder="CNPJ">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="phone" placeholder="Contato">
+                                            <input type="text" class="form-control  " id="phone" placeholder="Contato">
                                         </div>
                                     </div>
                                     <hr>
@@ -177,17 +177,17 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="company" placeholder="Empresa">
+                                            <input type="text" class="form-control  " id="company" placeholder="Empresa">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="cnpj" placeholder="CNPJ">
+                                            <input type="text" class="form-control  " id="cnpj" placeholder="CNPJ">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="phone" placeholder="Contato">
+                                            <input type="text" class="form-control  " id="phone" placeholder="Contato">
                                         </div>
                                     </div>
                                     <hr>

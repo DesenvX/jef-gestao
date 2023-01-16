@@ -152,22 +152,22 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="corporate-name" placeholder="Razão Social">
+                                            <input type="text" class="form-control  " id="corporate-name" placeholder="Razão Social">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="fantasy-name" placeholder="Nome Fantasia">
+                                            <input type="text" class="form-control  " id="fantasy-name" placeholder="Nome Fantasia">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="kind-of-person" placeholder="Tipo de Pessoa">
+                                            <input type="text" class="form-control  " id="kind-of-person" placeholder="Tipo de Pessoa">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control form-control-user" id="telephone" placeholder="Telefone">
+                                            <input type="tel" class="form-control  " id="telephone" placeholder="Telefone">
                                         </div>
                                     </div>
                                     <hr>
@@ -197,22 +197,22 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="corporate-name" placeholder="Razão Social">
+                                            <input type="text" class="form-control  " id="corporate-name" placeholder="Razão Social">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="fantasy-name" placeholder="Nome Fantasia">
+                                            <input type="text" class="form-control  " id="fantasy-name" placeholder="Nome Fantasia">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="kind-of-person" placeholder="Tipo de Pessoa">
+                                            <input type="text" class="form-control  " id="kind-of-person" placeholder="Tipo de Pessoa">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control form-control-user" id="telephone" placeholder="Telefone">
+                                            <input type="tel" class="form-control  " id="telephone" placeholder="Telefone">
                                         </div>
                                     </div>
                                     <hr>

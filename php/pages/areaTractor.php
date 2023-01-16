@@ -149,17 +149,17 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
+                                            <input type="text" class="form-control  " id="name" placeholder="Nome">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="model" placeholder="Modelo">
+                                            <input type="text" class="form-control  " id="model" placeholder="Modelo">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="year" placeholder="Ano">
+                                            <input type="text" class="form-control  " id="year" placeholder="Ano">
                                         </div>
                                     </div>
                                     <hr>
@@ -189,17 +189,17 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="name" placeholder="Nome">
+                                            <input type="text" class="form-control  " id="name" placeholder="Nome">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="model" placeholder="Modelo">
+                                            <input type="text" class="form-control  " id="model" placeholder="Modelo">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="year" placeholder="Ano">
+                                            <input type="text" class="form-control  " id="year" placeholder="Ano">
                                         </div>
                                     </div>
                                     <hr>

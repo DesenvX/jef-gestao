@@ -146,12 +146,12 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="vehicle" placeholder="Veiculo">
+                                            <input type="text" class="form-control  " id="vehicle" placeholder="Veiculo">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="tool" placeholder="Ferramenta">
+                                            <input type="text" class="form-control  " id="tool" placeholder="Ferramenta">
                                         </div>
                                     </div>
                                     <hr>
@@ -181,12 +181,12 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="vehicle" placeholder="Veiculo">
+                                            <input type="text" class="form-control  " id="vehicle" placeholder="Veiculo">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="tool" placeholder="Ferramenta">
+                                            <input type="text" class="form-control  " id="tool" placeholder="Ferramenta">
                                         </div>
                                     </div>
                                     <hr>

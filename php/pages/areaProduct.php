@@ -78,7 +78,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Descrição</th>
-                                            <th>Unidade do Produto</th>
+                                            <th>Quantidade</th>
                                             <th>Categoria</th>
                                             <th>Capacidade Total</th>
                                             <th>Capacidade Minima</th>
@@ -89,7 +89,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Descrição</th>
-                                            <th>Unidade do Produto</th>
+                                            <th>Quantidade</th>
                                             <th>Categoria</th>
                                             <th>Capacidade Total</th>
                                             <th>Capacidade Minima</th>
@@ -99,13 +99,13 @@
                                     <tbody>
                                         <tr>
                                             <th>1</th>
-                                            <td>Descrição do Produto</td>
+                                            <td>Ração</td>
                                             <td>10</td>
-                                            <td>Combustivel</td>
-                                            <th>1000</th>
+                                            <td>Alimentos</td>
+                                            <td>1000</td>
                                             <td>250</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditProduct" data-description-product="Descrição do Produto" data-unit-product="10" data-maximum="1000" data-minimum="250">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditProduct" data-name-product="Ração" data-quantity-product="10" data-maximum="1000" data-minimum="250">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
@@ -155,22 +155,30 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="description-product" placeholder="Descrição do Produto">
+                                            <input type="text" class="form-control  " id="name-product" placeholder="Nome">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="unit-product" placeholder="Unidade">
+                                            <input type="text" class="form-control  " id="quantity-product" placeholder="Quantidade">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="maximum" placeholder="Capacidade máxima">
+                                            <select class="form-control" id="category" placeholder="Categoria">
+                                                <option value="">Categorias</option>
+                                                <option value="1"> Alimentos </option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control form-control-user" id="minimum" placeholder="Capacidade mínimo">
+                                            <input type="text" class="form-control  " id="maximum" placeholder="Capacidade máxima">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="tel" class="form-control  " id="minimum" placeholder="Capacidade mínimo">
                                         </div>
                                     </div>
                                     <hr>
@@ -200,22 +208,29 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user"  id="description-product" placeholder="Descrição do Produto">
+                                            <input type="text" class="form-control  " id="name-product" placeholder="Nome">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="unit-product" placeholder="Unidade">
+                                            <input type="text" class="form-control " id="quantity-product" placeholder="Quantidade">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="maximum" placeholder="Capacidade máxima">
+                                            <select class="form-control  " id="category" placeholder="Categoria">
+                                                <option class="form-control  " value="1"> Alimentos </option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control form-control-user" id="minimum" placeholder="Capacidade mínimo">
+                                            <input type="text" class="form-control  " id="maximum" placeholder="Capacidade máxima">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="tel" class="form-control  " id="minimum" placeholder="Capacidade mínimo">
                                         </div>
                                     </div>
                                     <hr>
@@ -254,13 +269,13 @@
     <script>
         $('#modalEditProduct').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipientDescriptionProduct = button.data('description-product')
-            var recipientUnitProduct = button.data('unit-product')
+            var recipientName = button.data('name-product')
+            var recipientQuantity = button.data('quantity-product')
             var recipientMaximum = button.data('maximum')
             var recipientMinimum = button.data('minimum')
             var modal = $(this)
-            modal.find('.modal-body #description-product').val(recipientDescriptionProduct)
-            modal.find('.modal-body #unit-product').val(recipientUnitProduct)
+            modal.find('.modal-body #name-product').val(recipientName)
+            modal.find('.modal-body #quantity-product').val(recipientQuantity)
             modal.find('.modal-body #maximum').val(recipientMaximum)
             modal.find('.modal-body #minimum').val(recipientMinimum)
         })
