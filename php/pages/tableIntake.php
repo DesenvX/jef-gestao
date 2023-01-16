@@ -91,7 +91,7 @@
                                             <th>ID</th>
                                             <th>Data</th>
                                             <th>Fonecedor</th>
-                                            <th>Litros</th>
+                                            <th>litros</th>
                                             <th>Valor Unitario</th>
                                             <th>Total R$</th>
                                             <th>Opções</th>
@@ -102,7 +102,7 @@
                                             <th>ID</th>
                                             <th>Data</th>
                                             <th>Fonecedor</th>
-                                            <th>Litros</th>
+                                            <th>litros</th>
                                             <th>Valor Unitario</th>
                                             <th>Total R$</th>
                                             <th>Opções</th>
