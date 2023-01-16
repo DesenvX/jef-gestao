@@ -135,11 +135,9 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-<<<<<<< HEAD
-                                            <input type="text" class="form-control " id="functions" placeholder="Função">
-=======
+
                                             <input type="text" class="form-control  " id="name" placeholder="Nome">
->>>>>>> parent of 4f8ccff (Merge branch 'FeaturesPH')
+                                            
                                         </div>
                                     </div>
                                     <hr>
@@ -165,11 +163,9 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-<<<<<<< HEAD
-                                            <input type="text" class="form-control " id="functions" placeholder="Função">
-=======
+
                                             <input type="text" class="form-control  " id="name" placeholder="Nome">
->>>>>>> parent of 4f8ccff (Merge branch 'FeaturesPH')
+
                                         </div>
                                     </div>
                                     <hr>

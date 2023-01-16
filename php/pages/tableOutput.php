@@ -90,7 +90,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Data da Saida</th>
-                                            <th>Litros</th>
+                                            <th>Litro</th>
                                             <th>Serviço</th>
                                             <th>Pasto</th>
                                             <th>Trator</th>
@@ -102,7 +102,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Data da Saida</th>
-                                            <th>Litros</th>
+                                            <th>Litro</th>
                                             <th>Serviço</th>
                                             <th>Pasto</th>
                                             <th>Trator</th>
