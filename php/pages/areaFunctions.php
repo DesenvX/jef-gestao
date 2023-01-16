@@ -90,7 +90,7 @@
                                             <th>1</th>
                                             <td>Operador</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFunctions" data-functions="Operador">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFunctions" data-name="Operador">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
@@ -135,7 +135,11 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
+<<<<<<< HEAD
                                             <input type="text" class="form-control " id="functions" placeholder="Função">
+=======
+                                            <input type="text" class="form-control  " id="name" placeholder="Nome">
+>>>>>>> parent of 4f8ccff (Merge branch 'FeaturesPH')
                                         </div>
                                     </div>
                                     <hr>
@@ -161,7 +165,11 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
+<<<<<<< HEAD
                                             <input type="text" class="form-control " id="functions" placeholder="Função">
+=======
+                                            <input type="text" class="form-control  " id="name" placeholder="Nome">
+>>>>>>> parent of 4f8ccff (Merge branch 'FeaturesPH')
                                         </div>
                                     </div>
                                     <hr>
@@ -199,9 +207,9 @@
     <script>
         $('#modalEditFunctions').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipientFunctions = button.data('functions')
+            var recipientName = button.data('name')
             var modal = $(this)
-            modal.find('.modal-body #functions').val(recipientFunctions)
+            modal.find('.modal-body #name').val(recipientName)
         })
     </script>
 
