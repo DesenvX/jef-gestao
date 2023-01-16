@@ -167,27 +167,27 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="date-intake" placeholder="Data de Entrada">
+                                            <input type="text" class="form-control " id="date-intake" placeholder="Data de Entrada">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="provider" placeholder="Fornecedor">
+                                            <input type="text" class="form-control " id="provider" placeholder="Fornecedor">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="liters" placeholder="Litros">
+                                            <input type="text" class="form-control " id="liters" placeholder="Litros">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="unitary-value" placeholder="Valor Unitario">
+                                            <input type="text" class="form-control " id="unitary-value" placeholder="Valor Unitario">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="total" placeholder="Total R$">
+                                            <input type="text" class="form-control " id="total" placeholder="Total R$">
                                         </div>
                                     </div>
                                     <hr>
@@ -217,27 +217,27 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="date-intake" placeholder="Data">
+                                            <input type="text" class="form-control " id="date-intake" placeholder="Data">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="provider" placeholder="Fornecedor">
+                                            <input type="text" class="form-control " id="provider" placeholder="Fornecedor">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="liters" placeholder="Litros">
+                                            <input type="text" class="form-control " id="liters" placeholder="Litros">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="unitary-value" placeholder="Valor Unitario">
+                                            <input type="text" class="form-control " id="unitary-value" placeholder="Valor Unitario">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="total" placeholder="Total R$">
+                                            <input type="text" class="form-control " id="total" placeholder="Total R$">
                                         </div>
                                     </div>
                                     <hr>

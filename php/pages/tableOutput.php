@@ -225,32 +225,32 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="date-output" placeholder="Data">
+                                            <input type="text" class="form-control " id="date-output" placeholder="Data">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="liters" placeholder="Litro">
+                                            <input type="text" class="form-control " id="liters" placeholder="Litro">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="services" placeholder="Serviço">
+                                            <input type="text" class="form-control " id="services" placeholder="Serviço">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="pastures" placeholder="Pasto">
+                                            <input type="text" class="form-control " id="pastures" placeholder="Pasto">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="tractor" placeholder="Trator">
+                                            <input type="text" class="form-control " id="tractor" placeholder="Trator">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="collaborators" placeholder="Colaborador">
+                                            <input type="text" class="form-control " id="collaborators" placeholder="Colaborador">
                                         </div>
                                     </div>
                                     <hr>
