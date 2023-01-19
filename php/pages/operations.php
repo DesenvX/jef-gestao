@@ -77,41 +77,65 @@
 
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
-                                        <div class="col-sm-3 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="start-time" placeholder="Hora Inicial">
+                                        <div class="col-sm-2 mb-3 mb-sm-0">
+                                            <input type="time" class="form-control  " id="entry-time" placeholder="Horário de Entradal">
+                                        </div>
+                                        <div class="col-sm-2 mb-3 mb-sm-0">
+                                            <input type="time" class="form-control  " id="gone" placeholder="Saida para Almoço">
+                                        </div>
+                                        <div class="col-sm-2 mb-3 mb-sm-0">
+                                            <input type="time" class="form-control  " id="return" placeholder="Retorno do Almoço">
+                                        </div>
+                                        <div class="col-sm-2 mb-3 mb-sm-0">
+                                            <input type="time" class="form-control  " id="departure time" placeholder="Horário de Saída">
                                         </div>
                                         <div class="col-sm-3 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="end-time" placeholder="Hora Final">
+                                            <input type="date" class="form-control  " id="departure-time" placeholder="Data">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="quantity-product" placeholder="Quantidade">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                        <div class="col-sm-3 mb-3 mb-sm-0">
                                             <select class="form-control" id="category" placeholder="Categoria">
-                                                <option value="">Categorias</option>
-                                                <option value="1"> Alimentos </option>
+                                                <option value=""> Operador </option>
+                                                <option value="1"> João </option>
+                                                <option value="2"> Pedro </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3 mb-3 mb-sm-0">
+                                            <select class="form-control" id="category" placeholder="Categoria">
+                                                <option value=""> Maquina </option>
+                                                <option value="1"> Bm - 125 </option>
+                                                <option value="2"> Bm - 135 </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3 mb-3 mb-sm-0">
+                                            <select class="form-control" id="category" placeholder="Categoria">
+                                                <option value=""> Retiro </option>
+                                                <option value="1"> Nazare </option>
+                                                <option value="2"> Vale da Serra </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3 mb-3 mb-sm-0">
+                                            <select class="form-control" id="category" placeholder="Categoria">
+                                                <option value=""> Pasto </option>
+                                                <option value="1"> B12 </option>
+                                                <option value="2"> B13 </option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="maximum" placeholder="Capacidade máxima">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control  " id="minimum" placeholder="Capacidade mínimo">
-                                        </div>
-                                    </div>
+
+
                                     <hr>
-                                    <center>
-                                    <button type="submit" class="btn btn-user col-sm-3 btn-info btn-block"> Cadastrar </button>
-                                    <button type="button" class="btn btn-user col-sm-3 btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                    </center>
+                                    <div>
+                                        <center>
+                                            <button type="button" class="btn btn-info">                                                
+                                                <span class="text"> Cadastrar </span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger">                                                
+                                                <span class="text"> Cancelar </span>
+                                            </button>
+                                        </center>
+                                    </div>
                                 </form>
 
 
@@ -121,132 +145,10 @@
 
                             </div>
 
-                            <div name="pagination" class="row">
-                                <div class="col-sm-12">
-                                    <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-                                        <ul class="pagination">
-                                            <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Anterior</a></li>
-                                            <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
-                                            <li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link"> Próximo </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
-
-                <!-- Stat Form Register Contacts -->
-
-                <div name="RegisterProduct" class="modal fade" id="modalRegisterProduct" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/contato.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Cadastrar Contato </b></h1>
-                                </div>
-                                <form class="user" action="#" method="post">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="name-product" placeholder="Nome">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="quantity-product" placeholder="Quantidade">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <select class="form-control" id="category" placeholder="Categoria">
-                                                <option value="">Categorias</option>
-                                                <option value="1"> Alimentos </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="maximum" placeholder="Capacidade máxima">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control  " id="minimum" placeholder="Capacidade mínimo">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- End Table Register Contacts -->
-
-                <!-- Start modal -->
-
-                <div name="EditProduct" class="modal fade" id="modalEditProduct" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/contato.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Contato </b></h1>
-                                </div>
-                                <form class="user" action="#" method="post">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="name-product" placeholder="Nome">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="quantity-product" placeholder="Quantidade">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <select class="form-control  " id="category" placeholder="Categoria">
-                                                <option class="form-control  " value="1"> Alimentos </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="maximum" placeholder="Capacidade máxima">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control  " id="minimum" placeholder="Capacidade mínimo">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- End modal -->
-
-
-
             </div>
             <!-- End of Main Content -->
 
