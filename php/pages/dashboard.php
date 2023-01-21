@@ -30,214 +30,68 @@
                 <div class="container-fluid">
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Painel Principal</h1>
-                        <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Gerar Relatório </a> -->
+                        <h1 class="h3 mb-0 text-gray-800"> Painel de Controle </h1>
                     </div>
 
                     <div class="row">
 
-                        <div class="col-xl-7 col-md-6 mb-4 ">
+                        <div class="col-lg-8 mb-4">
+
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary"> Áreas </h6>
                                 </div>
-                                <div class="row mt-4">
-
-                                    <div class="col-xl-4 col-md-6 mb-4">
-                                        <div class="card border-left-warning shadow h-100 py-2">
-                                            <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                            Colaboradores
-                                                        </div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800"> 1 </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="card-body">
+                                    <h4 class="small font-weight-bold"> Arroz <span class="float-right"> R$9990,00 (30)</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="30"></div>
                                     </div>
-
-                                    <div class="col-xl-4 col-md-6 mb-4">
-                                        <div class="card border-left-warning shadow h-100 py-2">
-                                            <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                            Funções
-                                                        </div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800"> 10 </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <h4 class="small font-weight-bold"> Feijão <span class="float-right"> R$9990,00 (30) </span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="30"></div>
                                     </div>
-
-                                    <div class="col-xl-4 col-md-6 mb-4">
-                                        <div class="card border-left-warning shadow h-100 py-2">
-                                            <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                            Contatos
-                                                        </div>
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col-auto">
-                                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"> 5 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <h4 class="small font-weight-bold"> Óleo <span class="float-right"> R$9000,00 (30) </span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="30"></div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xl-4 col-md-6 mb-4">
-                                        <div class="card border-left-success shadow h-100 py-2">
-                                            <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                            Produtos
-                                                        </div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800"> 1 </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <h4 class="small font-weight-bold"> Flamen <span class="float-right"> R$300,00 (30) </span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="30"></div>
                                     </div>
-
-                                    <div class="col-xl-4 col-md-6 mb-4">
-                                        <div class="card border-left-success shadow h-100 py-2">
-                                            <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                            Categorias
-                                                        </div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800"> 10 </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <h4 class="small font-weight-bold"> Bota <span class="float-right"> R$300,00 (30) </span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="30"></div>
                                     </div>
-
-                                    <div class="col-xl-4 col-md-6 mb-4">
-                                        <div class="card border-left-success shadow h-100 py-2">
-                                            <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                            Equipamentos
-                                                        </div>
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col-auto">
-                                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"> 5 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <h4 class="small font-weight-bold"> Correia <span class="float-right"> R$300,00 (30) </span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 100%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="30"></div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xl-4 col-md-6 mb-4">
-                                        <div class="card border-left-success shadow h-100 py-2">
-                                            <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                            Tratores
-                                                        </div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <h4 class="small font-weight-bold"> Parafuso <span class="float-right"> R$600,00 (30)</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 100%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="30"></div>
                                     </div>
-
-                                    <div class="col-xl-4 col-md-6 mb-4">
-                                        <div class="card border-left-success shadow h-100 py-2">
-                                            <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                            Serviços
-                                                        </div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800"> 10 </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <h4 class="small font-weight-bold"> Caia de Freio <span class="float-right"> R$1500,00 (5) </span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 16%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="30"></div>
                                     </div>
-
-                                    <div class="col-xl-4 col-md-6 mb-4">
-                                        <div class="card border-left-success shadow h-100 py-2">
-                                            <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                            Pastos
-                                                        </div>
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col-auto">
-                                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"> 5 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <h4 class="small font-weight-bold"> Pastilha de Freio <span class="float-right"> R$20,00 (2) </span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 6%" aria-valuenow="2" aria-valuemin="0" aria-valuemax="30"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold"> Disco de moto <span class="float-right"> R$640,00 (20) </span></h4>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 66%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="30"></div>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
 
-                        <div class="col-xl-5 col-lg-5">
+
+                        <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary"> Combustível </h6>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-danger"></i> Usado
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-info"></i> Disponível
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-dark"> </i> Vazio
-                                    </span>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -255,7 +109,17 @@
                                     <div class="chart-pie pt-4 pb-2">
                                         <canvas id="myPieChart"></canvas>
                                     </div>
-
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> Direct
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> Social
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> Referral
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -36,28 +36,17 @@
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Áreas </span>
-                    <h1 class="h3 mb-2 text-gray-800"> Tabela de Entrada </h1>
+                    <h1 class="h3 mb-2 text-gray-800"> Fornecedores </h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-
-                            <a href="controlOperationFuel.php" type="button" class="btn btn-danger btn-sm btn-icon-split" href="controlOperationFuel.php">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterSuppliers">
                                 <span class="icon text-white-50">
-                                    <i class="fas fa-arrow-left"></i>
+                                    <i class="fas fa-plus-circle"></i>
                                 </span>
-                                <span class="text"> Voltar </span>
-                            </a>
-
-                            <!-- button table -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Tabela
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="tableOutput.php">Saida</a>
-                                </div>
-                            </div>
+                                <span class="text"> Cadastrar </span>
+                            </button>
                         </div>
                         <div class="card-body">
 
@@ -67,7 +56,6 @@
                                         <input type="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
                                     </div>
                                 </div>
-
                                 <div class="col-md-1">
                                     <div class="dataTables_length" id="dataTable_length">
                                         <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
@@ -83,41 +71,38 @@
 
                             <div class="table-responsive">
 
-                                <!-- Start table Intake -->
+                                <!-- Start table -->
 
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Data</th>
-                                            <th>Fonecedor</th>
-                                            <th>litros</th>
-                                            <th>Valor Unitario</th>
-                                            <th>Total R$</th>
+                                            <th>Razão Social</th>
+                                            <th>Nome Fantasia</th>
+                                            <th>Tipo de Pessoa</th>
+                                            <th>Telefone</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Data</th>
-                                            <th>Fonecedor</th>
-                                            <th>litros</th>
-                                            <th>Valor Unitario</th>
-                                            <th>Total R$</th>
+                                            <th>Razão Social</th>
+                                            <th>Nome Fantasia</th>
+                                            <th>Tipo de Pessoa</th>
+                                            <th>Telefone</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
                                             <th>1</th>
-                                            <td>17/01/2023</td>
-                                            <td>Inpiranga</td>
-                                            <td>500</td>
-                                            <td>R$ 5.40</td>
-                                            <td>2.700</td>
+                                            <td>JOAO PEDRO LIMA LTDA</td>
+                                            <td>João Pedro Dev</td>
+                                            <td>Pessoa Jurídica</td>
+                                            <td>(94) 992927891</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelIntake" data-date-intake="17/01/2023" data-provider="Inpiranga" data-liters="500" data-unitary-value="R$ 5.40" data-total="2.700">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditSuppliers" data-corporate-name="JOAO PEDRO LIMA LTDA" data-fantasy-name="João Pedro Dev" data-kind-of-person="Pessoa Jurídica" data-telephone="(94) 992927891">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
@@ -128,7 +113,7 @@
                                     </tbody>
                                 </table>
 
-                                <!-- End table Intake -->
+                                <!-- End table -->
 
                             </div>
 
@@ -152,42 +137,37 @@
                     </div>
                 </div>
 
-                <!-- Stat Form Register FuelIntake -->
+                <!-- Stat Form Register Contacts -->
 
-                <div name="RegisterFuelIntake" class="modal fade" id="modalRegisterFuelIntake" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="RegisterSuppliers" class="modal fade" id="modalRegisterSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/combustivel.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Entrada de Combustivel</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Cadastrar Fornecedores </b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="date-intake" placeholder="Data de Entrada">
+                                            <input type="text" class="form-control  " id="corporate-name" placeholder="Razão Social">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="provider" placeholder="Fornecedor">
+                                            <input type="text" class="form-control  " id="fantasy-name" placeholder="Nome Fantasia">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="liters" placeholder="Litros">
+                                            <input type="text" class="form-control  " id="kind-of-person" placeholder="Tipo de Pessoa">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="unitary-value" placeholder="Valor Unitario">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="total" placeholder="Total R$">
+                                            <input type="tel" class="form-control  " id="telephone" placeholder="Telefone">
                                         </div>
                                     </div>
                                     <hr>
@@ -200,44 +180,39 @@
                     </div>
                 </div>
 
-                <!-- End Form Register FuelIntake -->
+                <!-- End Table Register Contacts -->
 
-                <!-- Start modal FuelIntake -->
+                <!-- Start modal -->
 
-                <div name="EditFuelIntake" class="modal fade" id="modalEditFuelIntake" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="EditSuppliers" class="modal fade" id="modalEditSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/combustivel.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar entrada de combustivel</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Contato </b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="date-intake" placeholder="Data">
+                                            <input type="text" class="form-control  " id="corporate-name" placeholder="Razão Social">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="provider" placeholder="Fornecedor">
+                                            <input type="text" class="form-control  " id="fantasy-name" placeholder="Nome Fantasia">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="liters" placeholder="Litros">
+                                            <input type="text" class="form-control  " id="kind-of-person" placeholder="Tipo de Pessoa">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="unitary-value" placeholder="Valor Unitario">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="total" placeholder="Total R$">
+                                            <input type="tel" class="form-control  " id="telephone" placeholder="Telefone">
                                         </div>
                                     </div>
                                     <hr>
@@ -249,7 +224,9 @@
                     </div>
                 </div>
 
-                <!-- End modal FuelIntake -->
+                <!-- End modal -->
+
+
 
             </div>
             <!-- End of Main Content -->
@@ -272,19 +249,17 @@
     <?php include('../../html/scripts.html'); ?>
 
     <script>
-        $('#modalEditFuelIntake').on('show.bs.modal', function(event) {
+        $('#modalEditSuppliers').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipientDateIntake = button.data('date-intake')
-            var recipientProvider = button.data('provider')
-            var recipientLiters = button.data('liters')
-            var recipientUnitaryValue = button.data('unitary-value')
-            var recipientTotal = button.data('total')
+            var recipientCorporateName = button.data('corporate-name')
+            var recipientFantasyName = button.data('fantasy-name')
+            var recipientKindOfPerson = button.data('kind-of-person')
+            var recipientTelephone = button.data('telephone')
             var modal = $(this)
-            modal.find('.modal-body #date-intake').val(recipientDateIntake)
-            modal.find('.modal-body #provider').val(recipientProvider)
-            modal.find('.modal-body #liters').val(recipientLiters)
-            modal.find('.modal-body #unitary-value').val(recipientUnitaryValue)
-            modal.find('.modal-body #total').val(recipientTotal)
+            modal.find('.modal-body #corporate-name').val(recipientCorporateName)
+            modal.find('.modal-body #fantasy-name').val(recipientFantasyName)
+            modal.find('.modal-body #kind-of-person').val(recipientKindOfPerson)
+            modal.find('.modal-body #telephone').val(recipientTelephone)
         })
     </script>
 

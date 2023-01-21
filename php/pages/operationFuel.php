@@ -35,7 +35,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                <span style="font-size: small;"> Operações </span>
+                    <span style="font-size: small;"> Operações </span>
                     <h1 class="h3 mb-2 text-gray-800"> Combustível </h1>
 
                     <!-- DataTales Example -->
@@ -147,48 +147,84 @@
                                         </h5>
                                     </div>
                                     <div class="card-body">
-                                        <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Data</th>
-                                                    <th>Fonecedor</th>
-                                                    <th>litros</th>
-                                                    <th>Valor Unitario</th>
-                                                    <th>Total R$</th>
-                                                    <th>Opções</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Data</th>
-                                                    <th>Fonecedor</th>
-                                                    <th>litros</th>
-                                                    <th>Valor Unitario</th>
-                                                    <th>Total R$</th>
-                                                    <th>Opções</th>
-                                                </tr>
-                                            </tfoot>
-                                            <tbody>
-                                                <tr>
-                                                    <th>1</th>
-                                                    <td>17/01/2023</td>
-                                                    <td>Inpiranga</td>
-                                                    <td>500</td>
-                                                    <td>R$ 5.40</td>
-                                                    <td>2.700</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelIntake" data-date-intake="17/01/2023" data-provider="Inpiranga" data-liters="500" data-unitary-value="R$ 5.40" data-total="2.700">
-                                                            <i class="fas fa-pen"></i>
-                                                        </button>
-                                                        <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div name="SearchAndFilter" class="row" style="justify-content: end; margin-bottom:20px;">
+                                            <div class="col-md-5">
+                                                <div id="dataTable_filter" class="dataTables_filter">
+                                                    <input type="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="dataTables_length" id="dataTable_length">
+                                                    <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
+                                                        <option value="10">10</option>
+                                                        <option value="25">25</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Data</th>
+                                                        <th>Fonecedor</th>
+                                                        <th>litros</th>
+                                                        <th>Valor Unitario</th>
+                                                        <th>Total R$</th>
+                                                        <th>Opções</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Data</th>
+                                                        <th>Fonecedor</th>
+                                                        <th>litros</th>
+                                                        <th>Valor Unitario</th>
+                                                        <th>Total R$</th>
+                                                        <th>Opções</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody>
+                                                    <tr class="table-danger">
+                                                        <th>1</th>
+                                                        <td>17/01/2023</td>
+                                                        <td>Inpiranga</td>
+                                                        <td>500</td>
+                                                        <td>R$ 5.40</td>
+                                                        <td>2.700</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelIntake" data-date-intake="17/01/2023" data-provider="Inpiranga" data-liters="500" data-unitary-value="R$ 5.40" data-total="2.700">
+                                                                <i class="fas fa-pen"></i>
+                                                            </button>
+                                                            <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="table-info">
+                                                        <th>1</th>
+                                                        <td>17/01/2023</td>
+                                                        <td>Inpiranga</td>
+                                                        <td>500</td>
+                                                        <td>R$ 5.40</td>
+                                                        <td>2.700</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelIntake" data-date-intake="17/01/2023" data-provider="Inpiranga" data-liters="500" data-unitary-value="R$ 5.40" data-total="2.700">
+                                                                <i class="fas fa-pen"></i>
+                                                            </button>
+                                                            <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -201,48 +237,68 @@
                                         </h5>
                                     </div>
                                     <div class="card-body">
-                                        <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Data</th>
-                                                    <th>Fonecedor</th>
-                                                    <th>litros</th>
-                                                    <th>Valor Unitario</th>
-                                                    <th>Total R$</th>
-                                                    <th>Opções</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Data</th>
-                                                    <th>Fonecedor</th>
-                                                    <th>litros</th>
-                                                    <th>Valor Unitario</th>
-                                                    <th>Total R$</th>
-                                                    <th>Opções</th>
-                                                </tr>
-                                            </tfoot>
-                                            <tbody>
-                                                <tr>
-                                                    <th>1</th>
-                                                    <td>17/01/2023</td>
-                                                    <td>Inpiranga</td>
-                                                    <td>500</td>
-                                                    <td>R$ 5.40</td>
-                                                    <td>2.700</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelIntake" data-date-intake="17/01/2023" data-provider="Inpiranga" data-liters="500" data-unitary-value="R$ 5.40" data-total="2.700">
-                                                            <i class="fas fa-pen"></i>
-                                                        </button>
-                                                        <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div name="SearchAndFilter" class="row" style="justify-content: end; margin-bottom:20px;">
+                                            <div class="col-md-5">
+                                                <div id="dataTable_filter" class="dataTables_filter">
+                                                    <input type="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="dataTables_length" id="dataTable_length">
+                                                    <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
+                                                        <option value="10">10</option>
+                                                        <option value="25">25</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Data</th>
+                                                        <th>Fonecedor</th>
+                                                        <th>litros</th>
+                                                        <th>Valor Unitario</th>
+                                                        <th>Total R$</th>
+                                                        <th>Opções</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Data</th>
+                                                        <th>Fonecedor</th>
+                                                        <th>litros</th>
+                                                        <th>Valor Unitario</th>
+                                                        <th>Total R$</th>
+                                                        <th>Opções</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>1</th>
+                                                        <td>17/01/2023</td>
+                                                        <td>Inpiranga</td>
+                                                        <td>500</td>
+                                                        <td>R$ 5.40</td>
+                                                        <td>2.700</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelIntake" data-date-intake="17/01/2023" data-provider="Inpiranga" data-liters="500" data-unitary-value="R$ 5.40" data-total="2.700">
+                                                                <i class="fas fa-pen"></i>
+                                                            </button>
+                                                            <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -255,48 +311,68 @@
                                         </h5>
                                     </div>
                                     <div class="card-body">
-                                        <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Data</th>
-                                                    <th>Fonecedor</th>
-                                                    <th>litros</th>
-                                                    <th>Valor Unitario</th>
-                                                    <th>Total R$</th>
-                                                    <th>Opções</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Data</th>
-                                                    <th>Fonecedor</th>
-                                                    <th>litros</th>
-                                                    <th>Valor Unitario</th>
-                                                    <th>Total R$</th>
-                                                    <th>Opções</th>
-                                                </tr>
-                                            </tfoot>
-                                            <tbody>
-                                                <tr>
-                                                    <th>1</th>
-                                                    <td>17/01/2023</td>
-                                                    <td>Inpiranga</td>
-                                                    <td>500</td>
-                                                    <td>R$ 5.40</td>
-                                                    <td>2.700</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelIntake" data-date-intake="17/01/2023" data-provider="Inpiranga" data-liters="500" data-unitary-value="R$ 5.40" data-total="2.700">
-                                                            <i class="fas fa-pen"></i>
-                                                        </button>
-                                                        <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div name="SearchAndFilter" class="row" style="justify-content: end; margin-bottom:20px;">
+                                            <div class="col-md-5">
+                                                <div id="dataTable_filter" class="dataTables_filter">
+                                                    <input type="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="dataTables_length" id="dataTable_length">
+                                                    <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
+                                                        <option value="10">10</option>
+                                                        <option value="25">25</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Data</th>
+                                                        <th>Fonecedor</th>
+                                                        <th>litros</th>
+                                                        <th>Valor Unitario</th>
+                                                        <th>Total R$</th>
+                                                        <th>Opções</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Data</th>
+                                                        <th>Fonecedor</th>
+                                                        <th>litros</th>
+                                                        <th>Valor Unitario</th>
+                                                        <th>Total R$</th>
+                                                        <th>Opções</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>1</th>
+                                                        <td>17/01/2023</td>
+                                                        <td>Inpiranga</td>
+                                                        <td>500</td>
+                                                        <td>R$ 5.40</td>
+                                                        <td>2.700</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelIntake" data-date-intake="17/01/2023" data-provider="Inpiranga" data-liters="500" data-unitary-value="R$ 5.40" data-total="2.700">
+                                                                <i class="fas fa-pen"></i>
+                                                            </button>
+                                                            <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -41,7 +41,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="historic.php" role="button" class="btn btn-info btn-sm btn-icon-split">
+                            <a href="operationMovimentsHistoric.php" role="button" class="btn btn-info btn-sm btn-icon-split">
 
                                 <span class="icon text-white-50">
                                     <i class="fas fa-list-alt"></i>

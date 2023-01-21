@@ -41,7 +41,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="controlOperationMoviments.php" type="button" class="btn btn-danger btn-sm btn-icon-split" href="controlFuel.php">
+                            <a href="operationMoviments.php" type="button" class="btn btn-danger btn-sm btn-icon-split" href="controlFuel.php">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-arrow-left"></i>
                                 </span>
@@ -49,25 +49,6 @@
                             </a>
                         </div>
                         <div class="card-body">
-
-                            <div name="SearchAndFilter" class="row" style="justify-content: end; margin-bottom:20px;">
-                                <div class="col-md-5">
-                                    <div id="dataTable_filter" class="dataTables_filter">
-                                        <input type="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
-                                    </div>
-                                </div>
-                                <div class="col-md-1">
-                                    <div class="dataTables_length" id="dataTable_length">
-                                        <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                            </div>
 
                             <div class="table-responsive">
 

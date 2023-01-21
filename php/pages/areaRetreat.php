@@ -36,28 +36,17 @@
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Áreas </span>
-                    <h1 class="h3 mb-2 text-gray-800"> Tabela de Saida </h1>
+                    <h1 class="h3 mb-2 text-gray-800"> Retiros </h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-
-                            <a href="controlOperationFuel.php" type="button" class="btn btn-danger btn-sm btn-icon-split" href="controlOperationFuel.php">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterServices">
                                 <span class="icon text-white-50">
-                                    <i class="fas fa-arrow-left"></i>
+                                    <i class="fas fa-plus-circle"></i>
                                 </span>
-                                <span class="text"> Voltar </span>
-                            </a>
-
-                            <!-- button table -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Tabela
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="tableIntake.php">Entrada</a>
-                                </div>
-                            </div>
+                                <span class="text"> Cadastrar </span>
+                            </button>
                         </div>
                         <div class="card-body">
 
@@ -67,7 +56,6 @@
                                         <input type="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
                                     </div>
                                 </div>
-
                                 <div class="col-md-1">
                                     <div class="dataTables_length" id="dataTable_length">
                                         <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
@@ -82,45 +70,27 @@
                             </div>
 
                             <div class="table-responsive">
-
-                                <!-- Start table Output -->
-
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Data da Saida</th>
-                                            <th>Litro</th>
-                                            <th>Serviço</th>
-                                            <th>Pasto</th>
-                                            <th>Trator</th>
-                                            <th>Colaborador</th>
+                                            <th>Nome</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Data da Saida</th>
-                                            <th>Litro</th>
-                                            <th>Serviço</th>
-                                            <th>Pasto</th>
-                                            <th>Trator</th>
-                                            <th>Colaborador</th>
+                                            <th>Nome</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
                                             <th>1</th>
-                                            <td>17/01/2023</td>
-                                            <th>200</th>
-                                            <td>Limpeza</td>
-                                            <td>Pasto 01</td>
-                                            <td>BM 135</td>
-                                            <td>Pedro</td>
+                                            <td>Condimentos</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelOutput" data-date-output="17/01/2023" data-liters="200" data-services="Limpeza" data-pastures="Pasto 01" data-tractor="BM 135" data-collaborators="Pedro">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditServices" data-name="Condimentos">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
@@ -130,9 +100,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-
-                                <!-- End table Output -->
-
                             </div>
 
                             <div name="pagination" class="row">
@@ -155,47 +122,20 @@
                     </div>
                 </div>
 
-                <!-- Stat Form Register FuelOutput -->
-
-                <div name="RegisterFuelOutput" class="modal fade" id="modalRegisterFuelOutput" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="RegisterServices" class="modal fade" id="modalRegisterServices" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/combustivel.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/servico.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Saida de Combustivel</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Serviço</b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="date-output" placeholder="Data de Saida">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="liters" placeholder="Litros">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="services" placeholder="Serviço">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="pastures" placeholder="Pasto">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="tractor" placeholder="Trator">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="collaborators" placeholder="Colaborador">
+                                            <input type="text" class="form-control  " id="name" placeholder="Nome">
                                         </div>
                                     </div>
                                     <hr>
@@ -208,49 +148,20 @@
                     </div>
                 </div>
 
-                <!-- End Form Register FuelOutput -->
-
-                <!-- Start modal FuelOutput -->
-
-                <div name="EditFuelOutput" class="modal fade" id="modalEditFuelOutput" tabindex="-1" role="dialog" aria-hidden="true">
+                <div name="EditServices" class="modal fade" id="modalEditServices" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/combustivel.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/servico.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar saida de combustivel</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Serviço</b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="date-output" placeholder="Data">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="liters" placeholder="Litro">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="services" placeholder="Serviço">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="pastures" placeholder="Pasto">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="tractor" placeholder="Trator">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="collaborators" placeholder="Colaborador">
+                                            <input type="text" class="form-control  " id="name" placeholder="Nome">
                                         </div>
                                     </div>
                                     <hr>
@@ -262,7 +173,6 @@
                     </div>
                 </div>
 
-                <!-- End modal FuelOutput -->
 
 
 
@@ -287,21 +197,11 @@
     <?php include('../../html/scripts.html'); ?>
 
     <script>
-        $('#modalEditFuelOutput').on('show.bs.modal', function(event) {
+        $('#modalEditServices').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipientDateOutput = button.data('date-output')
-            var recipientLiters = button.data('liters')
-            var recipientService = button.data('service')
-            var recipientPastures = button.data('pastures')
-            var recipientTractor = button.data('tractor')
-            var recipientCollaborators = button.data('collaborators')
+            var recipientName = button.data('name')
             var modal = $(this)
-            modal.find('.modal-body #date-output').val(recipientDateOutput)
-            modal.find('.modal-body #liters').val(recipientLiters)
-            modal.find('.modal-body #service').val(recipientService)
-            modal.find('.modal-body #pastures').val(recipientPastures)
-            modal.find('.modal-body #tractor').val(recipientTractor)
-            modal.find('.modal-body #collaborators').val(recipientCollaborators)
+            modal.find('.modal-body #name').val(recipientName)
         })
     </script>
 
