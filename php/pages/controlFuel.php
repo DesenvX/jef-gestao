@@ -35,7 +35,8 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <h1 class="h3 mb-2 text-gray-800"> Combustivel </h1>
+                <span style="font-size: small;"> Operações </span>
+                    <h1 class="h3 mb-2 text-gray-800"> Combustível </h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-3">
