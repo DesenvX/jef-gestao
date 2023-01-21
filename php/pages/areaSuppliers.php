@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+-<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -70,33 +70,39 @@
                             </div>
 
                             <div class="table-responsive">
+
+                                <!-- Start table -->
+
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Empresa</th>
-                                            <th>CNPJ</th>
-                                            <th>Contato</th>
+                                            <th>Razão Social</th>
+                                            <th>Nome Fantasia</th>
+                                            <th>Tipo de Pessoa</th>
+                                            <th>Telefone</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Empresa</th>
-                                            <th>CNPJ</th>
-                                            <th>Contato</th>
+                                            <th>Razão Social</th>
+                                            <th>Nome Fantasia</th>
+                                            <th>Tipo de Pessoa</th>
+                                            <th>Telefone</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
                                             <th>1</th>
-                                            <td>Condimentos</td>
-                                            <td>00.000.000/0000-00</td>
-                                            <td>(99) 99999-9999</td>
+                                            <td>JOAO PEDRO LIMA LTDA</td>
+                                            <td>João Pedro Dev</td>
+                                            <td>Pessoa Jurídica</td>
+                                            <td>(94) 992927891</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditSuppliers" data-company="Condimentos" data-cnpj="00.000.000/0000-00" data-phone="(99) 99999-9999">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditSuppliers" data-corporate-name="JOAO PEDRO LIMA LTDA" data-fantasy-name="João Pedro Dev" data-kind-of-person="Pessoa Jurídica" data-telephone="(94) 992927891">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
@@ -106,6 +112,9 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
+                                <!-- End table -->
+
                             </div>
 
                             <div name="pagination" class="row">
@@ -128,6 +137,8 @@
                     </div>
                 </div>
 
+                <!-- Stat Form Register Contacts -->
+
                 <div name="RegisterSuppliers" class="modal fade" id="modalRegisterSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
@@ -136,22 +147,27 @@
                                     <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Fornecedores</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Cadastrar Fornecedores </b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="company" placeholder="Empresa">
+                                            <input type="text" class="form-control  " id="corporate-name" placeholder="Razão Social">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="cnpj" placeholder="CNPJ">
+                                            <input type="text" class="form-control  " id="fantasy-name" placeholder="Nome Fantasia">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="phone" placeholder="Contato">
+                                            <input type="text" class="form-control  " id="kind-of-person" placeholder="Tipo de Pessoa">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="tel" class="form-control  " id="telephone" placeholder="Telefone">
                                         </div>
                                     </div>
                                     <hr>
@@ -164,6 +180,10 @@
                     </div>
                 </div>
 
+                <!-- End Table Register Contacts -->
+
+                <!-- Start modal -->
+
                 <div name="EditSuppliers" class="modal fade" id="modalEditSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
@@ -172,22 +192,27 @@
                                     <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Fornecedores</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Contato </b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="company" placeholder="Empresa">
+                                            <input type="text" class="form-control  " id="corporate-name" placeholder="Razão Social">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="cnpj" placeholder="CNPJ">
+                                            <input type="text" class="form-control  " id="fantasy-name" placeholder="Nome Fantasia">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="phone" placeholder="Contato">
+                                            <input type="text" class="form-control  " id="kind-of-person" placeholder="Tipo de Pessoa">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <input type="tel" class="form-control  " id="telephone" placeholder="Telefone">
                                         </div>
                                     </div>
                                     <hr>
@@ -199,6 +224,7 @@
                     </div>
                 </div>
 
+                <!-- End modal -->
 
 
 
@@ -225,13 +251,15 @@
     <script>
         $('#modalEditSuppliers').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipientcompany = button.data('company')
-            var recipientcnpj = button.data('cnpj')
-            var recipientphone = button.data('phone')
+            var recipientCorporateName = button.data('corporate-name')
+            var recipientFantasyName = button.data('fantasy-name')
+            var recipientKindOfPerson = button.data('kind-of-person')
+            var recipientTelephone = button.data('telephone')
             var modal = $(this)
-            modal.find('.modal-body #company').val(recipientcompany)
-            modal.find('.modal-body #cnpj').val(recipientcnpj)
-            modal.find('.modal-body #phone').val(recipientphone)
+            modal.find('.modal-body #corporate-name').val(recipientCorporateName)
+            modal.find('.modal-body #fantasy-name').val(recipientFantasyName)
+            modal.find('.modal-body #kind-of-person').val(recipientKindOfPerson)
+            modal.find('.modal-body #telephone').val(recipientTelephone)
         })
     </script>
 
