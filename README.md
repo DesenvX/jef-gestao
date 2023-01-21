@@ -11,14 +11,16 @@ Instalar dependencias do sistema: `npm install`.
 
 `gulpfile.js`: Visualiza as tarefas que estão incluídas no ambiente de desenvolvimento.
 
-Cria arquivo funcional das variáveis de ambiente: `cp config/environment.example.ini config/environment.ini`.
+Cria arquivo funcional das variáveis de ambiente: sh``` cp config/environment.example.ini config/environment.ini ```.
 
-### Gulp Tasks
+##### Gulp Tasks
 
-* `gulp` the default task that builds everything
-* `gulp watch` browserSync opens the project in your default browser and live reloads when changes are made
-* `gulp css` compiles SCSS files into CSS and minifies the compiled CSS
-* `gulp js` minifies the themes JS file
-* `gulp vendor` copies dependencies from node_modules to the vendor directory
+* `gulp` a tarefa padrão que constrói tudo
+* `gulp watch` browserSync abre o projeto em seu navegador padrão e recarrega ao vivo quando as alterações são feitas
+* `gulp css` compila arquivos SCSS em CSS e reduz o CSS compilado
+* `gulp js` minimiza o arquivo JS dos temas
+* `gulp vendor` copia as dependências de node_modules para o diretório do fornecedor
 
-You must have npm installed globally in order to use this build environment. This theme was built using node v11.6.0 and the Gulp CLI v2.0.1. If Gulp is not running properly after running `npm install`, you may need to update node and/or the Gulp CLI locally.
+##### Requisitos
+Você deve ter o npm instalado globalmente para usar este ambiente de construção. Este tema foi construído usando o Node v11.6.0 e o Gulp CLI v2.0.1. 
+Se o Gulp não estiver funcionando corretamente depois de executar `npm install`, pode ser necessário atualizar o Node e/ou a CLI do Gulp localmente.
