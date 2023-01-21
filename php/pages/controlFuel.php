@@ -38,14 +38,14 @@
                     <h1 class="h3 mb-2 text-gray-800"> Combustivel </h1>
 
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
+                    <div class="card shadow mb-3">
 
                         <div class="card-body">
 
                             <div class="row">
 
                                 <!-- Earnings (Monthly) Card Example -->
-                                <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="col-xl-3 col-md-6">
                                     <div class="card border-left-success shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row no-gutters align-items-center">
@@ -60,7 +60,7 @@
                                 </div>
 
                                 <!-- Earnings (Monthly) Card Example -->
-                                <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="col-xl-3 col-md-6">
                                     <div class="card border-left-danger shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row no-gutters align-items-center">
@@ -75,23 +75,30 @@
                                 </div>
 
                                 <!-- Pending Requests Card Example -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="col-xl-6 col-md-6">
+                                    <div class="card border-left-dark shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                        Ainda tem</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">300 Litros</div>
+                                                    <div class="text-xs font-weight-bold text-dark text-uppercase mb-1"> Tanque
+                                                    </div>
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col-auto">
+                                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">300 Litros (50%)</div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="progress progress-sm mr-2">
+                                                                <div class="progress-bar bg-dark" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
 
                     <div class="card shadow mb-4" style="display:flex;">
@@ -108,25 +115,21 @@
                                 <span class="btn-sm"> Historico </span>
                             </button>
 
-
-                            <!-- Start Button Intake -->
-
-                            <button style="margin: 5px;" type="button" class="btn btn-info btn-sm btn-icon-split">
+                            <button style="margin: 5px;" class="btn btn-info btn-sm btn-icon-split">
                                 <span class="btn-sm"> Entradas </span>
-                                <a class="btn btn-light btn-sm" role="button" data-toggle="collapse" data-target="#collapseEntry" aria-expanded="true" aria-controls="collapseEntry">
-
+                                <a class="btn btn-dark btn-sm" style="background: #06B8D4; margin-left:2px; margin-right:1px; border-color:#D5D8DC;" role="button" data-toggle="collapse" data-target="#collapseEntry" aria-expanded="true" aria-controls="collapseEntry">
                                     <i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="Vusializar"> </i>
                                 </a>
-                                <a class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalRegisterFuelIntake"> <i class="fas fa-plus-circle" data-toggle="tooltip" data-placement="top" title="Cadastrar"></i> </a>
+                                <a class="btn btn-dark btn-sm" style="background: #06B8D4; margin-left:1px; margin-right:2px; border-color:#D5D8DC;" data-toggle="modal" data-target="#modalRegisterFuelIntake"> <i class="fas fa-plus-circle" data-toggle="tooltip" data-placement="top" title="Cadastrar"></i> </a>
                                 </a>
                             </button>
 
                             <button style="margin: 5px;" type="button" class="btn btn-danger btn-sm btn-icon-split">
                                 <span class="btn-sm"> Saidas </span>
-                                <a class="btn btn-light btn-sm" role="button" data-toggle="collapse" data-target="#collapseOutput" aria-expanded="false" aria-controls="collapseOutput">
+                                <a class="btn btn-dark btn-sm" style="background: #FF5A4A; margin-left:2px; margin-right:1px; border-color:#D5D8DC;" role="button" data-toggle="collapse" data-target="#collapseOutput" aria-expanded="false" aria-controls="collapseOutput">
                                     <i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="Vusializar"></i>
                                 </a>
-                                <a class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalRegisterFuelOutput"> <i class="fas fa-plus-circle" data-toggle="tooltip" data-placement="top" title="Cadastrar"></i> </a>
+                                <a class="btn btn-dark btn-sm" style="background: #FF5A4A; margin-left:2px; margin-right:1px; border-color:#D5D8DC;" data-toggle="modal" data-target="#modalRegisterFuelOutput"> <i class="fas fa-plus-circle" data-toggle="tooltip" data-placement="top" title="Cadastrar"></i> </a>
                                 </a>
                             </button>
                         </div>
@@ -139,7 +142,7 @@
                                 <div class="card">
                                     <div class="card-header" id="headingOne">
                                         <h5 class="mb-0">
-                                            <i class="fas fa-list-alt"></i>Histórico
+                                            <i class="fas fa-list-alt"></i> Histórico
                                         </h5>
                                     </div>
                                     <div class="card-body">
