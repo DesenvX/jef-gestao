@@ -42,7 +42,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
 
-                            <a href="controlFuel.php" type="button" class="btn btn-danger btn-sm btn-icon-split" href="controlFuel.php">
+                            <a href="controlOperationFuel.php" type="button" class="btn btn-danger btn-sm btn-icon-split" href="controlOperationFuel.php">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-arrow-left"></i>
                                 </span>
