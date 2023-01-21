@@ -5,7 +5,6 @@
 
     <title> JEF Gestão </title>
 
-    <!-- Links and Cdns -->
     <?php
     include('../../html/links_and_cdns.html');
     ?>
@@ -14,38 +13,30 @@
 
 <body id="page-top">
 
-    <!-- Page Wrapper -->
     <div id="wrapper">
 
         <?php
         include('../../html/sidebar.html');
         ?>
 
-        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
             <div id="content">
 
                 <?php
                 include('../../html/topbar.html');
                 ?>
 
-
-                <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Operações </span>
                     <h1 class="h3 mb-2 text-gray-800"> Combustível </h1>
 
-                    <!-- DataTales Example -->
                     <div class="card shadow mb-3">
 
                         <div class="card-body">
 
                             <div class="row">
-
-                                <!-- Earnings (Monthly) Card Example -->
                                 <div class="col-xl-3 col-md-6">
                                     <div class="card border-left-success shadow h-100 py-2">
                                         <div class="card-body">
@@ -60,7 +51,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Earnings (Monthly) Card Example -->
                                 <div class="col-xl-3 col-md-6">
                                     <div class="card border-left-danger shadow h-100 py-2">
                                         <div class="card-body">
@@ -75,7 +65,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Pending Requests Card Example -->
                                 <div class="col-xl-6 col-md-6">
                                     <div class="card border-left-dark shadow h-100 py-2">
                                         <div class="card-body">
@@ -106,9 +95,6 @@
 
                         <div class="card-header py-3" style="display: flex; justify-content: center;" id="heading">
 
-                            <!-- button Histoy -->
-
-
                             <button type="button" style="margin: 5px;" class="btn btn-primary btn-sm btn-icon-split" data-toggle="collapse" data-target="#collapseHistoric" aria-expanded="true" aria-controls="collapseHistoric">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-list-alt"></i>
@@ -135,9 +121,7 @@
                             </button>
                         </div>
 
-
                         <div class="accordion" id="accordionActionsTables">
-
 
                             <div id="collapseHistoric" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionActionsTables">
                                 <div class="card">
@@ -378,11 +362,8 @@
                             </div>
                         </div>
 
-
                     </div>
                 </div>
-
-                <!-- Stat Form Register FuelIntake -->
 
                 <div name="RegisterFuelIntake" class="modal fade" id="modalRegisterFuelIntake" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
@@ -429,10 +410,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- End Form Register FuelIntake -->
-
-                <!-- Stat Form Register FuelOutput -->
 
                 <div name="RegisterFuelOutput" class="modal fade" id="modalRegisterFuelOutput" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
@@ -485,8 +462,6 @@
                     </div>
                 </div>
 
-                <!-- End Form Register FuelOutput -->
-
                 <div name="EditFuelIntake" class="modal fade" id="modalEditFuelIntake" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
@@ -522,19 +497,15 @@
                     </div>
                 </div>
             </div>
-            <!-- End of Main Content -->
 
             <?php
             include('../../html/footer.html');
             ?>
 
         </div>
-        <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>

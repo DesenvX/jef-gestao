@@ -8,7 +8,7 @@ Environment::load();
 
 $host = "{$_ENV['HOST']}";
 $user = "{$_ENV['USER']}";
-$pass = "{$_ENV['PASSWORD']}"; //Alterei por causa do meu banco de dados
+$pass = "{$_ENV['PASSWORD']}";
 $db = "{$_ENV['DATABASE']}";
 
 $mysqli = new mysqli($host, $user, $pass, $db);

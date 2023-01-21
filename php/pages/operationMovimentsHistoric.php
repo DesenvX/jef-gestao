@@ -5,7 +5,6 @@
 
     <title> JEF Gestão </title>
 
-    <!-- Links and Cdns -->
     <?php
     include('../../html/links_and_cdns.html');
     ?>
@@ -14,31 +13,25 @@
 
 <body id="page-top">
 
-    <!-- Page Wrapper -->
     <div id="wrapper">
 
         <?php
         include('../../html/sidebar.html');
         ?>
 
-        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
             <div id="content">
 
                 <?php
                 include('../../html/topbar.html');
                 ?>
 
-
-                <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Áreas </span>
                     <h1 class="h3 mb-2 text-gray-800"> Historico </h1>
 
-                    <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <a href="operationMoviments.php" type="button" class="btn btn-danger btn-sm btn-icon-split" href="controlFuel.php">
@@ -51,8 +44,6 @@
                         <div class="card-body">
 
                             <div class="table-responsive">
-
-                                <!-- Start table -->
 
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -109,8 +100,6 @@
                                     </tbody>
                                 </table>
 
-                                <!-- End table -->
-
                             </div>
 
                             <div name="pagination" class="row">
@@ -132,8 +121,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Start modal -->
 
                 <div name="EditHistoric" class="modal fade" id="modalEditHistoric" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
@@ -200,24 +187,16 @@
                     </div>
                 </div>
 
-                <!-- End modal -->
-
-
-
             </div>
-            <!-- End of Main Content -->
 
             <?php
             include('../../html/footer.html');
             ?>
 
         </div>
-        <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>

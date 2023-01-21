@@ -6,7 +6,6 @@
 
     <title> JEF Gestão </title>
 
-    <!-- Links and Cdns -->
     <?php
     include('../../html/links_and_cdns.html');
     ?>
@@ -49,7 +48,6 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <?php include('../../html/scripts.html'); ?>
 
 </body>

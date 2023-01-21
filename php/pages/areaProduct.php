@@ -5,7 +5,6 @@
 
     <title> JEF Gestão </title>
 
-    <!-- Links and Cdns -->
     <?php
     include('../../html/links_and_cdns.html');
     ?>
@@ -14,31 +13,25 @@
 
 <body id="page-top">
 
-    <!-- Page Wrapper -->
     <div id="wrapper">
 
         <?php
         include('../../html/sidebar.html');
         ?>
 
-        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
             <div id="content">
 
                 <?php
                 include('../../html/topbar.html');
                 ?>
 
-
-                <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Áreas </span>
                     <h1 class="h3 mb-2 text-gray-800"> Produtos </h1>
 
-                    <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterProduct">
@@ -70,8 +63,6 @@
                             </div>
 
                             <div class="table-responsive">
-
-                                <!-- Start table -->
 
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -116,8 +107,6 @@
                                     </tbody>
                                 </table>
 
-                                <!-- End table -->
-
                             </div>
 
                             <div name="pagination" class="row">
@@ -139,8 +128,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Stat Form Register Contacts -->
 
                 <div name="RegisterProduct" class="modal fade" id="modalRegisterProduct" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
@@ -191,10 +178,6 @@
                     </div>
                 </div>
 
-                <!-- End Table Register Contacts -->
-
-                <!-- Start modal -->
-
                 <div name="EditProduct" class="modal fade" id="modalEditProduct" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
@@ -242,24 +225,16 @@
                     </div>
                 </div>
 
-                <!-- End modal -->
-
-
-
             </div>
-            <!-- End of Main Content -->
 
             <?php
             include('../../html/footer.html');
             ?>
 
         </div>
-        <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
