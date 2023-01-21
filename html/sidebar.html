@@ -60,10 +60,22 @@
             <span> Movimentos </span> </a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="operations.php">
-            <i class="fas fa-fw fa-user-clock"></i>
-            <span> Operações </span> </a>
+    <li class="nav-link">
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOption" aria-expanded="true"
+                aria-controls="collapseOption">
+                <i class="fas fa-fw fa-building"></i>
+                <span> Áreas </span>
+            </a>
+            <div id="collapseOption" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header"> Opções </h6>
+                    <a class="collapse-item" href="operations.php"> Cadastro de Operações</a>
+                    <a class="collapse-item" href="dice.php"> Historico </a>
+                    <a class="collapse-item" href="#"> Relatório </a>
+                </div>
+            </div>
+        </li>
     </li>
 
     <!-- Divider -->
