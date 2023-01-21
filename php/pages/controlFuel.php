@@ -40,32 +40,7 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterFuelIntake">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-plus-circle"></i>
-                                </span>
-                                <span class="text"> Entrada </span>
-                            </button>
 
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterFuelOutput">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-plus-circle"></i>
-                                </span>
-                                <span class="text"> Saida </span>
-                            </button>
-
-                            <!-- button table -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Tabela
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="tableIntake.php">Entrada</a>
-                                    <a class="dropdown-item" href="tableOutput.php">Saida</a>
-                                </div>
-                            </div>
-                        </div>
                         <div class="card-body">
 
                             <div class="row">
@@ -113,9 +88,98 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>                                
+                                </div>
 
                             </div>
+                        </div>
+
+                    </div>
+
+                    <div class="card shadow mb-4" style="display:flex;">
+                        <div class="card-header py-3" style="display: flex; justify-content: center;" id="accordionExample">
+
+                            <!-- button Histoy -->
+
+                            <div class="btn-group">
+                                <button type="button" style="margin: 5px;" class="btn btn-primary btn-sm collapse show" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-list-alt"></i>
+                                    </span>
+                                    <span class="collapse show"> Historico </span>
+                                </button>
+                            </div>
+
+                            <!-- Start Button Intake -->
+
+                            <button style="margin: 5px;" type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-parent="#accordionExample">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-plus-circle"></i>
+                                </span>
+                                <span class="btn-sm dropdown-toggle"> Entradas </span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#modalRegisterFuelIntake">Cadastrar</a>
+                                <a class="dropdown-item" data-toggle="collapse" href="#collapseIntake" role="button" aria-expanded="false" aria-controls="collapseIntake">Visualizar</a>
+                            </div>
+
+                            <!-- Start Button Output -->
+
+                            <button style="margin: 5px;" type="button" class="btn btn-danger btn-sm btn-icon-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-parent="#accordionExample">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-minus-circle"></i>
+                                </span>
+                                <span class="btn-sm dropdown-toggle"> Saidas </span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#modalRegisterFuelOutput">Cadastrar</a>
+                                <a class="dropdown-item" data-toggle="collapse" href="#collapseOutout" role="button" aria-expanded="false" aria-controls="collapseOutout">Visualizar</a>
+                            </div>
+
+                        </div>
+                        <div class="collapse" id="collapseOutout">
+                            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                <!-- conteúdo da tabela 1 -->
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Data</th>
+                                        <th>Fonecedor</th>
+                                        <th>litros</th>
+                                        <th>Valor Unitario</th>
+                                        <th>Total R$</th>
+                                        <th>Opções</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Data</th>
+                                        <th>Fonecedor</th>
+                                        <th>litros</th>
+                                        <th>Valor Unitario</th>
+                                        <th>Total R$</th>
+                                        <th>Opções</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <tr>
+                                        <th>1</th>
+                                        <td>17/01/2023</td>
+                                        <td>Inpiranga</td>
+                                        <td>500</td>
+                                        <td>R$ 5.40</td>
+                                        <td>2.700</td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelIntake" data-date-intake="17/01/2023" data-provider="Inpiranga" data-liters="500" data-unitary-value="R$ 5.40" data-total="2.700">
+                                                <i class="fas fa-pen"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
