@@ -35,8 +35,8 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <span style="font-size: small;"> Operação </span>
-                    <h1 class="h3 mb-2 text-gray-800"> Movimento </h1>
+                    <span style="font-size: small;"> Operações </span>
+                    <h1 class="h3 mb-2 text-gray-800"> Movimentos </h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
