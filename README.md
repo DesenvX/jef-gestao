@@ -11,7 +11,10 @@ Instalar dependencias do sistema: `npm install`.
 
 `gulpfile.js`: Visualiza as tarefas que estão incluídas no ambiente de desenvolvimento.
 
-Cria arquivo funcional das variáveis de ambiente: ````sh cp config/environment.example.ini config/environment.ini ````.
+Cria arquivo funcional das variáveis de ambiente: 
+````sh 
+cp config/environment.example.ini config/environment.ini 
+````
 
 ##### Gulp Tasks
 
