@@ -138,7 +138,10 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="retreat" placeholder="Retiro">
+                                            <select class="form-control" name="" id="">
+                                                <option value=""> Retiro </option>
+                                                <option value=""></option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -169,14 +172,17 @@
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="retreat" placeholder="Retiro">
+                                            <select class="form-control" name="" id="retreat">
+                                                <option value=""> Retiro </option>
+                                                <option value=""></option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                             <input type="text" class="form-control  " id="farm" placeholder="Fazenda">
                                         </div>
-                                    </div>                                    
+                                    </div>
                                     <hr>
                                     <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
                                     <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>

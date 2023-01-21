@@ -127,10 +127,10 @@
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="../../img/servico.png" width="100" height="100" style="margin-bottom: 10px;">
+                                    <img src="../../img/retiro.png" width="100" height="100" style="margin-bottom: 10px;">
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Serviço</b></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Retiros</b></h1>
                                 </div>
                                 <form class="user" action="#" method="post">
                                     <div class="form-group row">
