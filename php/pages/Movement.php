@@ -41,11 +41,18 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterServices">
+                            <a href="historic.php" role="button" class="btn btn-info btn-sm btn-icon-split">
+
                                 <span class="icon text-white-50">
-                                    <i class="fas fa-plus-circle"></i>
+                                    <i class="fas fa-list-alt"></i>
                                 </span>
-                                <span class="text"> Cadastrar </span>
+                                <span class="text"> Historico </span>
+                            </a>
+                            <button type="button" class="btn btn-primary btn-sm btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-download fa-sm text-white-50"></i>
+                                </span>
+                                <span class="text"> Gerar Relatório </span>
                             </button>
                         </div>
                         <div class="card-body">

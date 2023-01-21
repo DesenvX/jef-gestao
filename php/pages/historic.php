@@ -40,7 +40,14 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        
+                        <div class="card-header py-3">
+                            <a href="movement.php" type="button" class="btn btn-danger btn-sm btn-icon-split" href="controlFuel.php">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-arrow-left"></i>
+                                </span>
+                                <span class="text"> Voltar </span>
+                            </a>
+                        </div>
                         <div class="card-body">
 
                             <div name="SearchAndFilter" class="row" style="justify-content: end; margin-bottom:20px;">
@@ -110,9 +117,7 @@
                                             <td style="text-align: center;">Nazaré</td>
                                             <td style="text-align: center;">F12</td>
                                             <td style="text-align: center;">
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditHistoric" 
-                                                data-date="21/01/2023" data-start-time="08:00" data-lunch="12:00" data-retorn="14:00" data-end-time="18:00" data-operator="Pedro Henrique"
-                                                data-machine="Bm - 135" data-retreat="Nazaré" data-pasture="F12">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditHistoric" data-date="21/01/2023" data-start-time="08:00" data-lunch="12:00" data-retorn="14:00" data-end-time="18:00" data-operator="Pedro Henrique" data-machine="Bm - 135" data-retreat="Nazaré" data-pasture="F12">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
