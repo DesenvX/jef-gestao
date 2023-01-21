@@ -7,6 +7,6 @@ $db = "jef_gestao";
 
 $mysqli = new mysqli($host, $user, $pass, $db); 
     if ($mysqli->connect_errno) {
-        echo "Connect Falid: " . $mysqli->connect_error;
+        echo "Falha na Conexao: " . $mysqli->connect_error;
         exit();
     }
