@@ -41,7 +41,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="movement.php" type="button" class="btn btn-danger btn-sm btn-icon-split" href="controlFuel.php">
+                            <a href="controlOperationMoviments.php" type="button" class="btn btn-danger btn-sm btn-icon-split" href="controlFuel.php">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-arrow-left"></i>
                                 </span>
