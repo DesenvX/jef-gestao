@@ -10,7 +10,6 @@
     include('../../html/links_and_cdns.html');
     ?>
 
-
 </head>
 
 <body class="bg-gradient-primary">
@@ -27,17 +26,18 @@
                                         <img src="../../img/logo.png" width="100" height="100" style="margin-bottom: 10px;">
                                         <h1 class="h4 text-gray-900 mb-4"> <b style="color: #566573;"> JEF Gestão </b> </h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" action="" id="login" name="login" method="POST">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="user" placeholder="Usuário">
+                                            <input type="text" class="form-control form-control-user" id="user" name="user" placeholder="Usuário">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="password" placeholder="Senha">
+                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Senha">
                                         </div>
                                         <hr>
-                                        <a href="dashboard.php" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Entrar
-                                        </a>
+                                        </button>
+                                        <a href="dashboard.php">Dashboard</a>
                                     </form>
                                 </div>
                             </div>
