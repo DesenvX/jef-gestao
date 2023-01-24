@@ -1,3 +1,9 @@
+<?php
+
+$collaborators = "SELECT * FROM collaborators";
+$collaborators_query = $mysqli->query($collaborators) or die($mysqli->error);
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -83,7 +89,7 @@
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
-                                    <tbody>
+                                    <tbody> 
                                         <tr>
                                             <th>1</th>
                                             <td>Condimentos</td>
@@ -133,7 +139,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Colaboradores</b></h1>
                                 </div>
-                                <form class="user" action="#" method="post">
+                                <form class="user" action="../controllers/CollaboratorsController.php" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                             <input type="text" class="form-control  " id="name" placeholder="Nome">
