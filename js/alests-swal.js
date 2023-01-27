@@ -1,3 +1,28 @@
+function swalLoginFail() {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Usuário ou Senha Incorreta!',
+        showConfirmButton: false,
+        confirmButtonColor: '#2ECC71',
+        timer: 3000
+    })
+}
+function swalLogout() {
+    Swal.fire({
+        title: 'Deseja sair?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Sim, sair.',
+        confirmButtonColor: '#87adbd',
+        cancelButtonText: 'Não',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.replace('../controllers/LogoutController.php')
+        }
+    })
+}
+
 function swalRegisterSuccess() {
     Swal.fire({
         position: 'top-end',

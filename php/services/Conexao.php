@@ -11,8 +11,8 @@ $user = "{$_ENV['USER']}";
 $pass = "{$_ENV['PASSWORD']}";
 $db = "{$_ENV['DATABASE']}";
 
-$connection = new mysqli($host, $user, $pass, $db);
-if ($connection->connect_error) {
-    echo "Falha na Conexao: " . $connection->connect_error;
+$mysqli = new mysqli($host, $user, $pass, $db);
+if ($mysqli->connect_error) {
+    echo "Falha na Conexao: " . $mysqli->connect_error;
     exit();
 }

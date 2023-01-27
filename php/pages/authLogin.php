@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+session_start();
+?>
+
 <head>
 
 
@@ -50,5 +54,18 @@
     <?php include('../../html/scripts.html'); ?>
 
 </body>
+
+<script src="../../js/alests-swal.js"></script>
+
+<?php
+    if (isset($_SESSION['login_fail'])) {
+?>
+    <script>
+        swalLoginFail();
+    </script>
+<?php
+    unset($_SESSION['login_fail']);
+}
+?>
 
 </html>
