@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+<?php
+session_start();
+?>
+
 <head>
 
     <title> JEF Gestão </title>
@@ -125,10 +129,11 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Categoria</b></h1>
                                 </div>
-                                <form class="user" action="#" method="post">
+                                <form class="user" action="../controllers/CategoriesController.php" method="POST">
+                                    <input type="hidden" name="register" value="true">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="name" placeholder="Nome">
+                                            <input type="text" class="form-control" name="name" placeholder="Nome" required>
                                         </div>
                                     </div>
                                     <hr>
@@ -190,8 +195,30 @@
         })
     </script>
 
-    <script src="../../js/alests-swal.js"></script>
-
 </body>
+
+<script src="../../js/alests-swal.js"></script>
+
+<?php
+if (isset($_SESSION['register_success'])) {
+?>
+    <script>
+        swalRegisterSuccess();
+    </script>
+<?php
+    unset($_SESSION['register_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['register_fail'])) {
+?>
+    <script>
+        swalRegisterError();
+    </script>
+<?php
+    unset($_SESSION['register_fail']);
+}
+?>
 
 </html>

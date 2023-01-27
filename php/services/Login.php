@@ -4,10 +4,8 @@ namespace services;
 
 class Login
 {
-
     public function getLogin($request)
     {
-
         require 'Conexao.php';
 
         $usuario = $mysqli->escape_string($request['user']);

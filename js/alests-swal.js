@@ -27,12 +27,12 @@ function swalRegisterSuccess() {
     Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Cadastrada com Sucesso!',
+        title: 'Cadastrado com Sucesso!',
         showConfirmButton: false,
         timer: 3000
     })
 }
-function swalRegisterEditError() {
+function swalRegisterError() {
     Swal.fire({
         position: 'top-end',
         icon: 'error',
