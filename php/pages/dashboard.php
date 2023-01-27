@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+<?php
+session_start();
+?>
+
 <head>
 
     <title> JEF Gestão </title>
