@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+<?php
+session_start();
+?>
+
 <head>
 
     <title> JEF Gestão </title>
@@ -79,9 +83,18 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    <?php
+                                        require_once '../services/Functions.php';
+
+                                        use services\Functions;
+                                        $functions = new Functions();
+                                        $funcao_list = $functions->getFunctions();
+                                        
+                                        ?>
+                                        <?php while ($funcao = $funcao_list->fetch_assoc()) { ?>
                                         <tr>
-                                            <th>1</th>
-                                            <td>Operador</td>
+                                            <th><?= $funcao['id'] ?></th>
+                                            <td><?= $funcao['nome'] ?></td>
                                             <td>
                                                 <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFunctions" data-name="Operador">
                                                     <i class="fas fa-pen"></i>
@@ -91,6 +104,7 @@
                                                 </button>
                                             </td>
                                         </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -110,12 +124,11 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Função</b></h1>
                                 </div>
-                                <form class="user" action="#" method="post">
+                                <form class="user" action="../controllers/FunctionController.php" method="post">
+                                <input type="hidden" name="register" value="true">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-
-                                            <input type="text" class="form-control  " id="name" placeholder="Nome">
-                                            
+                                            <input type="text" class="form-control  " name="name" placeholder="Função" required>                                            
                                         </div>
                                     </div>
                                     <hr>

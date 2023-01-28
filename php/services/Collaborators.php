@@ -18,12 +18,21 @@ class Collaborators
 
         if ($collaborators_response == true) {
             session_start();
-            $_SESSION['register_success'] = true;
+            $_SESSION['register_collaborators_success'] = true;
             header('Location: ../pages/areaCollaborators.php');
         } else {
             session_start();
             $_SESSION['register_fail'] = true;
             header('Location: ../pages/areaCollaborators.php');
         }
+    }
+
+    public function getColaboradores()
+    {
+        require 'Conexao.php';
+
+        $colaboradores_query = "SELECT * FROM colaboradores";
+        $colaboradores_response = $mysqli->query($colaboradores_query);
+        return $colaboradores_response;
     }
 }

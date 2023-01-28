@@ -42,12 +42,49 @@ session_start();
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
+
                             <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterCollaborators">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
                                 <span class="text"> Cadastrar </span>
                             </button>
+                            <div name="RegisterCollaborators" class="modal fade" id="modalRegisterCollaborators" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <img src="../../img/colaboradores.png" width="100" height="100" style="margin-bottom: 10px;">
+                                            </div>
+                                            <div class="text-center">
+                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Colaboradores</b></h1>
+                                            </div>
+                                            <form class="user" action="../controllers/CollaboratorsController.php" method="POST">
+                                                <input type="hidden" name="register">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control  " name="name" placeholder="Nome" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="tel" class="form-control " name="phone" placeholder="Celular" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control " name="cpf" placeholder="CPF" required>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
+                                                <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="card-body">
 
@@ -92,21 +129,70 @@ session_start();
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <?php while() ?>
-                                            <th><?php ?></th>
-                                            <td>Condimentos</td>
-                                            <td>(99) 9 9999-9999</td>
-                                            <td>000.000.000-00</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCollaborators" data-name="Condimentos" data-phone="(99) 9 9999-9999" data-cpf="000.000.000-00">
-                                                    <i class="fas fa-pen"></i>
-                                                </button>
-                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+
+                                        <?php
+
+                                        require_once '../services/Collaborators.php';
+
+                                        use services\Collaborators;
+
+                                        $colaboradores = new Collaborators();
+                                        $colaborado_list = $colaboradores->getColaboradores();
+
+                                        while ($colaborador = $colaborado_list->fetch_assoc()) {
+
+                                        ?>
+                                            <tr>
+                                                <th><?= $colaborador['id'] ?></th>
+                                                <td><?= $colaborador['nome'] ?></td>
+                                                <td><?= $colaborador['telefone'] ?></td>
+                                                <td><?= $colaborador['cpf'] ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCollaborators">
+                                                        <i class="fas fa-pen"></i>
+                                                    </button>
+                                                    <div name="EditCollaborators" class="modal fade" id="modalEditCollaborators" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <img src="../../img/colaboradores.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                    </div>
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Categoria</b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/CollaboratorsController.php" method="post">
+                                                                        <input type="hidden" name="edit" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $colaborador['id'] ?>">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" name="name" class="form-control" value="<?= $colaborador['nome'] ?>" placeholder="Nome">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="tel" name="phone" class="form-control" value="<?= $colaborador['telefone'] ?>" placeholder="Celular">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" name="cpf" class="form-control" value="<?= $colaborador['cpf'] ?>" placeholder="CPF">
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
 
@@ -117,76 +203,9 @@ session_start();
                     </div>
                 </div>
 
-                <div name="RegisterCollaborators" class="modal fade" id="modalRegisterCollaborators" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/colaboradores.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Colaboradores</b></h1>
-                                </div>
-                                <form class="user" action="../controllers/CollaboratorsController.php" method="POST">
-                                    <input type="hidden" name="register">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text"  class="form-control  " name="name" placeholder="Nome" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control " name="phone" placeholder="Celular" required >
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " name="cpf" placeholder="CPF" required>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div name="EditCollaborators" class="modal fade" id="modalEditCollaborators" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/colaboradores.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Categoria</b></h1>
-                                </div>
-                                <form class="user" action="#" method="post">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="name" placeholder="Nome">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="phone" placeholder="Celular">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="cpf" placeholder="CPF">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
 
             </div>
 
@@ -221,36 +240,36 @@ session_start();
 
 </body>
 
-    <?php
-    if (isset($_SESSION['register_success'])) {
-    ?>
-        <script>
-            swalRegisterSuccess();
-        </script>
-    <?php
-        unset($_SESSION['register_success']);
-    }
-    ?>
+<?php
+if (isset($_SESSION['register_collaborators_success'])) {
+?>
+    <script>
+        swalRegisterSuccess();
+    </script>
+<?php
+    unset($_SESSION['register_collaborators_success']);
+}
+?>
 
-    <?php
-    if (isset($_SESSION['register_fail'])) {
-    ?>
-        <script>
-            swalRegisterError();
-        </script>
-    <?php
-        unset($_SESSION['register_fail']);
-    }
-    ?>
-    <?php
-    if (isset($_SESSION['validate_cpf_failed'])) {
-    ?>
-        <script>
-            swalValidateCpfError();
-        </script>
-    <?php
-        unset($_SESSION['validate_cpf_failed']);
-    }
-    ?>
+<?php
+if (isset($_SESSION['register_fail'])) {
+?>
+    <script>
+        swalRegisterError();
+    </script>
+<?php
+    unset($_SESSION['register_fail']);
+}
+?>
+<?php
+if (isset($_SESSION['validate_cpf_failed'])) {
+?>
+    <script>
+        swalValidateCpfError();
+    </script>
+<?php
+    unset($_SESSION['validate_cpf_failed']);
+}
+?>
 
 </html>
