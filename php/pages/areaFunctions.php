@@ -80,16 +80,7 @@ session_start();
                                         <input type="search" id="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
                                     </div>
                                 </div>
-                                <div class="col-md-1">
-                                    <div class="dataTables_length" id="dataTable_length">
-                                        <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                 
 
                             </div>
 
