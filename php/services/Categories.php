@@ -4,6 +4,15 @@ namespace services;
 class Categories
 {
 
+    public function getCategories()
+    {
+        require 'Conexao.php';
+
+        $categories_query = "SELECT * FROM categorias";
+        $categories_response = $mysqli->query($categories_query);
+        return $categories_response;
+    }
+
     public function postCategories($request)
     {
         require 'Conexao.php';
@@ -16,21 +25,52 @@ class Categories
 
         if ($create_response == true) {
             session_start();
-            $_SESSION['register_success'] = true;
+            $_SESSION['register_categories_success'] = true;
             header('Location: ../pages/areaCategories.php');
         } else {
             session_start();
-            $_SESSION['register_fail'] = true;
+            $_SESSION['register_categories_fail'] = true;
             header('Location: ../pages/areaCategories.php');
         }
     }
 
-    public function getCategories()
+    public function putCategories($request)
     {
         require 'Conexao.php';
 
-        $categories_query = "SELECT * FROM categorias";
-        $categories_response = $mysqli->query($categories_query);
-        return $categories_response;
+        $id = $mysqli->escape_string($request['id']);
+        $name = $mysqli->escape_string($request['name']);
+
+        $update_query = "UPDATE categorias SET nome = '$name' WHERE id = $id";
+        $update_response = $mysqli->query($update_query);
+
+        if ($update_response == true) {
+            session_start();
+            $_SESSION['edit_categories_success'] = true;
+            header('Location: ../pages/areaCategories.php');
+        } else {
+            session_start();
+            $_SESSION['edit_categories_fail'] = true;
+            header('Location: ../pages/areaCategories.php');
+        }
+    }
+
+    public function deleteCategories($id)
+    {
+        require 'Conexao.php';
+
+        $delete_query = " DELETE FROM categorias WHERE id = $id";
+        $delete_response = $mysqli->query($delete_query);
+
+        if ($delete_response == true) {
+            session_start();
+            $_SESSION['delete_categories_success'] = true;
+            header('Location: ../pages/areaCategories.php');
+        } else {
+            session_start();
+            $_SESSION['delete_categories_fail'] = true;
+            header('Location: ../pages/areaCategories.php');
+        }
+
     }
 }

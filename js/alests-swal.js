@@ -23,6 +23,7 @@ function swalLogout() {
     })
 }
 
+
 function swalRegisterSuccess() {
     Swal.fire({
         position: 'top-end',
@@ -41,6 +42,8 @@ function swalRegisterError() {
         timer: 3000
     })
 }
+
+
 function swalEditSuccess() {
     Swal.fire({
         position: 'top-end',
@@ -59,35 +62,28 @@ function swalEditError() {
         timer: 3000
     })
 }
-function swalDelete() {
+
+
+function swalDeleteSuccess() {
     Swal.fire({
-        title: 'Deseja excluir?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Sim, excluir.',
-        confirmButtonColor: '#87adbd',
-        cancelButtonText: 'Não',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Excluida com Sucesso!',
-                showConfirmButton: false,
-                timer: 3000
-            })
-
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Erro ao Editar, tente novamente!',
-                showConfirmButton: false,
-                timer: 3000
-            })
-
-        }
+        position: 'top-end',
+        icon: 'success',
+        title: 'Deletado com Sucesso!',
+        showConfirmButton: false,
+        timer: 3000
     })
 }
+function swalDeleteError() {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Erro ao Deletar, tente novamente!',
+        showConfirmButton: false,
+        timer: 3000
+    })
+}
+
+
 function swalValidateCpfError() {
     Swal.fire({
         position: 'top-end',

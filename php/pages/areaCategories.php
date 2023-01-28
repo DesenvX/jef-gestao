@@ -44,18 +44,45 @@ session_start();
                                 </span>
                                 <span class="text"> Cadastrar </span>
                             </button>
+                            <div name="RegisterCategories" class="modal fade" id="modalRegisterCategories" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <img src="../../img/categoria.png" width="100" height="100" style="margin-bottom: 10px;">
+                                            </div>
+                                            <div class="text-center">
+                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Categoria</b></h1>
+                                            </div>
+                                            <form class="user" action="../controllers/CategoriesController.php" method="POST">
+                                                <input type="hidden" name="register" value="true">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control" name="name" placeholder="Nome" required>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
+                                                <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="card-body">
 
                             <div name="SearchAndFilter" class="row" style="justify-content: end; margin-bottom:20px;">
                                 <div class="col-md-5">
                                     <div id="dataTable_filter" class="dataTables_filter">
-                                        <input type="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
+                                        <input type="search" id="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
                                     </div>
                                 </div>
                                 <div class="col-md-1">
                                     <div class="dataTables_length" id="dataTable_length">
                                         <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
+                                            <option value="all" selected>...</option>
                                             <option value="10">10</option>
                                             <option value="25">25</option>
                                             <option value="50">50</option>
@@ -63,7 +90,6 @@ session_start();
                                         </select>
                                     </div>
                                 </div>
-
                             </div>
 
                             <div class="table-responsive">
@@ -87,99 +113,77 @@ session_start();
                                         require_once '../services/Categories.php';
 
                                         use services\Categories;
+
                                         $categories = new Categories();
-                                        $categoria_list = $categories->getCategories();
-                                        
+                                        $categories_list = $categories->getCategories();
                                         ?>
-                                        <?php while ($categoria = $categoria_list->fetch_assoc()) { ?>
+                                        <?php while ($categoria = $categories_list->fetch_assoc()) { ?>
                                             <tr>
                                                 <th> <?= $categoria['id'] ?> </th>
                                                 <td> <?= $categoria['nome'] ?> </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCategories" data-name="Condimentos">
+
+                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCategories">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
-                                                    <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
+                                                    <div name="EditCategories" class="modal fade" id="modalEditCategories" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <img src="../../img/categoria.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                    </div>
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Categoria</b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/CategoriesController.php" method="POST">
+                                                                        <input type="hidden" name="edit" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $categoria['id'] ?>">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control" placeholder="Nome" name="name" value="<?= $categoria['nome'] ?>">
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteCategories">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
+                                                    <div name="DeleteCategories" class="modal fade" id="modalDeleteCategories" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir a categoria <strong> <?= $categoria['nome'] ?> </strong> ?</span></b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/CategoriesController.php" method="POST">
+                                                                        <input type="hidden" name="delete" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $categoria['id'] ?>">
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
-
-                            <div name="pagination" class="row">
-                                <div class="col-sm-12">
-                                    <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-                                        <ul class="pagination">
-                                            <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Anterior</a></li>
-                                            <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
-                                            <li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link"> Próximo </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div name="RegisterCategories" class="modal fade" id="modalRegisterCategories" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/categoria.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Categoria</b></h1>
-                                </div>
-                                <form class="user" action="../controllers/CategoriesController.php" method="POST">
-                                    <input type="hidden" name="register" value="true">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control" name="name" placeholder="Nome" required>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div name="EditCategories" class="modal fade" id="modalEditCategories" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/categoria.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Categoria</b></h1>
-                                </div>
-                                <form class="user" action="#" method="post">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="name" placeholder="Nome">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <?php
@@ -196,38 +200,73 @@ session_start();
 
     <?php include('../../html/scripts.html'); ?>
 
-    <script>
-        $('#modalEditCategories').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var recipientName = button.data('name')
-            var modal = $(this)
-            modal.find('.modal-body #name').val(recipientName)
-        })
-    </script>
-
 </body>
 
 <script src="../../js/alests-swal.js"></script>
 
 <?php
-if (isset($_SESSION['register_success'])) {
+if (isset($_SESSION['register_categories_success'])) {
 ?>
     <script>
         swalRegisterSuccess();
     </script>
 <?php
-    unset($_SESSION['register_success']);
+    unset($_SESSION['register_categories_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['register_fail'])) {
+if (isset($_SESSION['register_categories_fail'])) {
 ?>
     <script>
         swalRegisterError();
     </script>
 <?php
-    unset($_SESSION['register_fail']);
+    unset($_SESSION['register_categories_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_categories_success'])) {
+?>
+    <script>
+        swalEditSuccess();
+    </script>
+<?php
+    unset($_SESSION['edit_categories_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_categories_fail'])) {
+?>
+    <script>
+        swalEditError();
+    </script>
+<?php
+    unset($_SESSION['edit_categories_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_categories_success'])) {
+?>
+    <script>
+        swalDeleteSuccess();
+    </script>
+<?php
+    unset($_SESSION['delete_categories_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_categories_fail'])) {
+?>
+    <script>
+        swalDeleteError();
+    </script>
+<?php
+    unset($_SESSION['delete_categories_fail']);
 }
 ?>
 
