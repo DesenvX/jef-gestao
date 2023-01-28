@@ -116,8 +116,9 @@ session_start();
 
                                         $categories = new Categories();
                                         $categories_list = $categories->getCategories();
+
+                                        while ($categoria = $categories_list->fetch_assoc()) {
                                         ?>
-                                        <?php while ($categoria = $categories_list->fetch_assoc()) { ?>
                                             <tr>
                                                 <th> <?= $categoria['id'] ?> </th>
                                                 <td> <?= $categoria['nome'] ?> </td>
@@ -202,7 +203,7 @@ session_start();
 
 </body>
 
-<script src="../../js/alests-swal.js"></script>
+
 
 <?php
 if (isset($_SESSION['register_categories_success'])) {

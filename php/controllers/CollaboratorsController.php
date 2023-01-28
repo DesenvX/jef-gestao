@@ -5,11 +5,10 @@ require_once '../functions/Validations.php';
 use services\Collaborators;
 use functions\Validations;
 
-
 $collaborators = new Collaborators();
-$validations = new Validations();
 
 if (isset($_POST['register'])) {
+    $validations = new Validations();
     $validacaoCpf = $validations->ValidateCpf($_POST['cpf']);
     if ($validacaoCpf == true) {
         return $collaborators->postCollaborators($_POST);
@@ -18,4 +17,11 @@ if (isset($_POST['register'])) {
         $_SESSION['validate_cpf_failed'] = true;
         header('Location: ../pages/areaCollaborators.php');
     }
+}
+if (isset($_POST['edit'])) {
+    return $collaborators->putCollaborators($_POST);
+}
+
+if (isset($_POST['delete'])) {
+    return $collaborators->deleteCollaborators($_POST['id']);
 }

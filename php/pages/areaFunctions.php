@@ -50,7 +50,7 @@ session_start();
                             <div name="SearchAndFilter" class="row" style="justify-content: end; margin-bottom:20px;">
                                 <div class="col-md-5">
                                     <div id="dataTable_filter" class="dataTables_filter">
-                                        <input type="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
+                                        <input type="search" id="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
                                     </div>
                                 </div>
                                 <div class="col-md-1">
@@ -193,7 +193,7 @@ session_start();
         })
     </script>
 
-    <script src="../../js/alests-swal.js"></script>
+     
 
 </body>
 

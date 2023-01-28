@@ -55,7 +55,7 @@ session_start();
 
 </body>
 
-<script src="../../js/alests-swal.js"></script>
+ 
 
 <?php
     if (isset($_SESSION['login_fail'])) {

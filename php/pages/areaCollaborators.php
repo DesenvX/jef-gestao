@@ -60,17 +60,17 @@ session_start();
                                                 <input type="hidden" name="register">
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="text" class="form-control  " name="name" placeholder="Nome" required>
+                                                        <input type="text" class="form-control" name="name" placeholder="Nome" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="tel" class="form-control " name="phone" placeholder="Celular" required>
+                                                        <input type="tel" class="form-control" name="phone" placeholder="Celular" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="text" class="form-control " name="cpf" placeholder="CPF" required>
+                                                        <input type="text" class="form-control" name="cpf" placeholder="CPF" required>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -88,7 +88,7 @@ session_start();
                             <div name="SearchAndFilter" class="row" style="justify-content: end; margin-bottom:20px;">
                                 <div class="col-md-5">
                                     <div id="dataTable_filter" class="dataTables_filter">
-                                        <input type="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
+                                        <input type="search" id="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
                                     </div>
                                 </div>
                                 <div class="col-md-1">
@@ -128,7 +128,6 @@ session_start();
                                     <tbody>
 
                                         <?php
-
                                         require_once '../services/Collaborators.php';
 
                                         use services\Collaborators;
@@ -137,7 +136,6 @@ session_start();
                                         $colaborado_list = $colaboradores->getColaboradores();
 
                                         while ($colaborador = $colaborado_list->fetch_assoc()) {
-
                                         ?>
                                             <tr>
                                                 <th><?= $colaborador['id'] ?></th>
@@ -156,24 +154,24 @@ session_start();
                                                                         <img src="../../img/colaboradores.png" width="100" height="100" style="margin-bottom: 10px;">
                                                                     </div>
                                                                     <div class="text-center">
-                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Categoria</b></h1>
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Colaborador</b></h1>
                                                                     </div>
-                                                                    <form class="user" action="../controllers/CollaboratorsController.php" method="post">
+                                                                    <form class="user" action="../controllers/CollaboratorsController.php" method="POST">
                                                                         <input type="hidden" name="edit" value="true">
                                                                         <input type="hidden" name="id" value="<?= $colaborador['id'] ?>">
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" name="name" class="form-control" value="<?= $colaborador['nome'] ?>" placeholder="Nome">
+                                                                                <input type="text" name="name" class="form-control" value="<?= $colaborador['nome'] ?>" placeholder="Nome" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="tel" name="phone" class="form-control" value="<?= $colaborador['telefone'] ?>" placeholder="Celular">
+                                                                                <input type="tel" name="phone" class="form-control" value="<?= $colaborador['telefone'] ?>" placeholder="Celular" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" name="cpf" class="form-control" value="<?= $colaborador['cpf'] ?>" placeholder="CPF">
+                                                                                <input type="text" name="cpf" class="form-control" value="<?= $colaborador['cpf'] ?>" placeholder="CPF" required>
                                                                             </div>
                                                                         </div>
                                                                         <hr>
@@ -185,7 +183,7 @@ session_start();
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn btn-danger btn-circle btn-sm"  data-toggle="modal" data-target="#modalDeleteCollaborators">
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteCollaborators">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                     <div name="DeleteCollaborators" class="modal fade" id="modalDeleteCollaborators" tabindex="-1" role="dialog" aria-hidden="true">
@@ -212,8 +210,7 @@ session_start();
                                         <?php } ?>
                                     </tbody>
                                 </table>
-
-                            </div>   
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -233,7 +230,6 @@ session_start();
 
     <?php include('../../html/scripts.html'); ?>
 
-    <script src="../../js/alests-swal.js"></script>
 
 </body>
 
@@ -249,15 +245,60 @@ if (isset($_SESSION['register_collaborators_success'])) {
 ?>
 
 <?php
-if (isset($_SESSION['register_fail'])) {
+if (isset($_SESSION['register_collaborators_fail'])) {
 ?>
     <script>
         swalRegisterError();
     </script>
 <?php
-    unset($_SESSION['register_fail']);
+    unset($_SESSION['register_collaborators_fail']);
 }
 ?>
+
+<?php
+if (isset($_SESSION['edit_collaborators_success'])) {
+?>
+    <script>
+        swalEditSuccess();
+    </script>
+<?php
+    unset($_SESSION['edit_collaborators_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_collaborators_fail'])) {
+?>
+    <script>
+        swalEditError();
+    </script>
+<?php
+    unset($_SESSION['edit_collaborators_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_collaborators_success'])) {
+?>
+    <script>
+        swalDeleteSuccess();
+    </script>
+<?php
+    unset($_SESSION['delete_collaborators_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_collaborators_fail'])) {
+?>
+    <script>
+        swalDeleteError();
+    </script>
+<?php
+    unset($_SESSION['delete_collaborators_fail']);
+}
+?>
+
 <?php
 if (isset($_SESSION['validate_cpf_failed'])) {
 ?>

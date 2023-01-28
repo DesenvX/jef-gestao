@@ -213,7 +213,7 @@
         })
     </script>
 
-    <script src="../../js/alests-swal.js"></script>
+     
 
 </body>
 
