@@ -191,7 +191,7 @@ session_start();
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
                                                                     <div class="text-center">
-                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o colaborador <strong> <?= $colaborador['nome'] ?> </strong> ?</span></b></h1>
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o colaborador <br><strong> <?= $colaborador['nome'] ?> </strong> ?</span></b></h1>
                                                                     </div>
                                                                     <form class="user" action="../controllers/CollaboratorsController.php" method="POST">
                                                                         <input type="hidden" name="delete" value="true">

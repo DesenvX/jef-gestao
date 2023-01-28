@@ -44,6 +44,33 @@ session_start();
                                 </span>
                                 <span class="text"> Cadastrar </span>
                             </button>
+                            <div name="RegisterFunctions" class="modal fade" id="modalRegisterFunctions" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <img src="../../img/funcao.png" width="100" height="100" style="margin-bottom: 10px;">
+                                            </div>
+                                            <div class="text-center">
+                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Função</b></h1>
+                                            </div>
+                                            <form class="user" action="../controllers/FunctionsController.php" method="POST">
+                                                <input type="hidden" name="register" value="true">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control  " name="name" placeholder="Nome" required>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
+                                                <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="card-body">
 
@@ -83,91 +110,81 @@ session_start();
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    <?php
+                                        <?php
                                         require_once '../services/Functions.php';
 
                                         use services\Functions;
+
                                         $functions = new Functions();
                                         $funcao_list = $functions->getFunctions();
-                                        
+
+                                        while ($funcao = $funcao_list->fetch_assoc()) {
                                         ?>
-                                        <?php while ($funcao = $funcao_list->fetch_assoc()) { ?>
-                                        <tr>
-                                            <th><?= $funcao['id'] ?></th>
-                                            <td><?= $funcao['nome'] ?></td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFunctions" data-name="Operador">
-                                                    <i class="fas fa-pen"></i>
-                                                </button>
-                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <th><?= $funcao['id'] ?></th>
+                                                <td><?= $funcao['nome'] ?></td>
+                                                <td>
+                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFunctions">
+                                                        <i class="fas fa-pen"></i>
+                                                    </button>
+                                                    <div name="EditFunctions" class="modal fade" id="modalEditFunctions" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <img src="../../img/funcao.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                    </div>
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Função</b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/FunctionsController.php" method="POST">
+                                                                        <input type="hidden" name="edit" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $funcao['id'] ?>">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control" name="name" value="<?= $funcao['nome'] ?>" placeholder="Nome" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteFunctions">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                    <div name="DeleteFunctions" class="modal fade" id="modalDeleteFunctions" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir a categoria <br><strong> <?= $funcao['nome'] ?> </strong> ?</span></b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/FunctionsController.php" method="POST">
+                                                                        <input type="hidden" name="delete" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $funcao['id'] ?>">
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
-
-                             
                         </div>
                     </div>
                 </div>
-
-                <div name="RegisterFunctions" class="modal fade" id="modalRegisterFunctions" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/funcao.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Função</b></h1>
-                                </div>
-                                <form class="user" action="../controllers/FunctionController.php" method="post">
-                                <input type="hidden" name="register" value="true">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " name="name" placeholder="Função" required>                                            
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div name="EditFunctions" class="modal fade" id="modalEditFunctions" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/funcao.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Função</b></h1>
-                                </div>
-                                <form class="user" action="#" method="post">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-
-                                            <input type="text" class="form-control  " id="name" placeholder="Nome">
-
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <?php
@@ -184,17 +201,72 @@ session_start();
 
     <?php include('../../html/scripts.html'); ?>
 
-    <script>
-        $('#modalEditFunctions').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var recipientName = button.data('name')
-            var modal = $(this)
-            modal.find('.modal-body #name').val(recipientName)
-        })
-    </script>
-
-     
-
 </body>
+
+<?php
+if (isset($_SESSION['register_functions_success'])) {
+?>
+    <script>
+        swalRegisterSuccess();
+    </script>
+<?php
+    unset($_SESSION['register_functions_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['register_functions_fail'])) {
+?>
+    <script>
+        swalRegisterError();
+    </script>
+<?php
+    unset($_SESSION['register_functions_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_functions_success'])) {
+?>
+    <script>
+        swalEditSuccess();
+    </script>
+<?php
+    unset($_SESSION['edit_functions_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_functions_fail'])) {
+?>
+    <script>
+        swalEditError();
+    </script>
+<?php
+    unset($_SESSION['edit_functions_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_functions_success'])) {
+?>
+    <script>
+        swalDeleteSuccess();
+    </script>
+<?php
+    unset($_SESSION['delete_functions_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_functions_fail'])) {
+?>
+    <script>
+        swalDeleteError();
+    </script>
+<?php
+    unset($_SESSION['delete_functions_fail']);
+}
+?>
 
 </html>

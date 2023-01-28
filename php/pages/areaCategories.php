@@ -162,7 +162,7 @@ session_start();
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
                                                                     <div class="text-center">
-                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir a categoria <strong> <?= $categoria['nome'] ?> </strong> ?</span></b></h1>
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir a categoria <br><strong> <?= $categoria['nome'] ?> </strong> ?</span></b></h1>
                                                                     </div>
                                                                     <form class="user" action="../controllers/CategoriesController.php" method="POST">
                                                                         <input type="hidden" name="delete" value="true">
@@ -202,8 +202,6 @@ session_start();
     <?php include('../../html/scripts.html'); ?>
 
 </body>
-
-
 
 <?php
 if (isset($_SESSION['register_categories_success'])) {
