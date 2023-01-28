@@ -1,9 +1,9 @@
 <?php
 
 namespace services;
-
 class Categories
 {
+
     public function postCategories($request)
     {
         require 'Conexao.php';
@@ -23,5 +23,14 @@ class Categories
             $_SESSION['register_fail'] = true;
             header('Location: ../pages/areaCategories.php');
         }
+    }
+
+    public function getCategories()
+    {
+        require 'Conexao.php';
+
+        $categories_query = "SELECT * FROM categorias";
+        $categories_response = $mysqli->query($categories_query);
+        return $categories_response;
     }
 }

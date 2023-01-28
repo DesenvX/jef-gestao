@@ -83,18 +83,28 @@ session_start();
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <th>1</th>
-                                            <td>Condimentos</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCategories" data-name="Condimentos">
-                                                    <i class="fas fa-pen"></i>
-                                                </button>
-                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        <?php
+                                        require_once '../services/Categories.php';
+
+                                        use services\Categories;
+                                        $categories = new Categories();
+                                        $categoria_list = $categories->getCategories();
+                                        
+                                        ?>
+                                        <?php while ($categoria = $categoria_list->fetch_assoc()) { ?>
+                                            <tr>
+                                                <th> <?= $categoria['id'] ?> </th>
+                                                <td> <?= $categoria['nome'] ?> </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCategories" data-name="Condimentos">
+                                                        <i class="fas fa-pen"></i>
+                                                    </button>
+                                                    <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
