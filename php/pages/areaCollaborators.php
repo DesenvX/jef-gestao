@@ -1,11 +1,13 @@
 <?php
-
-$collaborators = "SELECT * FROM collaborators";
-$collaborators_query = $mysqli->query($collaborators) or die($mysqli->error);
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
+<?php
+session_start();
+?>
+
 
 <head>
 
@@ -89,9 +91,10 @@ $collaborators_query = $mysqli->query($collaborators) or die($mysqli->error);
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
-                                    <tbody> 
+                                    <tbody>
                                         <tr>
-                                            <th>1</th>
+                                            <?php while() ?>
+                                            <th><?php ?></th>
                                             <td>Condimentos</td>
                                             <td>(99) 9 9999-9999</td>
                                             <td>000.000.000-00</td>
@@ -139,20 +142,21 @@ $collaborators_query = $mysqli->query($collaborators) or die($mysqli->error);
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Colaboradores</b></h1>
                                 </div>
-                                <form class="user" action="../controllers/CollaboratorsController.php" method="post">
+                                <form class="user" action="../controllers/CollaboratorsController.php" method="POST">
+                                    <input type="hidden" name="register">
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="name" placeholder="Nome">
+                                            <input type="text"  class="form-control  " name="name" placeholder="Nome" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="phone" placeholder="Celular">
+                                            <input type="tel" class="form-control " name="phone" placeholder="Celular" required >
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="cpf" placeholder="CPF">
+                                            <input type="text" class="form-control " name="cpf" placeholder="CPF" required>
                                         </div>
                                     </div>
                                     <hr>
@@ -231,5 +235,37 @@ $collaborators_query = $mysqli->query($collaborators) or die($mysqli->error);
     <script src="../../js/alests-swal.js"></script>
 
 </body>
+
+    <?php
+    if (isset($_SESSION['register_success'])) {
+    ?>
+        <script>
+            swalRegisterSuccess();
+        </script>
+    <?php
+        unset($_SESSION['register_success']);
+    }
+    ?>
+
+    <?php
+    if (isset($_SESSION['register_fail'])) {
+    ?>
+        <script>
+            swalRegisterError();
+        </script>
+    <?php
+        unset($_SESSION['register_fail']);
+    }
+    ?>
+    <?php
+    if (isset($_SESSION['validate_cpf_failed'])) {
+    ?>
+        <script>
+            swalValidateCpfError();
+        </script>
+    <?php
+        unset($_SESSION['validate_cpf_failed']);
+    }
+    ?>
 
 </html>

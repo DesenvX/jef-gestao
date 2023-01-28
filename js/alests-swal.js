@@ -88,3 +88,12 @@ function swalDelete() {
         }
     })
 }
+function swalValidateCpfError() {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'CPF inválidado!',
+        showConfirmButton: false,
+        timer: 3000
+    })
+}

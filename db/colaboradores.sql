@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 24-Jan-2023 às 18:36
+-- Tempo de geração: 28-Jan-2023 às 01:04
 -- Versão do servidor: 8.0.17
 -- versão do PHP: 7.3.10
 
@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `collaborators`
+-- Estrutura da tabela `colaboradores`
 --
 
-CREATE TABLE `collaborators` (
+CREATE TABLE `colaboradores` (
   `id` int(11) NOT NULL,
   `name` varchar(150) NOT NULL,
   `phone` varchar(16) NOT NULL,
@@ -40,9 +40,9 @@ CREATE TABLE `collaborators` (
 --
 
 --
--- Índices para tabela `collaborators`
+-- Índices para tabela `colaboradores`
 --
-ALTER TABLE `collaborators`
+ALTER TABLE `colaboradores`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -50,9 +50,9 @@ ALTER TABLE `collaborators`
 --
 
 --
--- AUTO_INCREMENT de tabela `collaborators`
+-- AUTO_INCREMENT de tabela `colaboradores`
 --
-ALTER TABLE `collaborators`
+ALTER TABLE `colaboradores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 

@@ -2,19 +2,28 @@
 
 namespace services;
 
-class collaborators
-{
 
+class Collaborators
+{
     public function postCollaborators($request)
     {
-       require 'conexão.php';
+        require 'Conexao.php';
 
-       $name = $request['name'];
-       $phone = $request['phone'];
-       $cpf = $request['cpf'];
+        $name = $mysqli->escape_string($request['name']);
+        $phone = $mysqli->escape_string($request['phone']);
+        $cpf = $mysqli->escape_string($request['cpf']);
 
-       $collaborators_query = "INSERT INTO collaborators(name,phone,cpf) VALUES($name, $phone, $cpf)";
-       $collaborators_response = $connection->query($collaborators_query);
+        $collaborators_query = "INSERT INTO colaboradores (nome,telefone,cpf) VALUES('$name', '$phone', '$cpf')";
+        $collaborators_response = $mysqli->query($collaborators_query);
 
+        if ($collaborators_response == true) {
+            session_start();
+            $_SESSION['register_success'] = true;
+            header('Location: ../pages/areaCollaborators.php');
+        } else {
+            session_start();
+            $_SESSION['register_fail'] = true;
+            header('Location: ../pages/areaCollaborators.php');
+        }
     }
 }
