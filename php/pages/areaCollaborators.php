@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -148,7 +145,7 @@ session_start();
                                                 <td><?= $colaborador['telefone'] ?></td>
                                                 <td><?= $colaborador['cpf'] ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCollaborators">
+                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCollaborators">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
                                                     <div name="EditCollaborators" class="modal fade" id="modalEditCollaborators" tabindex="-1" role="dialog" aria-hidden="true">
@@ -187,26 +184,39 @@ session_start();
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
+
+                                                    <button class="btn btn-danger btn-circle btn-sm"  data-toggle="modal" data-target="#modalDeleteCollaborators">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
+                                                    <div name="DeleteCollaborators" class="modal fade" id="modalDeleteCollaborators" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o colaborador <strong> <?= $colaborador['nome'] ?> </strong> ?</span></b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/CollaboratorsController.php" method="POST">
+                                                                        <input type="hidden" name="delete" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $colaborador['id'] ?>">
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
 
-                            </div>
-
-                             
+                            </div>   
                         </div>
                     </div>
                 </div>
-
-
-
-
-
             </div>
 
             <?php
@@ -222,19 +232,6 @@ session_start();
     </a>
 
     <?php include('../../html/scripts.html'); ?>
-
-    <script>
-        $('#modalEditCollaborators').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var recipientName = button.data('name')
-            var recipientphone = button.data('phone')
-            var recipientcpf = button.data('cpf')
-            var modal = $(this)
-            modal.find('.modal-body #name').val(recipientName)
-            modal.find('.modal-body #phone').val(recipientphone)
-            modal.find('.modal-body #cpf').val(recipientcpf)
-        })
-    </script>
 
     <script src="../../js/alests-swal.js"></script>
 
