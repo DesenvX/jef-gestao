@@ -90,8 +90,8 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-3 mb-3 mb-sm-0">
-                                        <label for="retreat">Retiro</label>
-                                        <select class="form-control" id="retreat" placeholder="Retiro">
+                                        <label for="retreats">Retiro</label>
+                                        <select class="form-control" id="retreats" placeholder="Retiro">
                                             <option value=""> Retiro </option>
                                             <option value="1"> Nazare </option>
                                             <option value="2"> Vale da Serra </option>

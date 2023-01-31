@@ -2,18 +2,18 @@
 
 namespace services;
 
-class Retreat
+class Retreats
 {
-    public function getRetreat()
+    public function getRetreats()
     {
         require 'Conexao.php';
 
-        $retreat_query = "SELECT * FROM retiros";
-        $retreat_response = $mysqli->query($retreat_query);
-        return $retreat_response;
+        $retreats_query = "SELECT * FROM retiros";
+        $retreats_response = $mysqli->query($retreats_query);
+        return $retreats_response;
     }
 
-    public function postRetreat($request)
+    public function postRetreats($request)
     {
         require 'Conexao.php';
 
@@ -24,16 +24,16 @@ class Retreat
 
         if ($create_response == true) {
             session_start();
-            $_SESSION['register_retreat_success'] = true;
-            header('Location: ../pages/areaRetreat.php');
+            $_SESSION['register_retreats_success'] = true;
+            header('Location: ../pages/areaRetreats.php');
         } else {
             session_start();
-            $_SESSION['register_retreat_fail'] = true;
-            header('Location: ../pages/areaRetreat.php');
+            $_SESSION['register_retreats_fail'] = true;
+            header('Location: ../pages/areaRetreats.php');
         }
     }
 
-    public function putRetreat($request)
+    public function putRetreats($request)
     {
         require 'Conexao.php';
 
@@ -45,16 +45,16 @@ class Retreat
 
         if ($update_response == true) {
             session_start();
-            $_SESSION['edit_retreat_success'] = true;
-            header('Location: ../pages/areaRetreat.php');
+            $_SESSION['edit_retreats_success'] = true;
+            header('Location: ../pages/areaRetreats.php');
         } else {
             session_start();
-            $_SESSION['edit_retreat_fail'] = true;
-            header('Location: ../pages/areaRetreat.php');
+            $_SESSION['edit_retreats_fail'] = true;
+            header('Location: ../pages/areaRetreats.php');
         }
     }
 
-    public function deleteRetreat($id)
+    public function deleteRetreats($id)
     {
         require 'Conexao.php';
 
@@ -63,12 +63,12 @@ class Retreat
 
         if ($delete_response == true) {
             session_start();
-            $_SESSION['delete_retreat_success'] = true;
-            header('Location: ../pages/areaRetreat.php');
+            $_SESSION['delete_retreats_success'] = true;
+            header('Location: ../pages/areaRetreats.php');
         } else {
             session_start();
-            $_SESSION['delete_retreat_fail'] = true;
-            header('Location: ../pages/areaRetreat.php');
+            $_SESSION['delete_retreats_fail'] = true;
+            header('Location: ../pages/areaRetreats.php');
         }
     }
 }

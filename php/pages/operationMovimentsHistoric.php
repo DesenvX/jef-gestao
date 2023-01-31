@@ -89,7 +89,7 @@
                                             <td style="text-align: center;">Nazaré</td>
                                             <td style="text-align: center;">F12</td>
                                             <td style="text-align: center;">
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditHistoric" data-date="21/01/2023" data-start-time="08:00" data-lunch="12:00" data-retorn="14:00" data-end-time="18:00" data-operator="Pedro Henrique" data-machine="Bm - 135" data-retreat="Nazaré" data-pasture="F12">
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditHistoric" data-date="21/01/2023" data-start-time="08:00" data-lunch="12:00" data-retorn="14:00" data-end-time="18:00" data-operator="Pedro Henrique" data-machine="Bm - 135" data-retreats="Nazaré" data-pasture="F12">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
@@ -155,7 +155,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="retreat" placeholder="Retiro">
+                                            <input type="text" class="form-control  " id="retreats" placeholder="Retiro">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -198,7 +198,7 @@
             var recipientEndTime = button.data('end-time')
             var recipientOperator = button.data('operator')
             var recipientMachine = button.data('machine')
-            var recipientRetreat = button.data('retreat')
+            var recipientRetreats = button.data('retreats')
             var recipientPasture = button.data('pasture')
             var modal = $(this)
             modal.find('.modal-body #date').val(recipientDate)
@@ -208,7 +208,7 @@
             modal.find('.modal-body #end-time').val(recipientEndTime)
             modal.find('.modal-body #operator').val(recipientOperator)
             modal.find('.modal-body #machine').val(recipientMachine)
-            modal.find('.modal-body #retreat').val(recipientRetreat)
+            modal.find('.modal-body #retreats').val(recipientRetreats)
             modal.find('.modal-body #pasture').val(recipientPasture)
         })
     </script>

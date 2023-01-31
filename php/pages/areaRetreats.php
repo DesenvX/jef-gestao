@@ -38,13 +38,13 @@ session_start();
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterRetreat">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterRetreats">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
                                 <span class="text"> Cadastrar </span>
                             </button>
-                            <div name="RegisterRetreat" class="modal fade" id="modalRegisterRetreat" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div name="RegisterRetreats" class="modal fade" id="modalRegisterRetreats" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-sm" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
@@ -54,7 +54,7 @@ session_start();
                                             <div class="text-center">
                                                 <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Retiros</b></h1>
                                             </div>
-                                            <form class="user" action="../controllers/RetreatController.php" method="POST">
+                                            <form class="user" action="../controllers/RetreatsController.php" method="POST">
                                                 <input type="hidden" name="register" value="true">
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
@@ -99,23 +99,23 @@ session_start();
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        require_once '../services/Retreat.php';
+                                        require_once '../services/Retreats.php';
 
-                                        use services\Retreat;
+                                        use services\Retreats;
 
-                                        $retreat = new Retreat();
-                                        $retreat_list = $retreat->getRetreat();
+                                        $retreats = new Retreats();
+                                        $retreats_list = $retreats->getRetreats();
 
-                                        while ($retiro = $retreat_list->fetch_assoc()) {
+                                        while ($retiro = $retreats_list->fetch_assoc()) {
                                         ?>
                                             <tr>
                                                 <th><?= $retiro['id'] ?></th>
                                                 <td><?= $retiro['nome'] ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditRetreat">
+                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditRetreats">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
-                                                    <div name="EditRetreat" class="modal fade" id="modalEditRetreat" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="EditRetreats" class="modal fade" id="modalEditRetreats" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
@@ -125,7 +125,7 @@ session_start();
                                                                     <div class="text-center">
                                                                         <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Serviço</b></h1>
                                                                     </div>
-                                                                    <form class="user" action="../controllers/RetreatController.php" method="POST">
+                                                                    <form class="user" action="../controllers/RetreatsController.php" method="POST">
                                                                         <input type="hidden" name="edit" value="true">
                                                                         <input type="hidden" name="id" value="<?= $retiro['id'] ?>">
                                                                         <div class="form-group row">
@@ -142,17 +142,17 @@ session_start();
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteRetreat">
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteRetreats">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
-                                                    <div name="DeleteRetreat" class="modal fade" id="modalDeleteRetreat" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="DeleteRetreats" class="modal fade" id="modalDeleteRetreats" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
                                                                     <div class="text-center">
                                                                         <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o retiro <br><strong><?= $retiro['nome'] ?></strong> ?</span></b></h1>
                                                                     </div>
-                                                                    <form class="user" action="../controllers/RetreatController.php" method="POST">
+                                                                    <form class="user" action="../controllers/RetreatsController.php" method="POST">
                                                                         <input type="hidden" name="delete" value="true">
                                                                         <input type="hidden" name="id" value="<?= $retiro['id'] ?>">
                                                                         <hr>
@@ -198,68 +198,68 @@ session_start();
 </body>
 
 <?php
-if (isset($_SESSION['register_retreat_success'])) {
+if (isset($_SESSION['register_retreats_success'])) {
 ?>
     <script>
         swalRegisterSuccess();
     </script>
 <?php
-    unset($_SESSION['register_retreat_success']);
+    unset($_SESSION['register_retreats_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['register_retreat_fail'])) {
+if (isset($_SESSION['register_retreats_fail'])) {
 ?>
     <script>
         swalRegisterError();
     </script>
 <?php
-    unset($_SESSION['register_retreat_fail']);
+    unset($_SESSION['register_retreats_fail']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['edit_retreat_success'])) {
+if (isset($_SESSION['edit_retreats_success'])) {
 ?>
     <script>
         swalEditSuccess();
     </script>
 <?php
-    unset($_SESSION['edit_retreat_success']);
+    unset($_SESSION['edit_retreats_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['edit_retreat_fail'])) {
+if (isset($_SESSION['edit_retreats_fail'])) {
 ?>
     <script>
         swalEditError();
     </script>
 <?php
-    unset($_SESSION['edit_retreat_fail']);
+    unset($_SESSION['edit_retreats_fail']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['delete_retreat_success'])) {
+if (isset($_SESSION['delete_retreats_success'])) {
 ?>
     <script>
         swalDeleteSuccess();
     </script>
 <?php
-    unset($_SESSION['delete_retreat_success']);
+    unset($_SESSION['delete_retreats_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['delete_retreat_fail'])) {
+if (isset($_SESSION['delete_retreats_fail'])) {
 ?>
     <script>
         swalDeleteError();
     </script>
 <?php
-    unset($_SESSION['delete_retreat_fail']);
+    unset($_SESSION['delete_retreats_fail']);
 }
 ?>
 

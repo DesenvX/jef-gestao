@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+<?php
+session_start();
+?>
+
+
 <head>
 
     <title> JEF Gestão </title>
@@ -40,6 +45,56 @@
                                 </span>
                                 <span class="text"> Cadastrar </span>
                             </button>
+                            <div name="RegisterServices" class="modal fade" id="modalRegisterServices" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <img src="../../img/pasto.png" width="100" height="100" style="margin-bottom: 10px;">
+                                            </div>
+                                            <div class="text-center">
+                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Pasto</b></h1>
+                                            </div>
+                                            <form class="user" action="../controllers/PasturesController.php" method="POST">
+                                                <input type="hidden" name="register" value="true">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control" name="name" placeholder="Nome" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <select class="form-control" name="retreat" required>
+                                                            <option value="" selected> Retiro </option>
+                                                            <?php
+                                                            require_once '../services/Retreats.php';
+
+                                                            use services\Retreats;
+
+                                                            $retreats = new Retreats();
+                                                            $retreats_list = $retreats->getRetreats();
+
+                                                            while ($retiros = $retreats_list->fetch_assoc()) { ?>
+                                                                <option value="<? $retiros['id'] ?>"> <?= $retiros['nome'] ?> </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control" name="farm" placeholder="Fazenda" required>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
+                                                <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="card-body">
 
@@ -49,15 +104,13 @@
                                         <input type="search" id="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
                                     </div>
                                 </div>
-                                 
-
                             </div>
-
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
+                                            <th>Nome</th>
                                             <th>Retiro</th>
                                             <th>Fazenda</th>
                                             <th>Opções</th>
@@ -66,101 +119,107 @@
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
+                                            <th>Nome</th>
                                             <th>Retiro</th>
                                             <th>Fazenda</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <th>1</th>
-                                            <td>10</td>
-                                            <td>Santa Tereza</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditPastures" data-retreat="10" data-farm="Santa Tereza">
-                                                    <i class="fas fa-pen"></i>
-                                                </button>
-                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        <?php
+                                        require_once '../services/Pastures.php';
+
+                                        use services\Pastures;
+
+                                        $pastures = new Pastures();
+                                        $pastures_list = $pastures->getPastures();
+
+                                        while ($pasto = $pastures_list->fetch_assoc()) {
+                                        ?>
+                                            <tr>
+                                                <th><?= $pasto['id'] ?></th>
+                                                <td><?= $pasto['nome'] ?></td>
+                                                <td><?= $pasto['retiro'] ?></td>
+                                                <td><?= $pasto['fazenda'] ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditPastures">
+                                                        <i class="fas fa-pen"></i>
+                                                    </button>
+                                                    <div name="EditServices" class="modal fade" id="modalEditPastures" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <img src="../../img/pasto.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                    </div>
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Pasto</b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/PasturesController.php" method="POST">
+                                                                        <input type="hidden" name="edit" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $pasto['id'] ?>">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control" name="name" value="<?= $pasto['nome'] ?>" placeholder="Nome" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <select class="form-control" name="retreat" value="<?= $pasto['retiro'] ?>" required>
+                                                                                    <option value=""> Retiro </option>
+                                                                                    <?php
+                                                                                    $retreats = new Retreats();
+                                                                                    $retreats_list = $retreats->getRetreats();
+                                                                                    while ($retiros = $retreats_list->fetch_assoc()) { ?>
+                                                                                        <option value="<?= $retiros['id'] ?>"> <?= $retiros['nome'] ?> </option>
+                                                                                    <?php } ?>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control" name="farm" value="<?= $pasto['fazenda'] ?>" placeholder="Fazenda" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeletePastures">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                    <div name="DeletePastures" class="modal fade" id="modalDeletePastures" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o pasto <br><strong><?= $pasto['nome'] ?></strong> ?</span></b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/PasturesController.php" method="POST">
+                                                                        <input type="hidden" name="delete" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $pasto['id'] ?>">
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
-
-                             
                         </div>
                     </div>
                 </div>
-
-                <div name="RegisterServices" class="modal fade" id="modalRegisterServices" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/pasto.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Pasto</b></h1>
-                                </div>
-                                <form class="user" action="#" method="post">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <select class="form-control" name="" id="">
-                                                <option value=""> Retiro </option>
-                                                <option value=""></option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="farm" placeholder="Fazenda">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div name="EditServices" class="modal fade" id="modalEditPastures" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/pasto.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Pasto</b></h1>
-                                </div>
-                                <form class="user" action="#" method="post">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <select class="form-control" name="" id="retreat">
-                                                <option value=""> Retiro </option>
-                                                <option value=""></option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="farm" placeholder="Fazenda">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <?php
@@ -177,19 +236,72 @@
 
     <?php include('../../html/scripts.html'); ?>
 
-    <script>
-        $('#modalEditPastures').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var recipientRetreat = button.data('retreat')
-            var recipientfarm = button.data('farm')
-            var modal = $(this)
-            modal.find('.modal-body #retreat').val(recipientRetreat)
-            modal.find('.modal-body #farm').val(recipientfarm)
-        })
-    </script>
-
-     
-
 </body>
+
+<?php
+if (isset($_SESSION['register_pastures_success'])) {
+?>
+    <script>
+        swalRegisterSuccess();
+    </script>
+<?php
+    unset($_SESSION['register_pastures_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['register_pastures_fail'])) {
+?>
+    <script>
+        swalRegisterError();
+    </script>
+<?php
+    unset($_SESSION['register_pastures_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_pastures_success'])) {
+?>
+    <script>
+        swalEditSuccess();
+    </script>
+<?php
+    unset($_SESSION['edit_pastures_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_pastures_fail'])) {
+?>
+    <script>
+        swalEditError();
+    </script>
+<?php
+    unset($_SESSION['edit_pastures_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_pastures_success'])) {
+?>
+    <script>
+        swalDeleteSuccess();
+    </script>
+<?php
+    unset($_SESSION['delete_pastures_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_pastures_fail'])) {
+?>
+    <script>
+        swalDeleteError();
+    </script>
+<?php
+    unset($_SESSION['delete_pastures_fail']);
+}
+?>
 
 </html>
