@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+<?php
+session_start();
+?>
+
+
 <head>
 
     <title> JEF Gestão </title>
@@ -40,6 +45,56 @@
                                 </span>
                                 <span class="text"> Cadastrar </span>
                             </button>
+
+                            <div name="RegisterProduct" class="modal fade" id="modalRegisterProduct" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <img src="../../img/contato.png" width="100" height="100" style="margin-bottom: 10px;">
+                                            </div>
+                                            <div class="text-center">
+                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Cadastrar Contato </b></h1>
+                                            </div>
+                                            <form class="user" action="../controllers/ProductController.php" method="post">
+                                                <input type="hidden" name="register">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control  " name="nameProduct" placeholder="Nome">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control  " name="quantityProduct" placeholder="Quantidade">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <select class="form-control" name="category" placeholder="Categoria">
+                                                            <option value="">Categorias</option>
+                                                            <option value="1"> Alimentos </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control  " name="maximum" placeholder="Capacidade máxima">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="tel" class="form-control  " name="minimum" placeholder="Capacidade mínimo">
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
+                                                <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
 
@@ -49,7 +104,7 @@
                                         <input type="search" id="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
                                     </div>
                                 </div>
-                                 
+
 
                             </div>
 
@@ -79,127 +134,96 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <th>1</th>
-                                            <td>Ração</td>
-                                            <td>10</td>
-                                            <td>Alimentos</td>
-                                            <td>1000</td>
-                                            <td>250</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditProduct" data-name-product="Ração" data-quantity-product="10" data-maximum="1000" data-minimum="250">
-                                                    <i class="fas fa-pen"></i>
-                                                </button>
-                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        <?php
+                                        require_once '../services/Product.php';
+
+                                        use services\Product;
+
+                                        $produtos = new Product();
+                                        $produtos_list = $produtos->getProduct();
+
+                                        while ($produto = $produtos_list->fetch_assoc()) {
+                                        ?>
+                                            <tr>
+                                                <th><?php echo $produto['id'] ?></th>
+                                                <td><?php echo $produto['nome'] ?></td>
+                                                <td><?php echo $produto['quantidade'] ?></td>
+                                                <td><?php echo $produto['categorias'] ?></td>
+                                                <td><?php echo $produto['maxima'] ?></td>
+                                                <td><?php echo $produto['minima'] ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditProduct">
+                                                        <i class="fas fa-pen"></i>
+                                                    </button>
+
+                                                    <div name="EditProduct" class="modal fade" id="modalEditProduct" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <img src="../../img/contato.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                    </div>
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Contato </b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/ProductController.php" method="post">
+                                                                        <input type="hidden" name="edit" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $produto['id'] ?>">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control  " id="name-product" value="<?= $produto['nome'] ?>" placeholder="Nome">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control " id="quantity-product" value="<?= $produto['quantidade'] ?>" placeholder="Quantidade">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <select class="form-control  " id="category" placeholder="Categoria">
+                                                                                    <option class="form-control  " value="1"> Alimentos </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control  " id="maximum" value="<?= $produto['maxima'] ?>" placeholder="Capacidade máxima">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="tel" class="form-control  " id="minimum" value="<?= $produto['minima'] ?>" placeholder="Capacidade mínimo">
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
 
                             </div>
 
-                             
+
                         </div>
                     </div>
                 </div>
 
-                <div name="RegisterProduct" class="modal fade" id="modalRegisterProduct" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/contato.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Cadastrar Contato </b></h1>
-                                </div>
-                                <form class="user" action="#" method="post">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="name-product" placeholder="Nome">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="quantity-product" placeholder="Quantidade">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <select class="form-control" id="category" placeholder="Categoria">
-                                                <option value="">Categorias</option>
-                                                <option value="1"> Alimentos </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="maximum" placeholder="Capacidade máxima">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control  " id="minimum" placeholder="Capacidade mínimo">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div name="EditProduct" class="modal fade" id="modalEditProduct" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/contato.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Contato </b></h1>
-                                </div>
-                                <form class="user" action="#" method="post">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="name-product" placeholder="Nome">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control " id="quantity-product" placeholder="Quantidade">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <select class="form-control  " id="category" placeholder="Categoria">
-                                                <option class="form-control  " value="1"> Alimentos </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="maximum" placeholder="Capacidade máxima">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control  " id="minimum" placeholder="Capacidade mínimo">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
 
@@ -232,7 +256,7 @@
         })
     </script>
 
-     
+
 
 </body>
 
