@@ -137,6 +137,7 @@ session_start();
                                                     <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCollaborators">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
+
                                                     <div name="EditCollaborators" class="modal fade" id="modalEditCollaborators" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
@@ -147,7 +148,7 @@ session_start();
                                                                     <div class="text-center">
                                                                         <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Colaborador</b></h1>
                                                                     </div>
-                                                                    <form class="user" action="../controllers/CollaboratorsController.php" method="POST">
+                                                                    <form class="user" action="../controllers/CollaboratorsController.php" method="post">
                                                                         <input type="hidden" name="edit" value="true">
                                                                         <input type="hidden" name="id" value="<?= $colaborador['id'] ?>">
                                                                         <div class="form-group row">
@@ -177,6 +178,7 @@ session_start();
                                                     <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteCollaborators">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
+
                                                     <div name="DeleteCollaborators" class="modal fade" id="modalDeleteCollaborators" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
