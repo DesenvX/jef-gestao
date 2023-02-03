@@ -112,10 +112,10 @@ session_start();
                                                 <th><?= $retiro['id'] ?></th>
                                                 <td><?= $retiro['nome'] ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditRetreats">
+                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditRetreats_<?=$retiro['id']?>">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
-                                                    <div name="EditRetreats" class="modal fade" id="modalEditRetreats" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="EditRetreats" class="modal fade" id="modalEditRetreats_<?=$retiro['id']?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
