@@ -4,6 +4,11 @@ namespace services;
 
 class Services
 {
+    public function getServicesForSomething($id)
+    {
+        
+    }
+
     public function getServices()
     {
         require 'Conexao.php';

@@ -124,7 +124,7 @@ session_start();
                                         use services\Collaborators;
 
                                         $colaboradores = new Collaborators();
-                                        $colaborado_list = $colaboradores->getColaboradores();
+                                        $colaborado_list = $colaboradores->getCollaborators();
 
                                         while ($colaborador = $colaborado_list->fetch_assoc()) {
                                         ?>

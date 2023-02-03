@@ -9,13 +9,13 @@ $pastures = new Pastures();
 $retreats = new Retreats();
 
 if (isset($_POST['register'])) {
-    $retreat = $retreats->getRetreatByPasture($_POST['retreat']);
+    $retreat = $retreats->getRetreatForSomething($_POST['retreat']);
     $_RETREAT = $retreat;
     return $pastures->postPastures($_POST, $_RETREAT);
 }
 
 if (isset($_POST['edit'])) {
-    $retreat = $retreats->getRetreatByPasture($_POST['retreat']);
+    $retreat = $retreats->getRetreatForSomething($_POST['retreat']);
     $_RETREAT = $retreat;
     return $pastures->putPastures($_POST, $_RETREAT);
 }
