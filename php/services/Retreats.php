@@ -13,6 +13,17 @@ class Retreats
         return $retreats_response;
     }
 
+    public function getRetreatByPasture($id)
+    {
+        require 'Conexao.php';
+
+        $retreats_query = "SELECT * FROM retiros WHERE id = $id";
+        $retreats_response = $mysqli->query($retreats_query);
+        $retreats_result = $retreats_response->fetch_assoc();
+
+        return $retreats_result;
+    }
+
     public function postRetreats($request)
     {
         require 'Conexao.php';

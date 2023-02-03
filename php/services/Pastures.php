@@ -13,16 +13,16 @@ class Pastures
         return $pastures_response;
     }
 
-    public function postPastures($request)
+    public function postPastures($request, $retreat)
     {
         require 'Conexao.php';
 
+        $retreat_id = $mysqli->escape_string($retreat['id']);
+        $retreat_nome = $mysqli->escape_string($retreat['nome']);
         $name = $mysqli->escape_string($request['name']);
-        $id_retreat = $mysqli->escape_string($request['id_retreat']);
-        $retreat = $mysqli->escape_string($request['retreat']);
         $farm = $mysqli->escape_string($request['farm']);
 
-        $create_query = "INSERT INTO pastos (nome, id_retiro, retiro, fazenda) VALUES ('$name', '$id_retreat', '$retreat', '$farm')";
+        $create_query = "INSERT INTO pastos (nome, id_retiro, retiro, fazenda) VALUES ('$name', '$retreat_id', '$retreat_nome', '$farm')";
         $create_response = $mysqli->query($create_query);
 
         if ($create_response == true) {
@@ -36,17 +36,17 @@ class Pastures
         }
     }
 
-    public function putPastures($request)
+    public function putPastures($request, $retreat)
     {
         require 'Conexao.php';
 
+        $retreat_id = $retreat['id'];
+        $retreat_nome = $retreat['nome'];
         $id = $mysqli->escape_string($request['id']);
         $name = $mysqli->escape_string($request['name']);
-        $id_retreat = $mysqli->escape_string($request['id_retreat']);
-        $retreat = $mysqli->escape_string($request['retreat']);
         $farm = $mysqli->escape_string($request['farm']);
-
-        $update_query = "UPDATE pastos SET nome = '$name', 'id_retiro' = '$id_retreat', retiro = '$retreat', fazenda = '$farm' WHERE id = $id";
+        
+        $update_query = "UPDATE pastos SET nome = '$name', id_retiro = '$retreat_id', retiro = '$retreat_nome', fazenda = '$farm' WHERE id = $id";
         $update_response = $mysqli->query($update_query);
 
         if ($update_response == true) {

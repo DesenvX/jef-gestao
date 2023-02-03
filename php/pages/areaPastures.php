@@ -75,8 +75,10 @@ session_start();
                                                             $retreats_list = $retreats->getRetreats();
 
                                                             while ($retiros = $retreats_list->fetch_assoc()) { ?>
-                                                                <option value="<? $retiros['id'] ?>"> <?= $retiros['nome'] ?> </option>
+                                                                <option value="<?= $retiros['id'] ?>"> <?= $retiros['nome'] ?> </option>
                                                             <?php } ?>
+
+                                                            
                                                         </select>
                                                     </div>
                                                 </div>
@@ -142,10 +144,10 @@ session_start();
                                                 <td><?= $pasto['retiro'] ?></td>
                                                 <td><?= $pasto['fazenda'] ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditPastures">
+                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditPastures_<?= $pasto['id'] ?>">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
-                                                    <div name="EditServices" class="modal fade" id="modalEditPastures" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="EditServices" class="modal fade" id="modalEditPastures_<?= $pasto['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
@@ -165,13 +167,12 @@ session_start();
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <select class="form-control" name="retreat" value="<?= $pasto['retiro'] ?>" required>
-                                                                                    <option value=""> Retiro </option>
+                                                                                <select class="form-control" name="retreat" required>
                                                                                     <?php
                                                                                     $retreats = new Retreats();
                                                                                     $retreats_list = $retreats->getRetreats();
                                                                                     while ($retiros = $retreats_list->fetch_assoc()) { ?>
-                                                                                        <option value="<?= $retiros['id'] ?>"> <?= $retiros['nome'] ?> </option>
+                                                                                        <option value="<?= $retiros['id'] ?>" <?php if($pasto['id_retiro'] == $retiros['id'] ){?> selected <?php } ?>><?= $retiros['nome'] ?></option>
                                                                                     <?php } ?>
                                                                                 </select>
                                                                             </div>
@@ -190,10 +191,10 @@ session_start();
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeletePastures">
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeletePastures_<?= $pasto['id'] ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
-                                                    <div name="DeletePastures" class="modal fade" id="modalDeletePastures" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="DeletePastures" class="modal fade" id="modalDeletePastures_<?= $pasto['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">

@@ -1,17 +1,23 @@
 <?php
 require_once '../services/Pastures.php';
+require_once '../services/Retreats.php';
 
 use services\Pastures;
+use services\Retreats;
 
 $pastures = new Pastures();
+$retreats = new Retreats();
 
 if (isset($_POST['register'])) {
-    
-    return $pastures->postPastures($_POST);
+    $retreat = $retreats->getRetreatByPasture($_POST['retreat']);
+    $_RETREAT = $retreat;
+    return $pastures->postPastures($_POST, $_RETREAT);
 }
 
 if (isset($_POST['edit'])) {
-    return $pastures->putPastures($_POST);
+    $retreat = $retreats->getRetreatByPasture($_POST['retreat']);
+    $_RETREAT = $retreat;
+    return $pastures->putPastures($_POST, $_RETREAT);
 }
 
 if (isset($_POST['delete'])) {
