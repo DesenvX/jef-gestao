@@ -145,18 +145,18 @@ session_start();
                                         while ($produto = $produtos_list->fetch_assoc()) {
                                         ?>
                                             <tr>
-                                                <th><?php echo $produto['id'] ?></th>
-                                                <td><?php echo $produto['nome'] ?></td>
-                                                <td><?php echo $produto['quantidade'] ?></td>
-                                                <td><?php echo $produto['categorias'] ?></td>
-                                                <td><?php echo $produto['maxima'] ?></td>
-                                                <td><?php echo $produto['minima'] ?></td>
+                                                <th><?= $produto['id'] ?></th>
+                                                <td><?= $produto['nome'] ?></td>
+                                                <td><?= $produto['quantidade'] ?></td>
+                                                <td><?= $produto['categorias'] ?></td>
+                                                <td><?= $produto['maxima'] ?></td>
+                                                <td><?= $produto['minima'] ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditProduct">
+                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditProduct_<?= $produto['id'] ?>">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
 
-                                                    <div name="EditProduct" class="modal fade" id="modalEditProduct" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="EditProduct" class="modal fade" id="modalEditProduct_<?= $produto['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
@@ -171,29 +171,29 @@ session_start();
                                                                         <input type="hidden" name="id" value="<?= $produto['id'] ?>">
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " id="name-product" value="<?= $produto['nome'] ?>" placeholder="Nome">
+                                                                                <input type="text" class="form-control  " name="nameProduct" value="<?= $produto['nome'] ?>" placeholder="Nome">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control " id="quantity-product" value="<?= $produto['quantidade'] ?>" placeholder="Quantidade">
+                                                                                <input type="text" class="form-control " name="quantityProduct" value="<?= $produto['quantidade'] ?>" placeholder="Quantidade">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <select class="form-control  " id="category" placeholder="Categoria">
+                                                                                <select class="form-control  " name="category" placeholder="Categoria">
                                                                                     <option class="form-control  " value="1"> Alimentos </option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " id="maximum" value="<?= $produto['maxima'] ?>" placeholder="Capacidade máxima">
+                                                                                <input type="text" class="form-control  " name="maximum" value="<?= $produto['maxima'] ?>" placeholder="Capacidade máxima">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="tel" class="form-control  " id="minimum" value="<?= $produto['minima'] ?>" placeholder="Capacidade mínimo">
+                                                                                <input type="tel" class="form-control  " name="minimum" value="<?= $produto['minima'] ?>" placeholder="Capacidade mínimo">
                                                                             </div>
                                                                         </div>
                                                                         <hr>
@@ -205,9 +205,30 @@ session_start();
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteProduct_<?= $produto['id'] ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
+
+                                                    <div name="DeleteProduct" class="modal fade" id="modalDeleteProduct_<?= $produto['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o produto
+                                                                         <br><strong><?= $produto['nome'] ?></strong> ?</span></b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/ProductController.php" method="POST">
+                                                                        <input type="hidden" name="delete" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $produto['id'] ?>">
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </td>
                                             </tr>
                                         <?php } ?>

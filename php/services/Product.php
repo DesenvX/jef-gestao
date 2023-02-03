@@ -42,9 +42,14 @@ class Product
         require 'Conexao.php';
 
         $id = $mysqli->escape_string($request['id']);
-        $name = $mysqli->escape_string($request['name']);
+        $nomeProduto = $mysqli->escape_string($request['nameProduct']);
+        $quantidade = $mysqli->escape_string($request['quantityProduct']);
+        $categoria = $mysqli->escape_string($request['category']);
+        $maximum = $mysqli->escape_string($request['maximum']);
+        $minimum = $mysqli->escape_string($request['minimum']);
 
-        $update_query = "UPDATE produtos SET nome = '$name' WHERE id = $id";
+
+        $update_query = "UPDATE produtos SET nome = '$nomeProduto', quantidade = '$quantidade', categorias = '$categoria', maxima = '$maximum', minima = '$minimum' WHERE id = $id";
         $update_response = $mysqli->query($update_query);
 
         if ($update_response == true) {
