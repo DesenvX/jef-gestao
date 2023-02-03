@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+<?php
+session_start();
+?>
+
+
 <head>
 
     <title> JEF Gestão </title>
@@ -40,6 +45,47 @@
                                 </span>
                                 <span class="text"> Cadastrar </span>
                             </button>
+                            <div name="RegisterSuppliers" class="modal fade" id="modalRegisterSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
+                                            </div>
+                                            <div class="text-center">
+                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Cadastrar Fornecedore</b></h1>
+                                            </div>
+                                            <form class="user" action="../controllers/SuppliersController.php" method="POST">
+                                                <input type="hidden" name="register" value="true">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control  " name="name" placeholder="Razão Social">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control  " name="nameFantasy" placeholder="Nome Fantasia">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control  " name="kindOfPerson" placeholder="Tipo de Pessoa">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="tel" class="form-control  " name="telephone" placeholder="Telefone">
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
+                                                <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
 
@@ -49,7 +95,7 @@
                                         <input type="search" id="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
                                     </div>
                                 </div>
-                                 
+
 
                             </div>
 
@@ -77,111 +123,105 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <th>1</th>
-                                            <td>JOAO PEDRO LIMA LTDA</td>
-                                            <td>João Pedro Dev</td>
-                                            <td>Pessoa Jurídica</td>
-                                            <td>(94) 992927891</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditSuppliers" data-corporate-name="JOAO PEDRO LIMA LTDA" data-fantasy-name="João Pedro Dev" data-kind-of-person="Pessoa Jurídica" data-telephone="(94) 992927891">
-                                                    <i class="fas fa-pen"></i>
-                                                </button>
-                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        <?php
+                                        require_once '../services/Suppliers.php';
+
+                                        use services\Suppliers;
+
+                                        $suppliers = new Suppliers();
+                                        $suppliers_list = $suppliers->getSuppliers();
+
+                                        while ($fornecedor = $suppliers_list->fetch_assoc()) {
+
+                                        ?>
+                                            <tr>
+                                                <th><?php echo $fornecedor['id'] ?></th>
+                                                <td><?php echo $fornecedor['nome'] ?></td>
+                                                <td><?php echo $fornecedor['nomeFantasia'] ?></td>
+                                                <td><?php echo $fornecedor['tipo'] ?></td>
+                                                <td><?php echo $fornecedor['telefone'] ?></td>
+                                                <td>
+                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditSuppliers">
+                                                        <i class="fas fa-pen"></i>
+                                                    </button>
+
+                                                    <div name="EditSuppliers" class="modal fade" id="modalEditSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                    </div>
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Fornecedor </b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/SuppliersController.php" method="post">
+                                                                        <input type="hidden" name="edit" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $fornecedor['id'] ?>">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control  " name="name" value="<?= $fornecedor['nome'] ?>" placeholder="Razão Social">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control  " name="nameFantasy" value="<?= $fornecedor['nomeFantasia'] ?>" placeholder="Nome Fantasia">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control  " name="kindOfPerson" value="<?= $fornecedor['tipo'] ?>" placeholder="Tipo de Pessoa">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="tel" class="form-control  " name="telephone" value="<?= $fornecedor['telefone'] ?>" placeholder="Telefone">
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteCategories">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+
+                                                    <div name="DeleteCategories" class="modal fade" id="modalDeleteCategories" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o fornecedor <br><strong> <?= $fornecedor['nome'] ?> </strong> ?</span></b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/SuppliersController.php" method="POST">
+                                                                        <input type="hidden" name="delete" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $fornecedor['id'] ?>">
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
-
-                            </div>
-
-                             
-                        </div>
-                    </div>
-                </div>
-
-                <div name="RegisterSuppliers" class="modal fade" id="modalRegisterSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Cadastrar Fornecedores </b></h1>
-                                </div>
-                                <form class="user" action="#" method="post">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="corporate-name" placeholder="Razão Social">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="fantasy-name" placeholder="Nome Fantasia">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="kind-of-person" placeholder="Tipo de Pessoa">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control  " id="telephone" placeholder="Telefone">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
-
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div name="EditSuppliers" class="modal fade" id="modalEditSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Contato </b></h1>
-                                </div>
-                                <form class="user" action="#" method="post">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="corporate-name" placeholder="Razão Social">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="fantasy-name" placeholder="Nome Fantasia">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="kind-of-person" placeholder="Tipo de Pessoa">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="tel" class="form-control  " id="telephone" placeholder="Telefone">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
+
 
             </div>
 
@@ -199,23 +239,72 @@
 
     <?php include('../../html/scripts.html'); ?>
 
-    <script>
-        $('#modalEditSuppliers').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var recipientCorporateName = button.data('corporate-name')
-            var recipientFantasyName = button.data('fantasy-name')
-            var recipientKindOfPerson = button.data('kind-of-person')
-            var recipientTelephone = button.data('telephone')
-            var modal = $(this)
-            modal.find('.modal-body #corporate-name').val(recipientCorporateName)
-            modal.find('.modal-body #fantasy-name').val(recipientFantasyName)
-            modal.find('.modal-body #kind-of-person').val(recipientKindOfPerson)
-            modal.find('.modal-body #telephone').val(recipientTelephone)
-        })
-    </script>
-
-     
-
 </body>
+
+<?php
+if (isset($_SESSION['register_categories_success'])) {
+?>
+    <script>
+        swalRegisterSuccess();
+    </script>
+<?php
+    unset($_SESSION['register_categories_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['register_categories_fail'])) {
+?>
+    <script>
+        swalRegisterError();
+    </script>
+<?php
+    unset($_SESSION['register_categories_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_categories_success'])) {
+?>
+    <script>
+        swalEditSuccess();
+    </script>
+<?php
+    unset($_SESSION['edit_categories_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_categories_fail'])) {
+?>
+    <script>
+        swalEditError();
+    </script>
+<?php
+    unset($_SESSION['edit_categories_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_categories_success'])) {
+?>
+    <script>
+        swalDeleteSuccess();
+    </script>
+<?php
+    unset($_SESSION['delete_categories_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_categories_fail'])) {
+?>
+    <script>
+        swalDeleteError();
+    </script>
+<?php
+    unset($_SESSION['delete_categories_fail']);
+}
+?>
 
 </html>
