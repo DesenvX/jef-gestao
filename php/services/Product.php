@@ -28,11 +28,11 @@ class Product
 
         if ($create_response == true) {
             session_start();
-            $_SESSION['register_categories_success'] = true;
+            $_SESSION['register_product_success'] = true;
             header('Location: ../pages/areaProduct.php');
         } else {
             session_start();
-            $_SESSION['register_categories_fail'] = true;
+            $_SESSION['register_product_fail'] = true;
             header('Location: ../pages/areaProduct.php');
         }
     }
@@ -54,11 +54,11 @@ class Product
 
         if ($update_response == true) {
             session_start();
-            $_SESSION['edit_categories_success'] = true;
+            $_SESSION['edit_product_success'] = true;
             header('Location: ../pages/areaProduct.php');
         } else {
             session_start();
-            $_SESSION['edit_categories_fail'] = true;
+            $_SESSION['edit_product_fail'] = true;
             header('Location: ../pages/areaProduct.php');
         }
     }
@@ -72,11 +72,11 @@ class Product
 
         if ($delete_response == true) {
             session_start();
-            $_SESSION['delete_categories_success'] = true;
+            $_SESSION['delete_product_success'] = true;
             header('Location: ../pages/areaProduct.php');
         } else {
             session_start();
-            $_SESSION['delete_categories_fail'] = true;
+            $_SESSION['delete_product_fail'] = true;
             header('Location: ../pages/areaProduct.php');
         }
     }

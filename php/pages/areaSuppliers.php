@@ -242,68 +242,68 @@ session_start();
 </body>
 
 <?php
-if (isset($_SESSION['register_categories_success'])) {
+if (isset($_SESSION['register_suppliers_success'])) {
 ?>
     <script>
         swalRegisterSuccess();
     </script>
 <?php
-    unset($_SESSION['register_categories_success']);
+    unset($_SESSION['register_suppliers_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['register_categories_fail'])) {
+if (isset($_SESSION['register_suppliers_fail'])) {
 ?>
     <script>
         swalRegisterError();
     </script>
 <?php
-    unset($_SESSION['register_categories_fail']);
+    unset($_SESSION['register_suppliers_fail']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['edit_categories_success'])) {
+if (isset($_SESSION['edit_suppliers_success'])) {
 ?>
     <script>
         swalEditSuccess();
     </script>
 <?php
-    unset($_SESSION['edit_categories_success']);
+    unset($_SESSION['edit_suppliers_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['edit_categories_fail'])) {
+if (isset($_SESSION['edit_suppliers_fail'])) {
 ?>
     <script>
         swalEditError();
     </script>
 <?php
-    unset($_SESSION['edit_categories_fail']);
+    unset($_SESSION['edit_suppliers_fail']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['delete_categories_success'])) {
+if (isset($_SESSION['delete_suppliers_success'])) {
 ?>
     <script>
         swalDeleteSuccess();
     </script>
 <?php
-    unset($_SESSION['delete_categories_success']);
+    unset($_SESSION['delete_suppliers_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['delete_categories_fail'])) {
+if (isset($_SESSION['delete_suppliers_fail'])) {
 ?>
     <script>
         swalDeleteError();
     </script>
 <?php
-    unset($_SESSION['delete_categories_fail']);
+    unset($_SESSION['delete_suppliers_fail']);
 }
 ?>
 

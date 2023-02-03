@@ -215,7 +215,7 @@ session_start();
                                                                 <div class="modal-body">
                                                                     <div class="text-center">
                                                                         <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o produto
-                                                                         <br><strong><?= $produto['nome'] ?></strong> ?</span></b></h1>
+                                                                                <br><strong><?= $produto['nome'] ?></strong> ?</span></b></h1>
                                                                     </div>
                                                                     <form class="user" action="../controllers/ProductController.php" method="POST">
                                                                         <input type="hidden" name="delete" value="true">
@@ -241,11 +241,6 @@ session_start();
                         </div>
                     </div>
                 </div>
-
-
-
-
-
             </div>
 
             <?php
@@ -262,23 +257,72 @@ session_start();
 
     <?php include('../../html/scripts.html'); ?>
 
-    <script>
-        $('#modalEditProduct').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var recipientName = button.data('name-product')
-            var recipientQuantity = button.data('quantity-product')
-            var recipientMaximum = button.data('maximum')
-            var recipientMinimum = button.data('minimum')
-            var modal = $(this)
-            modal.find('.modal-body #name-product').val(recipientName)
-            modal.find('.modal-body #quantity-product').val(recipientQuantity)
-            modal.find('.modal-body #maximum').val(recipientMaximum)
-            modal.find('.modal-body #minimum').val(recipientMinimum)
-        })
-    </script>
-
-
-
 </body>
+
+<?php
+if (isset($_SESSION['register_product_success'])) {
+?>
+    <script>
+        swalRegisterSuccess();
+    </script>
+<?php
+    unset($_SESSION['register_product_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['register_product_fail'])) {
+?>
+    <script>
+        swalRegisterError();
+    </script>
+<?php
+    unset($_SESSION['register_product_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_product_success'])) {
+?>
+    <script>
+        swalEditSuccess();
+    </script>
+<?php
+    unset($_SESSION['edit_product_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_product_fail'])) {
+?>
+    <script>
+        swalEditError();
+    </script>
+<?php
+    unset($_SESSION['edit_product_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_product_success'])) {
+?>
+    <script>
+        swalDeleteSuccess();
+    </script>
+<?php
+    unset($_SESSION['delete_product_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_product_fail'])) {
+?>
+    <script>
+        swalDeleteError();
+    </script>
+<?php
+    unset($_SESSION['delete_product_fail']);
+}
+?>
 
 </html>

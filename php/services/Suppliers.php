@@ -28,11 +28,11 @@ class Suppliers
 
         if ($create_response == true) {
             session_start();
-            $_SESSION['register_categories_success'] = true;
+            $_SESSION['register_suppliers_success'] = true;
             header('Location: ../pages/areaSuppliers.php');
         } else {
             session_start();
-            $_SESSION['register_categories_fail'] = true;
+            $_SESSION['register_suppliers_fail'] = true;
             header('Location: ../pages/areaSuppliers.php');
         }
     }
@@ -52,11 +52,11 @@ class Suppliers
 
         if ($update_response == true) {
             session_start();
-            $_SESSION['edit_categories_success'] = true;
+            $_SESSION['edit_suppliers_success'] = true;
             header('Location: ../pages/areaSuppliers.php');
         } else {
             session_start();
-            $_SESSION['edit_categories_fail'] = true;
+            $_SESSION['edit_suppliers_fail'] = true;
             header('Location: ../pages/areaSuppliers.php');
         }
     }
@@ -70,11 +70,11 @@ class Suppliers
 
         if ($delete_response == true) {
             session_start();
-            $_SESSION['delete_categories_success'] = true;
+            $_SESSION['delete_suppliers_success'] = true;
             header('Location: ../pages/areaSuppliers.php');
         } else {
             session_start();
-            $_SESSION['delete_categories_fail'] = true;
+            $_SESSION['delete_suppliers_fail'] = true;
             header('Location: ../pages/areaSuppliers.php');
         }
     }
