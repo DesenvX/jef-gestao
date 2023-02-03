@@ -173,6 +173,7 @@ session_start();
                                                     <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteTractor">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
+                                                    
                                                     <div name="DeleteTractor" class="modal fade" id="modalDeleteTractor" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
