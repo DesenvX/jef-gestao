@@ -59,24 +59,29 @@ session_start();
                                                 <input type="hidden" name="register" value="true">
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="text" class="form-control  " name="name" placeholder="Razão Social">
+                                                        <select class="form-control" name="tipo" placeholder="Tipo">
+                                                            <option value="">Tipo</option>
+                                                            <option value="Pessoa Fisica"> Pessoa Fisica </option>
+                                                            <option value="Pessoa Juridica"> Pessoa Juridica </option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="text" class="form-control  " name="nameFantasy" placeholder="Nome Fantasia">
+                                                        <input type="text" class="form-control  " name="corporateName" placeholder="Razão Social">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="text" class="form-control  " name="kindOfPerson" placeholder="Tipo de Pessoa">
+                                                        <input type="text" class="form-control  " name="phone" placeholder="Telefone">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="tel" class="form-control  " name="telephone" placeholder="Telefone">
+                                                        <input type="tel" class="form-control  " name="cpfCnpj" placeholder="CNPJ">
                                                     </div>
                                                 </div>
+
                                                 <hr>
                                                 <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
                                                 <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
@@ -105,20 +110,20 @@ session_start();
                                     <thead>
                                         <tr>
                                             <th>ID</th>
+                                            <th>Tipo</th>
                                             <th>Razão Social</th>
-                                            <th>Nome Fantasia</th>
-                                            <th>Tipo de Pessoa</th>
                                             <th>Telefone</th>
+                                            <th>CPF/CNPJ</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
+                                            <th>Tipo</th>
                                             <th>Razão Social</th>
-                                            <th>Nome Fantasia</th>
-                                            <th>Tipo de Pessoa</th>
                                             <th>Telefone</th>
+                                            <th>CPF/CNPJ</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
@@ -136,10 +141,10 @@ session_start();
                                         ?>
                                             <tr>
                                                 <th><?php echo $fornecedor['id'] ?></th>
-                                                <td><?php echo $fornecedor['nome'] ?></td>
-                                                <td><?php echo $fornecedor['nomeFantasia'] ?></td>
                                                 <td><?php echo $fornecedor['tipo'] ?></td>
-                                                <td><?php echo $fornecedor['telefone'] ?></td>
+                                                <td><?php echo $fornecedor['corporateName'] ?></td>
+                                                <td><?php echo $fornecedor['phone'] ?></td>
+                                                <td><?php echo $fornecedor['cpfCnpj'] ?></td>
                                                 <td>
                                                     <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditSuppliers">
                                                         <i class="fas fa-pen"></i>
@@ -218,11 +223,6 @@ session_start();
                         </div>
                     </div>
                 </div>
-
-
-
-
-
             </div>
 
             <?php
