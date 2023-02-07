@@ -18,12 +18,12 @@ class Suppliers
     {
         require 'Conexao.php';
 
-        $name = $mysqli->escape_string($request['name']);
-        $nameFantasy = $mysqli->escape_string($request['nameFantasy']);
-        $kindOfPerson = $mysqli->escape_string($request['kindOfPerson']);
-        $telephone = $mysqli->escape_string($request['telephone']);
+        $tipo = $mysqli->escape_string($request['tipo']);
+        $name = $mysqli->escape_string($request['corporateName']);
+        $telefone = $mysqli->escape_string($request['phone']);
+        $cpfCnpj = $mysqli->escape_string($request['cpfCnpj']);
 
-        $create_query = "INSERT INTO fornecedores (nome, nomeFantasia, tipo, telefone) VALUES ('$name','$nameFantasy','$kindOfPerson', '$telephone')";
+        $create_query = "INSERT INTO fornecedores (tipo, razaoSocial, telefone, cpfCnpj) VALUES ('$tipo','$name','$telefone', '$cpfCnpj')";
         $create_response = $mysqli->query($create_query);
 
         if ($create_response == true) {
