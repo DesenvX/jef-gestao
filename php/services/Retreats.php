@@ -13,7 +13,7 @@ class Retreats
         return $retreats_response;
     }
 
-    public function getRetreatByPasture($id)
+    public function getRetreatForSomething($id)
     {
         require 'Conexao.php';
 

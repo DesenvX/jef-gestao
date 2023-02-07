@@ -5,7 +5,7 @@ namespace services;
 
 class Collaborators
 {
-    public function getColaboradores()
+    public function getCollaborators()
     {
         require 'Conexao.php';
 
