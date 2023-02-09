@@ -179,7 +179,12 @@ $prices_list_2 = $prices->getPrices();
                                                         <?php
                                                         while ($preco = $prices_list->fetch_assoc()) { ?>
                                                             <?php if ($preco['descricao'] == $typeFuel) { ?>
-                                                                <input type="number" class="form-control" step=".01" name="value-liters" id="value-liters" value="<?= $preco['valor'] ?>" placeholder="Valor p/ Litro" disabled>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text" id="basic-addon1">R$</span>
+                                                                    </div>
+                                                                    <input type="number" class="form-control" step=".01" name="value-liters" id="value-liters" value="<?= $preco['valor'] ?>" placeholder="Valor p/ Litro" disabled>
+                                                                </div>
                                                             <?php } ?>
                                                         <?php } ?>
                                                     </div>
@@ -190,7 +195,12 @@ $prices_list_2 = $prices->getPrices();
                                                         <button type="button" class="form-control" onclick="loadValueTotality()">Calcular Valor Total</button>
                                                     </div>
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="number" class="form-control" step=".01" name="value-total" id="value-total" placeholder="R$" disabled>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">R$</span>
+                                                            </div>
+                                                            <input type="number" class="form-control" step=".01" name="value-total" id="value-total" disabled>
+                                                        </div>
                                                     </div>
                                                 </div>
 
