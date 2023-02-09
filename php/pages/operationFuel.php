@@ -21,11 +21,13 @@ require_once '../services/Services.php';
 require_once '../services/Pastures.php';
 require_once '../services/Tractors.php';
 require_once '../services/Collaborators.php';
+require_once '../services/Prices.php';
 
 use services\Services;
 use services\Pastures;
 use services\Tractors;
 use services\Collaborators;
+use services\Prices;
 
 $services = new Services();
 $services_list = $services->getServices();
@@ -35,6 +37,9 @@ $tractors = new Tractors();
 $tractors_list = $tractors->getTractors();
 $collaborators = new Collaborators();
 $collaborators_list = $collaborators->getCollaborators();
+$prices = new Prices();
+$prices_list = $prices->getPrices();
+$prices_list_2 = $prices->getPrices();
 
 ?>
 
@@ -155,29 +160,40 @@ $collaborators_list = $collaborators->getCollaborators();
                                                 <input type="hidden" name="intake" value="Entrada">
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="fuel-type" class="form-control" name="fuel-type" <?php $typeFuel = "disel" ?> value="Disel" placeholder="Combustível" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
                                                         <input type="date" class="form-control" name="date-entry" placeholder="Data">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <!--  -->
+                                                        <input type="number" class="form-control" step=".01" name="liters" id="liters" placeholder="Litros">
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="number" class="form-control" step=".01" name="liters" placeholder="Litros">
+                                                        <?php
+                                                        while ($preco = $prices_list->fetch_assoc()) { ?>
+                                                            <?php if ($preco['descricao'] == $typeFuel) { ?>
+                                                                <input type="number" class="form-control" step=".01" name="value-liters" id="value-liters" value="<?= $preco['valor'] ?>" placeholder="Valor p/ Litro" disabled>
+                                                            <?php } ?>
+                                                        <?php } ?>
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="number" class="form-control" step=".01" id="value-liters" placeholder="Valor p/ Litro">
+                                                        <button type="button" class="form-control" onclick="loadValueTotality()">Calcular Valor Total</button>
                                                     </div>
-                                                </div>
-                                                <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="number" class="form-control" step=".01" id="value-total" placeholder="Valor Total">
+                                                        <input type="number" class="form-control" step=".01" name="value-total" id="value-total" placeholder="R$" disabled>
                                                     </div>
                                                 </div>
+
                                                 <hr>
                                                 <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
                                                 <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
@@ -343,17 +359,6 @@ $collaborators_list = $collaborators->getCollaborators();
                                                     <input type="search" id="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
                                                 </div>
                                             </div>
-                                            <div class="col-md-1">
-                                                <div class="dataTables_length" id="dataTable_length">
-                                                    <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
-                                                        <option value="10">10</option>
-                                                        <option value="25">25</option>
-                                                        <option value="50">50</option>
-                                                        <option value="100">100</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
                                         </div>
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
@@ -362,7 +367,7 @@ $collaborators_list = $collaborators->getCollaborators();
                                                         <th>ID</th>
                                                         <th>Data</th>
                                                         <th>Fonecedor</th>
-                                                        <th>litros</th>
+                                                        <th>Litros</th>
                                                         <th>Valor Unitario</th>
                                                         <th>Total R$</th>
                                                         <th>Opções</th>
@@ -574,6 +579,17 @@ $collaborators_list = $collaborators->getCollaborators();
     <?php include('../../html/scripts.html'); ?>
 
 </body>
+
+<script>
+    function loadValueTotality() {
+        const elem_litros = document.getElementById('liters')
+        const elem_valor_litros = document.getElementById('value-liters')
+        let litros = elem_litros.value
+        let valor_litro = elem_valor_litros.value
+        let value_totality = litros * valor_litro
+        $("#value-total").val(value_totality);
+    }
+</script>
 
 <?php
 if (isset($_SESSION['register_fuel_success'])) {
