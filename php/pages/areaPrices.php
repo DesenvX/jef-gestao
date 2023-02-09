@@ -38,13 +38,13 @@ session_start();
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterServices">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterPrices">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
                                 <span class="text"> Cadastrar </span>
                             </button>
-                            <div name="RegisterServices" class="modal fade" id="modalRegisterServices" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div name="RegisterPrices" class="modal fade" id="modalRegisterPrices" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-sm" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
@@ -52,13 +52,18 @@ session_start();
                                                 <img src="../../img/servico.png" width="100" height="100" style="margin-bottom: 10px;">
                                             </div>
                                             <div class="text-center">
-                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Serviço</b></h1>
+                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Preços</b></h1>
                                             </div>
-                                            <form class="user" action="../controllers/ServicesController.php" method="POST">
+                                            <form class="user" action="../controllers/PricesController.php" method="POST">
                                                 <input type="hidden" name="register" value="true">
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                                         <input type="text" class="form-control" name="description" placeholder="Descrição">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="number" step=".01" class="form-control" name="value" placeholder="Valor">
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -101,64 +106,80 @@ session_start();
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <th>1</th>
-                                            <td>Dias Úteis</td>
-                                            <td>5,10</td>
-                                            <td>
-                                                <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditServices">
-                                                    <i class="fas fa-pen"></i>
-                                                </button>
-                                                <div name="EditServices" class="modal fade" id="modalEditServices" tabindex="-1" role="dialog" aria-hidden="true">
-                                                    <div class="modal-dialog modal-sm" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-body">
-                                                                <div class="text-center">
-                                                                    <img src="../../img/servico.png" width="100" height="100" style="margin-bottom: 10px;">
-                                                                </div>
-                                                                <div class="text-center">
-                                                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Serviço</b></h1>
-                                                                </div>
-                                                                <form class="user" action="../controllers/ServicesController.php" method="POST">
-                                                                    <input type="hidden" name="edit" value="true">
-                                                                    <input type="hidden" name="id" value="<?= $servico['id'] ?>">
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                            <input type="text" class="form-control" name="description" value="<?= $servico['descricao'] ?>" placeholder="Descrição">
-                                                                        </div>
-                                                                    </div>
-                                                                    <hr>
-                                                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        <?php
+                                        require_once '../services/Prices.php';
 
-                                                <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteServices">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                                <div name="DeleteServices" class="modal fade" id="modalDeleteServices" tabindex="-1" role="dialog" aria-hidden="true">
-                                                    <div class="modal-dialog modal-sm" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-body">
-                                                                <div class="text-center">
-                                                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o serviço <br><strong><?= $servico['descricao'] ?></strong> ?</span></b></h1>
+                                        use services\Prices;
+
+                                        $prices = new Prices();
+                                        $prices_list = $prices->getPrices();
+
+                                        while ($prices = $prices_list->fetch_assoc()) {
+                                        ?>
+                                            <tr>
+                                                <th><?= $prices['id'] ?></th>
+                                                <td><?= $prices['descricao'] ?></td>
+                                                <td><?= $prices['valor'] ?></td>
+                                                <td>
+                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditPrices_<?= $prices['id'] ?>">
+                                                        <i class="fas fa-pen"></i>
+                                                    </button>
+                                                    <div name="EditPrices" class="modal fade" id="modalEditPrices_<?= $prices['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <img src="../../img/servico.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                    </div>
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Serviço</b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/PricesController.php" method="POST">
+                                                                        <input type="hidden" name="edit" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $prices['id'] ?>">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control" name="description" value="<?= $prices['descricao'] ?>" placeholder="Descrição">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="number" step=".01" class="form-control" name="value" value="<?= $prices['valor'] ?>" placeholder="Valor">
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
                                                                 </div>
-                                                                <form class="user" action="../controllers/ServicesController.php" method="POST">
-                                                                    <input type="hidden" name="delete" value="true">
-                                                                    <input type="hidden" name="id" value="<?= $servico['id'] ?>">
-                                                                    <hr>
-                                                                    <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
-                                                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeletePrices_<?= $prices['id'] ?>">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                    <div name="DeletePrices" class="modal fade" id="modalDeletePrices_<?= $prices['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o item <br><strong> <?= $prices['descricao'] ?> </strong> ?</span></b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/PricesController.php" method="POST">
+                                                                        <input type="hidden" name="delete" value="true">
+                                                                        <input type="hidden" name="id" value="<?= $prices['id'] ?>">
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
