@@ -110,7 +110,7 @@ $prices_list_2 = $prices->getPrices();
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
-                                                                <div class="progress-bar bg-dark" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                <div class="progress-bar bg-dark" role="progressbar" style="width: 20%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="10000"></div>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -5,7 +5,6 @@
 session_start();
 ?>
 
-
 <head>
 
     <title> JEF Gestão </title>
@@ -35,53 +34,54 @@ session_start();
                 <div class="container-fluid">
 
                     <span style="font-size: small;"> Áreas </span>
-                    <h1 class="h3 mb-2 text-gray-800"> Fornecedores </h1>
+                    <h1 class="h3 mb-2 text-gray-800"> Veiculos </h1>
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterSuppliers">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterVehicle">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
                                 <span class="text"> Cadastrar </span>
                             </button>
-                            <div name="RegisterSuppliers" class="modal fade" id="modalRegisterSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
+
+                            <div name="RegisterVehicle" class="modal fade" id="modalRegisterVehicle" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-sm" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
                                             <div class="text-center">
-                                                <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                <img src="../../img/trator.png" width="100" height="100" style="margin-bottom: 10px;">
                                             </div>
                                             <div class="text-center">
-                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Cadastrar Fornecedore</b></h1>
+                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Veiculo</b></h1>
                                             </div>
-                                            <form class="user" action="../controllers/SuppliersController.php" method="POST">
+                                            <form class="user" action="../controllers/VehicleController.php" method="POST">
                                                 <input type="hidden" name="register" value="true">
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <select class="form-control" name="tipo" placeholder="Tipo">
-                                                            <option>Pessoa Juridica</option>
-                                                            <option> Pessoa Fisica </option>
-                                                        </select>
+                                                        <input type="text" class="form-control" name="description" placeholder="Descrição">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="text" class="form-control  " name="corporateName" placeholder="Razão Social">
+                                                        <input type="text" class="form-control" name="brand" placeholder="Marca">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="text" class="form-control  " name="phone" placeholder="Telefone">
+                                                        <input type="text" class="form-control" name="model" placeholder="Modelo">
                                                     </div>
                                                 </div>
-
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="tel" class="form-control" name="cpfCnpj" placeholder="CNPJ">
+                                                        <input type="text" class="form-control" name="year" placeholder="Ano">
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control" name="plate" placeholder="Placa">
+                                                    </div>
+                                                </div>
                                                 <hr>
                                                 <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
                                                 <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
@@ -91,6 +91,7 @@ session_start();
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="card-body">
 
@@ -100,8 +101,6 @@ session_start();
                                         <input type="search" id="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
                                     </div>
                                 </div>
-
-
                             </div>
 
                             <div class="table-responsive">
@@ -110,77 +109,83 @@ session_start();
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Tipo</th>
-                                            <th>Razão Social</th>
-                                            <th>Telefone</th>
-                                            <th>CPF/CNPJ</th>
+                                            <th>Descrição</th>
+                                            <th>Marca</th>
+                                            <th>Modelo</th>
+                                            <th>Ano</th>
+                                            <th>Placa</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Tipo</th>
-                                            <th>Razão Social</th>
-                                            <th>Telefone</th>
-                                            <th>CPF/CNPJ</th>
+                                            <th>Descrição</th>
+                                            <th>Marca</th>
+                                            <th>Modelo</th>
+                                            <th>Ano</th>
+                                            <th>Placa</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        require_once '../services/Suppliers.php';
+                                        require_once '../services/Vehicle.php';
 
-                                        use services\Suppliers;
+                                        use services\Vehicle;
 
-                                        $suppliers = new Suppliers();
-                                        $suppliers_list = $suppliers->getSuppliers();
+                                        $vehicle = new Vehicle();
+                                        $vehicle_list = $vehicle->getVehicle();
 
-                                        while ($fornecedor = $suppliers_list->fetch_assoc()) {
-
+                                        while ($veiculo = $vehicle_list->fetch_assoc()) {
                                         ?>
                                             <tr>
-                                                <th><?php echo $fornecedor['id'] ?></th>
-                                                <td><?php echo $fornecedor['tipo'] ?></td>
-                                                <td><?php echo $fornecedor['corporateName'] ?></td>
-                                                <td><?php echo $fornecedor['phone'] ?></td>
-                                                <td><?php echo $fornecedor['cpfCnpj'] ?></td>
+                                                <th><?= $veiculo['id'] ?></th>
+                                                <td><?= $veiculo['descricao'] ?></td>
+                                                <td><?= $veiculo['marca'] ?></td>
+                                                <td><?= $veiculo['modelo'] ?></td>
+                                                <td><?= $veiculo['ano'] ?></td>
+                                                <td><?= $veiculo['placa'] ?></td>
                                                 <td>
-                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditSuppliers">
+                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditVehicle_<?= $veiculo['id'] ?>">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
-
-                                                    <div name="EditSuppliers" class="modal fade" id="modalEditSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="EditVehicle" class="modal fade" id="modalEditVehicle_<?= $veiculo['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
                                                                     <div class="text-center">
-                                                                        <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                        <img src="../../img/trator.png" width="100" height="100" style="margin-bottom: 10px;">
                                                                     </div>
                                                                     <div class="text-center">
-                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Fornecedor </b></h1>
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Veiculo</b></h1>
                                                                     </div>
-                                                                    <form class="user" action="../controllers/SuppliersController.php" method="post">
+                                                                    <form class="user" action="../controllers/VehicleController.php" method="POST">
                                                                         <input type="hidden" name="edit" value="true">
-                                                                        <input type="hidden" name="id" value="<?= $fornecedor['id'] ?>">
+                                                                        <input type="hidden" name="id" value="<?= $veiculo['id'] ?>">
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " name="name" value="<?= $fornecedor['nome'] ?>" placeholder="Razão Social">
+                                                                                <input type="text" class="form-control" name="description" value="<?= $veiculo['descricao'] ?>" placeholder="Descrição">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " name="nameFantasy" value="<?= $fornecedor['nomeFantasia'] ?>" placeholder="Nome Fantasia">
+                                                                                <input type="text" class="form-control" name="brand" value="<?= $veiculo['marca'] ?>" placeholder="Marca">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " name="kindOfPerson" value="<?= $fornecedor['tipo'] ?>" placeholder="Tipo de Pessoa">
+                                                                                <input type="text" class="form-control" name="model" value="<?= $veiculo['modelo'] ?>" placeholder="Modelo">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="tel" class="form-control  " name="telephone" value="<?= $fornecedor['telefone'] ?>" placeholder="Telefone">
+                                                                                <input type="text" class="form-control" name="year" value="<?= $veiculo['ano'] ?>" placeholder="Ano">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control" name="plate" value="<?= $veiculo['placa'] ?>" placeholder="Placa">
                                                                             </div>
                                                                         </div>
                                                                         <hr>
@@ -192,20 +197,20 @@ session_start();
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteCategories">
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteVehicle_<?= $veiculo['id'] ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
 
-                                                    <div name="DeleteCategories" class="modal fade" id="modalDeleteCategories" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="DeleteVehicle" class="modal fade" id="modalDeleteVehicle_<?= $veiculo['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
                                                                     <div class="text-center">
-                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o fornecedor <br><strong> <?= $fornecedor['nome'] ?> </strong> ?</span></b></h1>
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o trator <br><strong><?= $veiculo['modelo'] ?> ( <?= $veiculo['marca'] ?> )</strong> ?</span></b></h1>
                                                                     </div>
-                                                                    <form class="user" action="../controllers/SuppliersController.php" method="POST">
+                                                                    <form class="user" action="../controllers/VehicleController.php" method="POST">
                                                                         <input type="hidden" name="delete" value="true">
-                                                                        <input type="hidden" name="id" value="<?= $fornecedor['id'] ?>">
+                                                                        <input type="hidden" name="id" value="<?= $veiculo['id'] ?>">
                                                                         <hr>
                                                                         <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
                                                                         <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
@@ -214,6 +219,7 @@ session_start();
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -242,68 +248,68 @@ session_start();
 </body>
 
 <?php
-if (isset($_SESSION['register_suppliers_success'])) {
+if (isset($_SESSION['register_tractors_success'])) {
 ?>
     <script>
         swalRegisterSuccess();
     </script>
 <?php
-    unset($_SESSION['register_suppliers_success']);
+    unset($_SESSION['register_tractors_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['register_suppliers_fail'])) {
+if (isset($_SESSION['register_tractors_fail'])) {
 ?>
     <script>
         swalRegisterError();
     </script>
 <?php
-    unset($_SESSION['register_suppliers_fail']);
+    unset($_SESSION['register_tractors_fail']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['edit_suppliers_success'])) {
+if (isset($_SESSION['edit_tractors_success'])) {
 ?>
     <script>
         swalEditSuccess();
     </script>
 <?php
-    unset($_SESSION['edit_suppliers_success']);
+    unset($_SESSION['edit_tractors_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['edit_suppliers_fail'])) {
+if (isset($_SESSION['edit_tractors_fail'])) {
 ?>
     <script>
         swalEditError();
     </script>
 <?php
-    unset($_SESSION['edit_suppliers_fail']);
+    unset($_SESSION['edit_tractors_fail']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['delete_suppliers_success'])) {
+if (isset($_SESSION['delete_tractors_success'])) {
 ?>
     <script>
         swalDeleteSuccess();
     </script>
 <?php
-    unset($_SESSION['delete_suppliers_success']);
+    unset($_SESSION['delete_tractors_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['delete_suppliers_fail'])) {
+if (isset($_SESSION['delete_tractors_fail'])) {
 ?>
     <script>
         swalDeleteError();
     </script>
 <?php
-    unset($_SESSION['delete_suppliers_fail']);
+    unset($_SESSION['delete_tractors_fail']);
 }
 ?>
 
