@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 03-Fev-2023 às 07:13
+-- Tempo de geração: 10-Fev-2023 às 10:28
 -- Versão do servidor: 8.0.17
 -- versão do PHP: 7.3.10
 
@@ -30,9 +30,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `combustivel_historico` (
   `id` int(11) NOT NULL,
+  `id_tabelas` int(11) NOT NULL,
   `data` varchar(12) NOT NULL,
-  `tipo` varchar(255) NOT NULL,
-  `litros` float NOT NULL
+  `tipo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -53,7 +53,7 @@ ALTER TABLE `combustivel_historico`
 -- AUTO_INCREMENT de tabela `combustivel_historico`
 --
 ALTER TABLE `combustivel_historico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

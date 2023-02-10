@@ -22,12 +22,14 @@ require_once '../services/Pastures.php';
 require_once '../services/Tractors.php';
 require_once '../services/Collaborators.php';
 require_once '../services/Prices.php';
+require_once '../services/Fuel.php';
 
 use services\Services;
 use services\Pastures;
 use services\Tractors;
 use services\Collaborators;
 use services\Prices;
+use services\Fuel;
 
 $services = new Services();
 $services_list = $services->getServices();
@@ -40,7 +42,9 @@ $collaborators_list = $collaborators->getCollaborators();
 $prices = new Prices();
 $prices_list = $prices->getPrices();
 $prices_list_2 = $prices->getPrices();
-
+$fuel = new Fuel();
+$fuel_historic_list = $fuel->getFuelHistoric();
+$fuel_intake_list = $fuel->getFuelIntake();
 ?>
 
 <body id="page-top">
@@ -160,33 +164,45 @@ $prices_list_2 = $prices->getPrices();
                                                 <input type="hidden" name="intake" value="Entrada">
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="fuel-type" class="form-control" name="fuel-type" <?php $typeFuel = "disel" ?> value="Disel" placeholder="Combustível" disabled>
+                                                        <?php $typeFuel = "disel" ?>
+                                                        <input type="text" class="form-control" value="Disel" placeholder="Combustível" disabled>
+                                                        <input type="hidden" class="form-control" name="fuel-type" value="Disel">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="date" class="form-control" name="date-entry" placeholder="Data">
+                                                        <input type="date" class="form-control" name="date-entry" placeholder="Data" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="number" class="form-control" step=".01" name="liters" id="liters" placeholder="Litros">
+                                                        <select class="form-control" name="suppliers" required>
+                                                            <option value="fornecedor"> Fornecedor </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="number" class="form-control" step=".01" name="liters" id="liters" placeholder="Litros" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <?php
-                                                        while ($preco = $prices_list->fetch_assoc()) { ?>
-                                                            <?php if ($preco['descricao'] == $typeFuel) { ?>
-                                                                <div class="input-group">
-                                                                    <div class="input-group-prepend">
-                                                                        <span class="input-group-text" id="basic-addon1">R$</span>
-                                                                    </div>
+
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">R$</span>
+                                                            </div>
+                                                            <?php
+                                                            while ($preco = $prices_list->fetch_assoc()) { ?>
+                                                                <?php if ($preco['descricao'] == $typeFuel) { ?>
                                                                     <input type="number" class="form-control" step=".01" name="value-liters" id="value-liters" value="<?= $preco['valor'] ?>" placeholder="Valor p/ Litro" disabled>
-                                                                </div>
+                                                                    <input type="hidden" class="form-control" name="value-liters" value="<?= $preco['valor'] ?>">
+                                                                <?php } ?>
                                                             <?php } ?>
-                                                        <?php } ?>
+                                                        </div>
+
                                                     </div>
                                                 </div>
 
@@ -199,7 +215,8 @@ $prices_list_2 = $prices->getPrices();
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text" id="basic-addon1">R$</span>
                                                             </div>
-                                                            <input type="number" class="form-control" step=".01" name="value-total" id="value-total" disabled>
+                                                            <input type="number" class="form-control" step=".01" id="value-total" disabled>
+                                                            <input type="hidden" class="form-control" name="value-total" id="value-total-hidden">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -323,31 +340,43 @@ $prices_list_2 = $prices->getPrices();
                                                     <tr>
                                                         <th>ID</th>
                                                         <th>Data</th>
-                                                        <th>Tipo</th>
+                                                        <th>Tipo de Combustível</th>
                                                         <th>Litros</th>
+                                                        <th>Valor Total</th>
                                                     </tr>
                                                 </thead>
                                                 <tfoot>
                                                     <tr>
                                                         <th>ID</th>
                                                         <th>Data</th>
-                                                        <th>Tipo</th>
+                                                        <th>Tipo de Combustível</th>
                                                         <th>Litros</th>
+                                                        <th>Valor Total</th>
                                                     </tr>
                                                 </tfoot>
                                                 <tbody>
-                                                    <tr class="table-danger">
-                                                        <th>1</th>
-                                                        <td>17/01/2023</td>
-                                                        <td>Saída</td>
-                                                        <td>500</td>
-                                                    </tr>
-                                                    <tr class="table-info">
-                                                        <th>1</th>
-                                                        <td>17/01/2023</td>
-                                                        <td>Entrada</td>
-                                                        <td>500</td>
-                                                    </tr>
+                                                    <?php while ($historico = $fuel_historic_list->fetch_assoc()) {
+                                                    ?>
+                                                        <?php if ($historico['tipo'] == 'Saida') { ?>
+                                                            <tr class="table-danger">
+                                                                <th><?= $historico['id'] ?></th>
+                                                                <td><?= date('d/m/Y', strtotime($historico['data'])) ?></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        <?php } ?>
+
+                                                        <?php if ($historico['tipo'] == 'Entrada') { ?>
+                                                            <tr class="table-info">
+                                                                <th><?= $historico['id'] ?></th>
+                                                                <td><?= date('d/m/Y', strtotime($historico['data'])) ?></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -377,9 +406,10 @@ $prices_list_2 = $prices->getPrices();
                                                         <th>ID</th>
                                                         <th>Data</th>
                                                         <th>Fonecedor</th>
+                                                        <th>Tipo</th>
                                                         <th>Litros</th>
-                                                        <th>Valor Unitario</th>
-                                                        <th>Total R$</th>
+                                                        <th>Valor U.</th>
+                                                        <th>Valor T.</th>
                                                         <th>Opções</th>
                                                     </tr>
                                                 </thead>
@@ -388,29 +418,76 @@ $prices_list_2 = $prices->getPrices();
                                                         <th>ID</th>
                                                         <th>Data</th>
                                                         <th>Fonecedor</th>
-                                                        <th>litros</th>
-                                                        <th>Valor Unitario</th>
-                                                        <th>Total R$</th>
+                                                        <th>Tipo</th>
+                                                        <th>Litros</th>
+                                                        <th>Valor U.</th>
+                                                        <th>Valor T.</th>
                                                         <th>Opções</th>
                                                     </tr>
                                                 </tfoot>
                                                 <tbody>
-                                                    <tr>
-                                                        <th>1</th>
-                                                        <td>17/01/2023</td>
-                                                        <td>Inpiranga</td>
-                                                        <td>500</td>
-                                                        <td>R$ 5.40</td>
-                                                        <td>2.700</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelEntry" data-date-Entry="17/01/2023" data-provider="Inpiranga" data-liters="500" data-unitary-value="R$ 5.40" data-total="2.700">
-                                                                <i class="fas fa-pen"></i>
-                                                            </button>
-                                                            <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
-                                                                <i class="fas fa-trash"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
+                                                    <?php while ($combustivel_entrada = $fuel_intake_list->fetch_assoc()) {
+                                                    ?>
+                                                        <tr>
+                                                            <th><?= $combustivel_entrada['id'] ?></th>
+                                                            <td><?= date('d/m/Y', strtotime($combustivel_entrada['data'])) ?></td>
+                                                            <td></td>
+                                                            <td><?= $combustivel_entrada['tipo_combustivel'] ?></td>
+                                                            <td><?= $combustivel_entrada['litros'] ?></td>
+                                                            <td>R$ <?= $combustivel_entrada['valor_litro'] ?></td>
+                                                            <td>R$ <?= $combustivel_entrada['valor_total'] ?></td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelEntry_<?= $combustivel_entrada['id'] ?>">
+                                                                    <i class="fas fa-pen"></i>
+                                                                </button>
+                                                                <div name="EditFuelEntry" class="modal fade" id="modalEditFuelEntry_<?= $combustivel_entrada['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-sm" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-body">
+                                                                                <div class="text-center">
+                                                                                    <img src="../../img/combustivel.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                                </div>
+                                                                                <div class="text-center">
+                                                                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Entrada de Combustível</b></h1>
+                                                                                </div>
+                                                                                <form class="user" action="../controllers/FuelController.php" method="POST">
+                                                                                    <input type="hidden" name="edit" value="true">
+                                                                                    <input type="hidden" name="intake" value="Entrada">
+                                                                                    ...
+                                                                                    <hr>
+                                                                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
+                                                                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteFuelEntry_<?= $combustivel_entrada['id'] ?>">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </button>
+                                                                <div name="DeleteFuel" class="modal fade" id="modalDeleteFuelEntry_<?= $combustivel_entrada['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-sm" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-body">
+                                                                                <div class="text-center">
+                                                                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Deseja excluir esta Entrada de Combustível ?</span></b></h1>
+                                                                                </div>
+                                                                                <form class="user" action="../controllers/FuelController.php" method="POST">
+                                                                                    <input type="hidden" name="delete" value="true">
+                                                                                    <input type="hidden" name="intake" value="Entrada">
+                                                                                    <input type="hidden" name="id" value="<?= $combustivel_entrada['id_tabelas'] ?>">
+                                                                                    <hr>
+                                                                                    <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
+                                                                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -469,10 +546,10 @@ $prices_list_2 = $prices->getPrices();
                                                         <td></td>
                                                         <td></td>
                                                         <td>
-                                                            <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelEntry">
+                                                            <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelOutput">
                                                                 <i class="fas fa-pen"></i>
                                                             </button>
-                                                            <div name="EditFuelEntry" class="modal fade" id="modalEditFuelEntry" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div name="EditFuelOutput" class="modal fade" id="modalEditFuelOutput" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-sm" role="document">
                                                                     <div class="modal-content">
                                                                         <div class="modal-body">
@@ -598,6 +675,7 @@ $prices_list_2 = $prices->getPrices();
         let valor_litro = elem_valor_litros.value
         let value_totality = litros * valor_litro
         $("#value-total").val(value_totality);
+        $("value-total-hidden").val(value_totality);
     }
 </script>
 

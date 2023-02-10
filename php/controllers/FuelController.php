@@ -19,18 +19,27 @@ $tractors = new Tractors();
 $collaborators = new Collaborators();
 
 if (isset($_POST['register'])) {
+
     if ($_POST['output']) {
+
         $retreat = $retreats->getServicesForSomething($_POST['retreat']);
         $_RETREAT = $retreat;
         $_SELECTS = '';
         return $fuel->postFuelOutput($_POST, $_SELECTS);
+        
     }
     if ($_POST['intake']) {
-        return $fuel->postFuelIntake($_POST);
+
+        $_SUPPLIER = '';
+        $_POST['value-total'] = $_POST['value-liters'] * $_POST['liters'];
+        return $fuel->postFuelIntake($_POST, $_SUPPLIER);
+
     } else {
+
         session_start();
         $_SESSION['register_fuel_failed'] = true;
         header('Location: ../pages/operationFuel.php');
+
     }
 }
 if (isset($_POST['edit'])) {
@@ -38,5 +47,21 @@ if (isset($_POST['edit'])) {
 }
 
 if (isset($_POST['delete'])) {
-    return $fuel->deleteFuel($_POST['id']);
+
+    if ($_POST['output']) {
+
+        return $fuel->deleteFuelOutput($_POST['id']);
+
+    }
+    if ($_POST['intake']) {
+
+        return $fuel->deleteFuelIntake($_POST['id']);
+
+    } else {
+
+        session_start();
+        $_SESSION['register_fuel_failed'] = true;
+        header('Location: ../pages/operationFuel.php');
+
+    }
 }
