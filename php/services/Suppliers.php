@@ -18,12 +18,12 @@ class Suppliers
     {
         require 'Conexao.php';
 
-        $tipo = $mysqli->escape_string($request['tipo']);
-        $name = $mysqli->escape_string($request['corporateName']);
-        $telefone = $mysqli->escape_string($request['phone']);
-        $cpfCnpj = $mysqli->escape_string($request['cpfCnpj']);
+        $type = $mysqli->escape_string($request['type_persona']);
+        $name = $mysqli->escape_string($request['name_or_corporate']);
+        $cpf_cnpj = $mysqli->escape_string($request['cpf_or_cnpj']);
+        $phone = $mysqli->escape_string($request['phone']);
 
-        $create_query = "INSERT INTO fornecedores (tipo, razaoSocial, telefone, cpfCnpj) VALUES ('$tipo','$name','$telefone', '$cpfCnpj')";
+        $create_query = "INSERT INTO fornecedores (tipo_pessoa, nome_razao, cpf_cnpj, telefone) VALUES ('$type','$name','$cpf_cnpj','$phone')";
         $create_response = $mysqli->query($create_query);
 
         if ($create_response == true) {
@@ -42,12 +42,12 @@ class Suppliers
         require 'Conexao.php';
 
         $id = $mysqli->escape_string($request['id']);
-        $name = $mysqli->escape_string($request['name']);
-        $nameFantasy = $mysqli->escape_string($request['nameFantasy']);
-        $kindOfPerson = $mysqli->escape_string($request['kindOfPerson']);
-        $telephone = $mysqli->escape_string($request['telephone']);
+        $type = $mysqli->escape_string($request['type_persona']);
+        $name = $mysqli->escape_string($request['name_or_corporate']);
+        $cpf_cnpj = $mysqli->escape_string($request['cpf_or_cnpj']);
+        $phone = $mysqli->escape_string($request['phone']);
 
-        $update_query = "UPDATE fornecedores SET nome = '$name', nomeFantasia = '$nameFantasy', tipo = '$kindOfPerson', telefone = '$telephone'  WHERE id = $id";
+        $update_query = "UPDATE fornecedores SET tipo_pessoa = '$type', nome_razao = '$name', cpf_cnpj = '$cpf_cnpj', telefone = '$phone'  WHERE id = $id";
         $update_response = $mysqli->query($update_query);
 
         if ($update_response == true) {

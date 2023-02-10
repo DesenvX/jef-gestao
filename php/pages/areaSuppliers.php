@@ -53,40 +53,37 @@ session_start();
                                                 <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
                                             </div>
                                             <div class="text-center">
-                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Cadastrar Fornecedore</b></h1>
+                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Cadastrar Fornecedores </b></h1>
                                             </div>
                                             <form class="user" action="../controllers/SuppliersController.php" method="POST">
                                                 <input type="hidden" name="register" value="true">
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <select class="form-control" name="tipo" placeholder="Tipo">
-                                                            <option>Pessoa Juridica</option>
-                                                            <option> Pessoa Fisica </option>
+                                                        <select class="form-control" name="type_persona" placeholder="Tipo de Pessoa">
+                                                            <option value="PF" selected> Pessoa Fisica </option>
+                                                            <option value="PJ">Pessoa Juridica</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="text" class="form-control  " name="corporateName" placeholder="Razão Social">
+                                                        <input type="text" class="form-control" name="name_or_corporate" placeholder="Nome / Razão Sozial" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="text" class="form-control  " name="phone" placeholder="Telefone">
+                                                        <input type="tel" class="form-control" name="cpf_or_cnpj" placeholder="CPF / CNPJ" required>
                                                     </div>
                                                 </div>
-
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="tel" class="form-control" name="cpfCnpj" placeholder="CNPJ">
+                                                        <input type="text" class="form-control" name="phone" placeholder="Telefone" required>
                                                     </div>
                                                 </div>
-
                                                 <hr>
                                                 <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
                                                 <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
@@ -110,113 +107,101 @@ session_start();
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Tipo</th>
-                                            <th>Razão Social</th>
-                                            <th>Telefone</th>
+                                            <th>Tipo de Pessoa</th>
+                                            <th>Nome/Razão Social</th>
                                             <th>CPF/CNPJ</th>
+                                            <th>Telefone</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Tipo</th>
-                                            <th>Razão Social</th>
-                                            <th>Telefone</th>
+                                            <th>Tipo de Pessoa</th>
+                                            <th>Nome/Razão Social</th>
                                             <th>CPF/CNPJ</th>
+                                            <th>Telefone</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <?php
-                                        require_once '../services/Suppliers.php';
+                                        <tr>
+                                            <th></th>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditSuppliers">
+                                                    <i class="fas fa-pen"></i>
+                                                </button>
 
-                                        use services\Suppliers;
-
-                                        $suppliers = new Suppliers();
-                                        $suppliers_list = $suppliers->getSuppliers();
-
-                                        while ($fornecedor = $suppliers_list->fetch_assoc()) {
-
-                                        ?>
-                                            <tr>
-                                                <th><?php echo $fornecedor['id'] ?></th>
-                                                <td><?php echo $fornecedor['tipo'] ?></td>
-                                                <td><?php echo $fornecedor['corporateName'] ?></td>
-                                                <td><?php echo $fornecedor['phone'] ?></td>
-                                                <td><?php echo $fornecedor['cpfCnpj'] ?></td>
-                                                <td>
-                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditSuppliers">
-                                                        <i class="fas fa-pen"></i>
-                                                    </button>
-
-                                                    <div name="EditSuppliers" class="modal fade" id="modalEditSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
-                                                        <div class="modal-dialog modal-sm" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-body">
-                                                                    <div class="text-center">
-                                                                        <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
-                                                                    </div>
-                                                                    <div class="text-center">
-                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Fornecedor </b></h1>
-                                                                    </div>
-                                                                    <form class="user" action="../controllers/SuppliersController.php" method="post">
-                                                                        <input type="hidden" name="edit" value="true">
-                                                                        <input type="hidden" name="id" value="<?= $fornecedor['id'] ?>">
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " name="name" value="<?= $fornecedor['nome'] ?>" placeholder="Razão Social">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " name="nameFantasy" value="<?= $fornecedor['nomeFantasia'] ?>" placeholder="Nome Fantasia">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " name="kindOfPerson" value="<?= $fornecedor['tipo'] ?>" placeholder="Tipo de Pessoa">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="tel" class="form-control  " name="telephone" value="<?= $fornecedor['telefone'] ?>" placeholder="Telefone">
-                                                                            </div>
-                                                                        </div>
-                                                                        <hr>
-                                                                        <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                                                    </form>
+                                                <div name="EditSuppliers" class="modal fade" id="modalEditSuppliers" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div class="modal-dialog modal-sm" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                <div class="text-center">
+                                                                    <img src="../../img/fornecedores.png" width="100" height="100" style="margin-bottom: 10px;">
                                                                 </div>
+                                                                <div class="text-center">
+                                                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Fornecedor </b></h1>
+                                                                </div>
+                                                                <form class="user" action="../controllers/SuppliersController.php" method="post">
+                                                                    <input type="hidden" name="edit" value="true">
+                                                                    <input type="hidden" name="id" value="">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                            <input type="text" class="form-control  " name="name" value="" placeholder="Razão Social">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                            <input type="text" class="form-control  " name="nameFantasy" value="" placeholder="Nome Fantasia">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                            <input type="text" class="form-control  " name="kindOfPerson" value="" placeholder="Tipo de Pessoa">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                            <input type="tel" class="form-control  " name="telephone" value="" placeholder="Telefone">
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr>
+                                                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
+                                                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
 
-                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteCategories">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
+                                                <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteCategories">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
 
-                                                    <div name="DeleteCategories" class="modal fade" id="modalDeleteCategories" tabindex="-1" role="dialog" aria-hidden="true">
-                                                        <div class="modal-dialog modal-sm" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-body">
-                                                                    <div class="text-center">
-                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o fornecedor <br><strong> <?= $fornecedor['nome'] ?> </strong> ?</span></b></h1>
-                                                                    </div>
-                                                                    <form class="user" action="../controllers/SuppliersController.php" method="POST">
-                                                                        <input type="hidden" name="delete" value="true">
-                                                                        <input type="hidden" name="id" value="<?= $fornecedor['id'] ?>">
-                                                                        <hr>
-                                                                        <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
-                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                                                    </form>
+                                                <div name="DeleteCategories" class="modal fade" id="modalDeleteCategories" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div class="modal-dialog modal-sm" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                <div class="text-center">
+                                                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o fornecedor <br><strong> </strong> ?</span></b></h1>
                                                                 </div>
+                                                                <form class="user" action="../controllers/SuppliersController.php" method="POST">
+                                                                    <input type="hidden" name="delete" value="true">
+                                                                    <input type="hidden" name="id" value="">
+                                                                    <hr>
+                                                                    <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
+                                                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
