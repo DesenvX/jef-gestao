@@ -21,6 +21,7 @@ require_once '../services/Services.php';
 require_once '../services/Pastures.php';
 require_once '../services/Tractors.php';
 require_once '../services/Collaborators.php';
+require_once '../services/Suppliers.php';
 require_once '../services/Prices.php';
 require_once '../services/Fuel.php';
 
@@ -28,6 +29,7 @@ use services\Services;
 use services\Pastures;
 use services\Tractors;
 use services\Collaborators;
+use services\Suppliers;
 use services\Prices;
 use services\Fuel;
 
@@ -39,6 +41,8 @@ $tractors = new Tractors();
 $tractors_list = $tractors->getTractors();
 $collaborators = new Collaborators();
 $collaborators_list = $collaborators->getCollaborators();
+$suppliers = new Suppliers();
+$suppliers_list = $suppliers->getSuppliers();
 $prices = new Prices();
 $prices_list = $prices->getPrices();
 $prices_list_2 = $prices->getPrices();
@@ -176,8 +180,11 @@ $fuel_intake_list = $fuel->getFuelIntake();
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <select class="form-control" name="suppliers" required>
-                                                            <option value="fornecedor"> Fornecedor </option>
+                                                        <select class="form-control" name="supplier" required>
+                                                            <option value="" selected> Fornecedor </option>
+                                                            <?php while ($fornecedores = $suppliers_list->fetch_assoc()) { ?>
+                                                                <option value="<?= $fornecedores['id'] ?>"> <?= $fornecedores['nome_razao'] ?> </option>
+                                                            <?php } ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -357,23 +364,29 @@ $fuel_intake_list = $fuel->getFuelIntake();
                                                 <tbody>
                                                     <?php while ($historico = $fuel_historic_list->fetch_assoc()) {
                                                     ?>
-                                                        <?php if ($historico['tipo'] == 'Saida') { ?>
+                                                        <?php
+
+                                                        if ($historico['tipo'] == 'Saida') {
+                                                            $historic_output = $fuel->getOutputHistoricForSomething($historico['id_tabelas']);
+                                                        ?>
                                                             <tr class="table-danger">
                                                                 <th><?= $historico['id'] ?></th>
                                                                 <td><?= date('d/m/Y', strtotime($historico['data'])) ?></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
+                                                                <td><?= $historic_output['tipo_combustivel'] ?></td>
+                                                                <td><?= $historic_output['litros'] ?></td>
+                                                                <td>R$ <?= $historic_output['valor_total'] ?></td>
                                                             </tr>
                                                         <?php } ?>
 
-                                                        <?php if ($historico['tipo'] == 'Entrada') { ?>
+                                                        <?php if ($historico['tipo'] == 'Entrada') {
+                                                            $historic_intake = $fuel->getIntakeHistoricForSomething($historico['id_tabelas']);
+                                                        ?>
                                                             <tr class="table-info">
                                                                 <th><?= $historico['id'] ?></th>
                                                                 <td><?= date('d/m/Y', strtotime($historico['data'])) ?></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
+                                                                <td><?= $historic_intake['tipo_combustivel'] ?></td>
+                                                                <td><?= $historic_intake['litros'] ?></td>
+                                                                <td>R$ <?= $historic_intake['valor_total'] ?></td>
                                                             </tr>
                                                         <?php } ?>
                                                     <?php } ?>
@@ -427,11 +440,12 @@ $fuel_intake_list = $fuel->getFuelIntake();
                                                 </tfoot>
                                                 <tbody>
                                                     <?php while ($combustivel_entrada = $fuel_intake_list->fetch_assoc()) {
+                                                        $fornecedor = $suppliers->getSupplierForSomething($combustivel_entrada['id_fornecedor']);
                                                     ?>
                                                         <tr>
                                                             <th><?= $combustivel_entrada['id'] ?></th>
                                                             <td><?= date('d/m/Y', strtotime($combustivel_entrada['data'])) ?></td>
-                                                            <td></td>
+                                                            <td><?= $fornecedor['nome_razao'] ?></td>
                                                             <td><?= $combustivel_entrada['tipo_combustivel'] ?></td>
                                                             <td><?= $combustivel_entrada['litros'] ?></td>
                                                             <td>R$ <?= $combustivel_entrada['valor_litro'] ?></td>

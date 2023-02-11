@@ -4,6 +4,28 @@ namespace services;
 
 class Fuel
 {
+    public function getIntakeHistoricForSomething($id) 
+    {
+        require 'Conexao.php';
+
+        $intake_historic_query = "SELECT * FROM combustivel_entrada WHERE id_tabelas = $id";
+        $intake_historic_response = $mysqli->query($intake_historic_query);
+        $intake_historic_result = $intake_historic_response->fetch_assoc();
+
+        return $intake_historic_result;
+    }
+
+    public function getOutputHistoricForSomething($id) 
+    {
+        require 'Conexao.php';
+
+        $output_historic_query = "SELECT * FROM combustivel_saida WHERE id_tabelas = $id";
+        $output_historic_response = $mysqli->query($output_historic_query);
+        $output_historic_result = $output_historic_response->fetch_assoc();
+
+        return $output_historic_result;
+    }
+
     public function getFuelHistoric()
     {
         require 'Conexao.php';
@@ -74,9 +96,8 @@ class Fuel
         $value_liters = $mysqli->escape_string($request['value-liters']);
         $value_total = $mysqli->escape_string($request['value-total']);
         $type = $mysqli->escape_string($request['intake']);
-        $id_supplier = 1;
-        $supplier = 'fornecedor';
-
+        $id_supplier = $mysqli->escape_string($supplier['id']);
+        $supplier = $mysqli->escape_string($supplier['nome_razao']);
 
         $fuel_intake_query = "INSERT INTO combustivel_entrada (id_tabelas, id_fornecedor, fornecedor, tipo_combustivel, data, litros, valor_litro, valor_total) VALUES('$id_link_tables', '$id_supplier', '$supplier', '$fuel_type', '$date_entry', '$liters', '$value_liters', '$value_total')";
         $fuel_intake_response = $mysqli->query($fuel_intake_query);
