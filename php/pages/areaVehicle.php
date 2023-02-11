@@ -50,7 +50,7 @@ session_start();
                                     <div class="modal-content">
                                         <div class="modal-body">
                                             <div class="text-center">
-                                                <img src="../../img/trator.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                <img src="../../img/veiculos.png" width="100" height="100" style="margin-bottom: 10px;">
                                             </div>
                                             <div class="text-center">
                                                 <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Veiculo</b></h1>
@@ -150,12 +150,13 @@ session_start();
                                                     <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditVehicle_<?= $veiculo['id'] ?>">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
+                                                    
                                                     <div name="EditVehicle" class="modal fade" id="modalEditVehicle_<?= $veiculo['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
                                                                     <div class="text-center">
-                                                                        <img src="../../img/trator.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                        <img src="../../img/veiculos.png" width="100" height="100" style="margin-bottom: 10px;">
                                                                     </div>
                                                                     <div class="text-center">
                                                                         <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Veiculo</b></h1>
@@ -248,68 +249,68 @@ session_start();
 </body>
 
 <?php
-if (isset($_SESSION['register_tractors_success'])) {
+if (isset($_SESSION['register_vehicles_success'])) {
 ?>
     <script>
         swalRegisterSuccess();
     </script>
 <?php
-    unset($_SESSION['register_tractors_success']);
+    unset($_SESSION['register_vehicles_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['register_tractors_fail'])) {
+if (isset($_SESSION['register_vehicles_fail'])) {
 ?>
     <script>
         swalRegisterError();
     </script>
 <?php
-    unset($_SESSION['register_tractors_fail']);
+    unset($_SESSION['register_vehicles_fail']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['edit_tractors_success'])) {
+if (isset($_SESSION['edit_vehicles_success'])) {
 ?>
     <script>
         swalEditSuccess();
     </script>
 <?php
-    unset($_SESSION['edit_tractors_success']);
+    unset($_SESSION['edit_vehicles_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['edit_tractors_fail'])) {
+if (isset($_SESSION['edit_vehicles_fail'])) {
 ?>
     <script>
         swalEditError();
     </script>
 <?php
-    unset($_SESSION['edit_tractors_fail']);
+    unset($_SESSION['edit_vehicles_fail']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['delete_tractors_success'])) {
+if (isset($_SESSION['delete_vehicles_success'])) {
 ?>
     <script>
         swalDeleteSuccess();
     </script>
 <?php
-    unset($_SESSION['delete_tractors_success']);
+    unset($_SESSION['delete_vehicles_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['delete_tractors_fail'])) {
+if (isset($_SESSION['delete_vehicles_fail'])) {
 ?>
     <script>
         swalDeleteError();
     </script>
 <?php
-    unset($_SESSION['delete_tractors_fail']);
+    unset($_SESSION['delete_vehicles_fail']);
 }
 ?>
 

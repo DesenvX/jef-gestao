@@ -93,3 +93,13 @@ function swalValidateCpfError() {
         timer: 3000
     })
 }
+
+function swalValidateCnpjError() {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'CNPJ inválido!',
+        showConfirmButton: false,
+        timer: 3000
+    })
+}

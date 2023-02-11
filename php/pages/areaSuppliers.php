@@ -162,8 +162,8 @@ session_start();
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
                                                                                 <select class="form-control" name="type_persona" required>
-                                                                                    <option value="Pessoa Fisica" <?php if($fornecedor['tipo_pessoa'] == 'Pessoa Fisica') { ?> selected <?php } ?>> Pessoa Física </option>
-                                                                                    <option value="Pessoa Juridica" <?php if($fornecedor['tipo_pessoa'] == 'Pessoa Juridica') { ?> selected <?php } ?>> Pessoa Jurídica </option>
+                                                                                    <option value="Pessoa Fisica" <?php if ($fornecedor['tipo_pessoa'] == 'Pessoa Fisica') { ?> selected <?php } ?>> Pessoa Física </option>
+                                                                                    <option value="Pessoa Juridica" <?php if ($fornecedor['tipo_pessoa'] == 'Pessoa Juridica') { ?> selected <?php } ?>> Pessoa Jurídica </option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -303,6 +303,16 @@ if (isset($_SESSION['delete_suppliers_fail'])) {
     </script>
 <?php
     unset($_SESSION['delete_suppliers_fail']);
+}
+?>
+<?php
+if (isset($_SESSION['validate_cnpj_failed'])) {
+?>
+    <script>
+        swalValidateCnpjError();
+    </script>
+<?php
+    unset($_SESSION['validate_cnpj_failed']);
 }
 ?>
 

@@ -38,18 +38,20 @@ session_start();
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
+
                             <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterPrices">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
                                 <span class="text"> Cadastrar </span>
                             </button>
+
                             <div name="RegisterPrices" class="modal fade" id="modalRegisterPrices" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-sm" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
                                             <div class="text-center">
-                                                <img src="../../img/servico.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                <img src="../../img/preco.png" width="100" height="100" style="margin-bottom: 10px;">
                                             </div>
                                             <div class="text-center">
                                                 <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Preços</b></h1>
@@ -129,7 +131,7 @@ session_start();
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
                                                                     <div class="text-center">
-                                                                        <img src="../../img/servico.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                        <img src="../../img/preco.png" width="100" height="100" style="margin-bottom: 10px;">
                                                                     </div>
                                                                     <div class="text-center">
                                                                         <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Serviço</b></h1>

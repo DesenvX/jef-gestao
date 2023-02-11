@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 09-Fev-2023 às 14:01
+-- Tempo de geração: 11-Fev-2023 às 07:20
 -- Versão do servidor: 8.0.17
 -- versão do PHP: 7.3.10
 
@@ -30,12 +30,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `veiculos` (
   `id` int(11) NOT NULL,
-  `descriçao` varchar(3000) NOT NULL,
+  `descricao` varchar(3000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `marca` varchar(100) NOT NULL,
   `modelo` varchar(100) NOT NULL,
   `ano` varchar(10) NOT NULL,
   `placa` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `veiculos`
+--
+
+INSERT INTO `veiculos` (`id`, `descricao`, `marca`, `modelo`, `ano`, `placa`) VALUES
+(1, 'veiculo', 'marca', 'BH - 135', '2003', 'placa'),
+(2, 'mtshubishi', 'marc', 'modelo', '2005', 'placa');
 
 --
 -- Índices para tabelas despejadas
@@ -55,7 +63,7 @@ ALTER TABLE `veiculos`
 -- AUTO_INCREMENT de tabela `veiculos`
 --
 ALTER TABLE `veiculos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

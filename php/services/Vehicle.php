@@ -28,11 +28,11 @@ class Vehicle
 
         if ($create_response == true) {
             session_start();
-            $_SESSION['register_tractors_success'] = true;
+            $_SESSION['register_vehicles_success'] = true;
             header('Location: ../pages/areaVehicle.php');
         } else {
             session_start();
-            $_SESSION['register_tractors_fail'] = true;
+            $_SESSION['register_vehicles_fail'] = true;
             header('Location: ../pages/areaVehicle.php');
         }
     }
@@ -53,11 +53,11 @@ class Vehicle
 
         if ($update_response == true) {
             session_start();
-            $_SESSION['edit_tractors_success'] = true;
+            $_SESSION['edit_vehicles_success'] = true;
             header('Location: ../pages/areaVehicle.php');
         } else {
             session_start();
-            $_SESSION['edit_tractors_fail'] = true;
+            $_SESSION['edit_vehicles_fail'] = true;
             header('Location: ../pages/areaVehicle.php');
         }
     }
@@ -71,11 +71,11 @@ class Vehicle
 
         if ($delete_response == true) {
             session_start();
-            $_SESSION['delete_tractors_success'] = true;
+            $_SESSION['delete_vehicles_success'] = true;
             header('Location: ../pages/areaVehicle.php');
         } else {
             session_start();
-            $_SESSION['delete_tractors_fail'] = true;
+            $_SESSION['delete_vehicles_fail'] = true;
             header('Location: ../pages/areaVehicle.php');
         }
     }
