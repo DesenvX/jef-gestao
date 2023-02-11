@@ -486,7 +486,7 @@ $collaborators_list = $collaborators->getCollaborators();
                                                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                                                             <select class="form-control" name="supplier" required>
                                                                                                 <?php while ($fornecedores_edit = $suppliers_list_edit->fetch_assoc()) { ?>
-                                                                                                    <option value="<?= $fornecedores_edit['id'] ?>" <?php if($combustivel_entrada['id_fornecedor'] == $fornecedores_edit['id'] ){?> selected <?php } ?>> <?= $fornecedores_edit['nome_razao'] ?> </option>
+                                                                                                    <option value="<?= $fornecedores_edit['id'] ?>" <?php if ($combustivel_entrada['id_fornecedor'] == $fornecedores_edit['id']) { ?> selected <?php } ?>> <?= $fornecedores_edit['nome_razao'] ?> </option>
                                                                                                 <?php } ?>
                                                                                             </select>
                                                                                         </div>
@@ -505,25 +505,9 @@ $collaborators_list = $collaborators->getCollaborators();
                                                                                                     <span class="input-group-text">R$</span>
                                                                                                 </div>
 
-                                                                                                <input type="number" class="form-control" step=".01" name="value-liters" id="value-liters-edit" value="<?= $combustivel_entrada['valor_litro'] ?>" placeholder="Valor p/ Litro" disabled>
+                                                                                                <input type="number" class="form-control" step=".01" name="value-liters" value="<?= $combustivel_entrada['valor_litro'] ?>" placeholder="Valor p/ Litro" disabled>
                                                                                                 <input type="hidden" class="form-control" name="value-liters" value="<?= $combustivel_entrada['valor_litro'] ?>">
 
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="form-group row">
-                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                            <button type="button" class="form-control" onclick="loadValueTotalityEdit()">Calcular Valor Total</button>
-                                                                                        </div>
-                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                            <div class="input-group">
-                                                                                                <div class="input-group-prepend">
-                                                                                                    <span class="input-group-text">R$</span>
-                                                                                                </div>
-                                                                                                <input type="number" class="form-control" step=".01" id="value-total-edit" name="value-total" value="<?= $combustivel_entrada['valor_total'] ?>" disabled>
-                                                                                                <input type="hidden" class="form-control" id="value-total-hidden-edit" name="value-total" value="<?= $combustivel_entrada['valor_total'] ?>">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -750,16 +734,6 @@ $collaborators_list = $collaborators->getCollaborators();
         let value_totality = litros * valor_litro
         $("#value-total").val(value_totality);
         $("value-total-hidden").val(value_totality);
-    }
-
-    function loadValueTotalityEdit() {
-        const elem_litros = document.getElementById('liters-edit')
-        const elem_valor_litros = document.getElementById('value-liters-edit')
-        let litros = elem_litros.value
-        let valor_litro = elem_valor_litros.value
-        let value_totality = litros * valor_litro
-        $("#value-total-edit").val(value_totality);
-        $("#value-total-hidden-edit").val(value_totality);
     }
 </script>
 
