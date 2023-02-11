@@ -33,6 +33,17 @@ use services\Suppliers;
 use services\Prices;
 use services\Fuel;
 
+$fuel = new Fuel();
+$fuel_historic_list = $fuel->getFuelHistoric();
+$fuel_intake_list = $fuel->getFuelIntake();
+
+$suppliers = new Suppliers();
+$suppliers_list = $suppliers->getSuppliers();
+$suppliers_list_edit = $suppliers->getSuppliers();
+$prices = new Prices();
+$prices_list = $prices->getPrices();
+$prices_list_edit = $prices->getPrices();
+
 $services = new Services();
 $services_list = $services->getServices();
 $pastures = new Pastures();
@@ -41,14 +52,6 @@ $tractors = new Tractors();
 $tractors_list = $tractors->getTractors();
 $collaborators = new Collaborators();
 $collaborators_list = $collaborators->getCollaborators();
-$suppliers = new Suppliers();
-$suppliers_list = $suppliers->getSuppliers();
-$prices = new Prices();
-$prices_list = $prices->getPrices();
-$prices_list_2 = $prices->getPrices();
-$fuel = new Fuel();
-$fuel_historic_list = $fuel->getFuelHistoric();
-$fuel_intake_list = $fuel->getFuelIntake();
 ?>
 
 <body id="page-top">
@@ -323,6 +326,7 @@ $fuel_intake_list = $fuel->getFuelIntake();
                             </div>
                         </div>
 
+
                         <div class="accordion" id="accordionActionsTables">
 
                             <div id="collapseHistoric" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionActionsTables">
@@ -467,7 +471,62 @@ $fuel_intake_list = $fuel->getFuelIntake();
                                                                                 <form class="user" action="../controllers/FuelController.php" method="POST">
                                                                                     <input type="hidden" name="edit" value="true">
                                                                                     <input type="hidden" name="intake" value="Entrada">
-                                                                                    ...
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                            <input type="text" class="form-control" value="<?= $combustivel_entrada['tipo_combustivel'] ?>" placeholder="Combustível" disabled>
+                                                                                            <input type="hidden" class="form-control" name="fuel-type" value="<?= $combustivel_entrada['tipo_combustivel'] ?>">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                            <input type="date" class="form-control" name="date-entry" value="<?= $combustivel_entrada['data'] ?>" placeholder="Data" required>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                            <select class="form-control" name="supplier" required>
+                                                                                                <?php while ($fornecedores_edit = $suppliers_list_edit->fetch_assoc()) { ?>
+                                                                                                    <option value="<?= $fornecedores_edit['id'] ?>" <?php if($combustivel_entrada['id_fornecedor'] == $fornecedores_edit['id'] ){?> selected <?php } ?>> <?= $fornecedores_edit['nome_razao'] ?> </option>
+                                                                                                <?php } ?>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                            <input type="number" class="form-control" step=".01" name="liters" id="liters-edit" value="<?= $combustivel_entrada['litros'] ?>" placeholder="Litros" required>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-prepend">
+                                                                                                    <span class="input-group-text">R$</span>
+                                                                                                </div>
+
+                                                                                                <input type="number" class="form-control" step=".01" name="value-liters" id="value-liters-edit" value="<?= $combustivel_entrada['valor_litro'] ?>" placeholder="Valor p/ Litro" disabled>
+                                                                                                <input type="hidden" class="form-control" name="value-liters" value="<?= $combustivel_entrada['valor_litro'] ?>">
+
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                            <button type="button" class="form-control" onclick="loadValueTotalityEdit()">Calcular Valor Total</button>
+                                                                                        </div>
+                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-prepend">
+                                                                                                    <span class="input-group-text">R$</span>
+                                                                                                </div>
+                                                                                                <input type="number" class="form-control" step=".01" id="value-total-edit" name="value-total" value="<?= $combustivel_entrada['valor_total'] ?>" disabled>
+                                                                                                <input type="hidden" class="form-control" id="value-total-hidden-edit" name="value-total" value="<?= $combustivel_entrada['valor_total'] ?>">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
                                                                                     <hr>
                                                                                     <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
                                                                                     <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
@@ -660,6 +719,7 @@ $fuel_intake_list = $fuel->getFuelIntake();
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -690,6 +750,16 @@ $fuel_intake_list = $fuel->getFuelIntake();
         let value_totality = litros * valor_litro
         $("#value-total").val(value_totality);
         $("value-total-hidden").val(value_totality);
+    }
+
+    function loadValueTotalityEdit() {
+        const elem_litros = document.getElementById('liters-edit')
+        const elem_valor_litros = document.getElementById('value-liters-edit')
+        let litros = elem_litros.value
+        let valor_litro = elem_valor_litros.value
+        let value_totality = litros * valor_litro
+        $("#value-total-edit").val(value_totality);
+        $("#value-total-hidden-edit").val(value_totality);
     }
 </script>
 
