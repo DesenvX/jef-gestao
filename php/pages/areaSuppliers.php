@@ -156,27 +156,30 @@ session_start();
                                                                     <div class="text-center">
                                                                         <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Editar Fornecedor </b></h1>
                                                                     </div>
-                                                                    <form class="user" action="../controllers/SuppliersController.php" method="post">
+                                                                    <form class="user" action="../controllers/SuppliersController.php" method="POST">
                                                                         <input type="hidden" name="edit" value="true">
                                                                         <input type="hidden" name="id" value="<?= $fornecedor['id'] ?>">
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " name="name" value="" placeholder="Razão Social">
+                                                                                <select class="form-control" name="type_persona" required>
+                                                                                    <option value="Pessoa Fisica" <?php if($fornecedor['tipo_pessoa'] == 'Pessoa Fisica') { ?> selected <?php } ?>> Pessoa Física </option>
+                                                                                    <option value="Pessoa Juridica" <?php if($fornecedor['tipo_pessoa'] == 'Pessoa Juridica') { ?> selected <?php } ?>> Pessoa Jurídica </option>
+                                                                                </select>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " name="nameFantasy" value="" placeholder="Nome Fantasia">
+                                                                                <input type="text" class="form-control" name="name_or_corporate" value="<?= $fornecedor['nome_razao'] ?>" placeholder="Nome / Razão Social" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " name="kindOfPerson" value="" placeholder="Tipo de Pessoa">
+                                                                                <input type="text" class="form-control" name="cpf_or_cnpj" value="<?= $fornecedor['cpf_cnpj'] ?>" placeholder="CPF / CNPJ" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="tel" class="form-control  " name="telephone" value="" placeholder="Telefone">
+                                                                                <input type="text" class="form-control" name="phone" value="<?= $fornecedor['telefone'] ?>" placeholder="phone" required>
                                                                             </div>
                                                                         </div>
                                                                         <hr>
@@ -188,20 +191,20 @@ session_start();
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteCategories">
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteCategories_<?= $fornecedor['id'] ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
 
-                                                    <div name="DeleteCategories" class="modal fade" id="modalDeleteCategories" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="DeleteCategories" class="modal fade" id="modalDeleteCategories_<?= $fornecedor['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
                                                                     <div class="text-center">
-                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o fornecedor <br><strong> </strong> ?</span></b></h1>
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o fornecedor <br><strong> <?= $fornecedor['nome_razao'] ?> </strong> ?</span></b></h1>
                                                                     </div>
                                                                     <form class="user" action="../controllers/SuppliersController.php" method="POST">
                                                                         <input type="hidden" name="delete" value="true">
-                                                                        <input type="hidden" name="id" value="">
+                                                                        <input type="hidden" name="id" value="<?= $fornecedor['id'] ?>">
                                                                         <hr>
                                                                         <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
                                                                         <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
