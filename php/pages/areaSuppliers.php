@@ -315,5 +315,15 @@ if (isset($_SESSION['validate_cnpj_failed'])) {
     unset($_SESSION['validate_cnpj_failed']);
 }
 ?>
+<?php
+if (isset($_SESSION['validate_cpf_failed'])) {
+?>
+    <script>
+        swalValidateCpfError();
+    </script>
+<?php
+    unset($_SESSION['validate_cpf_failed']);
+}
+?>
 
 </html>
