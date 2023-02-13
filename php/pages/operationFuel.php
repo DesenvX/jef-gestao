@@ -41,7 +41,6 @@ $suppliers = new Suppliers();
 $suppliers_list = $suppliers->getSuppliers();
 $prices = new Prices();
 $prices_list = $prices->getPrices();
-$prices_list_edit = $prices->getPrices();
 
 $services = new Services();
 $services_list = $services->getServices();
