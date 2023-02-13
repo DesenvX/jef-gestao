@@ -154,6 +154,7 @@ $collaborators_list = $collaborators->getCollaborators();
                                 <a class="btn btn-dark btn-sm" style="background: #06B8D4; margin-left:1px; margin-right:2px; border-color:#D5D8DC;" data-toggle="modal" data-target="#modalRegisterFuelEntry"> <i class="fas fa-plus-circle" data-toggle="tooltip" data-placement="top" title="Cadastrar"></i> </a>
                                 </a>
                             </button>
+
                             <div name="RegisterFuelEntry" class="modal fade" id="modalRegisterFuelEntry" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-sm" role="document">
                                     <div class="modal-content">
