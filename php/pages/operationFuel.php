@@ -39,7 +39,6 @@ $fuel_intake_list = $fuel->getFuelIntake();
 
 $suppliers = new Suppliers();
 $suppliers_list = $suppliers->getSuppliers();
-$suppliers_list_edit = $suppliers->getSuppliers();
 $prices = new Prices();
 $prices_list = $prices->getPrices();
 $prices_list_edit = $prices->getPrices();
@@ -485,8 +484,11 @@ $collaborators_list = $collaborators->getCollaborators();
                                                                                     <div class="form-group row">
                                                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                                                             <select class="form-control" name="supplier" required>
-                                                                                                <?php while ($fornecedores_edit = $suppliers_list_edit->fetch_assoc()) { ?>
-                                                                                                    <option value="<?= $fornecedores_edit['id'] ?>" <?php if ($combustivel_entrada['id_fornecedor'] == $fornecedores_edit['id']) { ?> selected <?php } ?>> <?= $fornecedores_edit['nome_razao'] ?> </option>
+                                                                                                <?php
+                                                                                                $suppliers_edit = new Suppliers();
+                                                                                                $suppliers_list_edit = $suppliers_edit->getSuppliers();
+                                                                                                while ($fornecedores_edit = $suppliers_list_edit->fetch_assoc()) { ?>
+                                                                                                    <option value="<?= $fornecedores_edit['id'] ?>" <?php if ($combustivel_entrada['id_fornecedor'] == $fornecedores_edit['id']) { ?> selected <?php } ?>><?= $fornecedores_edit['nome_razao'] ?></option>
                                                                                                 <?php } ?>
                                                                                             </select>
                                                                                         </div>
