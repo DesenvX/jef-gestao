@@ -633,6 +633,7 @@ $collaborators_list = $collaborators->getCollaborators();
                                                             <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelOutput">
                                                                 <i class="fas fa-pen"></i>
                                                             </button>
+                                                            
                                                             <div name="EditFuelOutput" class="modal fade" id="modalEditFuelOutput" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-sm" role="document">
                                                                     <div class="modal-content">
@@ -704,6 +705,7 @@ $collaborators_list = $collaborators->getCollaborators();
                                                             <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteFuel">
                                                                 <i class="fas fa-trash"></i>
                                                             </button>
+
                                                             <div name="DeleteFuel" class="modal fade" id="modalDeleteFuel" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-sm" role="document">
                                                                     <div class="modal-content">
