@@ -36,6 +36,7 @@ use services\Fuel;
 $fuel = new Fuel();
 $fuel_historic_list = $fuel->getFuelHistoric();
 $fuel_intake_list = $fuel->getFuelIntake();
+$fuel_porcent_tank = $fuel->getPorcentTankDashboard();
 
 $suppliers = new Suppliers();
 $suppliers_list = $suppliers->getSuppliers();
@@ -78,7 +79,7 @@ $collaborators_list = $collaborators->getCollaborators();
                         <div class="card-body">
 
                             <div class="row">
-                                <div class="col-xl-3 col-md-6">
+                                <!-- <div class="col-xl-3 col-md-6">
                                     <div class="card border-left-success shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row no-gutters align-items-center">
@@ -104,22 +105,26 @@ $collaborators_list = $collaborators->getCollaborators();
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="col-xl-6 col-md-6">
+                                <div class="col-xl-12 col-md-6">
                                     <div class="card border-left-dark shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-dark text-uppercase mb-1"> Tanque
-                                                    </div>
+                                                    <div class="text-xs font-weight-bold text-dark text-uppercase mb-1"> Tanque </div>
                                                     <div class="row no-gutters align-items-center">
+                                                        <?php
+                                                        $tank = 10000;
+                                                        $fuel_porcent = ($fuel_porcent_tank * 100) / $tank;
+                                                        ?>
                                                         <div class="col-auto">
-                                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">300 Litros (50%)</div>
+                                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $fuel_porcent_tank ?> Litros (<?= $fuel_porcent ?>%)</div>
                                                         </div>
                                                         <div class="col">
+
                                                             <div class="progress progress-sm mr-2">
-                                                                <div class="progress-bar bg-dark" role="progressbar" style="width: 20%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="10000"></div>
+                                                                <div class="progress-bar bg-dark" role="progressbar" style="width: <?= $fuel_porcent ?>%" aria-valuemin="0" aria-valuemax="<?= $tank ?>"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -149,7 +154,8 @@ $collaborators_list = $collaborators->getCollaborators();
                                     <i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="Vusializar"> </i>
                                 </a>
 
-                                <a class="btn btn-dark btn-sm" style="background: #06B8D4; margin-left:1px; margin-right:2px; border-color:#D5D8DC;" data-toggle="modal" data-target="#modalRegisterFuelEntry"> <i class="fas fa-plus-circle" data-toggle="tooltip" data-placement="top" title="Cadastrar"></i> </a>
+                                <a class="btn btn-dark btn-sm" style="background: #06B8D4; margin-left:1px; margin-right:2px; border-color:#D5D8DC;" data-toggle="modal" data-target="#modalRegisterFuelEntry">
+                                    <i class="fas fa-tint" data-toggle="tooltip" data-placement="top" title="Cadastrar Entrada"></i>
                                 </a>
                             </button>
 
@@ -215,6 +221,8 @@ $collaborators_list = $collaborators->getCollaborators();
                                                     </div>
                                                 </div>
 
+                                                <hr>
+
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                                         <button type="button" class="form-control" onclick="loadValueTotality()">Calcular Valor Total</button>
@@ -246,7 +254,16 @@ $collaborators_list = $collaborators->getCollaborators();
                                     <i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="Vusializar"></i>
                                 </a>
 
-                                <a class="btn btn-dark btn-sm" style="background: #FF5A4A; margin-left:2px; margin-right:1px; border-color:#D5D8DC;" data-toggle="modal" data-target="#modalRegisterFuelOutput"> <i class="fas fa-plus-circle" data-toggle="tooltip" data-placement="top" title="Cadastrar"></i> </a>
+                                <a class="btn btn-dark btn-sm" style="background: #FF5A4A; margin-left:2px; margin-right:1px; border-color:#D5D8DC;" data-toggle="modal" data-target="#modalRegisterFuelOutput">
+                                    <span data-toggle="tooltip" data-placement="top" title="Cadastrar Saída das Máquinas">
+                                        <i class="fas fa-tractor"></i>
+                                    </span>
+                                </a>
+                                <a class="btn btn-dark btn-sm" style="background: #FF5A4A; margin-left:2px; margin-right:1px; border-color:#D5D8DC;" data-toggle="modal" data-target="#modalRegisterFuelOutput">
+                                    <span data-toggle="tooltip" data-placement="top" title="Cadastrar Saída dos Veículos">
+                                        <i class="fas fa-motorcycle"></i>
+                                        <i class="fas fa-truck-pickup"></i>
+                                    </span>
                                 </a>
                             </button>
                             <div name="RegisterFuelOutput" class="modal fade" id="modalRegisterFuelOutput" tabindex="-1" role="dialog" aria-hidden="true">
@@ -258,12 +275,18 @@ $collaborators_list = $collaborators->getCollaborators();
                                             </div>
                                             <div class="text-center">
                                                 <h1 class="h4 text-gray-900 mb-4">
-                                                    <b style="color: #566573;"> Saida de Combustivel </b>
+                                                    <b style="color: #566573;"> Saida de Combustivel das Máquinas </b>
                                                 </h1>
                                             </div>
                                             <form class="user" action="../controllers/FuelController.php" method="POST">
                                                 <input type="hidden" name="register" value="true">
                                                 <input type="hidden" name="output" value="Saida">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="text" class="form-control" value="Disel" placeholder="Combustível" disabled>
+                                                        <input type="hidden" class="form-control" name="fuel-type" value="Disel">
+                                                    </div>
+                                                </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                                         <input type="date" class="form-control " name="date-output" placeholder="Data de Saida">
@@ -470,6 +493,8 @@ $collaborators_list = $collaborators->getCollaborators();
                                                                                 <form class="user" action="../controllers/FuelController.php" method="POST">
                                                                                     <input type="hidden" name="edit" value="true">
                                                                                     <input type="hidden" name="intake" value="Entrada">
+                                                                                    <input type="hidden" name="id" value="<?= $combustivel_entrada['id'] ?>">
+                                                                                    <input type="hidden" name="id_tables" value="<?= $combustivel_entrada['id_tabelas'] ?>">
                                                                                     <div class="form-group row">
                                                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                                                             <input type="text" class="form-control" value="<?= $combustivel_entrada['tipo_combustivel'] ?>" placeholder="Combustível" disabled>
@@ -495,7 +520,7 @@ $collaborators_list = $collaborators->getCollaborators();
                                                                                     </div>
                                                                                     <div class="form-group row">
                                                                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                            <input type="number" class="form-control" step=".01" name="liters" id="liters-edit" value="<?= $combustivel_entrada['litros'] ?>" placeholder="Litros" required>
+                                                                                            <input type="number" class="form-control" step=".01" name="liters" value="<?= $combustivel_entrada['litros'] ?>" placeholder="Litros" required>
                                                                                         </div>
                                                                                     </div>
 
@@ -735,7 +760,7 @@ $collaborators_list = $collaborators->getCollaborators();
         let valor_litro = elem_valor_litros.value
         let value_totality = litros * valor_litro
         $("#value-total").val(value_totality);
-        $("value-total-hidden").val(value_totality);
+        $("#value-total-hidden").val(value_totality);
     }
 </script>
 

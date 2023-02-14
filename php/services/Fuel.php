@@ -4,7 +4,27 @@ namespace services;
 
 class Fuel
 {
-    public function getIntakeHistoricForSomething($id) 
+
+    public function getPorcentTankDashboard()
+    {
+        require 'Conexao.php';
+
+        $soma_intake_query = "SELECT SUM(litros) as soma_litros_entrada FROM combustivel_entrada";
+        $soma_intake_response = $mysqli->query($soma_intake_query);
+        $soma_intake_result = $soma_intake_response->fetch_assoc();
+
+        /* $soma_output_query = "SELECT SUM(litros) as soma_litros_saida FROM combustivel_saida  WHERE tipo_combustivel = 'Disel'"; */
+        $soma_output_query = "SELECT SUM(litros) as soma_litros_saida FROM combustivel_saida";
+        $soma_output_response = $mysqli->query($soma_output_query);
+        $soma_output_result = $soma_output_response->fetch_assoc();
+
+        $value_tank_result = $soma_intake_result['soma_litros_entrada'] - $soma_output_result['soma_litros_saida'];
+
+        return $value_tank_result;
+
+    }
+
+    public function getIntakeHistoricForSomething($id)
     {
         require 'Conexao.php';
 
@@ -15,7 +35,7 @@ class Fuel
         return $intake_historic_result;
     }
 
-    public function getOutputHistoricForSomething($id) 
+    public function getOutputHistoricForSomething($id)
     {
         require 'Conexao.php';
 
@@ -118,7 +138,40 @@ class Fuel
         }
     }
 
-    public function putFuel($request)
+    public function putFuelIntake($request, $supplier)
+    {
+        require 'Conexao.php';
+
+        $id = $mysqli->escape_string($request['id']);
+        $id_tables = $mysqli->escape_string($request['id_tables']);
+        $fuel_type = $mysqli->escape_string($request['fuel-type']);
+        $date_entry = $mysqli->escape_string($request['date-entry']);
+        $liters = $mysqli->escape_string($request['liters']);
+        $value_liters = $mysqli->escape_string($request['value-liters']);
+        $value_total = $mysqli->escape_string($request['value-total']);
+        $id_supplier = $mysqli->escape_string($supplier['id']);
+        $supplier = $mysqli->escape_string($supplier['nome_razao']);
+
+        $update_intake_query = "UPDATE combustivel_entrada SET id_fornecedor = '$id_supplier', fornecedor = '$supplier', tipo_combustivel = '$fuel_type', data = '$date_entry', litros = '$liters', valor_litro = '$value_liters', valor_total = '$value_total' WHERE id = $id";
+        $update_intake_response = $mysqli->query($update_intake_query);
+
+        if ($update_intake_response == true) {
+            $update_historic_query = "UPDATE combustivel_historico SET data = '$date_entry' WHERE id_tabelas = $id_tables";
+            $update_istoric_response = $mysqli->query($update_historic_query);
+        }
+
+        if ($update_intake_response == true && $update_istoric_response == true) {
+            session_start();
+            $_SESSION['edit_fuel_success'] = true;
+            header('Location: ../pages/operationFuel.php');
+        } else {
+            session_start();
+            $_SESSION['edit_fuel_fail'] = true;
+            header('Location: ../pages/operationFuel.php');
+        }
+    }
+
+    public function putFuelOutput($request)
     {
     }
 
@@ -152,11 +205,11 @@ class Fuel
         $delete_query = " DELETE FROM combustivel_saida WHERE id_tabelas = $id";
         $delete_response = $mysqli->query($delete_query);
 
-        if($delete_response == true) {
+        if ($delete_response == true) {
             $delete_historic_query = " DELETE FROM combustivel_historico WHERE id_tabelas = $id";
             $delete_historic_response = $mysqli->query($delete_historic_query);
         }
-        
+
         if ($delete_response == true && $delete_historic_response == true) {
             session_start();
             $_SESSION['delete_fuel_success'] = true;

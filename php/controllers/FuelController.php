@@ -25,10 +25,7 @@ if (isset($_POST['register'])) {
 
     if ($_POST['output']) {
 
-        $retreat = $retreats->getServicesForSomething($_POST['retreat']);
-        $_RETREAT = $retreat;
-        $_SELECTS = [];
-        return $fuel->postFuelOutput($_POST, $_SELECTS);
+
     }
     if ($_POST['intake']) {
         $_SUPPLIER = $suppliers->getSupplierForSomething($_POST['supplier']);
@@ -41,7 +38,19 @@ if (isset($_POST['register'])) {
     }
 }
 if (isset($_POST['edit'])) {
-    return $fuel->putFuel($_POST);
+
+    if ($_POST['output']) {
+
+    }
+    if ($_POST['intake']) {
+        $_SUPPLIER = $suppliers->getSupplierForSomething($_POST['supplier']);
+        $_POST['value-total'] = $_POST['value-liters'] * $_POST['liters'];
+        return $fuel->putFuelIntake($_POST, $_SUPPLIER);
+    } else {
+        session_start();
+        $_SESSION['edit_fuel_failed'] = true;
+        header('Location: ../pages/operationFuel.php');
+    }
 }
 
 if (isset($_POST['delete'])) {
@@ -56,7 +65,7 @@ if (isset($_POST['delete'])) {
     } else {
 
         session_start();
-        $_SESSION['register_fuel_failed'] = true;
+        $_SESSION['delete_fuel_failed'] = true;
         header('Location: ../pages/operationFuel.php');
     }
 }
