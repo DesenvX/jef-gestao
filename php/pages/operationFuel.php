@@ -24,6 +24,7 @@ require_once '../services/Collaborators.php';
 require_once '../services/Suppliers.php';
 require_once '../services/Prices.php';
 require_once '../services/Fuel.php';
+require_once '../services/Vehicle.php';
 
 use services\Services;
 use services\Pastures;
@@ -32,6 +33,7 @@ use services\Collaborators;
 use services\Suppliers;
 use services\Prices;
 use services\Fuel;
+use services\Vehicle;
 
 $fuel = new Fuel();
 $fuel_historic_list = $fuel->getFuelHistoric();
@@ -51,6 +53,8 @@ $tractors = new Tractors();
 $tractors_list = $tractors->getTractors();
 $collaborators = new Collaborators();
 $collaborators_list = $collaborators->getCollaborators();
+$vehicle = new Vehicle();
+$vehicle_list = $vehicle->getVehicle();
 ?>
 
 <body id="page-top">
@@ -259,14 +263,99 @@ $collaborators_list = $collaborators->getCollaborators();
                                         <i class="fas fa-tractor"></i>
                                     </span>
                                 </a>
-                                <a class="btn btn-dark btn-sm" style="background: #FF5A4A; margin-left:2px; margin-right:1px; border-color:#D5D8DC;" data-toggle="modal" data-target="#modalRegisterFuelOutput">
+                                <a class="btn btn-dark btn-sm" style="background: #FF5A4A; margin-left:2px; margin-right:1px; border-color:#D5D8DC;" data-toggle="modal" data-target="#modalRegisterFuelOutputVehicle">
                                     <span data-toggle="tooltip" data-placement="top" title="Cadastrar Saída dos Veículos">
                                         <i class="fas fa-motorcycle"></i>
                                         <i class="fas fa-truck-pickup"></i>
                                     </span>
                                 </a>
                             </button>
-                            
+
+                            <!-- Veiculo -->
+                            <div name="RegisterFuelOutputVehicle" class="modal fade" id="modalRegisterFuelOutputVehicle" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <img src="../../img/combustivel.png" width="100" height="100" style="margin-bottom: 10px;">
+                                            </div>
+                                            <div class="text-center">
+                                                <h1 class="h4 text-gray-900 mb-4">
+                                                    <b style="color: #566573;"> Saida de Combustivel dos Veiculos </b>
+                                                </h1>
+                                            </div>
+                                            <form class="user" action="../controllers/FuelController.php" method="POST">
+                                                <input type="hidden" name="register" value="true">
+                                                <input type="hidden" name="output" value="Saida">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <select name="fuel-type" class="form-control">
+                                                            <option value="">Tipo de combustivel</option>
+                                                            <option value="Gasolina">Gasolina</option>
+                                                            <option value="Disel">Disel</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="date" class="form-control " name="date-output" placeholder="Data de Saida">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <input type="number" step=".01" class="form-control " name="liters" placeholder="Litros">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <select class="form-control" name="service" required>
+                                                            <option value="" selected> Serviço </option>
+                                                            <?php while ($servicos = $services_list->fetch_assoc()) { ?>
+                                                                <option value="<?= $servicos['id'] ?>"> <?= $servicos['descricao'] ?> </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <select class="form-control" name="pasture" required>
+                                                            <option value="" selected> Pasto </option>
+                                                            <?php while ($pastos = $pastures_list->fetch_assoc()) { ?>
+                                                                <option value="<?= $pastos['id'] ?>"> <?= $pastos['nome'] ?> </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <select class="form-control" name="tractor" required>
+                                                            <option value="" selected> Veiculo </option>
+                                                            <?php while ($veiculos = $vehicle_list->fetch_assoc()) { ?>
+                                                                <option value="<?= $veiculos['id'] ?>"> <?= $veiculos['modelo'] ?> </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <select class="form-control" name="collaborator" required>
+                                                            <option value="" selected> Cobalorador </option>
+                                                            <?php while ($colaboradores = $collaborators_list->fetch_assoc()) { ?>
+                                                                <option value="<?= $colaboradores['id'] ?>"> <?= $colaboradores['nome'] ?> </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <button type="submit" class="btn btn-user btn-info btn-block"> Cadastrar </button>
+                                                <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Trator -->
                             <div name="RegisterFuelOutput" class="modal fade" id="modalRegisterFuelOutput" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-sm" role="document">
@@ -635,7 +724,7 @@ $collaborators_list = $collaborators->getCollaborators();
                                                             <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelOutput">
                                                                 <i class="fas fa-pen"></i>
                                                             </button>
-                                                            
+
                                                             <div name="EditFuelOutput" class="modal fade" id="modalEditFuelOutput" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-sm" role="document">
                                                                     <div class="modal-content">

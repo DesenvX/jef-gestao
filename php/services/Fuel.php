@@ -87,7 +87,7 @@ class Fuel
         $id_collaborator = $mysqli->escape_string($request['collaborator']);
 
         $tipo = $mysqli->escape_string($request['output']);
-        $typeFuel =$mysqli->escape_string($request['fuel-type']);
+        $typeFuel = $mysqli->escape_string($request['fuel-type']);
         $data = $mysqli->escape_string($request['date-output']);
         $liters = $mysqli->escape_string($request['liters']);
 
