@@ -24,8 +24,7 @@ $suppliers = new Suppliers();
 if (isset($_POST['register'])) {
 
     if ($_POST['output']) {
-
-
+        return $fuel->postFuelOutput($_POST);
     }
     if ($_POST['intake']) {
         $_SUPPLIER = $suppliers->getSupplierForSomething($_POST['supplier']);

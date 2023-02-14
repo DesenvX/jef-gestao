@@ -266,6 +266,8 @@ $collaborators_list = $collaborators->getCollaborators();
                                     </span>
                                 </a>
                             </button>
+                            
+                            <!-- Trator -->
                             <div name="RegisterFuelOutput" class="modal fade" id="modalRegisterFuelOutput" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-sm" role="document">
                                     <div class="modal-content">
