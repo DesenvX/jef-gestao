@@ -84,34 +84,6 @@ $vehicle_list = $vehicle->getVehicle();
                         <div class="card-body">
 
                             <div class="row">
-                                <!-- <div class="col-xl-3 col-md-6">
-                                    <div class="card border-left-success shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                        Entrada</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">500 Litros</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-3 col-md-6">
-                                    <div class="card border-left-danger shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                        Saida</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">200 Litros</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-
                                 <div class="col-xl-12 col-md-6">
                                     <div class="card border-left-dark shadow h-100 py-2">
                                         <div class="card-body">
@@ -698,12 +670,13 @@ $vehicle_list = $vehicle->getVehicle();
                                                     <?php  
                                                     
                                                     while ($combustivel_saida = $fuel_output_list->fetch_assoc()) {
+                                                    $servico = $services->getServicesForSomething($combustivel_saida['id_servico'])
                                                     ?>
                                                     <tr>
                                                         <th><?= $combustivel_saida['id'] ?></th>
                                                         <td><?= $combustivel_saida['data'] ?></td>
                                                         <td><?= $combustivel_saida['litros'] ?></td>
-                                                        <td><?= $combustivel_saida['id_servico'] ?></td>
+                                                        <td><?= $servico['descricao'] ?></td>
                                                         <td><?= $combustivel_saida['id_pasto'] ?></td>
                                                         <td><?= $combustivel_saida['id_trator'] ?></td>
                                                         <td><?= $combustivel_saida['id_colaborador'] ?></td>
