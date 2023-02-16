@@ -38,6 +38,7 @@ use services\Vehicle;
 $fuel = new Fuel();
 $fuel_historic_list = $fuel->getFuelHistoric();
 $fuel_intake_list = $fuel->getFuelIntake();
+$fuel_output_list = $fuel->getFuelOutput();
 $fuel_porcent_tank = $fuel->getPorcentTankDashboard();
 
 $suppliers = new Suppliers();
@@ -308,26 +309,6 @@ $vehicle_list = $vehicle->getVehicle();
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <select class="form-control" name="service" required>
-                                                            <option value="" selected> Serviço </option>
-                                                            <?php while ($servicos = $services_list->fetch_assoc()) { ?>
-                                                                <option value="<?= $servicos['id'] ?>"> <?= $servicos['descricao'] ?> </option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <select class="form-control" name="pasture" required>
-                                                            <option value="" selected> Pasto </option>
-                                                            <?php while ($pastos = $pastures_list->fetch_assoc()) { ?>
-                                                                <option value="<?= $pastos['id'] ?>"> <?= $pastos['nome'] ?> </option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-12 mb-3 mb-sm-0">
                                                         <select class="form-control" name="tractor" required>
                                                             <option value="" selected> Veiculo </option>
                                                             <?php while ($veiculos = $vehicle_list->fetch_assoc()) { ?>
@@ -571,6 +552,7 @@ $vehicle_list = $vehicle->getVehicle();
                                                                 <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelEntry_<?= $combustivel_entrada['id'] ?>">
                                                                     <i class="fas fa-pen"></i>
                                                                 </button>
+
                                                                 <div name="EditFuelEntry" class="modal fade" id="modalEditFuelEntry_<?= $combustivel_entrada['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                     <div class="modal-dialog modal-sm" role="document">
                                                                         <div class="modal-content">
@@ -641,6 +623,7 @@ $vehicle_list = $vehicle->getVehicle();
                                                                 <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteFuelEntry_<?= $combustivel_entrada['id'] ?>">
                                                                     <i class="fas fa-trash"></i>
                                                                 </button>
+
                                                                 <div name="DeleteFuel" class="modal fade" id="modalDeleteFuelEntry_<?= $combustivel_entrada['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                     <div class="modal-dialog modal-sm" role="document">
                                                                         <div class="modal-content">
@@ -712,6 +695,10 @@ $vehicle_list = $vehicle->getVehicle();
                                                     </tr>
                                                 </tfoot>
                                                 <tbody>
+                                                    <?php  
+                                                    
+                                                    while ($combustivel_saida = $fuel_output_list->fetch_assoc()) {
+                                                    ?>
                                                     <tr>
                                                         <th></th>
                                                         <td></td>
@@ -817,6 +804,7 @@ $vehicle_list = $vehicle->getVehicle();
                                                             </div>
                                                         </td>
                                                     </tr>
+                                                    <?php  }  ?>
                                                 </tbody>
                                             </table>
                                         </div>
