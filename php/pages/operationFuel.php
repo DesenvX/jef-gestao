@@ -700,13 +700,13 @@ $vehicle_list = $vehicle->getVehicle();
                                                     while ($combustivel_saida = $fuel_output_list->fetch_assoc()) {
                                                     ?>
                                                     <tr>
-                                                        <th></th>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
+                                                        <th><?= $combustivel_saida['id'] ?></th>
+                                                        <td><?= $combustivel_saida['data'] ?></td>
+                                                        <td><?= $combustivel_saida['litros'] ?></td>
+                                                        <td><?= $combustivel_saida['id_servico'] ?></td>
+                                                        <td><?= $combustivel_saida['id_pasto'] ?></td>
+                                                        <td><?= $combustivel_saida['id_trator'] ?></td>
+                                                        <td><?= $combustivel_saida['id_colaborador'] ?></td>
                                                         <td>
                                                             <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelOutput">
                                                                 <i class="fas fa-pen"></i>
