@@ -324,8 +324,8 @@ $vehicle_list = $vehicle->getVehicle();
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                                         <select name="fuel-type" class="form-control">
                                                             <option value="">Tipo de combustivel</option>
-                                                            <option value="Gasolina">Gasolina</option>
-                                                            <option value="Disel">Disel</option>
+                                                            <option value="gasolina">Gasolina</option>
+                                                            <option value="disel">Disel</option>
                                                         </select>
                                                     </div>
                                                 </div>

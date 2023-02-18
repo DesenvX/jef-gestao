@@ -4,14 +4,52 @@ namespace services;
 
 class Fuel
 {
+    
     public function getDataFueIntake($request)
     {
-        var_dump($request);
+        
+        require 'Conexao.php';
+
+        $date_init = $mysqli->escape_string($request['filter-date-start']);
+        $date_finish = $mysqli->escape_string($request['filter-date-finish']);
+
+        $data_fuel_intake_query = "SELECT * FROM combustivel_entrada WHERE data BETWEEN '$date_init' AND '$date_finish'";
+        $data_fuel_intake_response = $mysqli->query($data_fuel_intake_query);
+
+        $soma_liters_intake_query = "SELECT SUM(litros) as soma_litros_entrada FROM combustivel_entrada  WHERE data BETWEEN '$date_init' AND '$date_finish'";
+        $soma_liters_intake_response = $mysqli->query($soma_liters_intake_query);
+        $soma_liters_intake_result = $soma_liters_intake_response->fetch_assoc();
+
+        $soma_value_totality_intake_query = "SELECT SUM(valor_total) as soma_valor_total_entrada FROM combustivel_entrada  WHERE data BETWEEN '$date_init' AND '$date_finish'";
+        $soma_value_totality_intake_response = $mysqli->query($soma_value_totality_intake_query);
+        $soma_value_totality_intake_result = $soma_value_totality_intake_response->fetch_assoc();
+
+        $dates_filters = array(date('d/m/Y', strtotime($date_init)), date('d/m/Y', strtotime($date_finish)));
+
+        require '../generate_pdf/GeneratePdf.php';
+
+        return PDFIntakeFuel($data_fuel_intake_response, $soma_liters_intake_result, $soma_value_totality_intake_result, $dates_filters);
+
     }
 
     public function getDataFueOutput($request)
     {
-        var_dump($request);
+        require 'Conexao.php';
+
+        $date_init = $mysqli->escape_string($request['filter-date-start']);
+        $date_finish = $mysqli->escape_string($request['filter-date-finish']);
+        $type_fuel = $mysqli->escape_string($request['type_fuel_output']);
+
+        $data_fuel_output_query = "SELECT * FROM combustivel_saida WHERE tipo_combustivel = '$type_fuel' AND data BETWEEN '$date_init' AND '$date_finish'";
+        $data_fuel_output_response = $mysqli->query($data_fuel_output_query);
+        $data_fuel_output_result = $data_fuel_output_response->fetch_assoc();
+
+        $soma_liters_output_query = "SELECT SUM(litros) as soma_litros_saida FROM combustivel_saida  WHERE tipo_combustivel = '$type_fuel' AND data BETWEEN '$date_init' AND '$date_finish'";
+        $soma_liters_output_response = $mysqli->query($soma_liters_output_query);
+        $soma_liters_output_result = $soma_liters_output_response->fetch_assoc();
+
+        print_r($data_fuel_output_result);
+        print_r($soma_liters_output_result);
     }
 
     public function getPorcentTankDashboard()
@@ -22,15 +60,13 @@ class Fuel
         $soma_intake_response = $mysqli->query($soma_intake_query);
         $soma_intake_result = $soma_intake_response->fetch_assoc();
 
-        /* $soma_output_query = "SELECT SUM(litros) as soma_litros_saida FROM combustivel_saida  WHERE tipo_combustivel = 'Disel'"; */
-        $soma_output_query = "SELECT SUM(litros) as soma_litros_saida FROM combustivel_saida";
+        $soma_output_query = "SELECT SUM(litros) as soma_litros_saida FROM combustivel_saida WHERE tipo_combustivel = 'Disel'";
         $soma_output_response = $mysqli->query($soma_output_query);
         $soma_output_result = $soma_output_response->fetch_assoc();
 
         $value_tank_result = $soma_intake_result['soma_litros_entrada'] - $soma_output_result['soma_litros_saida'];
 
         return $value_tank_result;
-
     }
 
     public function getIntakeHistoricForSomething($id)
@@ -92,16 +128,15 @@ class Fuel
         $id_service = $mysqli->escape_string($services['id']);
         $id_pasture = $mysqli->escape_string($request['pasture']);
         $id_tractor = $mysqli->escape_string($request['tractor']);
-        $id_vehicle = $mysqli->escape_string($request['vehicle']);           
+        $id_vehicle = $mysqli->escape_string($request['vehicle']);
         $id_collaborator = $mysqli->escape_string($request['collaborator']);
 
         $tipo = $mysqli->escape_string($request['output']);
         $typeFuel = $mysqli->escape_string($request['fuel-type']);
-        $services = $mysqli->escape_string($services['descricao']);
         $data = $mysqli->escape_string($request['date-output']);
         $liters = $mysqli->escape_string($request['liters']);
 
-        $fuel_output_query = "INSERT INTO combustivel_saida (id_tabelas, data, tipo_combustivel, litros, id_servico, servico, id_pasto, id_trator, id_veiculo, id_colaborador) VALUES('$id_link_tables', '$data', '$typeFuel', '$liters', '$id_service','$services', '$id_pasture', '$id_tractor', '$id_vehicle', '$id_collaborator')";
+        $fuel_output_query = "INSERT INTO combustivel_saida (id_tabelas, data, tipo_combustivel, litros, id_servico, id_pasto, id_trator, id_veiculo, id_colaborador) VALUES('$id_link_tables', '$data', '$typeFuel', '$liters', '$id_service', '$id_pasture', '$id_tractor', '$id_vehicle', '$id_collaborator')";
         $fuel_historic_query = "INSERT INTO combustivel_historico (id_tabelas, data, tipo) VALUES('$id_link_tables', '$data', '$tipo')";
 
         $fuel_output_response = $mysqli->query($fuel_output_query);
