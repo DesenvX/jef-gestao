@@ -214,8 +214,8 @@ $vehicle_list = $vehicle->getVehicle();
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                                         <?php $typeFuel = "disel" ?>
-                                                        <input type="text" class="form-control" value="Disel" placeholder="Combustível" disabled>
-                                                        <input type="hidden" class="form-control" name="fuel-type" value="Disel">
+                                                        <input type="text" class="form-control" value="disel" placeholder="Combustível" disabled>
+                                                        <input type="hidden" class="form-control" name="fuel-type" value="disel">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -285,7 +285,7 @@ $vehicle_list = $vehicle->getVehicle();
                                 </div>
                             </div>
 
-                            <button style="margin: 5px;" type="button" class="btn btn-danger btn-sm btn-icon-split">
+                            <button style="margin: 5px;" type="button" class="btn btn-danger btn-sm btn-icon-split dropdown">
                                 <span class="btn-sm"> Saidas </span>
                                 <a class="btn btn-dark btn-sm" style="background: #FF5A4A; margin-left:2px; margin-right:1px; border-color:#D5D8DC;" role="button" data-toggle="collapse" data-target="#collapseOutput" aria-expanded="false" aria-controls="collapseOutput">
                                     <i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="Vusializar"></i>
@@ -388,7 +388,7 @@ $vehicle_list = $vehicle->getVehicle();
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                                         <input type="text" class="form-control" value="Disel" placeholder="Combustível" disabled>
-                                                        <input type="hidden" class="form-control" name="fuel-type" value="Disel">
+                                                        <input type="hidden" class="form-control" name="fuel-type" value="disel">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">

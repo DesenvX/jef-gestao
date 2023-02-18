@@ -125,7 +125,7 @@ class Fuel
         require '../functions/GenerateUuid.php';
 
         $id_link_tables = uuid();
-        $id_service = $mysqli->escape_string($services['id']);
+        $id_service = $mysqli->escape_string($request['service']);
         $id_pasture = $mysqli->escape_string($request['pasture']);
         $id_tractor = $mysqli->escape_string($request['tractor']);
         $id_vehicle = $mysqli->escape_string($request['vehicle']);
@@ -229,17 +229,16 @@ class Fuel
 
         $id = $mysqli->escape_string($request['id']);
         $id_tables = $mysqli->escape_string($request['id_tables']);
-        $id_service = $mysqli->escape_string($services['id']);
+        $id_service = $mysqli->escape_string($request['service']);
         $id_pasture = $mysqli->escape_string($request['pasture']);
         $id_tractor = $mysqli->escape_string($request['tractor']);
    
         $id_collaborator = $mysqli->escape_string($request['collaborator']);
         $typeFuel = $mysqli->escape_string($request['fuel-type']);
-        $services = $mysqli->escape_string($services['descricao']);
         $data = $mysqli->escape_string($request['date-output']);
         $liters = $mysqli->escape_string($request['liters']);
 
-        $update_output_query_tractor = "UPDATE combustivel_saida SET tipo_combustivel = '$typeFuel', data = '$data', litros = '$liters', id_servico = '$id_service', id_pasto = '$id_pasture', id_trator = '$id_tractor', id_colaborador = '$id_collaborator' WHERE id_tabelas = '$id'";
+        $update_output_query_tractor = "UPDATE combustivel_saida SET tipo_combustivel = '$typeFuel', data = '$data', litros = '$liters', id_servico = '$id_service', id_pasto = '$id_pasture', id_trator = '$id_tractor', id_colaborador = '$id_collaborator' WHERE id = '$id'";
         $update_output_response = $mysqli->query($update_output_query_tractor);
 
         if($update_output_response == true) {
