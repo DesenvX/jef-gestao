@@ -21,12 +21,21 @@ $tractors = new Tractors();
 $collaborators = new Collaborators();
 $suppliers = new Suppliers();
 
+if (isset($_POST['generate-report'])) {
+    if ($_POST['type_register']  == 'intake') {
+        return $fuel->getDataFueIntake($_POST);
+    }
+    else if ($_POST['type_register']  == 'output') {
+        return $fuel->getDataFueOutput($_POST);
+    }
+}
+
 if (isset($_POST['register'])) {
 
     if ($_POST['output']) {
         return $fuel->postFuelOutput($_POST);
     }
-    if ($_POST['intake']) {
+    else if ($_POST['intake']) {
         $_SUPPLIER = $suppliers->getSupplierForSomething($_POST['supplier']);
         $_POST['value-total'] = $_POST['value-liters'] * $_POST['liters'];
         return $fuel->postFuelIntake($_POST, $_SUPPLIER);
@@ -41,7 +50,7 @@ if (isset($_POST['edit'])) {
     if ($_POST['output']) {
 
     }
-    if ($_POST['intake']) {
+    else if ($_POST['intake']) {
         $_SUPPLIER = $suppliers->getSupplierForSomething($_POST['supplier']);
         $_POST['value-total'] = $_POST['value-liters'] * $_POST['liters'];
         return $fuel->putFuelIntake($_POST, $_SUPPLIER);
@@ -58,7 +67,7 @@ if (isset($_POST['delete'])) {
 
         return $fuel->deleteFuelOutput($_POST['id']);
     }
-    if ($_POST['intake']) {
+    else if ($_POST['intake']) {
 
         return $fuel->deleteFuelIntake($_POST['id']);
     } else {

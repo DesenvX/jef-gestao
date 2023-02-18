@@ -118,6 +118,65 @@ $vehicle_list = $vehicle->getVehicle();
 
                         <div class="card-header py-3" style="display: flex; justify-content: center;" id="heading">
 
+                            <button type="button" style="margin: 5px;" class="btn btn-dark btn-sm btn-icon-split" data-toggle="modal" data-target="#modalReports">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-file-pdf"></i>
+                                </span>
+                                <span class="btn-sm"> Relatório </span>
+                            </button>
+
+                            <div id="modalReports" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-md" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Gerar Relatório </b></h1>
+                                            </div>
+                                            <form class="user" action="../controllers/FuelController.php" method="POST">
+                                                <input type="hidden" name="generate-report" value="true">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                        <select class="form-control" name="type_register" onchange="filterTypeRegister()" id="type_register" required>
+                                                            <option value=""> Tipo de Cadastro </option>
+                                                            <option value="intake"> Entrada </option>
+                                                            <option value="output"> Saída </option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-sm-6 mb-3 mb-sm-0" id="type_register_intake" style="display: none;">
+                                                        <input type="text" class="form-control" value="Disel" disabled>
+                                                        <input type="hidden" name="type_fuel_intake" value="disel">
+                                                    </div>
+
+                                                    <div class="col-sm-6 mb-3 mb-sm-0" id="type_register_output" style="display: none;">
+                                                        <select class="form-control" name="type_fuel_output" id="type_fuel_output" onchange="validateTypeFuelOutput()">
+                                                            <option value="disel"> Tipo de Combustível </option>
+                                                            <option value="disel"> Disel </option>
+                                                            <option value="gasolina"> Gasolina </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row" style="justify-content: center;">
+                                                    <div class="col-sm-6 mb-3 mb-sm-0 text-center">
+                                                        <span style="font-size: 12px;">Data Inicial</span>
+                                                        <input class="form-control" name="filter-date-start" type="date" required>
+                                                    </div>
+                                                    <div class="col-sm-6 mb-3 mb-sm-0 text-center">
+                                                        <span style="font-size: 12px;">Data Final</span>
+                                                        <input class="form-control" name="filter-date-finish" type="date" required>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <button type="submit" class="btn btn-user btn-warning btn-block"> Gerar Relatório </button>
+                                                <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <button type="button" style="margin: 5px;" class="btn btn-primary btn-sm btn-icon-split" data-toggle="collapse" data-target="#collapseHistoric" aria-expanded="true" aria-controls="collapseHistoric">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-list-alt"></i>
@@ -667,116 +726,116 @@ $vehicle_list = $vehicle->getVehicle();
                                                     </tr>
                                                 </tfoot>
                                                 <tbody>
-                                                    <?php  
-                                                    
+                                                    <?php
+
                                                     while ($combustivel_saida = $fuel_output_list->fetch_assoc()) {
-                                                    $servico = $services->getServicesForSomething($combustivel_saida['id_servico'])
+                                                        $servico = $services->getServicesForSomething($combustivel_saida['id_servico'])
                                                     ?>
-                                                    <tr>
-                                                        <th><?= $combustivel_saida['id'] ?></th>
-                                                        <td><?= $combustivel_saida['data'] ?></td>
-                                                        <td><?= $combustivel_saida['litros'] ?></td>
-                                                        <td><?= $servico['descricao'] ?></td>
-                                                        <td><?= $combustivel_saida['id_pasto'] ?></td>
-                                                        <td><?= $combustivel_saida['id_trator'] ?></td>
-                                                        <td><?= $combustivel_saida['id_colaborador'] ?></td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelOutput">
-                                                                <i class="fas fa-pen"></i>
-                                                            </button>
+                                                        <tr>
+                                                            <th><?= $combustivel_saida['id'] ?></th>
+                                                            <td><?= $combustivel_saida['data'] ?></td>
+                                                            <td><?= $combustivel_saida['litros'] ?></td>
+                                                            <td><?= $servico['descricao'] ?></td>
+                                                            <td><?= $combustivel_saida['id_pasto'] ?></td>
+                                                            <td><?= $combustivel_saida['id_trator'] ?></td>
+                                                            <td><?= $combustivel_saida['id_colaborador'] ?></td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelOutput">
+                                                                    <i class="fas fa-pen"></i>
+                                                                </button>
 
-                                                            <div name="EditFuelOutput" class="modal fade" id="modalEditFuelOutput" tabindex="-1" role="dialog" aria-hidden="true">
-                                                                <div class="modal-dialog modal-sm" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-body">
-                                                                            <div class="text-center">
-                                                                                <img src="../../img/combustivel.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                <div name="EditFuelOutput" class="modal fade" id="modalEditFuelOutput" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-sm" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-body">
+                                                                                <div class="text-center">
+                                                                                    <img src="../../img/combustivel.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                                </div>
+                                                                                <div class="text-center">
+                                                                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Saída de Combustível</b></h1>
+                                                                                </div>
+                                                                                <form class="user" action="../controllers/FuelController.php" method="POST">
+                                                                                    <input type="hidden" name="edit" value="true">
+                                                                                    <input type="hidden" name="output" value="Saida">
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                            <input type="date" class="form-control" name="date-output" placeholder="Data de Saida">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                            <input type="number" step=".01" class="form-control" name="liters" placeholder="Litros">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                            <select class="form-control" name="service" required>
+                                                                                                <?php while ($servicos = $services_list->fetch_assoc()) { ?>
+                                                                                                    <option value="<?= $servicos['id'] ?>"> <?= $servicos['descricao'] ?> </option>
+                                                                                                <?php } ?>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                            <select class="form-control" name="pasture" required>
+                                                                                                <?php while ($pastos = $pastures_list->fetch_assoc()) { ?>
+                                                                                                    <option value="<?= $pastos['id'] ?>"> <?= $pastos['nome'] ?> </option>
+                                                                                                <?php } ?>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                            <select class="form-control" name="tractor" required>
+                                                                                                <?php while ($tratores = $tractors_list->fetch_assoc()) { ?>
+                                                                                                    <option value="<?= $tratores['id'] ?>"> <?= $tratores['modelo'] ?> </option>
+                                                                                                <?php } ?>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                            <select class="form-control" name="collaborator" required>
+                                                                                                <?php while ($colaboradores = $collaborators_list->fetch_assoc()) { ?>
+                                                                                                    <option value="<?= $colaboradores['id'] ?>"> <?= $colaboradores['nome'] ?> </option>
+                                                                                                <?php } ?>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <hr>
+                                                                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
+                                                                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                                </form>
                                                                             </div>
-                                                                            <div class="text-center">
-                                                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Saída de Combustível</b></h1>
-                                                                            </div>
-                                                                            <form class="user" action="../controllers/FuelController.php" method="POST">
-                                                                                <input type="hidden" name="edit" value="true">
-                                                                                <input type="hidden" name="output" value="Saida">
-                                                                                <div class="form-group row">
-                                                                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                        <input type="date" class="form-control" name="date-output" placeholder="Data de Saida">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group row">
-                                                                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                        <input type="number" step=".01" class="form-control" name="liters" placeholder="Litros">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group row">
-                                                                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                        <select class="form-control" name="service" required>
-                                                                                            <?php while ($servicos = $services_list->fetch_assoc()) { ?>
-                                                                                                <option value="<?= $servicos['id'] ?>"> <?= $servicos['descricao'] ?> </option>
-                                                                                            <?php } ?>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group row">
-                                                                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                        <select class="form-control" name="pasture" required>
-                                                                                            <?php while ($pastos = $pastures_list->fetch_assoc()) { ?>
-                                                                                                <option value="<?= $pastos['id'] ?>"> <?= $pastos['nome'] ?> </option>
-                                                                                            <?php } ?>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group row">
-                                                                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                        <select class="form-control" name="tractor" required>
-                                                                                            <?php while ($tratores = $tractors_list->fetch_assoc()) { ?>
-                                                                                                <option value="<?= $tratores['id'] ?>"> <?= $tratores['modelo'] ?> </option>
-                                                                                            <?php } ?>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group row">
-                                                                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                        <select class="form-control" name="collaborator" required>
-                                                                                            <?php while ($colaboradores = $collaborators_list->fetch_assoc()) { ?>
-                                                                                                <option value="<?= $colaboradores['id'] ?>"> <?= $colaboradores['nome'] ?> </option>
-                                                                                            <?php } ?>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr>
-                                                                                <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                                                                <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
 
-                                                            <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteFuel">
-                                                                <i class="fas fa-trash"></i>
-                                                            </button>
+                                                                <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteFuel">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </button>
 
-                                                            <div name="DeleteFuel" class="modal fade" id="modalDeleteFuel" tabindex="-1" role="dialog" aria-hidden="true">
-                                                                <div class="modal-dialog modal-sm" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-body">
-                                                                            <div class="text-center">
-                                                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Deseja excluir a Saída de Combustível do dia <br><strong> </strong> ?</span></b></h1>
+                                                                <div name="DeleteFuel" class="modal fade" id="modalDeleteFuel" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-sm" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-body">
+                                                                                <div class="text-center">
+                                                                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"> Deseja excluir a Saída de Combustível do dia <br><strong> </strong> ?</span></b></h1>
+                                                                                </div>
+                                                                                <form class="user" action="../controllers/FuelController.php" method="POST">
+                                                                                    <input type="hidden" name="delete" value="true">
+                                                                                    <input type="hidden" name="id" value="">
+                                                                                    <hr>
+                                                                                    <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
+                                                                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                                </form>
                                                                             </div>
-                                                                            <form class="user" action="../controllers/FuelController.php" method="POST">
-                                                                                <input type="hidden" name="delete" value="true">
-                                                                                <input type="hidden" name="id" value="">
-                                                                                <hr>
-                                                                                <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
-                                                                                <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                            </td>
+                                                        </tr>
                                                     <?php  }  ?>
                                                 </tbody>
                                             </table>
@@ -816,6 +875,21 @@ $vehicle_list = $vehicle->getVehicle();
         $("#value-total").val(value_totality);
         $("#value-total-hidden").val(value_totality);
     }
+
+    function filterTypeRegister() {
+        const elem_type_register = document.getElementById('type_register')
+        if (elem_type_register.value == 'intake') {
+            $('#type_register_intake').show()
+            $('#type_register_output').hide()
+        } else if (elem_type_register.value == 'output') {
+            $('#type_register_output').show()
+            $('#type_register_intake').hide()
+        } else {
+            $('#type_register_output').hide()
+            $('#type_register_intake').hide()
+        }
+    }
+
 </script>
 
 <?php

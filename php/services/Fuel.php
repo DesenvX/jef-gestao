@@ -4,6 +4,15 @@ namespace services;
 
 class Fuel
 {
+    public function getDataFueIntake($request)
+    {
+        var_dump($request);
+    }
+
+    public function getDataFueOutput($request)
+    {
+        var_dump($request);
+    }
 
     public function getPorcentTankDashboard()
     {
