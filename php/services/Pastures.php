@@ -4,6 +4,17 @@ namespace services;
 
 class Pastures
 {
+    public function getPasturesForSomething($id)
+    {
+        require 'Conexao.php';
+
+        $pastures_query = "SELECT * FROM pastos WHERE id = $id";
+        $pastures_response = $mysqli->query($pastures_query);
+        $pastures_result = $pastures_response->fetch_assoc();
+
+        return $pastures_result;
+    }
+
     public function getPastures()
     {
         require 'Conexao.php';

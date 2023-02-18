@@ -6,7 +6,13 @@ class Services
 {
     public function getServicesForSomething($id)
     {
-        
+        require 'Conexao.php';
+
+        $Service_query = "SELECT * FROM servicos WHERE id = $id";
+        $Service_response = $mysqli->query($Service_query);
+        $Service_result = $Service_response->fetch_assoc();
+
+        return $Service_result;
     }
 
     public function getServices()

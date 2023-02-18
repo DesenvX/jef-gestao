@@ -89,7 +89,7 @@ class Fuel
         require '../functions/GenerateUuid.php';
 
         $id_link_tables = uuid();
-        $id_service = $mysqli->escape_string($request['service']);
+        $id_service = $mysqli->escape_string($services['id']);
         $id_pasture = $mysqli->escape_string($request['pasture']);
         $id_tractor = $mysqli->escape_string($request['tractor']);
         $id_vehicle = $mysqli->escape_string($request['vehicle']);           
@@ -97,10 +97,11 @@ class Fuel
 
         $tipo = $mysqli->escape_string($request['output']);
         $typeFuel = $mysqli->escape_string($request['fuel-type']);
+        $services = $mysqli->escape_string($services['descricao']);
         $data = $mysqli->escape_string($request['date-output']);
         $liters = $mysqli->escape_string($request['liters']);
 
-        $fuel_output_query = "INSERT INTO combustivel_saida (id_tabelas, data, tipo_combustivel, litros, id_servico, id_pasto, id_trator, id_veiculo, id_colaborador) VALUES('$id_link_tables', '$data', '$typeFuel', '$liters', '$id_service', '$id_pasture', '$id_tractor', '$id_vehicle', '$id_collaborator')";
+        $fuel_output_query = "INSERT INTO combustivel_saida (id_tabelas, data, tipo_combustivel, litros, id_servico, servico, id_pasto, id_trator, id_veiculo, id_colaborador) VALUES('$id_link_tables', '$data', '$typeFuel', '$liters', '$id_service','$services', '$id_pasture', '$id_tractor', '$id_vehicle', '$id_collaborator')";
         $fuel_historic_query = "INSERT INTO combustivel_historico (id_tabelas, data, tipo) VALUES('$id_link_tables', '$data', '$tipo')";
 
         $fuel_output_response = $mysqli->query($fuel_output_query);
@@ -173,10 +174,10 @@ class Fuel
 
         if ($update_intake_response == true) {
             $update_historic_query = "UPDATE combustivel_historico SET data = '$date_entry' WHERE id_tabelas = $id_tables";
-            $update_istoric_response = $mysqli->query($update_historic_query);
+            $update_historic_response = $mysqli->query($update_historic_query);
         }
 
-        if ($update_intake_response == true && $update_istoric_response == true) {
+        if ($update_intake_response == true && $update_historic_response == true) {
             session_start();
             $_SESSION['edit_fuel_success'] = true;
             header('Location: ../pages/operationFuel.php');
@@ -189,6 +190,38 @@ class Fuel
 
     public function putFuelOutput($request)
     {
+        require 'Conexao.php';       
+
+        $id = $mysqli->escape_string($request['id']);
+        $id_tables = $mysqli->escape_string($request['id_tables']);
+        $id_service = $mysqli->escape_string($services['id']);
+        $id_pasture = $mysqli->escape_string($request['pasture']);
+        $id_tractor = $mysqli->escape_string($request['tractor']);
+   
+        $id_collaborator = $mysqli->escape_string($request['collaborator']);
+        $typeFuel = $mysqli->escape_string($request['fuel-type']);
+        $services = $mysqli->escape_string($services['descricao']);
+        $data = $mysqli->escape_string($request['date-output']);
+        $liters = $mysqli->escape_string($request['liters']);
+
+        $update_output_query_tractor = "UPDATE combustivel_saida SET tipo_combustivel = '$typeFuel', data = '$data', litros = '$liters', id_servico = '$id_service', id_pasto = '$id_pasture', id_trator = '$id_tractor', id_colaborador = '$id_collaborator' WHERE id_tabelas = '$id'";
+        $update_output_response = $mysqli->query($update_output_query_tractor);
+
+        if($update_output_response == true) {
+            $update_historic_query = "UPDATE combustivel_historico SET data = '$data' WHERE id_tabelas = $id_tables";
+            $update_historic_response = $mysqli->query($update_historic_query);
+        }
+
+        if ($update_output_response == true && $update_historic_response == true) {
+            session_start();
+            $_SESSION['edit_fuel_success'] = true;
+            header('Location: ../pages/operationFuel.php');
+        } else {
+            session_start();
+            $_SESSION['edit_fuel_fail'] = true;
+            header('Location: ../pages/operationFuel.php');
+        }
+        
     }
 
     public function deleteFuelIntake($id)

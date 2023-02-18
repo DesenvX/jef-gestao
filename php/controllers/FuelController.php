@@ -48,7 +48,7 @@ if (isset($_POST['register'])) {
 if (isset($_POST['edit'])) {
 
     if ($_POST['output']) {
-
+        return $fuel->putFuelOutput($_POST);
     }
     else if ($_POST['intake']) {
         $_SUPPLIER = $suppliers->getSupplierForSomething($_POST['supplier']);

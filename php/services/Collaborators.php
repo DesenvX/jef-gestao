@@ -5,6 +5,17 @@ namespace services;
 
 class Collaborators
 {
+    public function getCollaboratorsForSomething($id)
+    {
+        require 'Conexao.php';
+
+        $collaborators_query = "SELECT * FROM colaboradores WHERE id = $id";
+        $collaborators_response = $mysqli->query($collaborators_query);
+        $collaborators_result = $collaborators_response->fetch_assoc();
+
+        return $collaborators_result;
+    }
+
     public function getCollaborators()
     {
         require 'Conexao.php';

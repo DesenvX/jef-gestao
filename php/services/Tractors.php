@@ -4,6 +4,17 @@ namespace services;
 
 class Tractors
 {
+    public function getTractorForSomething($id)
+    {
+        require 'Conexao.php';
+
+        $tractor_query = "SELECT * FROM tratores WHERE id = $id";
+        $tractor_response = $mysqli->query($tractor_query);
+        $tractor_result = $tractor_response->fetch_assoc();
+
+        return $tractor_result;
+    }
+
     public function getTractors()
     {
         require 'Conexao.php';

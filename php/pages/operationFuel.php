@@ -53,7 +53,8 @@ $pastures_list = $pastures->getPastures();
 $tractors = new Tractors();
 $tractors_list = $tractors->getTractors();
 $collaborators = new Collaborators();
-$collaborators_list = $collaborators->getCollaborators();
+$collaborators_list_veiculo = $collaborators->getCollaborators();
+$collaborators_list_trator = $collaborators->getCollaborators();
 $vehicle = new Vehicle();
 $vehicle_list = $vehicle->getVehicle();
 ?>
@@ -352,8 +353,8 @@ $vehicle_list = $vehicle->getVehicle();
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                                         <select class="form-control" name="collaborator" required>
                                                             <option value="" selected> Cobalorador </option>
-                                                            <?php while ($colaboradores = $collaborators_list->fetch_assoc()) { ?>
-                                                                <option value="<?= $colaboradores['id'] ?>"> <?= $colaboradores['nome'] ?> </option>
+                                                            <?php while ($colaboradoVeiculo = $collaborators_list_veiculo->fetch_assoc()) { ?>
+                                                                <option value="<?= $colaboradoVeiculo['id'] ?>"> <?= $colaboradoVeiculo['nome'] ?> </option>
                                                             <?php } ?>
                                                         </select>
                                                     </div>
@@ -434,8 +435,8 @@ $vehicle_list = $vehicle->getVehicle();
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                                         <select class="form-control" name="collaborator" required>
                                                             <option value="" selected> Cobalorador </option>
-                                                            <?php while ($colaboradores = $collaborators_list->fetch_assoc()) { ?>
-                                                                <option value="<?= $colaboradores['id'] ?>"> <?= $colaboradores['nome'] ?> </option>
+                                                            <?php while ($colaboradoTrator = $collaborators_list_trator->fetch_assoc()) { ?>
+                                                                <option value="<?= $colaboradoTrator['id'] ?>"> <?= $colaboradoTrator['nome'] ?> </option>
                                                             <?php } ?>
                                                         </select>
                                                     </div>
@@ -503,7 +504,7 @@ $vehicle_list = $vehicle->getVehicle();
                                                                 <td><?= date('d/m/Y', strtotime($historico['data'])) ?></td>
                                                                 <td><?= $historic_output['tipo_combustivel'] ?></td>
                                                                 <td><?= $historic_output['litros'] ?></td>
-                                                                <td>R$ <?= $historic_output['valor_total'] ?></td>
+                                                                <td></td>
                                                             </tr>
                                                         <?php } ?>
 
@@ -729,22 +730,25 @@ $vehicle_list = $vehicle->getVehicle();
                                                     <?php
 
                                                     while ($combustivel_saida = $fuel_output_list->fetch_assoc()) {
-                                                        $servico = $services->getServicesForSomething($combustivel_saida['id_servico'])
+                                                        $servico = $services->getServicesForSomething($combustivel_saida['id_servico']);
+                                                        $pasto = $pastures->getPasturesForSomething($combustivel_saida['id_pasto']);
+                                                        $trator = $tractors->getTractorForSomething($combustivel_saida['id_trator']);
+                                                        $colaborador = $collaborators->getCollaboratorsForSomething($combustivel_saida['id_colaborador'])
                                                     ?>
                                                         <tr>
                                                             <th><?= $combustivel_saida['id'] ?></th>
-                                                            <td><?= $combustivel_saida['data'] ?></td>
+                                                            <td><?= date('d/m/Y', strtotime($combustivel_saida['data'])) ?></td>
                                                             <td><?= $combustivel_saida['litros'] ?></td>
                                                             <td><?= $servico['descricao'] ?></td>
-                                                            <td><?= $combustivel_saida['id_pasto'] ?></td>
-                                                            <td><?= $combustivel_saida['id_trator'] ?></td>
-                                                            <td><?= $combustivel_saida['id_colaborador'] ?></td>
+                                                            <td><?= $pasto['nome'] ?></td>
+                                                            <td><?= $trator['modelo'] ?></td>
+                                                            <td><?= $colaborador['nome'] ?></td>
                                                             <td>
-                                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelOutput">
+                                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelOutput_<?= $combustivel_saida['id'] ?>">
                                                                     <i class="fas fa-pen"></i>
                                                                 </button>
 
-                                                                <div name="EditFuelOutput" class="modal fade" id="modalEditFuelOutput" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                <div name="EditFuelOutput" class="modal fade" id="modalEditFuelOutput_<?= $combustivel_saida['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                     <div class="modal-dialog modal-sm" role="document">
                                                                         <div class="modal-content">
                                                                             <div class="modal-body">
@@ -757,21 +761,27 @@ $vehicle_list = $vehicle->getVehicle();
                                                                                 <form class="user" action="../controllers/FuelController.php" method="POST">
                                                                                     <input type="hidden" name="edit" value="true">
                                                                                     <input type="hidden" name="output" value="Saida">
+                                                                                    <input type="hidden" name="id" value="<?= $combustivel_saida['id'] ?>">
+                                                                                    <input type="hidden" name="id_tables" value="<?= $combustivel_saida['id_tabelas'] ?>">
                                                                                     <div class="form-group row">
                                                                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                            <input type="date" class="form-control" name="date-output" placeholder="Data de Saida">
+                                                                                            <input type="date" class="form-control" name="date-output" value="<?= $combustivel_saida['data'] ?>" placeholder="Data de Saida">
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-group row">
                                                                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                            <input type="number" step=".01" class="form-control" name="liters" placeholder="Litros">
+                                                                                            <input type="number" step=".01" class="form-control" name="liters" value="<?= $combustivel_saida['litros'] ?>" placeholder="Litros">
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-group row">
                                                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                                                             <select class="form-control" name="service" required>
-                                                                                                <?php while ($servicos = $services_list->fetch_assoc()) { ?>
-                                                                                                    <option value="<?= $servicos['id'] ?>"> <?= $servicos['descricao'] ?> </option>
+                                                                                                <?php
+                                                                                                $services_edit = new Services();
+                                                                                                $services_list_edit = $services_edit->getServices();
+                                                                                                while ($servicos_edit = $services_list_edit->fetch_assoc()) { ?>
+                                                                                                    <option value="<?= $servicos_edit['id'] ?>" <?php if ($combustivel_saida['id_servico'] == $servicos_edit['id']) { ?> selected <?php } ?>><?= $servicos_edit['descricao'] ?>
+                                                                                                    </option>
                                                                                                 <?php } ?>
                                                                                             </select>
                                                                                         </div>
@@ -779,8 +789,12 @@ $vehicle_list = $vehicle->getVehicle();
                                                                                     <div class="form-group row">
                                                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                                                             <select class="form-control" name="pasture" required>
-                                                                                                <?php while ($pastos = $pastures_list->fetch_assoc()) { ?>
-                                                                                                    <option value="<?= $pastos['id'] ?>"> <?= $pastos['nome'] ?> </option>
+                                                                                                <?php
+                                                                                                $pastures_edit = new Pastures();
+                                                                                                $pastures_list_edit = $pastures_edit->getPastures();
+                                                                                                while ($pasto_edit = $pastures_list_edit->fetch_assoc()) { ?>
+                                                                                                    <option value="<?= $pasto_edit['id'] ?>" <?php if ($combustivel_saida['id_pasto'] == $pasto_edit['id']) { ?> selected <?php } ?>><?= $pasto_edit['nome'] ?>
+                                                                                                    </option>
                                                                                                 <?php } ?>
                                                                                             </select>
                                                                                         </div>
@@ -788,8 +802,12 @@ $vehicle_list = $vehicle->getVehicle();
                                                                                     <div class="form-group row">
                                                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                                                             <select class="form-control" name="tractor" required>
-                                                                                                <?php while ($tratores = $tractors_list->fetch_assoc()) { ?>
-                                                                                                    <option value="<?= $tratores['id'] ?>"> <?= $tratores['modelo'] ?> </option>
+                                                                                                <?php
+                                                                                                $tractor_edit = new Tractors();
+                                                                                                $tractors_list_edit = $tractor_edit->getTractors();
+                                                                                                while ($trato_edit = $tractors_list_edit->fetch_assoc()) { ?>
+                                                                                                    <option value="<?= $trato_edit['id'] ?>" <?php if ($combustivel_saida['id_trator'] == $trato_edit['id']) { ?> selected <?php } ?>><?= $trato_edit['modelo'] ?>
+                                                                                                    </option>
                                                                                                 <?php } ?>
                                                                                             </select>
                                                                                         </div>
@@ -797,8 +815,12 @@ $vehicle_list = $vehicle->getVehicle();
                                                                                     <div class="form-group row">
                                                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                                                             <select class="form-control" name="collaborator" required>
-                                                                                                <?php while ($colaboradores = $collaborators_list->fetch_assoc()) { ?>
-                                                                                                    <option value="<?= $colaboradores['id'] ?>"> <?= $colaboradores['nome'] ?> </option>
+                                                                                                <?php
+                                                                                                $collaborators_edit = new Collaborators();
+                                                                                                $collaborators_list_edit = $collaborators_edit->getCollaborators();
+                                                                                                while ($colaborador_edit = $collaborators_list_edit->fetch_assoc()) { ?>
+                                                                                                    <option value="<?= $colaborador_edit['id'] ?>" <?php if ($combustivel_saida['id_colaborador'] == $colaborador_edit['id']) { ?> selected <?php } ?>><?= $colaborador_edit['nome'] ?>
+                                                                                                    </option>
                                                                                                 <?php } ?>
                                                                                             </select>
                                                                                         </div>
@@ -812,11 +834,11 @@ $vehicle_list = $vehicle->getVehicle();
                                                                     </div>
                                                                 </div>
 
-                                                                <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteFuel">
+                                                                <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteFuel_<?= $combustivel_saida['id'] ?>">
                                                                     <i class="fas fa-trash"></i>
                                                                 </button>
 
-                                                                <div name="DeleteFuel" class="modal fade" id="modalDeleteFuel" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                <div name="DeleteFuel" class="modal fade" id="modalDeleteFuel_<?= $combustivel_saida['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                     <div class="modal-dialog modal-sm" role="document">
                                                                         <div class="modal-content">
                                                                             <div class="modal-body">
@@ -825,7 +847,8 @@ $vehicle_list = $vehicle->getVehicle();
                                                                                 </div>
                                                                                 <form class="user" action="../controllers/FuelController.php" method="POST">
                                                                                     <input type="hidden" name="delete" value="true">
-                                                                                    <input type="hidden" name="id" value="">
+                                                                                    <input type="hidden" name="output" value="true">
+                                                                                    <input type="hidden" name="id" value="<?= $combustivel_saida['id_tabelas'] ?>">
                                                                                     <hr>
                                                                                     <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
                                                                                     <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
@@ -889,7 +912,6 @@ $vehicle_list = $vehicle->getVehicle();
             $('#type_register_intake').hide()
         }
     }
-
 </script>
 
 <?php
