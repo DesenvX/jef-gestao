@@ -24,7 +24,7 @@ require_once '../services/Collaborators.php';
 require_once '../services/Suppliers.php';
 require_once '../services/Prices.php';
 require_once '../services/Fuel.php';
-require_once '../services/Vehicle.php';
+require_once '../services/Vehicles.php';
 
 use services\Services;
 use services\Pastures;
@@ -33,7 +33,7 @@ use services\Collaborators;
 use services\Suppliers;
 use services\Prices;
 use services\Fuel;
-use services\Vehicle;
+use services\Vehicles;
 
 $fuel = new Fuel();
 $fuel_historic_list = $fuel->getFuelHistoric();
@@ -56,8 +56,8 @@ $tractors_list = $tractors->getTractors();
 $collaborators = new Collaborators();
 $collaborators_list_veiculo = $collaborators->getCollaborators();
 $collaborators_list_trator = $collaborators->getCollaborators();
-$vehicle = new Vehicle();
-$vehicle_list = $vehicle->getVehicle();
+$vehicle = new Vehicles();
+$vehicle_list = $vehicle->getVehicles();
 ?>
 
 <body id="page-top">
@@ -298,7 +298,7 @@ $vehicle_list = $vehicle->getVehicle();
                                         <i class="fas fa-tractor"></i>
                                     </span>
                                 </a>
-                                <a class="btn btn-dark btn-sm" style="background: #FF5A4A; margin-left:2px; margin-right:1px; border-color:#D5D8DC;" data-toggle="modal" data-target="#modalRegisterFuelOutputVehicle">
+                                <a class="btn btn-dark btn-sm" style="background: #FF5A4A; margin-left:2px; margin-right:1px; border-color:#D5D8DC;" data-toggle="modal" data-target="#modalRegisterFuelOutputVehicles">
                                     <span data-toggle="tooltip" data-placement="top" title="Cadastrar Saída dos Veículos">
                                         <i class="fas fa-motorcycle"></i>
                                         <i class="fas fa-truck-pickup"></i>
@@ -307,7 +307,7 @@ $vehicle_list = $vehicle->getVehicle();
                             </button>
 
                             <!-- Veiculo -->
-                            <div name="RegisterFuelOutputVehicle" class="modal fade" id="modalRegisterFuelOutputVehicle" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div name="RegisterFuelOutputVehicles" class="modal fade" id="modalRegisterFuelOutputVehicles" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-sm" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">

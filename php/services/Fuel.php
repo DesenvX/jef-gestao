@@ -41,14 +41,20 @@ class Fuel
 
         $data_fuel_output_query = "SELECT * FROM combustivel_saida WHERE tipo_combustivel = '$type_fuel' AND data BETWEEN '$date_init' AND '$date_finish'";
         $data_fuel_output_response = $mysqli->query($data_fuel_output_query);
-        $data_fuel_output_result = $data_fuel_output_response->fetch_assoc();
 
         $soma_liters_output_query = "SELECT SUM(litros) as soma_litros_saida FROM combustivel_saida  WHERE tipo_combustivel = '$type_fuel' AND data BETWEEN '$date_init' AND '$date_finish'";
         $soma_liters_output_response = $mysqli->query($soma_liters_output_query);
         $soma_liters_output_result = $soma_liters_output_response->fetch_assoc();
 
-        print_r($data_fuel_output_result);
-        print_r($soma_liters_output_result);
+        $dates_filters = array(date('d/m/Y', strtotime($date_init)), date('d/m/Y', strtotime($date_finish)));
+
+        require '../generate_pdf/GeneratePdf.php';
+
+        if ($type_fuel == 'gasolina') {
+            return PDFOutputFuelGas($data_fuel_output_response, $soma_liters_output_result, $dates_filters);
+        } elseif ($type_fuel == 'disel') {
+            return PDFOutputFuelDisel($data_fuel_output_response, $soma_liters_output_result, $dates_filters);
+        }
     }
 
     public function getPorcentTankDashboard()
