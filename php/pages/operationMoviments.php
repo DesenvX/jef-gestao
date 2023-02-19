@@ -10,6 +10,28 @@
     ?>
 
 </head>
+<?php
+
+require_once '../services/Collaborators.php';
+require_once '../services/Services.php';
+require_once '../services/Tractors.php';
+require_once '../services/Pastures.php';
+
+use services\Collaborators;
+use services\Services;
+use services\Tractors;
+use services\Pastures;
+
+$collaborators = new Collaborators();
+$collaborators_list = $collaborators->getCollaborators();
+$services = new Services();
+$services_list = $services->getServices();
+$tractors = new Tractors();
+$tractors_list = $tractors->getTractors();
+$pastures = new Pastures();
+$pastures_list = $pastures->getPastures();
+
+?>
 
 <body id="page-top">
 
