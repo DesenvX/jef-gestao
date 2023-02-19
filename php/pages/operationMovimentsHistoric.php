@@ -43,20 +43,24 @@
                         </div>
                         <div class="card-body">
 
-                            <div class="table-responsive">
+                            <div name="SearchAndFilter" class="row" style="margin-bottom:20px;">
+                                <div class="col-md-5" style="justify-content: end">
+                                    <div id=" dataTable_filter" class="dataTables_filter">
+                                        <input type="search" id="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="table-responsive">
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
                                             <th>Data</th>
                                             <th>Hora Inicial</th>
-                                            <th>Almoço</th>
-                                            <th>Retorno</th>
                                             <th>Hora Final</th>
                                             <th>Operador</th>
                                             <th>Maquina</th>
-                                            <th>Retiro</th>
                                             <th>Pasto</th>
                                             <th>Opções</th>
                                         </tr>
@@ -66,112 +70,107 @@
                                             <th>ID</th>
                                             <th>Data</th>
                                             <th>Hora Inicial</th>
-                                            <th>Almoço</th>
-                                            <th>Retorno</th>
                                             <th>Hora Final</th>
                                             <th>Operador</th>
                                             <th>Maquina</th>
-                                            <th>Retiro</th>
                                             <th>Pasto</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
-                                            <th>1</th>
-                                            <td style="text-align: center;">21/01/2023</td>
-                                            <td style="text-align: center;">08:00</td>
-                                            <td style="text-align: center;">12:00</td>
-                                            <td style="text-align: center;">14:00</td>
-                                            <td style="text-align: center;">18:00</td>
-                                            <td style="text-align: center;">Pedro Henrique</td>
-                                            <td style="text-align: center;">Bm - 135</td>
-                                            <td style="text-align: center;">Nazaré</td>
-                                            <td style="text-align: center;">F12</td>
-                                            <td style="text-align: center;">
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditHistoric" data-date="21/01/2023" data-start-time="08:00" data-lunch="12:00" data-retorn="14:00" data-end-time="18:00" data-operator="Pedro Henrique" data-machine="Bm - 135" data-retreats="Nazaré" data-pasture="F12">
+                                            <th></th>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditMoviment">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
-                                                <button class="btn btn-danger btn-circle btn-sm" onclick="swalDelete()">
+                                                <div name="EditMoviment" class="modal fade" id="modalEditMoviment" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div class="modal-dialog modal-sm" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                <div class="text-center">
+                                                                    <img src="../../img/trator.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                </div>
+                                                                <div class="text-center">
+                                                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Historico</b></h1>
+                                                                </div>
+                                                                <form class="user" action="../controllers/MovimentsController.php" method="POST">
+                                                                    <input type="hidden" name="edit" value="true">
+                                                                    <input type="hidden" name="id" value="">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                            <input type="text" class="form-control  " id="date" placeholder="Data">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                            <input type="text" class="form-control  " id="start-time" placeholder="Hora Inicial">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                            <input type="text" class="form-control  " id="end-time" placeholder="Hora Final ">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                            <input type="text" class="form-control  " id="operator" placeholder="Operador">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                            <input type="text" class="form-control  " id="machine" placeholder="Maquina">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                            <input type="text" class="form-control  " id="pasture" placeholder="Pasto">
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr>
+                                                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
+                                                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteMoviment">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
+                                                <div name="DeleteCategories" class="modal fade" id="modalDeleteMoviment" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div class="modal-dialog modal-sm" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                <div class="text-center">
+                                                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir este registro de <br><strong> </strong> ?</span></b></h1>
+                                                                </div>
+                                                                <form class="user" action="../controllers/MovimentsController.php" method="POST">
+                                                                    <input type="hidden" name="delete" value="true">
+                                                                    <input type="hidden" name="id" value="">
+                                                                    <hr>
+                                                                    <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
+                                                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-
-                            </div>
-
-                             
-                        </div>
-                    </div>
-                </div>
-
-                <div name="EditHistoric" class="modal fade" id="modalEditHistoric" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <img src="../../img/trator.png" width="100" height="100" style="margin-bottom: 10px;">
-                                </div>
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Historico</b></h1>
-                                </div>
-                                <form class="user" action="#" method="post">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="date" placeholder="Data Atual">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="start-time" placeholder="Hora Inicial">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="lunch" placeholder="Almoço">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="retorn" placeholder="Retorno">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="end-time" placeholder="Hora Final ">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="operator" placeholder="Operador">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="machine" placeholder="Maquina">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="retreats" placeholder="Retiro">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control  " id="pasture" placeholder="Pasto">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <?php
@@ -187,33 +186,6 @@
     </a>
 
     <?php include('../../html/scripts.html'); ?>
-
-    <script>
-        $('#modalEditHistoric').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var recipientDate = button.data('date')
-            var recipientStartTime = button.data('start-time')
-            var recipientLunch = button.data('lunch')
-            var recipientRetorn = button.data('retorn')
-            var recipientEndTime = button.data('end-time')
-            var recipientOperator = button.data('operator')
-            var recipientMachine = button.data('machine')
-            var recipientRetreats = button.data('retreats')
-            var recipientPasture = button.data('pasture')
-            var modal = $(this)
-            modal.find('.modal-body #date').val(recipientDate)
-            modal.find('.modal-body #start-time').val(recipientStartTime)
-            modal.find('.modal-body #lunch').val(recipientLunch)
-            modal.find('.modal-body #retorn').val(recipientRetorn)
-            modal.find('.modal-body #end-time').val(recipientEndTime)
-            modal.find('.modal-body #operator').val(recipientOperator)
-            modal.find('.modal-body #machine').val(recipientMachine)
-            modal.find('.modal-body #retreats').val(recipientRetreats)
-            modal.find('.modal-body #pasture').val(recipientPasture)
-        })
-    </script>
-
-     
 
 </body>
 
