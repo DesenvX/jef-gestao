@@ -22,13 +22,14 @@ class Movements
         return $moviments_response;
     }
 
-    public function postMovements($request) {
+    public function postMovements($request, $workedhours, $valueday) {
 
         require 'Conexao.php';
 
-        $worked_hours = $mysqli->escape_string($request['workedHours']);
+        $valueday;
+        $workedhours;
 
-        print_r($worked_hours);
+        /* print_r(); */
   
     }
 

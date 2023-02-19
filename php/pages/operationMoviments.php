@@ -16,13 +16,11 @@ require_once '../services/Collaborators.php';
 require_once '../services/Services.php';
 require_once '../services/Tractors.php';
 require_once '../services/Pastures.php';
-require_once '../services/Prices.php';
 
 use services\Collaborators;
 use services\Services;
 use services\Tractors;
 use services\Pastures;
-use services\Prices;
 
 $collaborators = new Collaborators();
 $collaborators_list = $collaborators->getCollaborators();
@@ -32,8 +30,6 @@ $tractors = new Tractors();
 $tractors_list = $tractors->getTractors();
 $pastures = new Pastures();
 $pastures_list = $pastures->getPastures();
-$prices = new Prices();
-$prices_list = $prices->getPrices();
 
 ?>
 
@@ -76,8 +72,6 @@ $prices_list = $prices->getPrices();
                         <div class="card-body">
                             <form class="user" action="../controllers/MovimentsController.php" method="POST">
                                 <input type="hidden" name="register" value="true">
-                                <input type="hidden" name="valueDay" value="">
-                                <input type="hidden" name="workedHours" value="">
                                 <div class="form-group row" style="align-items: center;">
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <label for="start-time">Hora Inicial</label>
@@ -93,20 +87,16 @@ $prices_list = $prices->getPrices();
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <label for="day-week">Dia da Semana</label>
-                                        <input type="text" class="form-control" id="day-week" name="dayWeek" placeholder="Dia da Semana" disabled>
+                                        <input type="text" class="form-control" id="day-week-disabled" placeholder="Dia da Semana" disabled>
+                                        <input type="hidden" id="day-week" name="dayWeek" required>
                                     </div>
                                     <div class="col-sm-3 ml-5 mb-3 mb-sm-0">
-                                        <?php
-                                        while ($preco = $prices_list->fetch_assoc()) { ?>
-                                            <?php if ($preco['descricao'] == 'Hora Extra') { ?>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="adversity" name="adversity" value="<?= $preco['valor'] ?>" >
-                                                    <label class="form-check-label" for="adversity">
-                                                        Nortuno, Sexta de Pagamento,<br> Final de Semana, Feriado.
-                                                    </label>
-                                                </div>
-                                            <?php } ?>
-                                        <?php } ?>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="adversity" name="adversity">
+                                            <label class="form-check-label" for="adversity">
+                                                Nortuno, Sexta de Pagamento,<br> Final de Semana, Feriado.
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -179,6 +169,7 @@ $prices_list = $prices->getPrices();
                 var d = this.value.split("-");
                 var data = new Date(d[0], d[1] - 1, d[2]).getDay();
                 var dia_semana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'][data];
+                $("#day-week-disabled").val(dia_semana);
                 $("#day-week").val(dia_semana);
 
             }).change();

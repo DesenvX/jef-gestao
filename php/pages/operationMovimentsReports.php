@@ -104,7 +104,7 @@
                                             <th>Operador</th>
                                             <th>Hora Inicial</th>
                                             <th>Hora Final</th>
-                                            <th>Horas Trabalhadas</th>
+                                            <th>Horimetro</th>
                                             <th>Diária</th>
                                             <th>Maquina</th>
                                             <th>Pasto</th>
@@ -116,7 +116,7 @@
                                             <th>Operador</th>
                                             <th>Hora Inicial</th>
                                             <th>Hora Final</th>
-                                            <th>Horas Trabalhadas</th>
+                                            <th>Horimetro</th>
                                             <th>Diária</th>
                                             <th>Maquina</th>
                                             <th>Pasto</th>
