@@ -4,10 +4,10 @@ namespace services;
 
 class Fuel
 {
-
+    
     public function getDataFueIntake($request)
     {
-
+        
         require 'Conexao.php';
 
         $date_init = $mysqli->escape_string($request['filter-date-start']);
@@ -29,6 +29,7 @@ class Fuel
         require '../generate_pdf/GeneratePdf.php';
 
         return PDFIntakeFuel($data_fuel_intake_response, $soma_liters_intake_result, $soma_value_totality_intake_result, $dates_filters);
+
     }
 
     public function getDataFueOutput($request)
@@ -65,7 +66,7 @@ class Fuel
         $soma_intake_response = $mysqli->query($soma_intake_query);
         $soma_intake_result = $soma_intake_response->fetch_assoc();
 
-        $soma_output_query = "SELECT SUM(litros) as soma_litros_saida FROM combustivel_saida WHERE tipo_combustivel = 'disel'";
+        $soma_output_query = "SELECT SUM(litros) as soma_litros_saida FROM combustivel_saida WHERE tipo_combustivel = 'Disel'";
         $soma_output_response = $mysqli->query($soma_output_query);
         $soma_output_result = $soma_output_response->fetch_assoc();
 
@@ -146,6 +147,8 @@ class Fuel
 
         $fuel_output_response = $mysqli->query($fuel_output_query);
         $fuel_historic_response = $mysqli->query($fuel_historic_query);
+
+
 
         if ($fuel_output_response == true && $fuel_historic_response == true) {
             session_start();
@@ -228,14 +231,14 @@ class Fuel
 
     public function putFuelOutput($request)
     {
-        require 'Conexao.php';
+        require 'Conexao.php';       
 
         $id = $mysqli->escape_string($request['id']);
         $id_tables = $mysqli->escape_string($request['id_tables']);
         $id_service = $mysqli->escape_string($request['service']);
         $id_pasture = $mysqli->escape_string($request['pasture']);
         $id_tractor = $mysqli->escape_string($request['tractor']);
-
+   
         $id_collaborator = $mysqli->escape_string($request['collaborator']);
         $typeFuel = $mysqli->escape_string($request['fuel-type']);
         $data = $mysqli->escape_string($request['date-output']);
@@ -244,7 +247,7 @@ class Fuel
         $update_output_query_tractor = "UPDATE combustivel_saida SET tipo_combustivel = '$typeFuel', data = '$data', litros = '$liters', id_servico = '$id_service', id_pasto = '$id_pasture', id_trator = '$id_tractor', id_colaborador = '$id_collaborator' WHERE id = '$id'";
         $update_output_response = $mysqli->query($update_output_query_tractor);
 
-        if ($update_output_response == true) {
+        if($update_output_response == true) {
             $update_historic_query = "UPDATE combustivel_historico SET data = '$data' WHERE id_tabelas = $id_tables";
             $update_historic_response = $mysqli->query($update_historic_query);
         }
@@ -258,6 +261,7 @@ class Fuel
             $_SESSION['edit_fuel_fail'] = true;
             header('Location: ../pages/operationFuel.php');
         }
+        
     }
 
     public function deleteFuelIntake($id)
