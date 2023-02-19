@@ -4,6 +4,17 @@ namespace services;
 
 class Pastures
 {
+    public function getCountPastures()
+    {
+        require 'Conexao.php';
+
+        $pastures_query = "SELECT COUNT(*) as count_pastos FROM pastos";
+        $pastures_response = $mysqli->query($pastures_query);
+        $pastures_result = $pastures_response->fetch_assoc();
+
+        return $pastures_result;
+    }
+
     public function getPasturesForSomething($id)
     {
         require 'Conexao.php';

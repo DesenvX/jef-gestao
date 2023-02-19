@@ -4,6 +4,17 @@ namespace services;
 
 class Tractors
 {
+    public function getCountTractor()
+    {
+        require 'Conexao.php';
+
+        $tractor_query = "SELECT COUNT(*) as count_tratores FROM tratores";
+        $tractor_response = $mysqli->query($tractor_query);
+        $tractor_result = $tractor_response->fetch_assoc();
+
+        return $tractor_result;
+    }
+
     public function getTractorForSomething($id)
     {
         require 'Conexao.php';
