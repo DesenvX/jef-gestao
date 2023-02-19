@@ -926,7 +926,7 @@ $vehicle_list = $vehicle->getVehicles();
                                                     while ($combustivel_saida_vehicle = $fuel_output_list_vehicle->fetch_assoc()) {
                                                         if ($combustivel_saida_vehicle['id_veiculo'] != 0 && $combustivel_saida_vehicle['id_trator'] == 0) {
 
-                                                            $veiculo = $vehicle->getVehicleForSomething($combustivel_saida_vehicle['id_veiculo']);
+                                                            $veiculo = $vehicle->getVehiclesForSomething($combustivel_saida_vehicle['id_veiculo']);
                                                             $colaborador = $collaborators->getCollaboratorsForSomething($combustivel_saida_vehicle['id_colaborador'])
                                                     ?>
                                                             <tr>
@@ -959,8 +959,8 @@ $vehicle_list = $vehicle->getVehicles();
                                                                                         <div class="form-group row">
                                                                                             <select class="form-control" name="tractor" required>
                                                                                                 <?php
-                                                                                                $_edit = new Vehicle();
-                                                                                                $vehicle_list_edit = $_edit->getVehicle();
+                                                                                                $_edit = new Vehicles();
+                                                                                                $vehicle_list_edit = $_edit->getVehicles();
                                                                                                 while ($veiculo_edit = $vehicle_list_edit->fetch_assoc()) { ?>
                                                                                                     <option value="<?= $veiculo_edit['id'] ?>" <?php if ($combustivel_saida_vehicle['id_trator'] == $veiculo_edit['id']) { ?> selected <?php } ?>><?= $veiculo_edit['modelo'] ?>
                                                                                                     </option>
@@ -981,8 +981,8 @@ $vehicle_list = $vehicle->getVehicles();
                                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
                                                                                                 <select class="form-control" name="tractor" required>
                                                                                                     <?php
-                                                                                                    $vehicle_edit = new Vehicle();
-                                                                                                    $vehicle_list_edit = $vehicle_edit->getVehicle();
+                                                                                                    $vehicle_edit = new Vehicles();
+                                                                                                    $vehicle_list_edit = $vehicle_edit->getVehicles();
                                                                                                     while ($veiculo_edit = $vehicle_list_edit->fetch_assoc()) { ?>
                                                                                                         <option value="<?= $veiculo_edit['id'] ?>" <?php if ($combustivel_saida_vehicle['id_trator'] == $veiculo_edit['id']) { ?> selected <?php } ?>><?= $veiculo_edit['modelo'] ?>
                                                                                                         </option>
