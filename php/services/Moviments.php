@@ -4,6 +4,15 @@ namespace services;
 
 class Movements 
 {
+    
+    public function getDataReportMoviments($request) {
+
+    }
+
+    public function getPrintReportMoviments($request) {
+
+    }
+
     public function getMovements() {
 
         require 'Conexao.php';

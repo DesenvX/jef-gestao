@@ -27,5 +27,12 @@ if (isset($_POST['delete'])) {
     return $movements->deleteMovements($_POST['id']);
 }
 
+if (isset($_POST['filter-data-report'])) {
+    return $movements->getDataReportMoviments($_POST);
+}
+
+if (isset($_POST['print-report'])) {
+    return $movements->getPrintReportMoviments($_POST);
+}
 
 ?>

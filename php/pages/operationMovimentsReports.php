@@ -47,6 +47,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <form action="../controllers/MovimentsController" method="POST">
+                                <input type="hidden" name="filter-data-report" value="true">
                                 <div class="form-group row" style="align-items:center;">
                                     <div class="col-sm-4">
                                         <select class="form-control" name="colaborators">
@@ -72,6 +73,29 @@
                         </div>
 
                         <div class="card-body">
+                            <div name="button-generate-pdf" class="row mb-3">
+                                <div class="col">
+                                    <form action="../controllers/MovimentsController.php" method="POST">
+                                        <input type="hidden" name="print-report" value="true">
+                                        <input type="hidden" name="" value="">
+                                        <input type="hidden" name="" value="">
+                                        <input type="hidden" name="" value="">
+                                        <input type="hidden" name="" value="">
+                                        <input type="hidden" name="" value="">
+                                        <input type="hidden" name="" value="">
+                                        <input type="hidden" name="" value="">
+                                        <input type="hidden" name="" value="">
+                                        <input type="hidden" name="" value="">
+                                        <button type="submit" class="btn btn-dark btn-sm btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-file-pdf"></i>
+                                            </span>
+                                            <span class="text"> Imprimir Relatório </span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -107,6 +131,7 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
+                                            <td></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -114,21 +139,21 @@
                         </div>
                     </div>
                 </div>
-
-                <?php
-                include('../../html/footer.html');
-                ?>
-
             </div>
+
+            <?php
+            include('../../html/footer.html');
+            ?>
 
         </div>
 
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
+    </div>
 
-        <?php include('../../html/scripts.html'); ?>
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
+    <?php include('../../html/scripts.html'); ?>
 </body>
 
 </html>
