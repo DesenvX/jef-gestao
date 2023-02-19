@@ -4,6 +4,17 @@ namespace services;
 
 class Vehicle
 {
+    public function getVehicleForSomething($id)
+    {
+        require 'Conexao.php';
+
+        $suppliers_query = "SELECT * FROM veiculos WHERE id = $id";
+        $suppliers_response = $mysqli->query($suppliers_query);
+        $suppliers_result = $suppliers_response->fetch_assoc();
+
+        return $suppliers_result;
+    }
+
     public function getVehicle()
     {
         require 'Conexao.php';
