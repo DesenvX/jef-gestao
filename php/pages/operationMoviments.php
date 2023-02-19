@@ -71,37 +71,38 @@ $pastures_list = $pastures->getPastures();
                             </button>
                         </div>
                         <div class="card-body">
-                            <form class="user" action="#" method="post">
+                            <form class="user" action="../controllers/MovimentsController.php" method="post">
+                                <input type="hidden" value="register">
                                 <div class="form-group row">
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <label for="start-time">Hora Inicial</label>
-                                        <input type="time" class="form-control" id="start-time" placeholder="Hora Inicial">
+                                        <input type="time" class="form-control" name="startTime" placeholder="Hora Inicial">
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <label for="end-time">Hora Final</label>
-                                        <input type="time" class="form-control" id="end-time" placeholder="Hora Final">
+                                        <input type="time" class="form-control" name="endTime" placeholder="Hora Final">
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <label for="worked-hours">Horas Trabalhadas</label>
-                                        <input type="number" class="form-control" id="worked-hours" placeholder="Horas Trabalhadas" disabled>
+                                        <input type="number" class="form-control" name="workedHours" placeholder="Horas Trabalhadas" disabled>
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <label for="date">Data</label>
-                                        <input type="date" class="form-control" id="date" placeholder="Data">
+                                        <input type="date" class="form-control" name="data" placeholder="Data">
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <label for="day-week">Dia da Semana</label>
-                                        <input type="text" class="form-control" id="day-week" placeholder="Dia da Semana" disabled>
+                                        <input type="text" class="form-control" name="dayWeek" placeholder="Dia da Semana" disabled>
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <label for="value-day">Diária</label>
-                                        <input type="text" class="form-control" id="value-day" placeholder="R$" disabled>
+                                        <input type="text" class="form-control" name="valueDay" placeholder="R$" disabled>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-3 mb-3 mb-sm-0">
                                         <label for="operator">Operador</label>
-                                        <select class="form-control" id="operator" placeholder="Operador">
+                                        <select class="form-control" name="operator" placeholder="Operador">
                                             <option value=""> Operador </option>
                                             <option value="1"> João </option>
                                             <option value="2"> Pedro </option>
@@ -109,21 +110,21 @@ $pastures_list = $pastures->getPastures();
                                     </div>
                                     <div class="col-sm-3 mb-3 mb-sm-0">
                                         <label for="service">Serviço</label>
-                                        <select class="form-control" id="service" placeholder="Serviço">
+                                        <select class="form-control" name="service" placeholder="Serviço">
                                             <option value=""> Serviço </option>
                                             <option value="1"> Roço </option>
                                         </select>
                                     </div>
                                     <div class="col-sm-3 mb-3 mb-sm-0">
                                         <label for="machine">Maquina</label>
-                                        <select class="form-control" id="machine" placeholder="Maquina">
+                                        <select class="form-control" name="machine" placeholder="Maquina">
                                             <option value=""> Maquina </option>
                                             <option value="1"> Bm - 125 </option>
                                         </select>
                                     </div>
                                     <div class="col-sm-3 mb-3 mb-sm-0">
                                         <label for="pasture">Pasto</label>
-                                        <select class="form-control" id="pasture" placeholder="Pasto">
+                                        <select class="form-control" name="pasture" placeholder="Pasto">
                                             <option value=""> Pasto </option>
                                             <option value="1"> B12 - (Nazaré)  </option>
                                             <option value="2"> B13 - (Vale da Serra) </option>
@@ -132,7 +133,7 @@ $pastures_list = $pastures->getPastures();
                                 </div>
                                 <hr>
                                 <div style="display: flex; justify-content: center;">
-                                    <button style="margin: 5px;" type="button" class="btn btn-info">
+                                    <button style="margin: 5px;" type="submit" class="btn btn-info">
                                         <span class="text"> Cadastrar </span>
                                     </button>
                                     <button style="margin: 5px;" type="button" class="btn btn-danger">
