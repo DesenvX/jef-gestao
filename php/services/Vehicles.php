@@ -2,9 +2,9 @@
 
 namespace services;
 
-class Vehicle
+class Vehicles
 {
-    public function getVehicleForSomething($id)
+    public function getVehiclesForSomething($id)
     {
         require 'Conexao.php';
 
@@ -15,7 +15,7 @@ class Vehicle
         return $suppliers_result;
     }
 
-    public function getVehicle()
+    public function getVehicles()
     {
         require 'Conexao.php';
 
@@ -24,7 +24,7 @@ class Vehicle
         return $vehicle_response;
     }
 
-    public function postVehicle($request)
+    public function postVehicles($request)
     {
         require 'Conexao.php';
 
@@ -40,15 +40,15 @@ class Vehicle
         if ($create_response == true) {
             session_start();
             $_SESSION['register_vehicles_success'] = true;
-            header('Location: ../pages/areaVehicle.php');
+            header('Location: ../pages/areaVehicles.php');
         } else {
             session_start();
             $_SESSION['register_vehicles_fail'] = true;
-            header('Location: ../pages/areaVehicle.php');
+            header('Location: ../pages/areaVehicles.php');
         }
     }
 
-    public function putVehicle($request)
+    public function putVehicles($request)
     {
         require 'Conexao.php';
 
@@ -65,15 +65,15 @@ class Vehicle
         if ($update_response == true) {
             session_start();
             $_SESSION['edit_vehicles_success'] = true;
-            header('Location: ../pages/areaVehicle.php');
+            header('Location: ../pages/areaVehicles.php');
         } else {
             session_start();
             $_SESSION['edit_vehicles_fail'] = true;
-            header('Location: ../pages/areaVehicle.php');
+            header('Location: ../pages/areaVehicles.php');
         }
     }
 
-    public function deleteVehicle($id)
+    public function deleteVehicles($id)
     {
         require 'Conexao.php';
 
@@ -83,11 +83,11 @@ class Vehicle
         if ($delete_response == true) {
             session_start();
             $_SESSION['delete_vehicles_success'] = true;
-            header('Location: ../pages/areaVehicle.php');
+            header('Location: ../pages/areaVehicles.php');
         } else {
             session_start();
             $_SESSION['delete_vehicles_fail'] = true;
-            header('Location: ../pages/areaVehicle.php');
+            header('Location: ../pages/areaVehicles.php');
         }
     }
 }

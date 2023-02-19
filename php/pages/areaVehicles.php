@@ -38,14 +38,14 @@ session_start();
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterVehicle">
+                            <button type="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalRegisterVehicles">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus-circle"></i>
                                 </span>
                                 <span class="text"> Cadastrar </span>
                             </button>
 
-                            <div name="RegisterVehicle" class="modal fade" id="modalRegisterVehicle" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div name="RegisterVehicles" class="modal fade" id="modalRegisterVehicles" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-sm" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
@@ -55,7 +55,7 @@ session_start();
                                             <div class="text-center">
                                                 <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Cadastrar Veiculo</b></h1>
                                             </div>
-                                            <form class="user" action="../controllers/VehicleController.php" method="POST">
+                                            <form class="user" action="../controllers/VehiclesController.php" method="POST">
                                                 <input type="hidden" name="register" value="true">
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
@@ -130,12 +130,12 @@ session_start();
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        require_once '../services/Vehicle.php';
+                                        require_once '../services/Vehicles.php';
 
-                                        use services\Vehicle;
+                                        use services\Vehicles;
 
-                                        $vehicle = new Vehicle();
-                                        $vehicle_list = $vehicle->getVehicle();
+                                        $vehicle = new Vehicles();
+                                        $vehicle_list = $vehicle->getVehicles();
 
                                         while ($veiculo = $vehicle_list->fetch_assoc()) {
                                         ?>
@@ -147,11 +147,11 @@ session_start();
                                                 <td><?= $veiculo['ano'] ?></td>
                                                 <td><?= $veiculo['placa'] ?></td>
                                                 <td>
-                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditVehicle_<?= $veiculo['id'] ?>">
+                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditVehicles_<?= $veiculo['id'] ?>">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
                                                     
-                                                    <div name="EditVehicle" class="modal fade" id="modalEditVehicle_<?= $veiculo['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="EditVehicles" class="modal fade" id="modalEditVehicles_<?= $veiculo['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
@@ -161,7 +161,7 @@ session_start();
                                                                     <div class="text-center">
                                                                         <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Veiculo</b></h1>
                                                                     </div>
-                                                                    <form class="user" action="../controllers/VehicleController.php" method="POST">
+                                                                    <form class="user" action="../controllers/VehiclesController.php" method="POST">
                                                                         <input type="hidden" name="edit" value="true">
                                                                         <input type="hidden" name="id" value="<?= $veiculo['id'] ?>">
                                                                         <div class="form-group row">
@@ -198,18 +198,18 @@ session_start();
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteVehicle_<?= $veiculo['id'] ?>">
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteVehicles_<?= $veiculo['id'] ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
 
-                                                    <div name="DeleteVehicle" class="modal fade" id="modalDeleteVehicle_<?= $veiculo['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="DeleteVehicles" class="modal fade" id="modalDeleteVehicles_<?= $veiculo['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
                                                                     <div class="text-center">
                                                                         <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o trator <br><strong><?= $veiculo['modelo'] ?> ( <?= $veiculo['marca'] ?> )</strong> ?</span></b></h1>
                                                                     </div>
-                                                                    <form class="user" action="../controllers/VehicleController.php" method="POST">
+                                                                    <form class="user" action="../controllers/VehiclesController.php" method="POST">
                                                                         <input type="hidden" name="delete" value="true">
                                                                         <input type="hidden" name="id" value="<?= $veiculo['id'] ?>">
                                                                         <hr>
