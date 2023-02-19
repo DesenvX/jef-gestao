@@ -65,7 +65,12 @@ session_start();
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <input type="number" step=".01" class="form-control" name="value" placeholder="Valor">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">R$</span>
+                                                            </div>
+                                                            <input type="number" step=".01" class="form-control" name="value" placeholder="Valor">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -121,7 +126,7 @@ session_start();
                                             <tr>
                                                 <th><?= $prices['id'] ?></th>
                                                 <td><?= $prices['descricao'] ?></td>
-                                                <td><?= $prices['valor'] ?></td>
+                                                <td>R$ <?= $prices['valor'] ?></td>
                                                 <td>
                                                     <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditPrices_<?= $prices['id'] ?>">
                                                         <i class="fas fa-pen"></i>
@@ -134,45 +139,28 @@ session_start();
                                                                         <img src="../../img/preco.png" width="100" height="100" style="margin-bottom: 10px;">
                                                                     </div>
                                                                     <div class="text-center">
-                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Serviço</b></h1>
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Preços</b></h1>
                                                                     </div>
                                                                     <form class="user" action="../controllers/PricesController.php" method="POST">
                                                                         <input type="hidden" name="edit" value="true">
                                                                         <input type="hidden" name="id" value="<?= $prices['id'] ?>">
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control" name="description" value="<?= $prices['descricao'] ?>" placeholder="Descrição">
+                                                                                <input type="text" class="form-control" name="description" value="<?= $prices['descricao'] ?>" placeholder="Descrição" disabled>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="number" step=".01" class="form-control" name="value" value="<?= $prices['valor'] ?>" placeholder="Valor">
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">R$</span>
+                                                                                    </div>
+                                                                                    <input type="number" step=".01" class="form-control" name="value" value="<?= $prices['valor'] ?>" placeholder="Valor">
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                         <hr>
                                                                         <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeletePrices_<?= $prices['id'] ?>">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                    <div name="DeletePrices" class="modal fade" id="modalDeletePrices_<?= $prices['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
-                                                        <div class="modal-dialog modal-sm" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-body">
-                                                                    <div class="text-center">
-                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir o item <br><strong> <?= $prices['descricao'] ?> </strong> ?</span></b></h1>
-                                                                    </div>
-                                                                    <form class="user" action="../controllers/PricesController.php" method="POST">
-                                                                        <input type="hidden" name="delete" value="true">
-                                                                        <input type="hidden" name="id" value="<?= $prices['id'] ?>">
-                                                                        <hr>
-                                                                        <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
                                                                         <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
                                                                     </form>
                                                                 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 07-Fev-2023 às 07:29
+-- Tempo de geração: 19-Fev-2023 às 10:58
 -- Versão do servidor: 8.0.17
 -- versão do PHP: 7.3.10
 
@@ -39,10 +39,10 @@ CREATE TABLE `precos` (
 --
 
 INSERT INTO `precos` (`id`, `descricao`, `valor`) VALUES
-(1, 'dias_uteis', 5.1),
-(3, 'hora_excedente', 14.5),
-(4, 'disel', 6.19),
-(7, 'gasolina', 5.89);
+(1, 'Hora Normal', 5.1),
+(2, 'Hora Extra', 14.5),
+(3, 'Disel', 6.19),
+(4, 'Gasolina', 5.89);
 
 --
 -- Índices para tabelas despejadas
@@ -62,7 +62,7 @@ ALTER TABLE `precos`
 -- AUTO_INCREMENT de tabela `precos`
 --
 ALTER TABLE `precos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

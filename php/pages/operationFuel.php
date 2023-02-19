@@ -147,14 +147,14 @@ $vehicle_list = $vehicle->getVehicles();
                                                     </div>
 
                                                     <div class="col-sm-6 mb-3 mb-sm-0" id="type_register_intake" style="display: none;">
-                                                        <input type="text" class="form-control" value="disel" disabled>
-                                                        <input type="hidden" name="type_fuel_intake" value="disel">
+                                                        <input type="text" class="form-control" value="Disel" disabled>
+                                                        <input type="hidden" name="type_fuel_intake" value="Disel">
                                                     </div>
 
                                                     <div class="col-sm-6 mb-3 mb-sm-0" id="type_register_output" style="display: none;">
                                                         <select class="form-control" name="type_fuel_output" id="type_fuel_output" onchange="validateTypeFuelOutput()">
-                                                            <option value="disel"> Tipo de Combustível </option>
-                                                            <option value="disel"> Disel </option>
+                                                            <option value="Disel"> Tipo de Combustível </option>
+                                                            <option value="Disel"> Disel </option>
                                                             <option value="Gasolina"> Gasolina </option>
                                                         </select>
                                                     </div>
@@ -215,9 +215,9 @@ $vehicle_list = $vehicle->getVehicles();
                                                 <input type="hidden" name="intake" value="Entrada">
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <?php $typeFuel = "disel" ?>
+                                                        <?php $typeFuel = "Disel" ?>
                                                         <input type="text" class="form-control" value="Disel" placeholder="Combustível" disabled>
-                                                        <input type="hidden" class="form-control" name="fuel-type" value="disel">
+                                                        <input type="hidden" class="form-control" name="fuel-type" value="Disel">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -327,8 +327,8 @@ $vehicle_list = $vehicle->getVehicles();
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                                         <select name="fuel-type" class="form-control">
                                                             <option value="">Tipo de combustivel</option>
-                                                            <option value="gasolina">Gasolina</option>
-                                                            <option value="disel">Disel</option>
+                                                            <option value="Gasolina">Gasolina</option>
+                                                            <option value="Disel">Disel</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -391,7 +391,7 @@ $vehicle_list = $vehicle->getVehicles();
                                                 <div class="form-group row">
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                                         <input type="text" class="form-control" value="Disel" placeholder="Combustível" disabled>
-                                                        <input type="hidden" class="form-control" name="fuel-type" value="disel">
+                                                        <input type="hidden" class="form-control" name="fuel-type" value="Disel">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -960,9 +960,9 @@ $vehicle_list = $vehicle->getVehicles();
                                                                                         <div class="form-group row">
                                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
                                                                                                 <select name="fuel-type" class="form-control">
-                                                                                                   <option value="gasolina" <?php if($combustivel_saida_vehicle['tipo_combustivel'] == 'gasolina') { ?> 
+                                                                                                   <option value="Gasolina" <?php if($combustivel_saida_vehicle['tipo_combustivel'] == 'Gasolina') { ?> 
                                                                                                     selected <?php } ?>> Gasolina </option>
-                                                                                                   <option value="disel" <?php if($combustivel_saida_vehicle['tipo_combustivel'] == 'disel') { ?> 
+                                                                                                   <option value="Disel" <?php if($combustivel_saida_vehicle['tipo_combustivel'] == 'Disel') { ?> 
                                                                                                     selected <?php } ?>> Disel </option>
                                                                                                 </select>
                                                                                             </div>

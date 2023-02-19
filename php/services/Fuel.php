@@ -50,9 +50,9 @@ class Fuel
 
         require '../generate_pdf/GeneratePdf.php';
 
-        if ($type_fuel == 'gasolina') {
+        if ($type_fuel == 'Gasolina') {
             return PDFOutputFuelGas($data_fuel_output_response, $soma_liters_output_result, $dates_filters);
-        } elseif ($type_fuel == 'disel') {
+        } elseif ($type_fuel == 'Disel') {
             return PDFOutputFuelDisel($data_fuel_output_response, $soma_liters_output_result, $dates_filters);
         }
     }
@@ -65,7 +65,7 @@ class Fuel
         $soma_intake_response = $mysqli->query($soma_intake_query);
         $soma_intake_result = $soma_intake_response->fetch_assoc();
 
-        $soma_output_query = "SELECT SUM(litros) as soma_litros_saida FROM combustivel_saida WHERE tipo_combustivel = 'disel'";
+        $soma_output_query = "SELECT SUM(litros) as soma_litros_saida FROM combustivel_saida WHERE tipo_combustivel = 'Disel'";
         $soma_output_response = $mysqli->query($soma_output_query);
         $soma_output_result = $soma_output_response->fetch_assoc();
 

@@ -16,11 +16,13 @@ require_once '../services/Collaborators.php';
 require_once '../services/Services.php';
 require_once '../services/Tractors.php';
 require_once '../services/Pastures.php';
+require_once '../services/Prices.php';
 
 use services\Collaborators;
 use services\Services;
 use services\Tractors;
 use services\Pastures;
+use services\Prices;
 
 $collaborators = new Collaborators();
 $collaborators_list = $collaborators->getCollaborators();
@@ -30,6 +32,8 @@ $tractors = new Tractors();
 $tractors_list = $tractors->getTractors();
 $pastures = new Pastures();
 $pastures_list = $pastures->getPastures();
+$prices = new Prices();
+$prices_list = $prices->getPrices();
 
 ?>
 
@@ -70,32 +74,39 @@ $pastures_list = $pastures->getPastures();
                             </a>
                         </div>
                         <div class="card-body">
-                            <form class="user" action="../controllers/MovimentsController.php" method="post">
-                                <input type="hidden" value="register">
-                                <div class="form-group row">
+                            <form class="user" action="../controllers/MovimentsController.php" method="POST">
+                                <input type="hidden" name="register" value="true">
+                                <input type="hidden" name="valueDay" value="">
+                                <input type="hidden" name="workedHours" value="">
+                                <div class="form-group row" style="align-items: center;">
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <label for="start-time">Hora Inicial</label>
-                                        <input type="time" class="form-control" name="startTime" placeholder="Hora Inicial">
+                                        <input type="time" class="form-control" name="startTime" placeholder="Hora Inicial" required>
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <label for="end-time">Hora Final</label>
-                                        <input type="time" class="form-control" name="endTime" placeholder="Hora Final">
-                                    </div>
-                                    <div class="col-sm-2 mb-3 mb-sm-0">
-                                        <label for="worked-hours">Horas Trabalhadas</label>
-                                        <input type="number" class="form-control" name="workedHours" placeholder="Horas Trabalhadas" disabled>
+                                        <input type="time" class="form-control" name="endTime" placeholder="Hora Final" required>
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <label for="date">Data</label>
-                                        <input type="date" class="form-control" name="data" placeholder="Data">
+                                        <input type="date" id="date" class="form-control" name="data" placeholder="Data" required>
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <label for="day-week">Dia da Semana</label>
-                                        <input type="text" class="form-control" name="dayWeek" placeholder="Dia da Semana" disabled>
+                                        <input type="text" class="form-control" id="day-week" name="dayWeek" placeholder="Dia da Semana" disabled>
                                     </div>
-                                    <div class="col-sm-2 mb-3 mb-sm-0">
-                                        <label for="value-day">Diária</label>
-                                        <input type="text" class="form-control" name="valueDay" placeholder="R$" disabled>
+                                    <div class="col-sm-3 ml-5 mb-3 mb-sm-0">
+                                        <?php
+                                        while ($preco = $prices_list->fetch_assoc()) { ?>
+                                            <?php if ($preco['descricao'] == 'Hora Extra') { ?>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="adversity" name="adversity" value="<?= $preco['valor'] ?>" >
+                                                    <label class="form-check-label" for="adversity">
+                                                        Nortuno, Sexta de Pagamento,<br> Final de Semana, Feriado.
+                                                    </label>
+                                                </div>
+                                            <?php } ?>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -173,19 +184,6 @@ $pastures_list = $pastures->getPastures();
             }).change();
 
         });
-
-        $('#modalEditProduct').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var recipientName = button.data('name-product')
-            var recipientQuantity = button.data('quantity-product')
-            var recipientMaximum = button.data('maximum')
-            var recipientMinimum = button.data('minimum')
-            var modal = $(this)
-            modal.find('.modal-body #name-product').val(recipientName)
-            modal.find('.modal-body #quantity-product').val(recipientQuantity)
-            modal.find('.modal-body #maximum').val(recipientMaximum)
-            modal.find('.modal-body #minimum').val(recipientMinimum)
-        })
     </script>
 
 

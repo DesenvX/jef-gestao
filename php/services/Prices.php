@@ -40,10 +40,9 @@ class Prices
         require 'Conexao.php';
 
         $id = $mysqli->escape_string($request['id']);
-        $description = $mysqli->escape_string($request['description']);
         $value = $mysqli->escape_string($request['value']);
 
-        $update_query = "UPDATE precos SET descricao = '$description', valor = '$value' WHERE id = $id";
+        $update_query = "UPDATE precos SET valor = '$value' WHERE id = $id";
         $update_response = $mysqli->query($update_query);
 
         if ($update_response == true) {
