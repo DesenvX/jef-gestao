@@ -40,6 +40,7 @@ $fuel_historic_list = $fuel->getFuelHistoric();
 $fuel_intake_list = $fuel->getFuelIntake();
 $fuel_output_list = $fuel->getFuelOutput();
 $fuel_output_list_vehicle = $fuel->getFuelOutput();
+$fuel_output_list_vehicle_edit = $fuel->getFuelOutput();
 $fuel_porcent_tank = $fuel->getPorcentTankDashboard();
 
 $suppliers = new Suppliers();
@@ -924,7 +925,7 @@ $vehicle_list = $vehicle->getVehicles();
                                                     <?php
 
                                                     while ($combustivel_saida_vehicle = $fuel_output_list_vehicle->fetch_assoc()) {
-                                                        if ($combustivel_saida_vehicle['id_veiculo'] != 0 && $combustivel_saida_vehicle['id_trator'] == 0) {
+                                                        if ($combustivel_saida_vehicle['id_veiculo'] != 0) {
 
                                                             $veiculo = $vehicle->getVehiclesForSomething($combustivel_saida_vehicle['id_veiculo']);
                                                             $colaborador = $collaborators->getCollaboratorsForSomething($combustivel_saida_vehicle['id_colaborador'])
@@ -957,24 +958,25 @@ $vehicle_list = $vehicle->getVehicles();
                                                                                         <input type="hidden" name="id" value="<?= $combustivel_saida_vehicle['id'] ?>">
                                                                                         <input type="hidden" name="id_tables" value="<?= $combustivel_saida_vehicle['id_tabelas'] ?>">
                                                                                         <div class="form-group row">
-                                                                                            <select class="form-control" name="tractor" required>
-                                                                                                <?php
-                                                                                                $_edit = new Vehicles();
-                                                                                                $vehicle_list_edit = $_edit->getVehicles();
-                                                                                                while ($veiculo_edit = $vehicle_list_edit->fetch_assoc()) { ?>
-                                                                                                    <option value="<?= $veiculo_edit['id'] ?>" <?php if ($combustivel_saida_vehicle['id_trator'] == $veiculo_edit['id']) { ?> selected <?php } ?>><?= $veiculo_edit['modelo'] ?>
-                                                                                                    </option>
-                                                                                                <?php } ?>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                        <div class="form-group row">
                                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                                <input type="date" class="form-control" name="date-output" value="<?= $combustivel_saida_vehicle['data'] ?>" placeholder="Data de Saida">
+                                                                                                <select name="fuel-type" class="form-control">
+                                                                                                   <option value="gasolina" <?php if($combustivel_saida_vehicle['tipo_combustivel'] == 'gasolina') { ?> 
+                                                                                                    selected <?php } ?>> Gasolina </option>
+                                                                                                   <option value="disel" <?php if($combustivel_saida_vehicle['tipo_combustivel'] == 'disel') { ?> 
+                                                                                                    selected <?php } ?>> Disel </option>
+                                                                                                </select>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group row">
                                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                                <input type="number" step=".01" class="form-control" name="liters" value="<?= $combustivel_saida_vehicle['litros'] ?>" placeholder="Litros">
+                                                                                                <input type="date" class="form-control" name="date-output" value="<?= $combustivel_saida_vehicle['data'] ?>"
+                                                                                                 placeholder="Data de Saida">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group row">
+                                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                                <input type="number" step=".01" class="form-control" name="liters" value="<?= $combustivel_saida_vehicle['litros'] ?>"
+                                                                                                 placeholder="Litros">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group row">
@@ -984,7 +986,9 @@ $vehicle_list = $vehicle->getVehicles();
                                                                                                     $vehicle_edit = new Vehicles();
                                                                                                     $vehicle_list_edit = $vehicle_edit->getVehicles();
                                                                                                     while ($veiculo_edit = $vehicle_list_edit->fetch_assoc()) { ?>
-                                                                                                        <option value="<?= $veiculo_edit['id'] ?>" <?php if ($combustivel_saida_vehicle['id_trator'] == $veiculo_edit['id']) { ?> selected <?php } ?>><?= $veiculo_edit['modelo'] ?>
+                                                                                                        <option value="<?= $veiculo_edit['id'] ?>" 
+                                                                                                        <?php if ($combustivel_saida_vehicle['id_trator'] == $veiculo_edit['id']) { ?>
+                                                                                                             selected <?php } ?>><?= $veiculo_edit['modelo'] ?>
                                                                                                         </option>
                                                                                                     <?php } ?>
                                                                                                 </select>
@@ -998,7 +1002,7 @@ $vehicle_list = $vehicle->getVehicles();
                                                                                                     $collaborators_list_edit = $collaborators_edit->getCollaborators();
                                                                                                     while ($colaborador_edit = $collaborators_list_edit->fetch_assoc()) { ?>
                                                                                                         <option value="<?= $colaborador_edit['id'] ?>" <?php if ($combustivel_saida_vehicle['id_colaborador'] == $colaborador_edit['id']) {
-                                                                                                                                                        ?> selected <?php } ?>><?= $colaborador_edit['nome'] ?>
+                                                                                                            ?> selected <?php } ?>><?= $colaborador_edit['nome'] ?>
                                                                                                         </option>
                                                                                                     <?php } ?>
                                                                                                 </select>

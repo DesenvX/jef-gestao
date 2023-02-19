@@ -97,8 +97,7 @@ session_start();
                                         <input type="search" id="search" class="form-control form-control-sm" placeholder="Buscar" aria-controls="dataTable">
                                     </div>
                                 </div>
-
-
+                                
                             </div>
 
                             <div class="table-responsive">
