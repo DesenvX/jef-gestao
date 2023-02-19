@@ -56,19 +56,18 @@ $pastures_list = $pastures->getPastures();
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="operationMovimentsHistoric.php" role="button" class="btn btn-info btn-sm btn-icon-split">
-
+                            <a href="operationMovimentsHistoric.php" role="button" class="btn btn-primary btn-sm btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-list-alt"></i>
                                 </span>
                                 <span class="text"> Historico </span>
                             </a>
-                            <button type="button" class="btn btn-primary btn-sm btn-icon-split">
+                            <a href="operationMovimentsReports.php" role="button" class="btn btn-dark btn-sm btn-icon-split">
                                 <span class="icon text-white-50">
-                                    <i class="fas fa-download fa-sm text-white-50"></i>
+                                    <i class="fas fa-file-pdf"></i>
                                 </span>
-                                <span class="text"> Gerar Relatório </span>
-                            </button>
+                                <span class="text"> Relatório </span>
+                            </a>
                         </div>
                         <div class="card-body">
                             <form class="user" action="../controllers/MovimentsController.php" method="post">
@@ -126,7 +125,7 @@ $pastures_list = $pastures->getPastures();
                                         <label for="pasture">Pasto</label>
                                         <select class="form-control" name="pasture" placeholder="Pasto">
                                             <option value=""> Pasto </option>
-                                            <option value="1"> B12 - (Nazaré)  </option>
+                                            <option value="1"> B12 - (Nazaré) </option>
                                             <option value="2"> B13 - (Vale da Serra) </option>
                                         </select>
                                     </div>
