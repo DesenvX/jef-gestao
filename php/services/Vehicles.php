@@ -4,6 +4,17 @@ namespace services;
 
 class Vehicles
 {
+    public function getCountVehicles()
+    {
+        require 'Conexao.php';
+
+        $vehicles_query = "SELECT COUNT(*) as count_veiculo FROM veiculos";
+        $vehicles_response = $mysqli->query($vehicles_query);
+        $vehicles_result = $vehicles_response->fetch_assoc();
+
+        return $vehicles_result;
+    }
+
     public function getVehiclesForSomething($id)
     {
         require 'Conexao.php';

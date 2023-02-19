@@ -5,6 +5,17 @@ namespace services;
 
 class Collaborators
 {
+    public function getCountCollaborators()
+    {
+        require 'Conexao.php';
+
+        $collaborators_query = "SELECT COUNT(*) as count_colaboradores FROM colaboradores";
+        $collaborators_response = $mysqli->query($collaborators_query);
+        $collaborators_result = $collaborators_response->fetch_assoc();
+
+        return $collaborators_result;
+    }
+
     public function getCollaboratorsForSomething($id)
     {
         require 'Conexao.php';
