@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php
+session_start();
+?>
 
 <head>
 
@@ -13,11 +16,20 @@
 
 <?php
 
+require_once '../services/Moviments.php';
 require_once '../services/Collaborators.php';
 require_once '../services/Tractors.php';
 
+use services\Moviments;
 use services\Collaborators;
 use services\Tractors;
+
+
+if ($_POST['filter-data-report'] == true) {
+    $moviments = new Moviments();
+    $moviments_filter = $moviments->getDataReportMoviments($_POST);
+}
+
 
 $collaborators = new Collaborators();
 $collaborators_list = $collaborators->getCollaborators();
@@ -61,7 +73,7 @@ $tractors_list = $tractors->getTractors();
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <form action="../controllers/MovimentsController.php" method="POST">
+                            <form action="#" method="POST">
                                 <input type="hidden" name="filter-data-report" value="true">
                                 <div class="form-group row" style="align-items:center;">
                                     <div class="col-sm-2">
@@ -153,19 +165,18 @@ $tractors_list = $tractors->getTractors();
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        while ($data_report_moviments_result = $data_report_moviments_response->fetch_assoc()) {
-                                            print_r($data_report_moviments_result);
-
+                                        while ($movimento_filtrado = $moviments_filter->fetch_assoc()) {
+                    
                                         ?>
                                             <tr>
-                                                <th></th>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td><?= $movimento_filtrado['data'] ?></td>
+                                                <td><?= $movimento_filtrado['hora_inicial'] ?></td>
+                                                <td><?= $movimento_filtrado['hora_final'] ?></td>
+                                                <td><?= $movimento_filtrado['id_colaborador'] ?></td>
+                                                <td><?= $movimento_filtrado['id_trator'] ?></td>
+                                                <td><?= $movimento_filtrado['id_pasto'] ?></td>
+                                                <td><?= $movimento_filtrado['horas_trabalhadas'] ?></td>
+                                                <td><?= $movimento_filtrado['valor_diaria'] ?></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

@@ -30,10 +30,6 @@ if (isset($_POST['delete'])) {
     return $moviments->deleteMoviments($_POST['id']);
 }
 
-if (isset($_POST['filter-data-report'])) {
-    return $moviments->getDataReportMoviments($_POST);
-}
-
 if (isset($_POST['print-report'])) {
     return $moviments->getPrintReportMoviments($_POST);
 }

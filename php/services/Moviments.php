@@ -38,8 +38,6 @@ class Moviments
     public function postMoviments($request, $workedhours, $valueday)
     {
 
-
-
         require 'Conexao.php';
 
         $valueday;
