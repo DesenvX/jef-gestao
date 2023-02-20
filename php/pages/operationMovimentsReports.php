@@ -11,6 +11,21 @@
 
 </head>
 
+<?php
+
+require_once '../services/Collaborators.php';
+require_once '../services/Tractors.php';
+
+use services\Collaborators;
+use services\Tractors;
+
+$collaborators = new Collaborators();
+$collaborators_list = $collaborators->getCollaborators();
+$tractors = new Tractors();
+$tractors_list = $tractors->getTractors();
+
+?>
+
 <body id="page-top">
 
     <div id="wrapper">
@@ -49,16 +64,27 @@
                             <form action="../controllers/MovimentsController" method="POST">
                                 <input type="hidden" name="filter-data-report" value="true">
                                 <div class="form-group row" style="align-items:center;">
-                                    <div class="col-sm-4">
-                                        <select class="form-control" name="colaborators">
-                                            <option value="operador">Operador</option>
+                                    <div class="col-sm-2">
+                                        <select class="form-control" name="machine" placeholder="Maquina" required>
+                                            <option value=""> Maquina </option>
+                                            <?php while ($trator = $tractors_list->fetch_assoc()) { ?>
+                                                <option value="<?= $trator['id'] ?>"><?= $trator['modelo'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" name="collaborator" placeholder="Operador" required>
+                                            <option value=""> Operador </option>
+                                            <?php while ($colaborador = $collaborators_list->fetch_assoc()) { ?>
+                                                <option value="<?= $colaborador['id'] ?>"><?= $colaborador['nome'] ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input class="form-control" type="date" name="date-init">
+                                        <input class="form-control" type="date" name="date-init" required>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input class="form-control" type="date" name="date-finish">
+                                        <input class="form-control" type="date" name="date-finish" required>
                                     </div>
                                     <div class="col-sm-2">
                                         <button type="submit" class="btn btn-outline-dark btn-md btn-icon-split">
@@ -101,25 +127,27 @@
                                     <thead>
                                         <tr>
                                             <th>Data</th>
-                                            <th>Operador</th>
                                             <th>Hora Inicial</th>
                                             <th>Hora Final</th>
-                                            <th>Horimetro</th>
-                                            <th>Diária</th>
+                                            <th>Operador</th>
                                             <th>Maquina</th>
                                             <th>Pasto</th>
+                                            <th>Horimetro</th>
+                                            <th>Diária</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>Data</th>
-                                            <th>Operador</th>
                                             <th>Hora Inicial</th>
                                             <th>Hora Final</th>
-                                            <th>Horimetro</th>
-                                            <th>Diária</th>
+                                            <th>Operador</th>
                                             <th>Maquina</th>
                                             <th>Pasto</th>
+                                            <th>Horimetro</th>
+                                            <th>Diária</th>
+                                            
                                         </tr>
                                     </tfoot>
                                     <tbody>
