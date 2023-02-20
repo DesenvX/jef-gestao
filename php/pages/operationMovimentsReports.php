@@ -61,12 +61,13 @@ $tractors_list = $tractors->getTractors();
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <form action="../controllers/MovimentsController" method="POST">
+                            <form action="../controllers/MovimentsController.php" method="POST">
                                 <input type="hidden" name="filter-data-report" value="true">
                                 <div class="form-group row" style="align-items:center;">
                                     <div class="col-sm-2">
                                         <select class="form-control" name="machine" placeholder="Maquina" required>
                                             <option value=""> Maquina </option>
+                                            <option value="all"> Todas </option>
                                             <?php while ($trator = $tractors_list->fetch_assoc()) { ?>
                                                 <option value="<?= $trator['id'] ?>"><?= $trator['modelo'] ?></option>
                                             <?php } ?>
@@ -134,7 +135,7 @@ $tractors_list = $tractors->getTractors();
                                             <th>Pasto</th>
                                             <th>Horimetro</th>
                                             <th>Diária</th>
-                                            
+
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -147,20 +148,26 @@ $tractors_list = $tractors->getTractors();
                                             <th>Pasto</th>
                                             <th>Horimetro</th>
                                             <th>Diária</th>
-                                            
+
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <th></th>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
+                                        <?php
+                                        while ($data_report_moviments_result = $data_report_moviments_response->fetch_assoc()) {
+                                            print_r($data_report_moviments_result);
+
+                                        ?>
+                                            <tr>
+                                                <th></th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -2,13 +2,13 @@
 
 require_once '../services/Moviments.php';
 
-use services\Movements;
+use services\Moviments;
 
 require_once '../services/Prices.php';
 
 use services\Prices;
 
-$movements = new Movements();
+$moviments = new Moviments();
 
 if (isset($_POST['register'])) {
 
@@ -40,22 +40,22 @@ if (isset($_POST['register'])) {
         $_VALUEDAY = ($_WORKEDHOURS * $value_hora_normal);
     }
 
-    return $movements->postMovements($_POST, $_WORKEDHOURS, $_VALUEDAY);
+    return $moviments->postMoviments($_POST, $_WORKEDHOURS, $_VALUEDAY);
 
 }
 
 if (isset($_POST['edit'])) {
-    return $movements->putMovements($_POST);
+    return $moviments->putMoviments($_POST);
 }
 
 if (isset($_POST['delete'])) {
-    return $movements->deleteMovements($_POST['id']);
+    return $moviments->deleteMoviments($_POST['id']);
 }
 
 if (isset($_POST['filter-data-report'])) {
-    return $movements->getDataReportMoviments($_POST);
+    return $moviments->getDataReportMoviments($_POST);
 }
 
 if (isset($_POST['print-report'])) {
-    return $movements->getPrintReportMoviments($_POST);
+    return $moviments->getPrintReportMoviments($_POST);
 }

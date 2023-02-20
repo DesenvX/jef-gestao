@@ -2,18 +2,30 @@
 
 namespace services;
 
-class Movements 
+class Moviments 
 {
     
     public function getDataReportMoviments($request) {
 
+        require 'Conexao.php';
+
+        $id_tractor = $mysqli->escape_string($request['machine']);
+        $id_collaborator = $mysqli->escape_string($request['collaborator']);
+        $date_init = $mysqli->escape_string($request['date-init']);
+        $date_finish = $mysqli->escape_string($request['date-finish']);
+
+        $data_report_moviments_query = "SELECT * FROM movimentos  WHERE id_maquina = '$id_tractor' AND id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
+        $data_report_moviments_response = $mysqli->query($data_report_moviments_query);
+
+        return $data_report_moviments_response;
+        
     }
 
     public function getPrintReportMoviments($request) {
 
     }
 
-    public function getMovements() {
+    public function getMoviments() {
 
         require 'Conexao.php';
 
@@ -22,7 +34,7 @@ class Movements
         return $moviments_response;
     }
 
-    public function postMovements($request, $workedhours, $valueday) {
+    public function postMoviments($request, $workedhours, $valueday) {
 
         require 'Conexao.php';
    
@@ -51,11 +63,11 @@ class Movements
         } 
     }
 
-    public function putMovements() {
+    public function putMoviments() {
 
     }
 
-    public function deleteMovements() {
+    public function deleteMoviments() {
 
     }
 }

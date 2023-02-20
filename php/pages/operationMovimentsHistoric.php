@@ -19,7 +19,7 @@ require_once '../services/Moviments.php';
 use services\Collaborators;
 use services\Tractors;
 use services\Pastures;
-use services\Movements;
+use services\Moviments;
 
 $collaborators = new Collaborators();
 $collaborators_list = $collaborators->getCollaborators();
@@ -27,8 +27,8 @@ $tractor = new Tractors();
 $tractor_list = $tractor->getCountTractor();
 $pastures = new Pastures();
 $pastures_list = $pastures->getPastures();
-$moviments = new Movements();
-$moviments_list = $moviments->getMovements();
+$moviments = new Moviments();
+$moviments_list = $moviments->getMoviments();
 
 ?>
 
