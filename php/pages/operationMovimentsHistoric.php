@@ -10,6 +10,27 @@
     ?>
 
 </head>
+<?php
+require_once '../services/Collaborators.php';
+require_once '../services/Tractors.php';
+require_once '../services/Pastures.php';
+require_once '../services/Moviments.php';
+
+use services\Collaborators;
+use services\Tractors;
+use services\Pastures;
+use services\Movements;
+
+$collaborators = new Collaborators();
+$collaborators_list = $collaborators->getCollaborators();
+$tractor = new Tractors();
+$tractor_list = $tractor->getCountTractor();
+$pastures = new Pastures();
+$pastures_list = $pastures->getPastures();
+$moviments = new Movements();
+$moviments_list = $moviments->getMovements();
+
+?>
 
 <body id="page-top">
 
@@ -78,93 +99,100 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <th></th>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditMoviment">
-                                                    <i class="fas fa-pen"></i>
-                                                </button>
-                                                <div name="EditMoviment" class="modal fade" id="modalEditMoviment" tabindex="-1" role="dialog" aria-hidden="true">
-                                                    <div class="modal-dialog modal-sm" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-body">
-                                                                <div class="text-center">
-                                                                    <img src="../../img/trator.png" width="100" height="100" style="margin-bottom: 10px;">
-                                                                </div>
-                                                                <div class="text-center">
-                                                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Historico</b></h1>
-                                                                </div>
-                                                                <form class="user" action="../controllers/MovimentsController.php" method="POST">
-                                                                    <input type="hidden" name="edit" value="true">
-                                                                    <input type="hidden" name="id" value="">
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                            <input type="text" class="form-control  " id="date" placeholder="Data">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                            <input type="text" class="form-control  " id="start-time" placeholder="Hora Inicial">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                            <input type="text" class="form-control  " id="end-time" placeholder="Hora Final ">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                            <input type="text" class="form-control  " id="operator" placeholder="Operador">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                            <input type="text" class="form-control  " id="machine" placeholder="Maquina">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                            <input type="text" class="form-control  " id="pasture" placeholder="Pasto">
-                                                                        </div>
-                                                                    </div>
-                                                                    <hr>
-                                                                    <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        <?php
+                                        
 
-                                                <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteMoviment">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                                <div name="DeleteCategories" class="modal fade" id="modalDeleteMoviment" tabindex="-1" role="dialog" aria-hidden="true">
-                                                    <div class="modal-dialog modal-sm" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-body">
-                                                                <div class="text-center">
-                                                                    <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir este registro de <br><strong> </strong> ?</span></b></h1>
+                                        while ($movimento = $moviments_list->fetch_assoc()) {
+                                            $colaborador = $collaborators->getCollaboratorsForSomething($movimento['id_colaborador']);
+                                        ?>
+                                            <tr>
+                                                <th><?= $movimento['id'] ?></th>
+                                                <td><?= date('d/m/Y', strtotime($movimento['data'])) ?></td>
+                                                <td><?= $movimento['hora_inicial'] ?></td>
+                                                <td><?= $movimento['hora_final'] ?></td>
+                                                <td><?= $colaborador['nome'] ?></td>
+                                                <td><?= $movimento['id_maquina'] ?></td>
+                                                <td><?= $movimento['id_pasto'] ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditMoviment">
+                                                        <i class="fas fa-pen"></i>
+                                                    </button>
+                                                    <div name="EditMoviment" class="modal fade" id="modalEditMoviment" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <img src="../../img/trator.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                    </div>
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Historico</b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/MovimentsController.php" method="POST">
+                                                                        <input type="hidden" name="edit" value="true">
+                                                                        <input type="hidden" name="id" value="">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control  " id="date" placeholder="Data">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control  " id="start-time" placeholder="Hora Inicial">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control  " id="end-time" placeholder="Hora Final ">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control  " id="operator" placeholder="Operador">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control  " id="machine" placeholder="Maquina">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <input type="text" class="form-control  " id="pasture" placeholder="Pasto">
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
                                                                 </div>
-                                                                <form class="user" action="../controllers/MovimentsController.php" method="POST">
-                                                                    <input type="hidden" name="delete" value="true">
-                                                                    <input type="hidden" name="id" value="">
-                                                                    <hr>
-                                                                    <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
-                                                                    <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteMoviment">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                    <div name="DeleteCategories" class="modal fade" id="modalDeleteMoviment" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="text-center">
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir este registro de <br><strong> </strong> ?</span></b></h1>
+                                                                    </div>
+                                                                    <form class="user" action="../controllers/MovimentsController.php" method="POST">
+                                                                        <input type="hidden" name="delete" value="true">
+                                                                        <input type="hidden" name="id" value="">
+                                                                        <hr>
+                                                                        <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
+                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

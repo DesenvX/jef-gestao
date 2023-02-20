@@ -102,7 +102,7 @@ $pastures_list = $pastures->getPastures();
                                 <div class="form-group row">
                                     <div class="col-sm-3 mb-3 mb-sm-0">
                                         <label for="operator">Operador</label>
-                                        <select class="form-control" name="operator" placeholder="Operador">
+                                        <select class="form-control" name="collaborator" placeholder="Operador">
                                             <option value=""> Operador </option>
                                             <option value="1"> João </option>
                                             <option value="2"> Pedro </option>
@@ -180,5 +180,71 @@ $pastures_list = $pastures->getPastures();
 
 
 </body>
+
+<?php
+if (isset($_SESSION['register_moviments_success'])) {
+?>
+    <script>
+        swalRegisterSuccess();
+    </script>
+<?php
+    unset($_SESSION['register_moviments_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['register_moviments_fail'])) {
+?>
+    <script>
+        swalRegisterError();
+    </script>
+<?php
+    unset($_SESSION['register_moviments_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_moviments_success'])) {
+?>
+    <script>
+        swalEditSuccess();
+    </script>
+<?php
+    unset($_SESSION['edit_moviments_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_moviments_fail'])) {
+?>
+    <script>
+        swalEditError();
+    </script>
+<?php
+    unset($_SESSION['edit_moviments_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_moviments_success'])) {
+?>
+    <script>
+        swalDeleteSuccess();
+    </script>
+<?php
+    unset($_SESSION['delete_moviments_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_moviments_fail'])) {
+?>
+    <script>
+        swalDeleteError();
+    </script>
+<?php
+    unset($_SESSION['delete_moviments_fail']);
+}
+?>
 
 </html>
