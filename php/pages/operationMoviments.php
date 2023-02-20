@@ -102,32 +102,38 @@ $pastures_list = $pastures->getPastures();
                                 <div class="form-group row">
                                     <div class="col-sm-3 mb-3 mb-sm-0">
                                         <label for="operator">Operador</label>
-                                        <select class="form-control" name="collaborator" placeholder="Operador">
+                                        <select class="form-control" name="collaborator" placeholder="Operador" required>
                                             <option value=""> Operador </option>
-                                            <option value="1"> João </option>
-                                            <option value="2"> Pedro </option>
+                                            <?php while ($colaborador = $collaborators_list->fetch_assoc()) { ?>
+                                                <option value="<?= $colaborador['id'] ?>"><?= $colaborador['nome'] ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="col-sm-3 mb-3 mb-sm-0">
                                         <label for="service">Serviço</label>
-                                        <select class="form-control" name="service" placeholder="Serviço">
+                                        <select class="form-control" name="service" placeholder="Serviço" required>
                                             <option value=""> Serviço </option>
-                                            <option value="1"> Roço </option>
+                                            <?php while ($servico = $services_list->fetch_assoc()) { ?>
+                                                <option value="<?= $servico['id'] ?>"><?= $servico['descricao'] ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="col-sm-3 mb-3 mb-sm-0">
                                         <label for="machine">Maquina</label>
-                                        <select class="form-control" name="machine" placeholder="Maquina">
+                                        <select class="form-control" name="machine" placeholder="Maquina" required>
                                             <option value=""> Maquina </option>
-                                            <option value="1"> Bm - 125 </option>
+                                            <?php while ($trator = $tractors_list->fetch_assoc()) { ?>
+                                                <option value="<?= $trator['id'] ?>"><?= $trator['modelo'] ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="col-sm-3 mb-3 mb-sm-0">
                                         <label for="pasture">Pasto</label>
-                                        <select class="form-control" name="pasture" placeholder="Pasto">
+                                        <select class="form-control" name="pasture" placeholder="Pasto" required>
                                             <option value=""> Pasto </option>
-                                            <option value="1"> B12 - (Nazaré) </option>
-                                            <option value="2"> B13 - (Vale da Serra) </option>
+                                            <?php while ($pasto = $pastures_list->fetch_assoc()) { ?>
+                                                <option value="<?= $pasto['id'] ?>"><?= $pasto['nome'] ?> (<?= $pasto['retiro']?>)</option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>

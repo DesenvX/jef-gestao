@@ -31,7 +31,7 @@ class Movements
         
         $id_service = $mysqli->escape_string($request['service']);
         $id_pasture = $mysqli->escape_string($request['pasture']);
-        $id_tractor = $mysqli->escape_string($request['tractor']);
+        $id_machine = $mysqli->escape_string($request['machine']);
         $id_collaborator = $mysqli->escape_string($request['collaborator']);
 
         $startTime = $mysqli->escape_string($request['startTime']);
@@ -40,7 +40,7 @@ class Movements
         $dayWeek = $mysqli->escape_string($request['dayWeek']);
         
 
-        $moviments_report = "INSERT INTO movimentos (hora_inicial, hora_final, horas_trabalhadas, data, dia_semana, valor_diaria, id_colaborador, id_servico, id_maquina, id_pasto) VALUES ('$startTime', '$endTime', '$workedhours', '$data', '$dayWeek','$valueday', '$id_collaborator', '$id_service', '$id_tractor', '$id_pasture')";
+        $moviments_report = "INSERT INTO movimentos (hora_inicial, hora_final, horas_trabalhadas, data, dia_semana, valor_diaria, id_colaborador, id_servico, id_maquina, id_pasto) VALUES ('$startTime', '$endTime', '$workedhours', '$data', '$dayWeek','$valueday', '$id_collaborator', '$id_service', '$id_machine', '$id_pasture')";
         $moviments_report_response = $mysqli->query($moviments_report);
         
   

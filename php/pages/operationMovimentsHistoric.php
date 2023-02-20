@@ -104,6 +104,8 @@ $moviments_list = $moviments->getMovements();
 
                                         while ($movimento = $moviments_list->fetch_assoc()) {
                                             $colaborador = $collaborators->getCollaboratorsForSomething($movimento['id_colaborador']);
+                                            $pasto = $pastures->getPasturesForSomething($movimento['id_pasto']);
+                                            $maquina = $tractor->getTractorForSomething($movimento['id_maquina']);
                                         ?>
                                             <tr>
                                                 <th><?= $movimento['id'] ?></th>
@@ -111,8 +113,8 @@ $moviments_list = $moviments->getMovements();
                                                 <td><?= $movimento['hora_inicial'] ?></td>
                                                 <td><?= $movimento['hora_final'] ?></td>
                                                 <td><?= $colaborador['nome'] ?></td>
-                                                <td><?= $movimento['id_maquina'] ?></td>
-                                                <td><?= $movimento['id_pasto'] ?></td>
+                                                <td><?= $maquina['modelo'] ?></td>
+                                                <td><?= $pasto['nome'] ?> (<?= $pasto['retiro']?>) </td>
                                                 <td>
                                                     <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditMoviment">
                                                         <i class="fas fa-pen"></i>
