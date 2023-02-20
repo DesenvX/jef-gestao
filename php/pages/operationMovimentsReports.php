@@ -24,12 +24,10 @@ use services\Moviments;
 use services\Collaborators;
 use services\Tractors;
 
-
-if ($_POST['filter-data-report'] == true) {
+if (isset($_POST['filter-data-report'])) {
     $moviments = new Moviments();
     $moviments_filter = $moviments->getDataReportMoviments($_POST);
 }
-
 
 $collaborators = new Collaborators();
 $collaborators_list = $collaborators->getCollaborators();
@@ -114,24 +112,24 @@ $tractors_list = $tractors->getTractors();
                         <div class="card-body">
                             <div name="button-generate-pdf" class="row mb-3">
                                 <div class="col">
+                                    <?php
+                                        $dados_filtro = $moviments_filter['dados_filtro'];
+                                        
+                                    ?>
                                     <form action="../controllers/MovimentsController.php" method="POST">
                                         <input type="hidden" name="print-report" value="true">
-                                        <input type="hidden" name="" value="">
-                                        <input type="hidden" name="" value="">
-                                        <input type="hidden" name="" value="">
-                                        <input type="hidden" name="" value="">
-                                        <input type="hidden" name="" value="">
-                                        <input type="hidden" name="" value="">
-                                        <input type="hidden" name="" value="">
-                                        <input type="hidden" name="" value="">
-                                        <input type="hidden" name="" value="">
-                                        <button type="submit" class="btn btn-dark btn-sm btn-icon-split">
+                                        <input type="hidden" name="machine" value="<?= $dados_filtro['maquina'] ?>">
+                                        <input type="hidden" name="collaborator" value="<?= $dados_filtro['operador'] ?>">
+                                        <input type="hidden" name="date-init" value="<?= $dados_filtro['data_inicial'] ?>">
+                                        <input type="hidden" name="date-finish" value="<?= $dados_filtro['data_final'] ?>">
+                                        <button type="submit" class="btn btn-dark btn-sm btn-icon-split" <?php if (!isset($_POST['filter-data-report'])) { ?> disabled <?php } ?>>
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-file-pdf"></i>
                                             </span>
                                             <span class="text"> Imprimir Relatório </span>
                                         </button>
                                     </form>
+                                    
                                 </div>
                             </div>
 
@@ -165,20 +163,22 @@ $tractors_list = $tractors->getTractors();
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        while ($movimento_filtrado = $moviments_filter->fetch_assoc()) {
-                    
+                                        if (isset($_POST['filter-data-report'])) {
+                                            while ($movimento_filtrado = $moviments_filter['resultado_tabela']->fetch_assoc()) {
                                         ?>
-                                            <tr>
-                                                <td><?= $movimento_filtrado['data'] ?></td>
-                                                <td><?= $movimento_filtrado['hora_inicial'] ?></td>
-                                                <td><?= $movimento_filtrado['hora_final'] ?></td>
-                                                <td><?= $movimento_filtrado['id_colaborador'] ?></td>
-                                                <td><?= $movimento_filtrado['id_trator'] ?></td>
-                                                <td><?= $movimento_filtrado['id_pasto'] ?></td>
-                                                <td><?= $movimento_filtrado['horas_trabalhadas'] ?></td>
-                                                <td><?= $movimento_filtrado['valor_diaria'] ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                                <tr>
+                                                    <td><?= date('d/m/Y', strtotime($movimento_filtrado['data'])) ?></td>
+                                                    <td><?= $movimento_filtrado['hora_inicial'] ?></td>
+                                                    <td><?= $movimento_filtrado['hora_final'] ?></td>
+                                                    <td><?= $movimento_filtrado['id_colaborador'] ?></td>
+                                                    <td><?= $movimento_filtrado['id_maquina'] ?></td>
+                                                    <td><?= $movimento_filtrado['id_pasto'] ?></td>
+                                                    <td><?= $movimento_filtrado['horas_trabalhadas'] ?></td>
+                                                    <td><?= $movimento_filtrado['valor_diaria'] ?></td>
+                                                </tr>
+                                        <?php }
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

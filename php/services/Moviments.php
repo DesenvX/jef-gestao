@@ -7,7 +7,6 @@ class Moviments
 
     public function getDataReportMoviments($request)
     {
-
         require 'Conexao.php';
 
         $id_tractor = $mysqli->escape_string($request['machine']);
@@ -15,14 +14,64 @@ class Moviments
         $date_init = $mysqli->escape_string($request['date-init']);
         $date_finish = $mysqli->escape_string($request['date-finish']);
 
-        $data_report_moviments_query = "SELECT * FROM movimentos  WHERE id_maquina = '$id_tractor' AND id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
-        $data_report_moviments_response = $mysqli->query($data_report_moviments_query);
+        $resquetsPost = array('maquina' => $id_tractor, 'operador' => $id_collaborator, 'data_inicial' => $date_init, 'data_final' => $date_finish);
 
-        return $data_report_moviments_response;
+        if ($id_tractor == 'all') {
+            $data_report_moviments_query = "SELECT * FROM movimentos  WHERE id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
+            $data_report_moviments_response = $mysqli->query($data_report_moviments_query);
+
+            return array('resultado_tabela' => $data_report_moviments_response, 'dados_filtro' => $resquetsPost);
+        } else {
+            $data_report_moviments_query = "SELECT * FROM movimentos  WHERE id_maquina = '$id_tractor' AND id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
+            $data_report_moviments_response = $mysqli->query($data_report_moviments_query);
+
+            return array('resultado_tabela' => $data_report_moviments_response, 'dados_filtro' => $resquetsPost);
+        }
     }
 
     public function getPrintReportMoviments($request)
     {
+        require 'Conexao.php';
+        require '../generate_pdf/GeneratePdf.php';
+
+        $id_tractor = $mysqli->escape_string($request['machine']);
+        $id_collaborator = $mysqli->escape_string($request['collaborator']);
+        $date_init = $mysqli->escape_string($request['date-init']);
+        $date_finish = $mysqli->escape_string($request['date-finish']);
+
+        $dataReports = array('maquina' => $id_tractor, 'operador' => $id_collaborator, 'data_inicial' => $date_init, 'data_final' => $date_finish);
+
+        if ($id_tractor == 'all') {
+
+            $data_report_moviments_query = "SELECT * FROM movimentos  WHERE id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
+            $data_report_moviments_response = $mysqli->query($data_report_moviments_query);
+
+            $soma_worked_hours_query = "SELECT SUM(horas_trabalhadas) as soma_horas_trabalhadas FROM movimentos  WHERE id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
+            $soma_worked_hours_response = $mysqli->query($soma_worked_hours_query);
+            $soma_worked_hours_result = $soma_worked_hours_response->fetch_assoc();
+
+            $soma_value_day_query = "SELECT SUM(valor_diaria) as soma_valor_diaria FROM movimentos  WHERE id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
+            $soma_value_day_response = $mysqli->query($soma_value_day_query);
+            $soma_value_day_result = $soma_value_day_response->fetch_assoc();
+
+            return PDFReportMoviment($data_report_moviments_response, $soma_worked_hours_result, $soma_value_day_result, $dataReports);
+
+        } else {
+
+            $data_report_moviments_query = "SELECT * FROM movimentos  WHERE id_maquina = '$id_tractor' AND id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
+            $data_report_moviments_response = $mysqli->query($data_report_moviments_query);
+
+            $soma_worked_hours_query = "SELECT SUM(horas_trabalhadas) as soma_horas_trabalhadas FROM movimentos  WHERE id_maquina = '$id_tractor' AND id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
+            $soma_worked_hours_response = $mysqli->query($soma_worked_hours_query);
+            $soma_worked_hours_result = $soma_worked_hours_response->fetch_assoc();
+
+            $soma_value_day_query = "SELECT SUM(valor_diaria) as soma_valor_diaria FROM movimentos  WHERE id_maquina = '$id_tractor' AND id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
+            $soma_value_day_response = $mysqli->query($soma_value_day_query);
+            $soma_value_day_result = $soma_value_day_response->fetch_assoc();
+
+            return PDFReportMoviment($data_report_moviments_response,  $soma_worked_hours_result, $soma_value_day_result, $dataReports);
+            
+        }
     }
 
     public function getMoviments()
@@ -67,7 +116,7 @@ class Moviments
 
     public function putMoviments($request, $workedHours, $valueday)
     {
-       
+
 
         require 'Conexao.php';
 

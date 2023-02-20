@@ -33,3 +33,7 @@ if (isset($_POST['delete'])) {
 if (isset($_POST['print-report'])) {
     return $moviments->getPrintReportMoviments($_POST);
 }
+
+if (isset($_POST['filter-data-report'])) {
+    $moviments_filter = $moviments->getDataReportMoviments($_POST);
+}

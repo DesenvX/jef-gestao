@@ -13,8 +13,9 @@ class CalcMoviments
         $startTime = new DateTime($data->format('Y-m-d') . ' ' . $startTimeStr);
         $endTime = new DateTime($data->format('Y-m-d') . ' ' . $endTimeStr);
         $differenceTime = $startTime->diff($endTime);
-        $hours = $differenceTime->h + ($differenceTime->i / 60); // Arredondar - round()/floor() - cima/baixo
-        $workedHours = floatval(number_format($hours, 2));
+        $hours = $differenceTime->h + ($differenceTime->i / 60); 
+        $workedHours = floor($hours); // Arredondar - round()/floor() - cima/baixo
+        //$workedHours = floatval(number_format($hours, 2)); //Se não arredondar
         return $workedHours;
     }
 
