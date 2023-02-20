@@ -100,7 +100,7 @@ $moviments_list = $moviments->getMoviments();
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        
+
 
                                         while ($movimento = $moviments_list->fetch_assoc()) {
                                             $colaborador = $collaborators->getCollaboratorsForSomething($movimento['id_colaborador']);
@@ -114,17 +114,17 @@ $moviments_list = $moviments->getMoviments();
                                                 <td><?= $movimento['hora_final'] ?></td>
                                                 <td><?= $colaborador['nome'] ?></td>
                                                 <td><?= $maquina['modelo'] ?></td>
-                                                <td><?= $pasto['nome'] ?> (<?= $pasto['retiro']?>) </td>
+                                                <td><?= $pasto['nome'] ?> (<?= $pasto['retiro'] ?>) </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditMoviment">
+                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditMoviment_<?= $movimento['id'] ?>">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
-                                                    <div name="EditMoviment" class="modal fade" id="modalEditMoviment" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="EditMoviment" class="modal fade" id="modalEditMoviment_<?= $movimento['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
                                                                     <div class="text-center">
-                                                                        <img src="../../img/trator.png" width="100" height="100" style="margin-bottom: 10px;">
+                                                                        <img src="#" width="100" height="100" style="margin-bottom: 10px;">
                                                                     </div>
                                                                     <div class="text-center">
                                                                         <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Historico</b></h1>
@@ -134,32 +134,55 @@ $moviments_list = $moviments->getMoviments();
                                                                         <input type="hidden" name="id" value="">
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " id="date" placeholder="Data">
+                                                                                <input type="date" class="form-control" value="<?= date('d/m/Y', strtotime($movimento['data'])) ?>" name="date" placeholder="Data">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " id="start-time" placeholder="Hora Inicial">
+                                                                                <input type="time" class="form-control  " name="start-time" value="<?= $movimento['hora_inicial'] ?>" placeholder="Hora Inicial">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " id="end-time" placeholder="Hora Final ">
+                                                                                <input type="time" class="form-control  " name="end-time" value="<?= $movimento['hora_final'] ?>" placeholder="Hora Final ">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " id="operator" placeholder="Operador">
+                                                                                <select class="form-control" name="collaborator">
+                                                                                    <?php
+                                                                                    $collaborators_edit = new Collaborators();
+                                                                                    $collaborators_list_edit = $collaborators_edit->getCollaborators();
+                                                                                    while ($colarador_edit = $collaborators_list_edit->fetch_assoc()) { ?>
+                                                                                        <option value="<?= $colarador_edit['id'] ?>" <?php if ($movimento['id_colaborador'] == $colarador_edit['id']) { ?> selected <?php } ?>><?= $colarador_edit['nome'] ?></option>
+                                                                                    <?php } ?>
+                                                                                </select>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " id="machine" placeholder="Maquina">
+                                                                                <select class="form-control" name="machine">
+                                                                                    <?php
+                                                                                    $tractor_edit = new Tractors();
+                                                                                    $tractor_edit_list = $tractor_edit->getTractors();
+                                                                                    while ($trator_edit = $tractor_edit_list->fetch_assoc()) {
+                                                                                    ?>
+                                                                                        <option value="<?= $trator_edit['id'] ?>" <?php if ($movimento['id_maquina'] == $trator_edit['id']) { ?> selected <?php } ?>><?= $trator_edit['modelo'] ?></option>
+                                                                                    <?php } ?>
+                                                                                </select>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="text" class="form-control  " id="pasture" placeholder="Pasto">
+                                                                                <select class="form-control" name="pasture">
+                                                                                    <?php
+                                                                                    $pasture_edit = new Pastures();
+                                                                                    $pasture_edit_list = $pasture_edit->getPastures();
+                                                                                    while ($pasto_edit = $pasture_edit_list->fetch_assoc()) {
+                                                                                    ?>
+                                                                                        <option value="<?= $pasto_edit['id'] ?>" <?php if ($movimento['id_pasto'] == $pasto_edit['id']) { ?> selected <?php } ?>><?= $pasto_edit['nome'] ?> (<?= $pasto_edit['retiro'] ?>)</option>
+                                                                                    <?php } ?>
+                                                                                </select>
                                                                             </div>
                                                                         </div>
                                                                         <hr>
