@@ -7,6 +7,7 @@
 
     <?php
     include('../../html/links_and_cdns.html');
+    session_start();
     ?>
 
 </head>

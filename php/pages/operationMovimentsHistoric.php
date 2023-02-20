@@ -7,6 +7,7 @@
 
     <?php
     include('../../html/links_and_cdns.html');
+    session_start();
     ?>
 
 </head>
@@ -131,20 +132,20 @@ $moviments_list = $moviments->getMoviments();
                                                                     </div>
                                                                     <form class="user" action="../controllers/MovimentsController.php" method="POST">
                                                                         <input type="hidden" name="edit" value="true">
-                                                                        <input type="hidden" name="id" value="">
+                                                                        <input type="hidden" name="id" value="<?= $movimento['id'] ?>">
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="date" class="form-control" value="<?= date('d/m/Y', strtotime($movimento['data'])) ?>" name="date" placeholder="Data">
+                                                                                <input type="date" class="form-control" value="<?= $movimento['data'] ?>" name="data" placeholder="Data">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="time" class="form-control  " name="start-time" value="<?= $movimento['hora_inicial'] ?>" placeholder="Hora Inicial">
+                                                                                <input type="time" class="form-control  " name="startTime" value="<?= $movimento['hora_inicial'] ?>" placeholder="Hora Inicial">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="time" class="form-control  " name="end-time" value="<?= $movimento['hora_final'] ?>" placeholder="Hora Final ">
+                                                                                <input type="time" class="form-control  " name="endTime" value="<?= $movimento['hora_final'] ?>" placeholder="Hora Final ">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
@@ -194,19 +195,19 @@ $moviments_list = $moviments->getMoviments();
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteMoviment">
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteMoviment_<?= $movimento['id'] ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
-                                                    <div name="DeleteCategories" class="modal fade" id="modalDeleteMoviment" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="DeleteCategories" class="modal fade" id="modalDeleteMoviment_<?= $movimento['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
                                                                     <div class="text-center">
-                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir este registro de <br><strong> </strong> ?</span></b></h1>
+                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Deseja excluir este registro de <br><strong><?= $colaborador['nome'] ?> </strong> ?</span></b></h1>
                                                                     </div>
                                                                     <form class="user" action="../controllers/MovimentsController.php" method="POST">
                                                                         <input type="hidden" name="delete" value="true">
-                                                                        <input type="hidden" name="id" value="">
+                                                                        <input type="hidden" name="id" value="<?= $movimento['id'] ?>">
                                                                         <hr>
                                                                         <button type="submit" class="btn btn-user btn-dark btn-block"> Sim, excluir! </button>
                                                                         <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
@@ -241,5 +242,91 @@ $moviments_list = $moviments->getMoviments();
     <?php include('../../html/scripts.html'); ?>
 
 </body>
+
+<?php
+if (isset($_SESSION['register_moviments_success'])) {
+?>
+    <script>
+        swalRegisterSuccess();
+    </script>
+<?php
+    unset($_SESSION['register_moviments_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['register_moviments_fail'])) {
+?>
+    <script>
+        swalRegisterError();
+    </script>
+<?php
+    unset($_SESSION['register_moviments_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_moviments_success'])) {
+?>
+    <script>
+        swalEditSuccess();
+    </script>
+<?php
+    unset($_SESSION['edit_moviments_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['edit_moviments_fail'])) {
+?>
+    <script>
+        swalEditError();
+    </script>
+<?php
+    unset($_SESSION['edit_moviments_fail']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_moviments_success'])) {
+?>
+    <script>
+        swalDeleteSuccess();
+    </script>
+<?php
+    unset($_SESSION['delete_moviments_success']);
+}
+?>
+
+<?php
+if (isset($_SESSION['delete_moviments_fail'])) {
+?>
+    <script>
+        swalDeleteError();
+    </script>
+<?php
+    unset($_SESSION['delete_moviments_fail']);
+}
+?>
+<?php
+if (isset($_SESSION['validate_cnpj_failed'])) {
+?>
+    <script>
+        swalValidateCnpjError();
+    </script>
+<?php
+    unset($_SESSION['validate_cnpj_failed']);
+}
+?>
+<?php
+if (isset($_SESSION['validate_cpf_failed'])) {
+?>
+    <script>
+        swalValidateCpfError();
+    </script>
+<?php
+    unset($_SESSION['validate_cpf_failed']);
+}
+?>
 
 </html>
