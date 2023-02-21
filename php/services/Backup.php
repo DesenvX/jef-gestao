@@ -26,7 +26,6 @@ class Backup
         if ($result == "1") {
             session_start();
             $_SESSION['backup_success'] = true;
-            var_dump($_SESSION['backup_success']);
             header("location: ../pages/dashboard.php");
         } else {
             session_start();
