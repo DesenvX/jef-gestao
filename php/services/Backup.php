@@ -1,0 +1,37 @@
+<?php
+
+namespace services;
+
+require_once '../../config/Environment.php';
+
+use config\Environment;
+use DateTime;
+
+class Backup
+{
+
+    public function saveDb()
+    {
+        Environment::load();
+        $date = new DateTime();
+
+        $date = date("dmy_s");
+        $path = "C:";
+        $code = 'C:\AppServ\MySQL\bin\mysqldump -h ' . $_ENV['HOST'] . ' -u ' . $_ENV['USER'] . ' -p' . $_ENV['PASSWORD'] . ' ' . $_ENV['DATABASE'] . ' > ' . $path . '\Backup' . $date . '.sql';
+
+        shell_exec($code);
+
+        $result = "1";
+
+        if ($result == "1") {
+            session_start();
+            $_SESSION['backup_success'] = true;
+            var_dump($_SESSION['backup_success']);
+            header("location: ../pages/dashboard.php");
+        } else {
+            session_start();
+            $_SESSION['backup_error'] = true;
+            header("location: ../pages/dashboard.php");
+        }
+    }
+}

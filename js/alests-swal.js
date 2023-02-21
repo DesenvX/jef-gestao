@@ -23,6 +23,25 @@ function swalLogout() {
     })
 }
 
+function swalBackupSuccess() {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Backup realizado com sucesso!',
+        showConfirmButton: true
+    })
+}
+
+function swalBackupError() {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Não foi possível realizar o backup!',
+        showConfirmButton: false,
+        timer: 3000
+    })
+}
+
 
 function swalRegisterSuccess() {
     Swal.fire({

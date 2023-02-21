@@ -1,3 +1,9 @@
+<style>
+    .sidebar-heading {
+        margin-top: 20px;
+    }
+</style>
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
@@ -9,13 +15,15 @@
 
     <hr class="sidebar-divider my-0">
 
+    <div class="sidebar-heading">
+        Informação
+    </div>
+
     <li class="nav-item">
         <a class="nav-link" href="dashboard.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span> Painel </span> </a>
     </li>
-
-    <hr class="sidebar-divider">
 
     <div class="sidebar-heading">
         Controle
@@ -30,33 +38,45 @@
         <div id="collapseAreas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header"> Humana </h6>
-                <a class="collapse-item" href="areaSuppliers.php"> Fornecedores</a>
-                <a class="collapse-item" href="areaCollaborators.php"> Colaboradores </a>
-                <a class="collapse-item" href="areaFunctions.php"> Funções </a>
-                <a class="collapse-item" href="areaPrices.php"> Preços </a>
+                    <a class="collapse-item" href="areaSuppliers.php"> Fornecedores</a>
+                    <a class="collapse-item" href="areaCollaborators.php"> Colaboradores </a>
+                    <a class="collapse-item" href="areaFunctions.php"> Funções </a>
                 <h6 class="collapse-header"> Produtiva </h6>
-                <a class="collapse-item" href="areaTractors.php">Tratores</a>
-                <a class="collapse-item" href="areaVehicles.php">Veiculos</a>
-                <a class="collapse-item" href="areaServices.php"> Serviços </a>
-                <a class="collapse-item" href="areaRetreats.php"> Retiros </a>
-                <a class="collapse-item" href="areaPastures.php"> Pastos </a>
+                    <a class="collapse-item" href="areaPrices.php"> Preços </a>
+                    <a class="collapse-item" href="areaTractors.php">Tratores</a>
+                    <a class="collapse-item" href="areaVehicles.php">Veiculos</a>
+                    <a class="collapse-item" href="areaServices.php"> Serviços </a>
+                    <a class="collapse-item" href="areaRetreats.php"> Retiros </a>
+                    <a class="collapse-item" href="areaPastures.php"> Pastos </a>
             </div>
         </div>
     </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOption" aria-expanded="true"
-                aria-controls="collapseOption">
-                <i class="fas fa-cogs"></i>
-                <span> Operações </span>
-            </a>
-            <div id="collapseOption" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header"> Opções </h6>
-                    <a class="collapse-item" href="operationMoviments.php"> Relatório de Maquinas </a>
-                    <a class="collapse-item" href="operationFuel.php"> Combustivel </a>
-                </div>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOption" aria-expanded="true"
+            aria-controls="collapseOption">
+            <i class="fas fa-cogs"></i>
+            <span> Operações </span>
+        </a>
+        <div id="collapseOption" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header"> Opções </h6>
+                <a class="collapse-item" href="operationMoviments.php"> Relatório de Maquinas </a>
+                <a class="collapse-item" href="operationFuel.php"> Combustivel </a>
             </div>
-        </li>
+        </div>
+    </li>
+
+    <div class="sidebar-heading">
+        Segurança
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="../controllers/BackupController.php">
+            <i class="fas fa-database"></i>
+            <span> Backup </span>
+        </a>
+    </li>
+
 
     <hr class="sidebar-divider d-none d-md-block">
 
