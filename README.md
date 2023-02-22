@@ -19,6 +19,9 @@ Criar arquivo funcional das variáveis de ambiente:
 cp config/environment.example.ini config/environment.ini 
 ````
 
+Comentar o parametro 'no-beep' no my.ini do Mysql para conseguir gerar backup
+
+
 #### Gulp Tasks
 
 * `gulp` a tarefa padrão que constrói tudo
