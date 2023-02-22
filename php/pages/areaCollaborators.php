@@ -134,11 +134,11 @@ session_start();
                                                 <td><?= $colaborador['telefone'] ?></td>
                                                 <td><?= $colaborador['cpf'] ?></td>
                                                 <td>
-                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCollaborators">
+                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditCollaborators_<?= $colaborador['id'] ?>">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
 
-                                                    <div name="EditCollaborators" class="modal fade" id="modalEditCollaborators" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="EditCollaborators" class="modal fade" id="modalEditCollaborators_<?= $colaborador['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
@@ -175,11 +175,11 @@ session_start();
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteCollaborators">
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteCollaborators__<?= $colaborador['id'] ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
 
-                                                    <div name="DeleteCollaborators" class="modal fade" id="modalDeleteCollaborators" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="DeleteCollaborators" class="modal fade" id="modalDeleteCollaborators__<?= $colaborador['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">

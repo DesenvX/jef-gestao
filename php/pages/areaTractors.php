@@ -130,10 +130,11 @@ session_start();
                                                 <td><?= $trator['modelo'] ?></td>
                                                 <td><?= $trator['ano'] ?></td>
                                                 <td>
-                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditTractor">
+                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditTractor_<?= $trator['id'] ?>">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
-                                                    <div name="EditTractor" class="modal fade" id="modalEditTractor" tabindex="-1" role="dialog" aria-hidden="true">
+
+                                                    <div name="EditTractor" class="modal fade" id="modalEditTractor_<?= $trator['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
@@ -170,11 +171,11 @@ session_start();
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteTractor">
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteTractor_<?= $trator['id'] ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                     
-                                                    <div name="DeleteTractor" class="modal fade" id="modalDeleteTractor" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div name="DeleteTractor" class="modal fade" id="modalDeleteTractor_<?= $trator['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
