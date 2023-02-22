@@ -75,12 +75,12 @@ $pastures_list = $pastures->getPastures();
                                 <input type="hidden" name="register" value="true">
                                 <div class="form-group row" style="align-items: center;">
                                     <div class="col-sm-2 mb-3 mb-sm-0">
-                                        <label for="start-time">Hora Inicial</label>
-                                        <input type="time" class="form-control" name="startTime" placeholder="Hora Inicial" required>
+                                        <label for="start-time">Horimetro Inicial</label>
+                                        <input type="number" class="form-control" name="startTime" required>
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
-                                        <label for="end-time">Hora Final</label>
-                                        <input type="time" class="form-control" name="endTime" placeholder="Hora Final" required>
+                                        <label for="end-time">Horimetro Final</label>
+                                        <input type="number" class="form-control" name="endTime" required>
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <label for="date">Data</label>
@@ -133,7 +133,7 @@ $pastures_list = $pastures->getPastures();
                                         <select class="form-control" name="pasture" placeholder="Pasto" required>
                                             <option value=""> Pasto </option>
                                             <?php while ($pasto = $pastures_list->fetch_assoc()) { ?>
-                                                <option value="<?= $pasto['id'] ?>"><?= $pasto['nome'] ?> (<?= $pasto['retiro']?>)</option>
+                                                <option value="<?= $pasto['id'] ?>"><?= $pasto['nome'] ?> (<?= $pasto['retiro'] ?>)</option>
                                             <?php } ?>
                                         </select>
                                     </div>

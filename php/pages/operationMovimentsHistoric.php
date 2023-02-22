@@ -79,8 +79,8 @@ $moviments_list = $moviments->getMoviments();
                                         <tr>
                                             <th>ID</th>
                                             <th>Data</th>
-                                            <th>Hora Inicial</th>
-                                            <th>Hora Final</th>
+                                            <th>Horimetro I.</th>
+                                            <th>Horimetro F.</th>
                                             <th>Operador</th>
                                             <th>Maquina</th>
                                             <th>Pasto</th>
@@ -91,8 +91,8 @@ $moviments_list = $moviments->getMoviments();
                                         <tr>
                                             <th>ID</th>
                                             <th>Data</th>
-                                            <th>Hora Inicial</th>
-                                            <th>Hora Final</th>
+                                            <th>Horimetro I.</th>
+                                            <th>Horimetro F.</th>
                                             <th>Operador</th>
                                             <th>Maquina</th>
                                             <th>Pasto</th>
