@@ -113,10 +113,11 @@ session_start();
                                                 <th><?= $servico['id'] ?></th>
                                                 <td><?= $servico['descricao'] ?></td>
                                                 <td>
-                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditServices">
+                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditServices_<?= $servico['id'] ?>">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
-                                                    <div name="EditServices" class="modal fade" id="modalEditServices" tabindex="-1" role="dialog" aria-hidden="true">
+
+                                                    <div name="EditServices" class="modal fade" id="modalEditServices_<?= $servico['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
@@ -143,10 +144,11 @@ session_start();
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteServices">
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteServices_<?= $servico['id'] ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
-                                                    <div name="DeleteServices" class="modal fade" id="modalDeleteServices" tabindex="-1" role="dialog" aria-hidden="true">
+
+                                                    <div name="DeleteServices" class="modal fade" id="modalDeleteServices_<?= $servico['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">

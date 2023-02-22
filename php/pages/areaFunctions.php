@@ -115,10 +115,11 @@ session_start();
                                                 <th><?= $funcao['id'] ?></th>
                                                 <td><?= $funcao['nome'] ?></td>
                                                 <td>
-                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFunctions">
+                                                    <button class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFunctions_<?= $funcao['id'] ?>">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
-                                                    <div name="EditFunctions" class="modal fade" id="modalEditFunctions" tabindex="-1" role="dialog" aria-hidden="true">
+
+                                                    <div name="EditFunctions" class="modal fade" id="modalEditFunctions_<?= $funcao['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
@@ -145,10 +146,11 @@ session_start();
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteFunctions">
+                                                    <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteFunctions_<?= $funcao['id'] ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
-                                                    <div name="DeleteFunctions" class="modal fade" id="modalDeleteFunctions" tabindex="-1" role="dialog" aria-hidden="true">
+
+                                                    <div name="DeleteFunctions" class="modal fade" id="modalDeleteFunctions_<?= $funcao['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
