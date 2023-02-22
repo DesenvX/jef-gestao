@@ -138,26 +138,26 @@ $tractors_list = $tractors->getTractors();
                                     <thead>
                                         <tr>
                                             <th>Data</th>
-                                            <th>Hora Inicial</th>
-                                            <th>Hora Final</th>
+                                            <th>Horimetro I.</th>
+                                            <th>Horimetro F.</th>
                                             <th>Operador</th>
                                             <th>Maquina</th>
                                             <th>Pasto</th>
-                                            <th>Horimetro</th>
-                                            <th>Diária</th>
+                                            <th>Horimetro/ Hora</th>
+                                            <th>Valor Hora</th>
 
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>Data</th>
-                                            <th>Hora Inicial</th>
-                                            <th>Hora Final</th>
+                                            <th>Horimetro I.</th>
+                                            <th>Horimetro F.</th>
                                             <th>Operador</th>
                                             <th>Maquina</th>
                                             <th>Pasto</th>
-                                            <th>Horimetro</th>
-                                            <th>Diária</th>
+                                            <th>Horimetro/ Hora</th>
+                                            <th>Valor Hora</th>
 
                                         </tr>
                                     </tfoot>
