@@ -17,7 +17,7 @@ class Backup
 
         $date = date("dmy_s");
         $path = "C:";
-        $code = 'C:\AppServ\MySQL\bin\mysqldump -h ' . $_ENV['HOST'] . ' -u ' . $_ENV['USER'] . ' -p' . $_ENV['PASSWORD'] . ' ' . $_ENV['DATABASE'] . ' > ' . $path . '\Backup' . $date . '.sql';
+        $code = 'C:\AppServ\MySQL\bin\mysqldump -h ' . $_ENV['HOST'] . ' -u ' . $_ENV['USER'] . ' -p' . $_ENV['PASSWORD'] . ' ' . $_ENV['DATABASE'] . ' > ' . $path . '\Backup' . $date . '.sql --debug';
 
         system($code);
 
