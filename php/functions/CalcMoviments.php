@@ -7,15 +7,9 @@ use services\Prices;
 class CalcMoviments
 {
 
-    public function CalcWorkedHoursMoviment($date, $startTimeStr, $endTimeStr)
+    public function CalcWorkedHoursMoviment($startTimeStr, $endTimeStr)
     {
-        $data = new DateTime($date . ' 00:00:00');
-        $startTime = new DateTime($data->format('Y-m-d') . ' ' . $startTimeStr);
-        $endTime = new DateTime($data->format('Y-m-d') . ' ' . $endTimeStr);
-        $differenceTime = $startTime->diff($endTime);
-        $hours = $differenceTime->h + ($differenceTime->i / 60); 
-        $workedHours = floor($hours); // Arredondar - round()/floor() - cima/baixo
-        //$workedHours = floatval(number_format($hours, 2)); //Se não arredondar
+        $workedHours = $endTimeStr - $startTimeStr; 
         return $workedHours;
     }
 

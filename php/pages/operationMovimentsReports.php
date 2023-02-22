@@ -6,7 +6,7 @@ session_start();
 
 <head>
 
-    <title> JEF Gestão </title>
+    <title>  Gestão de Logística </title>
 
     <?php
     include('../../html/links_and_cdns.html');
@@ -143,8 +143,8 @@ $tractors_list = $tractors->getTractors();
                                             <th>Operador</th>
                                             <th>Maquina</th>
                                             <th>Pasto</th>
-                                            <th>Horimetro/ Hora</th>
-                                            <th>Valor Hora</th>
+                                            <th>Horas</th>
+                                            <th>Valor Horas</th>
 
                                         </tr>
                                     </thead>
@@ -156,9 +156,8 @@ $tractors_list = $tractors->getTractors();
                                             <th>Operador</th>
                                             <th>Maquina</th>
                                             <th>Pasto</th>
-                                            <th>Horimetro/ Hora</th>
-                                            <th>Valor Hora</th>
-
+                                            <th>Horas</th>
+                                            <th>Valor Horas</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>

@@ -8,7 +8,7 @@ session_start();
 <head>
 
 
-    <title> JEF Gestão </title>
+    <title>  Gestão de Logística </title>
 
     <?php
     include('../../html/links_and_cdns.html');
@@ -28,7 +28,7 @@ session_start();
                                 <div class="p-5">
                                     <div class="text-center">
                                         <img src="../../img/logo.png" width="100" height="100" style="margin-bottom: 10px;">
-                                        <h1 class="h4 text-gray-900 mb-4"> <b style="color: #566573;"> JEF Gestão </b> </h1>
+                                        <h1 class="h4 text-gray-900 mb-4"> <b style="color: #566573;"> Gestão de Logística  <br> <span style="font-size: 15px;">Jeferson</span> </b> </h1>
                                     </div>
                                     <form class="user" action="../controllers/LoginController.php" method="POST">
                                         <div class="form-group">

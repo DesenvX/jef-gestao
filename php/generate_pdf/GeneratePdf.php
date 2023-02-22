@@ -97,10 +97,10 @@ function PDFReportMoviment($LIST, $HOUES_TOTALITY, $VALUE_TOTALITY, $DATA_REPORT
             <th>Máquina</th>
             <th>Serviço</th>
             <th>Pasto</th>
-            <th>H. Inicio</th>
-            <th>H. Fim</th>
-            <th>Horímetro</th>
-            <th>Diária</th>
+            <th>Horímetro I.</th>
+            <th>Horímetro F.</th>
+            <th>Horas</th>
+            <th>Valor Horas</th>
         </tr>
     ';
 
@@ -152,7 +152,7 @@ function PDFReportMoviment($LIST, $HOUES_TOTALITY, $VALUE_TOTALITY, $DATA_REPORT
 
     $dompdf->render();
 
-    $dompdf->stream("" . $uuid . ".pdf", array("Attachment" => true));
+    $dompdf->stream("" . $uuid . ".pdf", array("Attachment" => false));
 }
 
 function PDFIntakeFuel($LIST, $LITERS, $VALUE_TOTALITY, $DATES)
@@ -198,12 +198,16 @@ function PDFIntakeFuel($LIST, $LITERS, $VALUE_TOTALITY, $DATES)
         <table>
             <thead>
                 <tr>
-                    <td style="text-align: center;"><img src"../../img/logo_fundo_pdf.png"></td>
+                    <td><img src"./logo.png"></td>
+                    <td>
+                        <h1 style="margin-top: 10px; margin-bottom: 4px;"> Fazenda Santa Tereza </h1>
+                        <p> Redenção - PA <br> ' . date('d/m/Y H:i:s') . '</p>
+                    </td>
                 </tr>
             </thead>
         </table>
+        <br>
     ';
-
 
     $html .= '<table>';
 
@@ -225,15 +229,16 @@ function PDFIntakeFuel($LIST, $LITERS, $VALUE_TOTALITY, $DATES)
                     <td>' . date('d/m/Y', strtotime($rows['data'])) . '</td>
                     <td>' . $rows['tipo_combustivel'] . '</td>
                     <td>' . $rows['fornecedor'] . '</td>
-                    <td>' . $rows['litros'] . '</td>
-                    <td>' . $rows['valor_litro'] . '</td>
-                    <td>' . $rows['valor_total'] . '</td>
+                    <td>' . $rows['litros'] . ' L</td>
+                    <td>R$ ' . $rows['valor_litro'] . '</td>
+                    <td>R$ ' . $rows['valor_total'] . '</td>
                 </tr>';
     }
 
     $html .= '</table>';
 
     $html .= '
+        <br>
         <table>
             <tfoot>
                 <tr>
@@ -296,10 +301,15 @@ function PDFOutputFuelGas($LIST, $LITERS, $DATES)
         <table>
             <thead>
                 <tr>
-                    <td style="text-align: center;"><img src"../../img/logo_fundo_pdf.png"></td>
+                    <td><img src"./logo.png"></td>
+                    <td>
+                        <h1 style="margin-top: 10px; margin-bottom: 4px;"> Fazenda Santa Tereza </h1>
+                        <p> Redenção - PA <br> ' . date('d/m/Y H:i:s') . '</p>
+                    </td>
                 </tr>
             </thead>
         </table>
+        <br>
     ';
 
 
@@ -328,13 +338,14 @@ function PDFOutputFuelGas($LIST, $LITERS, $DATES)
                     <td>' . $rows['tipo_combustivel'] . '</td>
                     <td>' . $colaborador['nome'] . '</td>
                     <td>' . $veiculo['modelo'] . ' (' . $veiculo['placa'] . ')</td>
-                    <td>' . $rows['litros'] . '</td>
+                    <td>' . $rows['litros'] . ' L</td>
                 </tr>';
     }
 
     $html .= '</table>';
 
     $html .= '
+        <br>
         <table>
             <tfoot>
                 <tr>
@@ -396,12 +407,16 @@ function PDFOutputFuelDisel($LIST, $LITERS, $DATES)
         <table>
             <thead>
                 <tr>
-                    <td style="text-align: center;"><img src"../../img/logo_fundo_pdf.png"></td>
+                    <td><img src"./logo.png"></td>
+                    <td>
+                        <h1 style="margin-top: 10px; margin-bottom: 4px;"> Fazenda Santa Tereza </h1>
+                        <p> Redenção - PA <br> ' . date('d/m/Y H:i:s') . '</p>
+                    </td>
                 </tr>
             </thead>
         </table>
+        <br>
     ';
-
 
     $html .= '<table>';
 
@@ -447,13 +462,14 @@ function PDFOutputFuelDisel($LIST, $LITERS, $DATES)
                     <td>' . $servico['descricao'] . '</td>
                     <td>' . $pasto['nome'] . '</td>
                     <td>' . $trator_veiculo . '</td>
-                    <td>' . $rows['litros'] . '</td>
+                    <td>' . $rows['litros'] . ' L</td>
                 </tr>';
     }
 
     $html .= '</table>';
 
     $html .= '
+        <br>
         <table>
             <tfoot>
                 <tr>

@@ -3,7 +3,7 @@
 
 <head>
 
-    <title> JEF Gestão </title>
+    <title>  Gestão de Logística </title>
 
     <?php
     include('../../html/links_and_cdns.html');

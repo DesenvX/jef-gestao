@@ -10,7 +10,7 @@ $calcMoviments = new CalcMoviments();
 
 if (isset($_POST['register'])) {
 
-    $_WORKEDHOURS = $calcMoviments->CalcWorkedHoursMoviment($_POST['data'], $_POST['startTime'], $_POST['endTime']);
+    $_WORKEDHOURS = $calcMoviments->CalcWorkedHoursMoviment($_POST['startTime'], $_POST['endTime']);
 
     $_VALUEDAY = $calcMoviments->CalcValueDayMoviment($_POST['dayWeek'], $_POST['adversity'], $_WORKEDHOURS);
 
