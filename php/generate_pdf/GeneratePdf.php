@@ -15,7 +15,7 @@ use services\Tractors;
 use services\Vehicles;
 use services\Collaborators;
 
-function PDFReportMoviment($LIST, $HOUES_TOTALITY, $VALUE_TOTALITY, $DATA_REPORT)
+function PDFReportMoviment($LIST, $HOURS, $VALUE_TOTALITY, $DATA_REPORT)
 {
 
     date_default_timezone_set('America/Belem');
@@ -99,8 +99,7 @@ function PDFReportMoviment($LIST, $HOUES_TOTALITY, $VALUE_TOTALITY, $DATA_REPORT
             <th>Pasto</th>
             <th>Horímetro I.</th>
             <th>Horímetro F.</th>
-            <th>Horas Normais</th>
-            <th>Horas Excedentes</th>
+            <th>Horas</th>
             <th>Valor Horas</th>
         </tr>
     ';
@@ -124,7 +123,6 @@ function PDFReportMoviment($LIST, $HOUES_TOTALITY, $VALUE_TOTALITY, $DATA_REPORT
                     <td>' . $rows['hora_inicial'] . '</td>
                     <td>' . $rows['hora_final'] . '</td>
                     <td>' . $rows['horas_trabalhadas'] . ' Hrs</td>
-                    <td>' . $rows['horas_excedentes'] . '</td>
                     <td>R$ ' . $rows['valor_diaria'] . '</td>
                 </tr>';
     }
@@ -136,8 +134,16 @@ function PDFReportMoviment($LIST, $HOUES_TOTALITY, $VALUE_TOTALITY, $DATA_REPORT
         <table>
             <tfoot>
                 <tr>
-                    <td style="text-align: center;"><strong> DATA INICIAL: </strong>' . date('d/m/Y', strtotime($DATA_REPORT['data_inicial'])) . '<br><strong> DATA FINAL: </strong>' . date('d/m/Y', strtotime($DATA_REPORT['data_final'])) . '</td>   
-                    <td style="text-align: center;"><strong> HORAS TOTAL: </strong>' . $HOUES_TOTALITY['soma_horas_trabalhadas'] . ' Hrs<br><strong> VALOR TOTAL: </strong>R$ ' . $VALUE_TOTALITY['soma_valor_diaria'] . '</td>
+                    <td style="text-align: center;">
+                        <strong> DATA INICIAL: </strong>' . date('d/m/Y', strtotime($DATA_REPORT['data_inicial'])) . '<br>
+                        <strong> DATA FINAL: </strong>' . date('d/m/Y', strtotime($DATA_REPORT['data_final'])) . '
+                    </td>   
+                    <td style="text-align: center;">
+                    <strong> HORAS NORMAIS: </strong>' . $HOURS[0]['soma_horas_normais'] . ' Hrs<br>
+                    <strong> HORAS EXCEDENTES: </strong>' . $HOURS[1]['soma_horas_excedentes'] . ' Hrs<br>
+                        <strong> HORAS TOTAL: </strong>' . $HOURS[2]['soma_horas_trabalhadas'] . ' Hrs<br>
+                        <strong> VALOR TOTAL: </strong>R$ ' . $VALUE_TOTALITY['soma_valor_diaria'] . '
+                    </td>
                 </tr>
             </tfoot>
         </table>

@@ -60,11 +60,20 @@ class Moviments
             $soma_worked_hours_response = $mysqli->query($soma_worked_hours_query);
             $soma_worked_hours_result = $soma_worked_hours_response->fetch_assoc();
 
+            $soma_normal_hours_query = "SELECT SUM(horas_normais) as soma_horas_normais FROM movimentos  WHERE id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
+            $soma_normal_hours_response = $mysqli->query($soma_normal_hours_query);
+            $soma_normal_hours_result = $soma_normal_hours_response->fetch_assoc();
+
+            $soma_exceded_hours_query = "SELECT SUM(horas_excedentes) as soma_horas_excedentes FROM movimentos  WHERE id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
+            $soma_exceded_hours_response = $mysqli->query($soma_exceded_hours_query);
+            $soma_exceded_hours_result = $soma_exceded_hours_response->fetch_assoc();
+
             $soma_value_day_query = "SELECT SUM(valor_diaria) as soma_valor_diaria FROM movimentos  WHERE id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
             $soma_value_day_response = $mysqli->query($soma_value_day_query);
             $soma_value_day_result = $soma_value_day_response->fetch_assoc();
 
-            return PDFReportMoviment($data_report_moviments_response, $soma_worked_hours_result, $soma_value_day_result, $dataReports);
+            $hours = [$soma_normal_hours_result, $soma_exceded_hours_result, $soma_worked_hours_result];
+            return PDFReportMoviment($data_report_moviments_response, $hours, $soma_value_day_result, $dataReports);
         } else {
 
             $data_report_moviments_query = "SELECT * FROM movimentos  WHERE id_maquina = '$id_tractor' AND id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
@@ -74,11 +83,20 @@ class Moviments
             $soma_worked_hours_response = $mysqli->query($soma_worked_hours_query);
             $soma_worked_hours_result = $soma_worked_hours_response->fetch_assoc();
 
+            $soma_normal_hours_query = "SELECT SUM(horas_normais) as soma_horas_normais FROM movimentos  WHERE id_maquina = '$id_tractor' AND id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
+            $soma_normal_hours_response = $mysqli->query($soma_normal_hours_query);
+            $soma_normal_hours_result = $soma_normal_hours_response->fetch_assoc();
+
+            $soma_exceded_hours_query = "SELECT SUM(horas_excedentes) as soma_horas_excedentes FROM movimentos  WHERE id_maquina = '$id_tractor' AND id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
+            $soma_exceded_hours_response = $mysqli->query($soma_exceded_hours_query);
+            $soma_exceded_hours_result = $soma_exceded_hours_response->fetch_assoc();
+
             $soma_value_day_query = "SELECT SUM(valor_diaria) as soma_valor_diaria FROM movimentos  WHERE id_maquina = '$id_tractor' AND id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
             $soma_value_day_response = $mysqli->query($soma_value_day_query);
             $soma_value_day_result = $soma_value_day_response->fetch_assoc();
 
-            return PDFReportMoviment($data_report_moviments_response,  $soma_worked_hours_result, $soma_value_day_result, $dataReports);
+            $hours = [$soma_normal_hours_result, $soma_exceded_hours_result, $soma_worked_hours_result];
+            return PDFReportMoviment($data_report_moviments_response,  $hours, $soma_value_day_result, $dataReports);
         }
     }
 
