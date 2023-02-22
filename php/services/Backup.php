@@ -19,7 +19,7 @@ class Backup
         $path = "C:";
         $code = 'C:\AppServ\MySQL\bin\mysqldump -h ' . $_ENV['HOST'] . ' -u ' . $_ENV['USER'] . ' -p' . $_ENV['PASSWORD'] . ' ' . $_ENV['DATABASE'] . ' > ' . $path . '\Backup' . $date . '.sql';
 
-        shell_exec($code);
+        system($code);
 
         session_start();
         $_SESSION['backup_success'] = true;

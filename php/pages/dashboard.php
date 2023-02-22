@@ -265,15 +265,4 @@ if (isset($_SESSION['backup_success'])) {
 }
 ?>
 
-<?php
-if (isset($_SESSION['backup_error'])) {
-?>
-    <script>
-        swalBackupError();
-    </script>
-<?php
-    unset($_SESSION['backup_error']);
-}
-?>
-
 </html>
