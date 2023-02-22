@@ -28,7 +28,9 @@ function swalBackupSuccess() {
         position: 'top-end',
         icon: 'success',
         title: 'Backup realizado com sucesso!',
-        showConfirmButton: true
+        html: "O arquivo de backup está salvo em: <br> <b>Disco Local(C) / Backup_FarmControl </b> .",
+        showConfirmButton: true,
+        confirmButtonColor: '#1cc88a'
     })
 }
 

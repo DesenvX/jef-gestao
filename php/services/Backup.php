@@ -21,16 +21,8 @@ class Backup
 
         shell_exec($code);
 
-        $result = "1";
-
-        if ($result == "1") {
-            session_start();
-            $_SESSION['backup_success'] = true;
-            header("location: ../pages/dashboard.php");
-        } else {
-            session_start();
-            $_SESSION['backup_error'] = true;
-            header("location: ../pages/dashboard.php");
-        }
+        session_start();
+        $_SESSION['backup_success'] = true;
+        header("location: ../pages/dashboard.php");
     }
 }
