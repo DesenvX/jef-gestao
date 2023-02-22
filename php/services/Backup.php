@@ -13,7 +13,6 @@ class Backup
     public function saveDb()
     {
         Environment::load();
-        $date = new DateTime();
 
         $date = date("dmy_s");
         $path = "C:";
