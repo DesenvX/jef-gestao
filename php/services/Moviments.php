@@ -4,6 +4,16 @@ namespace services;
 
 class Moviments
 {
+    public function getMovimentsSumaHoursForSomething($id)
+    {
+        require 'Conexao.php';
+
+        $suma_hours_query = "SELECT SUM(horas_trabalhadas) as soma_horas_trabalhadas FROM movimentos WHERE id_colaborador = $id";
+        $suma_hours_response = $mysqli->query($suma_hours_query);
+        $suma_hours_result = $suma_hours_response->fetch_assoc();
+
+        return intval($suma_hours_result['soma_horas_trabalhadas']);
+    }
 
     public function getDataReportMoviments($request)
     {
@@ -55,7 +65,6 @@ class Moviments
             $soma_value_day_result = $soma_value_day_response->fetch_assoc();
 
             return PDFReportMoviment($data_report_moviments_response, $soma_worked_hours_result, $soma_value_day_result, $dataReports);
-
         } else {
 
             $data_report_moviments_query = "SELECT * FROM movimentos  WHERE id_maquina = '$id_tractor' AND id_colaborador = '$id_collaborator' AND data BETWEEN '$date_init' AND '$date_finish'";
@@ -70,7 +79,6 @@ class Moviments
             $soma_value_day_result = $soma_value_day_response->fetch_assoc();
 
             return PDFReportMoviment($data_report_moviments_response,  $soma_worked_hours_result, $soma_value_day_result, $dataReports);
-            
         }
     }
 
@@ -84,13 +92,15 @@ class Moviments
         return $moviments_response;
     }
 
-    public function postMoviments($request, $workedhours, $valueday)
+    public function postMoviments($request, $hours, $valueday)
     {
 
         require 'Conexao.php';
 
         $valueday;
-        $workedhours;
+        $workedHours = $hours['HORAS_TRABALHADAS'];
+        $normalHours = $hours['HORAS_NORMAIS'];
+        $excededHours = $hours['HORAS_EXCEDENTES'];
 
         $id_service = $mysqli->escape_string($request['service']);
         $id_pasture = $mysqli->escape_string($request['pasture']);
@@ -103,7 +113,7 @@ class Moviments
         $dayWeek = $mysqli->escape_string($request['dayWeek']);
 
 
-        $moviments_report = "INSERT INTO movimentos (hora_inicial, hora_final, horas_trabalhadas, data, dia_semana, valor_diaria, id_colaborador, id_servico, id_maquina, id_pasto) VALUES ('$startTime', '$endTime', '$workedhours', '$data', '$dayWeek','$valueday', '$id_collaborator', '$id_service', '$id_machine', '$id_pasture')";
+        $moviments_report = "INSERT INTO movimentos (hora_inicial, hora_final, horas_trabalhadas, horas_normais, horas_excedentes, data, dia_semana, valor_diaria, id_colaborador, id_servico, id_maquina, id_pasto) VALUES ('$startTime', '$endTime', '$workedHours', '$normalHours', '$excededHours', '$data', '$dayWeek','$valueday', '$id_collaborator', '$id_service', '$id_machine', '$id_pasture')";
         $moviments_report_response = $mysqli->query($moviments_report);
 
 

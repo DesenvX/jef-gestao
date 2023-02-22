@@ -99,7 +99,8 @@ function PDFReportMoviment($LIST, $HOUES_TOTALITY, $VALUE_TOTALITY, $DATA_REPORT
             <th>Pasto</th>
             <th>Horímetro I.</th>
             <th>Horímetro F.</th>
-            <th>Horas</th>
+            <th>Horas Normais</th>
+            <th>Horas Excedentes</th>
             <th>Valor Horas</th>
         </tr>
     ';
@@ -123,6 +124,7 @@ function PDFReportMoviment($LIST, $HOUES_TOTALITY, $VALUE_TOTALITY, $DATA_REPORT
                     <td>' . $rows['hora_inicial'] . '</td>
                     <td>' . $rows['hora_final'] . '</td>
                     <td>' . $rows['horas_trabalhadas'] . ' Hrs</td>
+                    <td>' . $rows['horas_excedentes'] . '</td>
                     <td>R$ ' . $rows['valor_diaria'] . '</td>
                 </tr>';
     }
