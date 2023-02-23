@@ -81,13 +81,13 @@ $pastures_list = $pastures->getPastures();
                                     <div class="modal-content">
                                         <div class="modal-body">
                                             <div class="text-center">
-                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"><strong>OBS:</strong> Lembre-se de fazer o <strong>backup</strong> antes de utilizar essa função.</b></h1>
+                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573; font-size: 20px;text-align: justify;"><strong>OBS:</strong> Certifique-se de ter feito o lançamento de todos os relatórios dos colaboradores, pois os registros serão apagados para novos relatorios.</b></h1>
                                             </div>
                                             <form class="user" action="../controllers/MovimentsController.php" method="POST">
                                                 <input type="hidden" name="close" value="true">
                                                 <hr>
                                                 <button type="submit" class="btn btn-user btn-dark btn-block">
-                                                     Sim, confirmar! 
+                                                    Continuar
                                                 </button>
                                                 <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
                                             </form>
@@ -95,6 +95,7 @@ $pastures_list = $pastures->getPastures();
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="card-body">
                             <form class="user" action="../controllers/MovimentsController.php" method="POST">
