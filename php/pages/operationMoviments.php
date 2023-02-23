@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>  Gestão de Logística </title>
+    <title> Gestão de Logística </title>
 
     <?php
     include('../../html/links_and_cdns.html');
@@ -69,6 +69,32 @@ $pastures_list = $pastures->getPastures();
                                 </span>
                                 <span class="text"> Relatório </span>
                             </a>
+                            <a href="#" role="button" class="btn btn-info btn-sm btn-icon-split" data-toggle="modal" data-target="#modalCloseWeek">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <span class="text"> Fechar Semana </span>
+                            </a>
+
+                            <div name="closeWeek" class="modal fade" id="modalCloseWeek" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;"><strong>OBS:</strong> Lembre-se de fazer o <strong>backup</strong> antes de utilizar essa função.</b></h1>
+                                            </div>
+                                            <form class="user" action="../controllers/MovimentsController.php" method="POST">
+                                                <input type="hidden" name="close" value="true">
+                                                <hr>
+                                                <button type="submit" class="btn btn-user btn-dark btn-block">
+                                                     Sim, confirmar! 
+                                                </button>
+                                                <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             <form class="user" action="../controllers/MovimentsController.php" method="POST">

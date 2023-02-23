@@ -191,4 +191,23 @@ class Moviments
             header('Location: ../pages/operationMovimentsHistoric.php');
         }
     }
+
+    public function closeWeek()
+    {
+        require 'Conexao.php';
+
+        $clear_sql = "DELETE FROM movimentos";
+        $clear_sql_response = $mysqli->query($clear_sql);
+
+        if($clear_sql_response == true) {
+            session_start();
+            $_SESSION['delete_moviments_success'] = true;
+            header('Location: ../pages/operationMoviments.php');
+        } else {
+            session_start();
+            $_SESSION['delete_moviments_fail'] = true;
+            header('Location: ../pages/operationMoviments.php');
+        }
+        
+    }
 }

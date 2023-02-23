@@ -37,3 +37,7 @@ if (isset($_POST['print-report'])) {
 if (isset($_POST['filter-data-report'])) {
     $moviments_filter = $moviments->getDataReportMoviments($_POST);
 }
+
+if(isset($_POST['close'])) {
+    return $moviments->closeWeek($_POST);
+}
