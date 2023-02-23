@@ -23,13 +23,14 @@ function PDFReportMoviment($LIST, $HOURS, $VALUE_TOTALITY, $DATA_REPORT)
     $uuid = uuid();
 
     $dompdf = new Dompdf(['enable_remote' => true]);
+    
 
     $html = '
         <style>
             body {
                 justify-content:center;
-                background-image: url("logo_fundo_pdf.png");
-                background-position: center;
+                background-image: url("http://localhost/jEF-Gestao/img/logo_fundo_pdf.png");
+                background-position: center;                
             }
 
             td, th {
@@ -66,7 +67,7 @@ function PDFReportMoviment($LIST, $HOURS, $VALUE_TOTALITY, $DATA_REPORT)
         <table>
             <thead>
                 <tr>
-                    <td><img src"./logo.png"></td>
+                    <td><img src="http://localhost/jEF-Gestao/img/logo.png" width="120px" height="120px"></td>
                     <td>
                         <h1 style="margin-top: 10px; margin-bottom: 4px;"> Fazenda Santa Tereza </h1>
                         <p> Redenção - PA <br> ' . date('d/m/Y H:i:s') . '</p>
@@ -172,7 +173,7 @@ function PDFIntakeFuel($LIST, $LITERS, $VALUE_TOTALITY, $DATES)
         <style>
             body {
                 justify-content:center;
-                background-image: url("../../img/logo_fundo_pdf.jpg");
+                background-image: url("http://localhost/jEF-Gestao/img/logo_fundo_pdf.png");
                 background-position: center;
             }
             td, th {
@@ -206,7 +207,7 @@ function PDFIntakeFuel($LIST, $LITERS, $VALUE_TOTALITY, $DATES)
         <table>
             <thead>
                 <tr>
-                    <td><img src"./logo.png"></td>
+                    <td><img src="http://localhost/jEF-Gestao/img/logo.png" width="120px" height="120px"></td>
                     <td>
                         <h1 style="margin-top: 10px; margin-bottom: 4px;"> Fazenda Santa Tereza </h1>
                         <p> Redenção - PA <br> ' . date('d/m/Y H:i:s') . '</p>
@@ -275,7 +276,7 @@ function PDFOutputFuelGas($LIST, $LITERS, $DATES)
         <style>
             body {
                 justify-content:center;
-                background-image: url("../../img/logo_fundo_pdf.jpg");
+                background-image: url("http://localhost/jEF-Gestao/img/logo_fundo_pdf.png");
                 background-position: center;
             }
             td, th {
@@ -309,7 +310,7 @@ function PDFOutputFuelGas($LIST, $LITERS, $DATES)
         <table>
             <thead>
                 <tr>
-                    <td><img src"./logo.png"></td>
+                    <td><img src="http://localhost/jEF-Gestao/img/logo.png" width="120px" height="120px"></td>
                     <td>
                         <h1 style="margin-top: 10px; margin-bottom: 4px;"> Fazenda Santa Tereza </h1>
                         <p> Redenção - PA <br> ' . date('d/m/Y H:i:s') . '</p>
@@ -381,7 +382,7 @@ function PDFOutputFuelDisel($LIST, $LITERS, $DATES)
         <style>
             body {
                 justify-content:center;
-                background-image: url("../../img/logo_fundo_pdf.jpg");
+                background-image: url("http://localhost/jEF-Gestao/img/logo_fundo_pdf.png");
                 background-position: center;
             }
             td, th {
@@ -415,7 +416,7 @@ function PDFOutputFuelDisel($LIST, $LITERS, $DATES)
         <table>
             <thead>
                 <tr>
-                    <td><img src"./logo.png"></td>
+                    <td><img src="http://localhost/jEF-Gestao/img/logo.png" width="120px" height="120px"></td>
                     <td>
                         <h1 style="margin-top: 10px; margin-bottom: 4px;"> Fazenda Santa Tereza </h1>
                         <p> Redenção - PA <br> ' . date('d/m/Y H:i:s') . '</p>
