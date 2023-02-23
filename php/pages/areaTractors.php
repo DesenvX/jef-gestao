@@ -7,7 +7,7 @@ session_start();
 
 <head>
 
-    <title>  Gestão de Logística </title>
+    <title> Gestão de Logística </title>
 
     <?php
     include('../../html/links_and_cdns.html');
@@ -96,7 +96,7 @@ session_start();
 
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-                                        <tr>
+                                        <tr>                                            
                                             <th>ID</th>
                                             <th>Marca</th>
                                             <th>Modelo</th>
@@ -174,7 +174,7 @@ session_start();
                                                     <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteTractor_<?= $trator['id'] ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
-                                                    
+
                                                     <div name="DeleteTractor" class="modal fade" id="modalDeleteTractor_<?= $trator['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm" role="document">
                                                             <div class="modal-content">
