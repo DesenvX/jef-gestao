@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 11-Fev-2023 às 07:20
+-- Tempo de geração: 23-Fev-2023 às 14:59
 -- Versão do servidor: 8.0.17
 -- versão do PHP: 7.3.10
 
@@ -36,14 +36,6 @@ CREATE TABLE `veiculos` (
   `ano` varchar(10) NOT NULL,
   `placa` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Extraindo dados da tabela `veiculos`
---
-
-INSERT INTO `veiculos` (`id`, `descricao`, `marca`, `modelo`, `ano`, `placa`) VALUES
-(1, 'veiculo', 'marca', 'BH - 135', '2003', 'placa'),
-(2, 'mtshubishi', 'marc', 'modelo', '2005', 'placa');
 
 --
 -- Índices para tabelas despejadas
