@@ -19,10 +19,12 @@ session_start();
 require_once '../services/Moviments.php';
 require_once '../services/Collaborators.php';
 require_once '../services/Tractors.php';
+require_once '../services/Pastures.php';
 
 use services\Moviments;
 use services\Collaborators;
 use services\Tractors;
+use services\Pastures;
 
 if (isset($_POST['filter-data-report'])) {
     $moviments = new Moviments();
@@ -33,6 +35,8 @@ $collaborators = new Collaborators();
 $collaborators_list = $collaborators->getCollaborators();
 $tractors = new Tractors();
 $tractors_list = $tractors->getTractors();
+$pastures = new Pastures();
+$pastures_list = $pastures->getPastures();
 
 ?>
 
@@ -164,14 +168,17 @@ $tractors_list = $tractors->getTractors();
                                         <?php
                                         if (isset($_POST['filter-data-report'])) {
                                             while ($movimento_filtrado = $moviments_filter['resultado_tabela']->fetch_assoc()) {
+                                                $colaborador = $collaborators->getCollaboratorsForSomething($movimento_filtrado['id_colaborador']);
+                                                $trator = $tractors->getTractorForSomething($movimento_filtrado['id_maquina']);
+                                                $pasto = $pastures->getPasturesForSomething($movimento_filtrado['id_pasto']);
                                         ?>
                                                 <tr>
                                                     <td><?= date('d/m/Y', strtotime($movimento_filtrado['data'])) ?></td>
                                                     <td><?= $movimento_filtrado['hora_inicial'] ?></td>
                                                     <td><?= $movimento_filtrado['hora_final'] ?></td>
-                                                    <td><?= $movimento_filtrado['id_colaborador'] ?></td>
-                                                    <td><?= $movimento_filtrado['id_maquina'] ?></td>
-                                                    <td><?= $movimento_filtrado['id_pasto'] ?></td>
+                                                    <td><?= $colaborador['nome'] ?></td>
+                                                    <td><?= $trator['modelo'] ?></td>
+                                                    <td><?= $pasto['nome'] ?></td>
                                                     <td><?= $movimento_filtrado['horas_trabalhadas'] ?></td>
                                                     <td><?= $movimento_filtrado['valor_diaria'] ?></td>
                                                 </tr>
