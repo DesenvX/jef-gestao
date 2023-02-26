@@ -71,7 +71,6 @@ function PDFReportMoviment($LIST, $HOURS, $VALUE_TOTALITY, $DATA_REPORT)
                     <td>
                         <h1 style="margin-top: 10px; margin-bottom: 4px;"> Fazenda Santa Tereza </h1>
                         <p> Redenção - PA <br> ' . date('d/m/Y H:i:s') . '</p>
-                        <h5> ID: ' . $uuid . ' </h5>
                     </td>
                 </tr>
             </thead>

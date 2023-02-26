@@ -513,13 +513,14 @@ $vehicle_list = $vehicle->getVehicles();
 
                                                         <?php if ($historico['tipo'] == 'Entrada') {
                                                             $historic_intake = $fuel->getIntakeHistoricForSomething($historico['id_tabelas']);
+                                                            $valor_total_historic = number_format($historic_intake['valor_total'], 2, ',', '.');
                                                         ?>
                                                             <tr class="table-info">
                                                                 <th><?= $historico['id'] ?></th>
                                                                 <td><?= date('d/m/Y', strtotime($historico['data'])) ?></td>
                                                                 <td><?= $historic_intake['tipo_combustivel'] ?></td>
                                                                 <td><?= $historic_intake['litros'] ?></td>
-                                                                <td>R$ <?= $historic_intake['valor_total'] ?></td>
+                                                                <td>R$ <?= $valor_total_historic ?></td>
                                                             </tr>
                                                         <?php } ?>
                                                     <?php } ?>
@@ -574,6 +575,7 @@ $vehicle_list = $vehicle->getVehicles();
                                                 <tbody>
                                                     <?php while ($combustivel_entrada = $fuel_intake_list->fetch_assoc()) {
                                                         $fornecedor = $suppliers->getSupplierForSomething($combustivel_entrada['id_fornecedor']);
+                                                        $valor_total_entrada = number_format($combustivel_entrada['valor_total'], 2, ',', '.');
                                                     ?>
                                                         <tr>
                                                             <th><?= $combustivel_entrada['id'] ?></th>
@@ -582,7 +584,7 @@ $vehicle_list = $vehicle->getVehicles();
                                                             <td><?= $combustivel_entrada['tipo_combustivel'] ?></td>
                                                             <td><?= $combustivel_entrada['litros'] ?></td>
                                                             <td>R$ <?= $combustivel_entrada['valor_litro'] ?></td>
-                                                            <td>R$ <?= $combustivel_entrada['valor_total'] ?></td>
+                                                            <td>R$ <?= $valor_total_entrada ?></td>
                                                             <td>
                                                                 <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelEntry_<?= $combustivel_entrada['id'] ?>">
                                                                     <i class="fas fa-pen"></i>
