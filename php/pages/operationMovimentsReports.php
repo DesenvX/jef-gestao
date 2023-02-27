@@ -6,7 +6,7 @@ session_start();
 
 <head>
 
-    <title>  Gestão de Logística </title>
+    <title> Gestão de Logística </title>
 
     <?php
     include('../../html/links_and_cdns.html');
@@ -117,8 +117,8 @@ $pastures_list = $pastures->getPastures();
                             <div name="button-generate-pdf" class="row mb-3">
                                 <div class="col">
                                     <?php
-                                        $dados_filtro = $moviments_filter['dados_filtro'];
-                                        
+                                    $dados_filtro = $moviments_filter['dados_filtro'];
+
                                     ?>
                                     <form action="../controllers/MovimentsController.php" method="POST">
                                         <input type="hidden" name="print-report" value="true">
@@ -133,7 +133,7 @@ $pastures_list = $pastures->getPastures();
                                             <span class="text"> Imprimir Relatório </span>
                                         </button>
                                     </form>
-                                    
+
                                 </div>
                             </div>
 
@@ -178,7 +178,7 @@ $pastures_list = $pastures->getPastures();
                                                     <td><?= $movimento_filtrado['hora_final'] ?></td>
                                                     <td><?= $colaborador['nome'] ?></td>
                                                     <td><?= $trator['modelo'] ?></td>
-                                                    <td><?= $pasto['nome'] ?></td>
+                                                    <td><?= $pasto['nome'] ?> (<?= $pasto['retiro'] ?>)</td>
                                                     <td><?= $movimento_filtrado['horas_trabalhadas'] ?></td>
                                                     <td><?= $movimento_filtrado['valor_diaria'] ?></td>
                                                 </tr>
