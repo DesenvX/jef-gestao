@@ -73,7 +73,7 @@ $pastures_list = $pastures->getPastures();
                                 <span class="icon text-white-50">
                                     <i class="fas fa-lock"></i>
                                 </span>
-                                <span class="text"> Fechar Semana </span>
+                                <span class="text"> Fechar Mês </span>
                             </a>
 
                             <div name="closeWeek" class="modal fade" id="modalCloseWeek" tabindex="-1" role="dialog" aria-hidden="true">
