@@ -119,7 +119,7 @@ function PDFReportMoviment($LIST, $HOURS, $VALUE_TOTALITY, $DATA_REPORT)
                     <td>' . $rows['dia_semana'] . '</td>
                     <td>' . $trator['modelo'] . '</td>
                     <td>' . $servico['descricao'] . '</td>
-                    <td>' . $pasto['nome'] . '('. $pasto['nome'] .')' . '</td>
+                    <td>' . $pasto['nome'] . '('. $pasto['retiro'] .')' . '</td>
                     <td>' . $rows['hora_inicial'] . '</td>
                     <td>' . $rows['hora_final'] . '</td>
                     <td>' . $rows['horas_trabalhadas'] . ' Hrs</td>
