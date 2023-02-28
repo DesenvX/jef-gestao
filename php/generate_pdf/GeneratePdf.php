@@ -119,7 +119,7 @@ function PDFReportMoviment($LIST, $HOURS, $VALUE_TOTALITY, $DATA_REPORT)
                     <td>' . $rows['dia_semana'] . '</td>
                     <td>' . $trator['modelo'] . '</td>
                     <td>' . $servico['descricao'] . '</td>
-                    <td>' . $pasto['nome'] . ' (' . $pasto['retiro'] . ')' . '</td>
+                    <td>' . $pasto['nome'] . '('. $pasto['nome'] .')' . '</td>
                     <td>' . $rows['hora_inicial'] . '</td>
                     <td>' . $rows['hora_final'] . '</td>
                     <td>' . $rows['horas_trabalhadas'] . ' Hrs</td>
@@ -468,7 +468,7 @@ function PDFOutputFuelDisel($LIST, $LITERS, $DATES)
                     <td>' . $rows['tipo_combustivel'] . '</td>
                     <td>' . $colaborador['nome'] . '</td>
                     <td>' . $servico['descricao'] . '</td>
-                    <td>' . $pasto['nome'] . '</td>
+                    <td>' . $pasto['nome'] . '('. $pasto['retiro'] .')' . '</td>
                     <td>' . $trator_veiculo . '</td>
                     <td>' . $rows['litros'] . ' L</td>
                 </tr>';
