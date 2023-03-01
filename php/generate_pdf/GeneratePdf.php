@@ -123,7 +123,7 @@ function PDFReportMoviment($LIST, $HOURS, $VALUE_TOTALITY, $DATA_REPORT)
                     <td>' . $rows['hora_inicial'] . '</td>
                     <td>' . $rows['hora_final'] . '</td>
                     <td>' . $rows['horas_trabalhadas'] . ' Hrs</td>
-                    <td>R$ ' . $rows['valor_diaria'] . '</td>
+                    <td>R$ ' . number_format($rows['valor_diaria'], 2, '.', '') . '</td>
                 </tr>';
     }
 
@@ -140,9 +140,11 @@ function PDFReportMoviment($LIST, $HOURS, $VALUE_TOTALITY, $DATA_REPORT)
                     </td>   
                     <td style="text-align: center;">
                     <strong> HORAS NORMAIS: </strong>' . $HOURS[0]['soma_horas_normais'] . ' Hrs<br>
-                    <strong> HORAS EXCEDENTES: </strong>' . $HOURS[1]['soma_horas_excedentes'] . ' Hrs<br>
-                        <strong> HORAS TOTAL: </strong>' . $HOURS[2]['soma_horas_trabalhadas'] . ' Hrs<br>
-                        <strong> VALOR TOTAL: </strong>R$ ' . $VALUE_TOTALITY['soma_valor_diaria'] . '
+                    <strong> HORAS 100%: </strong>' . $HOURS[3]['soma_extra_horas'] . ' Hrs<br>
+                    <strong> HORAS TOTAL: </strong><strong>' . $HOURS[2]['soma_horas_trabalhadas'] . ' Hrs</strong><br>
+                    <strong> HORAS EXCEDENTES: </strong><strong>' . $HOURS[1]['soma_horas_excedentes'] . ' Hrs<strong><br><br>
+                        
+                    <strong> VALOR TOTAL: </strong><strong>R$ ' . number_format($VALUE_TOTALITY['soma_valor_diaria'], 2, '.', '') . '</strong>
                     </td>
                 </tr>
             </tfoot>

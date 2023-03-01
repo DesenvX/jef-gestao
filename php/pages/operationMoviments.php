@@ -81,7 +81,7 @@ $pastures_list = $pastures->getPastures();
                                     <div class="modal-content">
                                         <div class="modal-body">
                                             <div class="text-center">
-                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573; font-size: 20px;text-align: justify;"><strong>OBS:</strong> Certifique-se de ter feito o lançamento de todos os relatórios dos colaboradores, pois os registros serão apagados para novos relatorios.</b></h1>
+                                                <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573; font-size: 20px;text-align: justify;"><strong>OBS:</strong> Certifique-se de ter feito o lançamento de todos os relatórios do mês dos colaboradores.</b></h1>
                                             </div>
                                             <form class="user" action="../controllers/MovimentsController.php" method="POST">
                                                 <input type="hidden" name="close" value="true">
@@ -238,46 +238,24 @@ if (isset($_SESSION['register_moviments_fail'])) {
 ?>
 
 <?php
-if (isset($_SESSION['edit_moviments_success'])) {
+if (isset($_SESSION['close_moviments_success'])) {
 ?>
     <script>
-        swalEditSuccess();
+        swalCloseMovimentSuccess();
     </script>
 <?php
-    unset($_SESSION['edit_moviments_success']);
+    unset($_SESSION['close_moviments_success']);
 }
 ?>
 
 <?php
-if (isset($_SESSION['edit_moviments_fail'])) {
+if (isset($_SESSION['close_moviments_fail'])) {
 ?>
     <script>
-        swalEditError();
+        swalCloseMovimentError();
     </script>
 <?php
-    unset($_SESSION['edit_moviments_fail']);
-}
-?>
-
-<?php
-if (isset($_SESSION['delete_moviments_success'])) {
-?>
-    <script>
-        swalDeleteSuccess();
-    </script>
-<?php
-    unset($_SESSION['delete_moviments_success']);
-}
-?>
-
-<?php
-if (isset($_SESSION['delete_moviments_fail'])) {
-?>
-    <script>
-        swalDeleteError();
-    </script>
-<?php
-    unset($_SESSION['delete_moviments_fail']);
+    unset($_SESSION['close_moviments_fail']);
 }
 ?>
 

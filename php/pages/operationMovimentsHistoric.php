@@ -84,6 +84,7 @@ $moviments_list = $moviments->getMoviments();
                                             <th>Operador</th>
                                             <th>Maquina</th>
                                             <th>Pasto</th>
+                                            <th>Situação</th>
                                             <th>Opções</th>
                                         </tr>
                                     </thead>
@@ -96,6 +97,7 @@ $moviments_list = $moviments->getMoviments();
                                             <th>Operador</th>
                                             <th>Maquina</th>
                                             <th>Pasto</th>
+                                            <th>Situação</th>
                                             <th>Opções</th>
                                         </tr>
                                     </tfoot>
@@ -116,85 +118,8 @@ $moviments_list = $moviments->getMoviments();
                                                 <td><?= $colaborador['nome'] ?></td>
                                                 <td><?= $maquina['modelo'] ?></td>
                                                 <td><?= $pasto['nome'] ?> (<?= $pasto['retiro'] ?>) </td>
+                                                <td><?= $movimento['situacao'] ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditMoviment_<?= $movimento['id'] ?>">
-                                                        <i class="fas fa-pen"></i>
-                                                    </button>
-                                                    <div name="EditMoviment" class="modal fade" id="modalEditMoviment_<?= $movimento['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
-                                                        <div class="modal-dialog modal-sm" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-body">
-                                                                    <div class="text-center">
-                                                                        <img src="#" width="100" height="100" style="margin-bottom: 10px;">
-                                                                    </div>
-                                                                    <div class="text-center">
-                                                                        <h1 class="h4 text-gray-900 mb-4"><b style="color: #566573;">Editar Historico</b></h1>
-                                                                    </div>
-                                                                    <form class="user" action="../controllers/MovimentsController.php" method="POST">
-                                                                        <input type="hidden" name="edit" value="true">
-                                                                        <input type="hidden" name="id" value="<?= $movimento['id'] ?>">
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="date" class="form-control" value="<?= $movimento['data'] ?>" name="data" placeholder="Data">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="time" class="form-control  " name="startTime" value="<?= $movimento['hora_inicial'] ?>" placeholder="Hora Inicial">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <input type="time" class="form-control  " name="endTime" value="<?= $movimento['hora_final'] ?>" placeholder="Hora Final ">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <select class="form-control" name="collaborator">
-                                                                                    <?php
-                                                                                    $collaborators_edit = new Collaborators();
-                                                                                    $collaborators_list_edit = $collaborators_edit->getCollaborators();
-                                                                                    while ($colarador_edit = $collaborators_list_edit->fetch_assoc()) { ?>
-                                                                                        <option value="<?= $colarador_edit['id'] ?>" <?php if ($movimento['id_colaborador'] == $colarador_edit['id']) { ?> selected <?php } ?>><?= $colarador_edit['nome'] ?></option>
-                                                                                    <?php } ?>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <select class="form-control" name="machine">
-                                                                                    <?php
-                                                                                    $tractor_edit = new Tractors();
-                                                                                    $tractor_edit_list = $tractor_edit->getTractors();
-                                                                                    while ($trator_edit = $tractor_edit_list->fetch_assoc()) {
-                                                                                    ?>
-                                                                                        <option value="<?= $trator_edit['id'] ?>" <?php if ($movimento['id_maquina'] == $trator_edit['id']) { ?> selected <?php } ?>><?= $trator_edit['modelo'] ?></option>
-                                                                                    <?php } ?>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                                <select class="form-control" name="pasture">
-                                                                                    <?php
-                                                                                    $pasture_edit = new Pastures();
-                                                                                    $pasture_edit_list = $pasture_edit->getPastures();
-                                                                                    while ($pasto_edit = $pasture_edit_list->fetch_assoc()) {
-                                                                                    ?>
-                                                                                        <option value="<?= $pasto_edit['id'] ?>" <?php if ($movimento['id_pasto'] == $pasto_edit['id']) { ?> selected <?php } ?>><?= $pasto_edit['nome'] ?> (<?= $pasto_edit['retiro'] ?>)</option>
-                                                                                    <?php } ?>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                        <hr>
-                                                                        <button type="submit" class="btn btn-user btn-warning btn-block"> Salvar </button>
-                                                                        <button type="button" class="btn btn-user btn-danger btn-block" data-dismiss="modal"> Cancelar </button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
                                                     <button class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#modalDeleteMoviment_<?= $movimento['id'] ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
@@ -262,28 +187,6 @@ if (isset($_SESSION['register_moviments_fail'])) {
     </script>
 <?php
     unset($_SESSION['register_moviments_fail']);
-}
-?>
-
-<?php
-if (isset($_SESSION['edit_moviments_success'])) {
-?>
-    <script>
-        swalEditSuccess();
-    </script>
-<?php
-    unset($_SESSION['edit_moviments_success']);
-}
-?>
-
-<?php
-if (isset($_SESSION['edit_moviments_fail'])) {
-?>
-    <script>
-        swalEditError();
-    </script>
-<?php
-    unset($_SESSION['edit_moviments_fail']);
 }
 ?>
 

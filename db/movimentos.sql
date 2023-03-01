@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 22-Fev-2023 às 09:12
+-- Tempo de geração: 01-Mar-2023 às 05:57
 -- Versão do servidor: 8.0.17
 -- versão do PHP: 7.3.10
 
@@ -35,13 +35,15 @@ CREATE TABLE `movimentos` (
   `horas_trabalhadas` float NOT NULL,
   `horas_normais` int(11) NOT NULL,
   `horas_excedentes` int(11) NOT NULL,
+  `extra_hora` varchar(20) NOT NULL,
   `data` date NOT NULL,
   `dia_semana` varchar(500) NOT NULL,
   `valor_diaria` varchar(255) NOT NULL,
   `id_colaborador` int(11) NOT NULL,
   `id_servico` int(11) NOT NULL,
   `id_maquina` int(11) NOT NULL,
-  `id_pasto` int(11) NOT NULL
+  `id_pasto` int(11) NOT NULL,
+  `situacao` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -62,7 +64,7 @@ ALTER TABLE `movimentos`
 -- AUTO_INCREMENT de tabela `movimentos`
 --
 ALTER TABLE `movimentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

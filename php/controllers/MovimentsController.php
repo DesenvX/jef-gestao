@@ -14,6 +14,10 @@ if (isset($_POST['register'])) {
 
     $_VALUEDAY = $calcMoviments->CalcValueDayMoviment($_POST['dayWeek'], $_POST['adversity'], $_HOURS);
 
+    if ($_POST['dayWeek'] == 'Sábado' || $_POST['dayWeek'] == 'Domingo') {
+        $_POST['adversity'] = 'on';
+    }
+
     return $moviments->postMoviments($_POST, $_HOURS, $_VALUEDAY);
 }
 

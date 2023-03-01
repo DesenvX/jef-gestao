@@ -93,6 +93,25 @@ function swalDeleteError() {
     })
 }
 
+function swalCloseMovimentSuccess() {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Mês fechado com sucesso!',
+        showConfirmButton: false,
+        timer: 3000
+    })
+}
+function swalCloseMovimentError() {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Erro ao fechar mês!',
+        showConfirmButton: false,
+        timer: 3000
+    })
+}
+
 
 function swalValidateCpfError() {
     Swal.fire({
