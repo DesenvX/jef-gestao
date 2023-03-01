@@ -772,7 +772,7 @@ $vehicle_list = $vehicle->getVehicles();
                                                                 <td><?= date('d/m/Y', strtotime($combustivel_saida['data'])) ?></td>
                                                                 <td><?= $combustivel_saida['litros'] ?></td>
                                                                 <td><?= $servico['descricao'] ?></td>
-                                                                <td><?= $pasto['nome'] ?></td>
+                                                                <td><?= $pasto['nome'] ?> (<?= $pasto['retiro'] ?>)</td>
                                                                 <td><?= $trator['modelo'] ?></td>
                                                                 <td><?= $colaborador['nome'] ?></td>
                                                                 <td>
