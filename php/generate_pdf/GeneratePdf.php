@@ -141,9 +141,8 @@ function PDFReportMoviment($LIST, $HOURS, $VALUE_TOTALITY, $DATA_REPORT)
                     <td style="text-align: center;">
                     <strong> HORAS NORMAIS: </strong>' . $HOURS[0]['soma_horas_normais'] . ' Hrs<br>
                     <strong> HORAS 100%: </strong>' . $HOURS[3]['soma_extra_horas'] . ' Hrs<br>
+                    <strong> HORAS EXCEDENTES: </strong>' . $HOURS[1]['soma_horas_excedentes'] . ' Hrs<br><br>
                     <strong> HORAS TOTAL: </strong><strong>' . $HOURS[2]['soma_horas_trabalhadas'] . ' Hrs</strong><br>
-                    <strong> HORAS EXCEDENTES: </strong><strong>' . $HOURS[1]['soma_horas_excedentes'] . ' Hrs<strong><br><br>
-                        
                     <strong> VALOR TOTAL: </strong><strong>R$ ' . number_format($VALUE_TOTALITY['soma_valor_diaria'], 2, '.', '') . '</strong>
                     </td>
                 </tr>
