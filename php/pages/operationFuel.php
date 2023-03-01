@@ -372,7 +372,6 @@ $vehicle_list = $vehicle->getVehicles();
                                 </div>
                             </div>
 
-                            <!-- Trator -->
                             <div name="RegisterFuelOutput" class="modal fade" id="modalRegisterFuelOutput" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-sm" role="document">
                                     <div class="modal-content">
@@ -419,7 +418,7 @@ $vehicle_list = $vehicle->getVehicles();
                                                         <select class="form-control" name="pasture" required>
                                                             <option value="" selected> Pasto </option>
                                                             <?php while ($pastos = $pastures_list->fetch_assoc()) { ?>
-                                                                <option value="<?= $pastos['id'] ?>"> <?= $pastos['nome'] ?> </option>
+                                                                <option value="<?= $pastos['id'] ?>"> <?= $pastos['nome'] ?> (<?= $pastos['retiro'] ?>)</option>
                                                             <?php } ?>
                                                         </select>
                                                     </div>
