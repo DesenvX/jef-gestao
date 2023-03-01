@@ -779,8 +779,6 @@ $vehicle_list = $vehicle->getVehicles();
                                                                     <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#modalEditFuelOutput_<?= $combustivel_saida['id'] ?>">
                                                                         <i class="fas fa-pen"></i>
                                                                     </button>
-
-                                                                    <!-- Edit Manchine -->
                                                                     <div name="EditFuelOutput" class="modal fade" id="modalEditFuelOutput_<?= $combustivel_saida['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                         <div class="modal-dialog modal-sm" role="document">
                                                                             <div class="modal-content">
@@ -826,7 +824,8 @@ $vehicle_list = $vehicle->getVehicles();
                                                                                                     $pastures_edit = new Pastures();
                                                                                                     $pastures_list_edit = $pastures_edit->getPastures();
                                                                                                     while ($pasto_edit = $pastures_list_edit->fetch_assoc()) { ?>
-                                                                                                        <option value="<?= $pasto_edit['id'] ?>" <?php if ($combustivel_saida['id_pasto'] == $pasto_edit['id']) { ?> selected <?php } ?>><?= $pasto_edit['nome'] ?>
+                                                                                                        <option value="<?= $pasto_edit['id'] ?>" <?php if ($combustivel_saida['id_pasto'] == $pasto_edit['id']) { ?> selected <?php } ?>>
+                                                                                                            <?= $pasto_edit['nome'] ?> (<?= $pasto_edit['retiro'] ?>)
                                                                                                         </option>
                                                                                                     <?php } ?>
                                                                                                 </select>
